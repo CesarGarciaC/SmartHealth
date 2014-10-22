@@ -15,7 +15,7 @@ function mostrarAvanzada()
 	busquedaRecetas(3,"",keyword.val());
     $("#search-advanced").show();
     $(".resultado-recetas").css("height","40%");
-    $("#categorias-menu ").css("height","40%");   
+    $("#categorias-menu ").css("height","#1CC2EC 0px 0px 18px 6px");   
 }
 
 function filtrar()
