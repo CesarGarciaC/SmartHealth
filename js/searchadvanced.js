@@ -11,8 +11,12 @@ var value_s3=-1;
 var dataFiltrada;
 function mostrarAvanzada()
 {
+	
 	var keyword=$('#keyboard')
-	busquedaRecetas(3,"",keyword.val());
+	var bool=$("#categorias-menu ").is(":visible");
+	if(bool)	numColumns=2;
+	else		numColumns=3;
+	busquedaRecetas(numColumns,"",keyword.val());
     $("#search-advanced").show();
     $(".resultado-recetas").css("height","40%");
     $("#categorias-menu ").css("height","#1CC2EC 0px 0px 18px 6px");   
