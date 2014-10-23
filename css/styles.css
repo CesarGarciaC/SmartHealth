@@ -117,6 +117,14 @@ body
 
 }
 
+.detalle-receta.submenu
+{
+	color:#A79595;
+	opacity: 0.4;
+	
+
+}
+
 .detalle-receta-seleccionada{ 
 	border: 2px solid #1CC2EC !important;
 	-webkit-box-shadow: #1CC2EC 0px 0px 6px 3px;

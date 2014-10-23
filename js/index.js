@@ -178,10 +178,11 @@ $(document).ready($(function ()
 	for ( var i=0; i<data2.recetas.length; i++ ){
 		$('#star_'+i).rating('votar.php', {maxvalue: 5, curvalue:1, id:20});
 		$('#receta_'+i).mouseover(function(){
-			$(this).addClass('detalle-receta-seleccionada');			
+			$(this).addClass('detalle-receta-seleccionada');				
 		});
 		$('#receta_'+i).mouseout(function(){
-			$(this).removeClass('detalle-receta-seleccionada');			
+			$(this).removeClass('detalle-receta-seleccionada');	
+	
 		});
 	}
   
