@@ -5,7 +5,9 @@ $(document).ready($(function () {
     });
 
   $('#volverBtn').click(function(){
-  		$('#recipe-details').addClass("invisible-block");  		
+  		$('#recipe-details').addClass("invisible-block"); 
+      $('#data-container').removeClass("invisible-block"); 
+       		
   });
 
   $('#favoritosBtn').click(function(){
@@ -14,8 +16,12 @@ $(document).ready($(function () {
 
   $('#voicePlayBtn').click(function(){
     	var audio = new Audio();
+      audio.src ='http://translate.google.com/translate_tts?ie=utf-8&tl=en&q=Hello%20World';
+      audio.play();
+      /*var audio = new Audio();
       var playText = text.substring(0,99);
-      audio.src ='http://translate.google.com/translate_tts?ie=utf-8&tl=es&q=' + encodeURI(playText);
+      //audio.src ='http://translate.google.com/translate_tts?ie=utf-8&tl=es&q=' + encodeURI(playText);
+      audio.src ='http://www.translate.google.com/translate_tts?ie=utf-8&tl=es&q=hola+heidy';
       audio.play();
     	/*for (var i = 0; i <= text.length / 100;i++) {
     		playText = text.substring(i*100,i*100+99);
@@ -35,6 +41,8 @@ $(document).ready($(function () {
     //alert(recipeId);
     fillRecipeDetails(json[0]);
     $('#recipe-details').removeClass("invisible-block");
+    $('#data-container').addClass("invisible-block");
+
     
     currentInstructions = json[0].instructions;
     text = "";
