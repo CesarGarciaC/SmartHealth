@@ -6,13 +6,14 @@ var User = "";
 function UserData(nicename, email, favouritesRecipes) {
     this.nicename = nicename;
     this.email = email;
-    this.favoutitesRecipes = favouritesRecipes;
+    //this.favoutitesRecipes = favouritesRecipes;
 }
 
 function loginUser(user) {
     if (user.name !== null) {
-        User = new UserData(user.nicename, user.email, user.recipes);
-        alert("Bienvenido " + User.nicename);
+//        User = new UserData(user.data.user_nicename, user.data.user_email, user.data.recipes);
+        User = new UserData(user.data.user_nicename, user.data.user_email, null);
+        alert("Bienvenido " + user.data.user_nicename);
         
     }
 
