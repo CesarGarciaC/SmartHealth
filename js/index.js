@@ -176,12 +176,9 @@ $(document).ready($(function ()
 	for ( var i=0; i<data2.recetas.length; i++ ){
 		$('#star_'+i).rating('votar.php', {maxvalue: 5, curvalue:1, id:20});
 	}
-  
   }
-
-
   
-    function busquedaRecetas(column, cat, keyword)
+  function busquedaRecetas(column, cat, keyword)
   {
   try
   {
@@ -205,7 +202,8 @@ $(document).ready($(function ()
 		var updatedData= {
 			"recetas":json
 		};
-		
+		alert(updatedData.recetas.length)
+                RecipesGlobal.length=0;
 		for(var i=0;i<updatedData.recetas.length;i++){
 			RecipesGlobal.push(updatedData.recetas[i]);
 			//alert(RecipesGlobal[i].name);

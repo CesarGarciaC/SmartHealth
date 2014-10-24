@@ -21,22 +21,39 @@ function mostrarAvanzada()
 function filtrar()
 {
     //Filtrar por categorias
-    var t=data2.recetas.length;
+//    var t=data2.recetas.length;
+
+    var t=RecipesGlobal.length;
     if (selector3)
     {
         for (i=0;i<t;i++)
         {
             //alert(jQuery.inArray(value_s3+"",data2.recetas[i].categorias)+" "+value_s3+" "+data2.recetas[i].categorias)
-              if (jQuery.inArray(value_s3+"",data2.recetas[i].categorias)>=0)
+//              if (jQuery.inArray(value_s3+"",data2.recetas[i].categorias)>=0)
+//              {
+//                  dataFiltrada.push(data2.recetas[i]);
+//              }
+              
+//              if (jQuery.inArray(value_s3+"",RecipesGlobal[i].categories.id)>=0)
+//              {
+//                  dataFiltrada.push(RecipesGlobal[i]);
+//              }
+              
+              for (c=0;c<RecipesGlobal[i].categories.length;c++)
               {
-                  dataFiltrada.push(data2.recetas[i]);
+                  if (value_s3==RecipesGlobal[i].categories[c].id)
+                      dataFiltrada.push(RecipesGlobal[i]);
               }
+              
         }
     }
     else
     {
+//        for (i=0;i<t;i++)
+//            dataFiltrada.push(data2.recetas[i]);
+        
         for (i=0;i<t;i++)
-            dataFiltrada.push(data2.recetas[i]);
+            dataFiltrada.push(RecipesGlobal[i]);
         
     }
     
@@ -101,8 +118,8 @@ function actualizarResultados()
         if(i%numColumns==0)	recetaDiv+='<tr>'
         recetaDiv+= '<td><div id="receta_'+i+'" class="detalle-receta">';
         var puntuacion='<div id="star_'+i+'" class="rating">&nbsp;</div>';
-        var textoReceta='<div id=textReceta_'+i+' class="texto-detalle"><p>'+dataFiltrada[i].nombre+'</p></div>';
-        var imagenReceta='<div id=imagenReceta_'+i+' class="imagen-detalle"><img src="images/'+dataFiltrada[i].imagen+'" width="82 "height="76"></div>';
+        var textoReceta='<div id=textReceta_'+i+' class="texto-detalle"><p>'+dataFiltrada[i].name+'</p></div>';
+        var imagenReceta='<div id=imagenReceta_'+i+' class="imagen-detalle"><img src="data:image/jpg;base64,'+dataFiltrada[i].image+'" width="82 "height="76"></div>';
         recetaDiv+=puntuacion+textoReceta+imagenReceta;
         recetaDiv+='</div></td>';
         if(i%numColumns==numColumns-1) recetaDiv+='</tr>'
@@ -153,7 +170,6 @@ $(".selector").live('click',function()
         
         value_s3=$(this).data("id");
     }
-    
     filtrar();
 })
 

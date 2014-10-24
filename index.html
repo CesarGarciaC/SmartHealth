@@ -17,11 +17,13 @@ and open the template in the editor.
             <script type="text/javascript" src="js/jquery-1.6.3.min.js"></script>
             <script type="text/javascript" src="js/rating.js"></script>
             <script type="text/javascript" src="js/index.js" charset="utf-8"></script>
-            <script type="text/javascript" src="js/details.js" charset="utf-8"></script>
             <script type="text/javascript" src="js/searchadvanced.js"></script>
             <script type="text/javascript" src="js/move_main.js"></script>
             <script type="text/javascript" src="js/jquery.keyboard.js"></script>
-			<script type="text/javascript" src="js/categories.js"></script>
+            <script type="text/javascript" src="js/favorites.js"></script>
+            <script type="text/javascript" src="js/details.js" charset="utf-8"></script>
+            <script type="text/javascript" src="js/categories.js"></script>
+            <script type="text/javascript" src="js/puntuacion.js"></script>
             <!--<script type="text/javascript" src="js/jquery.soap.js"></script>-->
             <script type="text/javascript" src="js/menu.js"></script>
         <meta charset="utf-8">
@@ -68,7 +70,7 @@ and open the template in the editor.
                                 </tr>
 
                                 <tr>
-                                    <td class="menu-option">
+                                    <td class="menu-option" onclick="obtenerFavoritos()">
                                         <center>Favoritos</center>
                                     </td>
                                 </tr>
@@ -148,24 +150,27 @@ and open the template in the editor.
                                                                 <table>
                                                                 <tr>
                                                                         <td >
-                                                                                <input data-id="1" class="selector s3" type="button" value="Bebida"/>
+                                                                                <input data-id="6" class="selector s3" type="button" value="Bebida"/>
+                                                                        </td>
+                                                                        <td >
+                                                                                <input data-id="9" class="selector s3" type="button" value="Carnes"/>
                                                                         </td>
                                                                         <td>
-                                                                                <input data-id="2" class="selector s3" type="button" value="Entrada"/>
+                                                                                <input data-id="7" class="selector s3" type="button" value="Desayuno"/>
                                                                         </td>
                                                                         <td>
-                                                                                <input data-id="3" class="selector s3" type="button" value="Fondo"/>
+                                                                                <input data-id="12" class="selector s3" type="button" value="Ensaladas"/>
                                                                         </td>
                                                                 </tr>
                                                                 <tr>
                                                                         <td>
-                                                                                <input data-id="4" class="selector s3" type="button" value="Postre"/>
+                                                                                <input data-id="14" class="selector s3" type="button" value="Mariscos"/>
                                                                         </td>
                                                                         <td>
-                                                                                <input data-id="5" class="selector s3" type="button" value="Vegano"/>
+                                                                                <input data-id="13" class="selector s3" type="button" value="Postres"/>
                                                                         </td>
                                                                         <td>
-                                                                                <input data-id="6" class="selector s3" type="button" value="Vegetariano"/>
+                                                                                <input data-id="10" class="selector s3" type="button" value="Vegetariano"/>
                                                                         </td>
                                                                 </tr>
                                                                 </table>

@@ -1,7 +1,10 @@
 $(document).ready($(function () {
+    
+    var idReceta;
   $('.detalle-receta').mousedown(function(){
 		  var id = $(this).attr("id").split("_")[1];
       getDetails(parseInt(id) + 2);
+      idReceta=parseInt(id)+2;
     });
 
   $('#volverBtn').click(function(){
@@ -9,7 +12,24 @@ $(document).ready($(function () {
   });
 
   $('#favoritosBtn').click(function(){
-  		alert("Adicionar a favoritos!"); 		
+  	try {
+            alert("Receta: "+idReceta);
+          var data="id_user="+"1"+"&id_recipe="+idReceta;
+          $.ajax({        
+
+            url: 'php/addFavorites.php',                  //the script to call to get data          
+            data: data,                        //you can insert url argumnets here to pass to api.php                              //for example "id=5&parent=6"
+            dataType: 'json',                //data format    
+            async: false,
+            success: function(response)          //on recieve of reply
+            {
+              alert("Receta agregada a favoritos!!!")    
+            } 
+          });
+
+        }catch(ex){
+          alert(ex.description)
+        }
   });  
 
   $('#voicePlayBtn').click(function(){
