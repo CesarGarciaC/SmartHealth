@@ -40,17 +40,7 @@ and open the template in the editor.
                         });
 		});
                 
-                $(document).ready(function(){
-                    $(".basic").jRating({
-                           
-                           length : 5, // nb of stars
-                           rateMax: 5,
-                           isDisabled: true,
-                           onSuccess : function(){
-                             alert('Success : your rate has been saved :)');
-                           }
-                     });
-                });
+                
     </script>
     </head>
     <body>
@@ -108,6 +98,7 @@ and open the template in the editor.
                                 <div id="topContainer" class="container clearfix">
                                     <button id="volverBtn" class="_button">Volver</button>
                                     <button id="favoritosBtn" class="_button">Favoritos +</button>
+                                    <div id="rating" style="left:420px;top:20px" class="basicEditable" data-average="1" data-id=""></div>
                                 </div>
                                 <div id="ingredientesContainer" class="container clearfix">
                                     <div id="recipeTitle" class="embed-wrapper">                                        

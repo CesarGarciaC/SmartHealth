@@ -30,7 +30,7 @@ $(document).ready($(function () {
           });
 
         }catch(ex){
-          alert(ex.description)
+//          alert(ex.description)
         }
   });  
 
@@ -117,9 +117,9 @@ $(document).ready($(function () {
     }
   }*/
 
-  function selectRecipe(json){
+  function selectRecipe(json,id_recipe){
     //alert(recipeId);
-    fillRecipeDetails(json[0]);
+    fillRecipeDetails(json[0],id_recipe);
     $('#recipe-details').removeClass("invisible-block");
     $('#data-container').addClass("invisible-block");
 
@@ -131,9 +131,9 @@ $(document).ready($(function () {
     };
   }
 
-  function fillRecipeDetails(details){
+  function fillRecipeDetails(details,id_recipe){
     $('#recipeTitle').html(details.name);
-    
+    $("#rating").attr("data-id",id_recipe);
     //ingredientes
     var ingredientes = details.ingredients;
     var headerDisplay = '<tr>' +
@@ -198,7 +198,7 @@ $(document).ready($(function () {
         success: function(response)          //on recieve of reply
         {
           json= JSON.parse(response); 
-          selectRecipe(json);        
+          selectRecipe(json,id_recipe);        
         } 
       });
     

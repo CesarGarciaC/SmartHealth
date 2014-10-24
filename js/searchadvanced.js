@@ -24,25 +24,11 @@ function mostrarAvanzada()
 
 function filtrar()
 {
-    //Filtrar por categorias
-//    var t=data2.recetas.length;
-
     var t=RecipesGlobal.length;
     if (selector3)
     {
         for (i=0;i<t;i++)
         {
-            //alert(jQuery.inArray(value_s3+"",data2.recetas[i].categorias)+" "+value_s3+" "+data2.recetas[i].categorias)
-//              if (jQuery.inArray(value_s3+"",data2.recetas[i].categorias)>=0)
-//              {
-//                  dataFiltrada.push(data2.recetas[i]);
-//              }
-              
-//              if (jQuery.inArray(value_s3+"",RecipesGlobal[i].categories.id)>=0)
-//              {
-//                  dataFiltrada.push(RecipesGlobal[i]);
-//              }
-              
               for (c=0;c<RecipesGlobal[i].categories.length;c++)
               {
                   if (value_s3==RecipesGlobal[i].categories[c].id)
@@ -53,9 +39,6 @@ function filtrar()
     }
     else
     {
-//        for (i=0;i<t;i++)
-//            dataFiltrada.push(data2.recetas[i]);
-        
         for (i=0;i<t;i++)
             dataFiltrada.push(RecipesGlobal[i]);
         
@@ -96,21 +79,7 @@ function filtrar()
                       break;
                   }
           }
-    }
-    
-//    if ((cal_min.val()!=null) && (cal_max.val()!=null))
-//    {
-//        if (!(selector1 || selector2))
-//            dataFiltrada=data2;
-//        
-//        for (i=0;i<dataFiltrada.length;i++)
-//        {
-//            var calorias=dataFiltrada.recetas[i].calorias;
-//            if ((calorias>cal_max.val()) || (calorias<cal_min.val()))
-//                dataFiltrada.remo
-//        }
-//    }
-    
+    }    
     actualizarResultados();
 }
 
@@ -121,7 +90,7 @@ function actualizarResultados()
     for ( var i=0; i<dataFiltrada.length; i++ ) {
         if(i%numColumns==0)	recetaDiv+='<tr>'
         recetaDiv+= '<td><div id="receta_'+i+'" class="detalle-receta">';
-        var puntuacion='<div id="star_'+i+'" class="rating">&nbsp;</div>';
+        var puntuacion='<div style="margin-bottom:20px" class="basicNoEditable" data-average="'+dataFiltrada[i].rating+'"data-id="'+1+'"></div>';
         var textoReceta='<div id=textReceta_'+i+' class="texto-detalle"><p>'+dataFiltrada[i].name+'</p></div>';
         var imagenReceta='<div id=imagenReceta_'+i+' class="imagen-detalle"><img src="data:image/jpg;base64,'+dataFiltrada[i].image+'" width="82 "height="76"></div>';
         recetaDiv+=puntuacion+textoReceta+imagenReceta;
@@ -132,9 +101,9 @@ function actualizarResultados()
     recetaDiv+='</table>';
     targetdiv.html(recetaDiv);
 
-    for ( var i=0; i<dataFiltrada.length; i++ ){
-            $('#star_'+i).rating('votar.php', {maxvalue: 5, curvalue:1, id:20});
-    } 
+//    for ( var i=0; i<dataFiltrada.length; i++ ){
+//            $('#star_'+i).rating('votar.php', {maxvalue: 5, curvalue:1, id:20});
+//    } 
 }
 
 
