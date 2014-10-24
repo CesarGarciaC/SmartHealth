@@ -2,7 +2,7 @@
     function obtenerFavoritos()
     {
         alert("entrando a favoritos...")
-        var data="id_user=1";
+        var data="id_user_searchfav=1";
         
         $.ajax({        
 
@@ -12,7 +12,18 @@
             async: false,
             success: function(data)          //on recieve of reply
             {
-                paintRecipes(3,data)
+                json= JSON.parse(data);	
+                var updatedData= {
+			"recetas":json
+		};
+                
+                /*RecipesGlobal.length=0;
+		for(var i=0;i<updatedData.recetas.length;i++){
+			RecipesGlobal.push(updatedData.recetas[i]);
+			//alert(RecipesGlobal[i].name);
+		}*/
+		
+                paintRecipes(3,updatedData)
             } 
         });
     }

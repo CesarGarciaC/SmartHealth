@@ -2,17 +2,17 @@
 
 try {
 
-$id_user=null;
+$id_user_searchfav=null;
 
-if (isset($_GET['id_user'])) 
+if (isset($_GET['id_user_searchfav'])) 
 {
-	$id_user = $_GET['id_user'];
+	$id_user_searchfav = $_GET['id_user_searchfav'];
 }
 
 $client = new SoapClient('http://200.16.7.111/wordpress/index.php?/wpws/?wsdl');
 
 
-$response = $client->smartSearchFavService($id_user);
+$response = $client->smartSearchFavService($id_user_searchfav);
 
 $jsonFile= json_encode($response,true);
 
