@@ -8,7 +8,9 @@ $(document).ready($(function () {
     });
 
   $('#volverBtn').click(function(){
-  		$('#recipe-details').addClass("invisible-block");  		
+  		$('#recipe-details').addClass("invisible-block"); 
+      $('#data-container').removeClass("invisible-block"); 
+       		
   });
 
   $('#favoritosBtn').click(function(){
@@ -33,76 +35,100 @@ $(document).ready($(function () {
   });  
 
   $('#voicePlayBtn').click(function(){
-    	var audio = new Audio();
-      var playText = text.substring(0,99);
-      audio.src ='http://translate.google.com/translate_tts?ie=utf-8&tl=es&q=' + encodeURI(playText);
-      audio.play();
-    	/*for (var i = 0; i <= text.length / 100;i++) {
-    		playText = text.substring(i*100,i*100+99);
-    		alert(playText);
-    		audio.src ='http://translate.google.com/translate_tts?ie=utf-8&tl=es&q=' + encodeURI("hola" + i);
-			audio.play();
-			sleep(2000,alert());
-    	};*/
+    currentIndex = 0;
+    /*if(isPlaying)
+      voiceStop();
+    else*/ 
+      voicePlay();
   });
 
+  $('#voiceStopBtn').click(function(){
+    window.speechSynthesis.cancel();
+    isPlaying = false;
+    currentIndex = 0; 
+  });
+
+  $('#voiceBckBtn').click(function(){
+    console.log("antes" + currentIndex);
+    currentIndex -= 2;
+    console.log("despues" + currentIndex);
+    isPlaying = false;
+    window.speechSynthesis.cancel();
+    voicePlay();
+  });
+
+  $('#voiceFwdBtn').click(function(){
+    isPlaying = false;
+    window.speechSynthesis.cancel();
+    voicePlay();
+  });
+
+  initUtterance();
+
+  window.speechSynthesis.cancel();
 })); 
 
-  var selectedRecipe;
+  var utterance;
+
   var currentInstructions;
+  var currentIndex;
+  var isPlaying = false;
+  var queue;
+
+  function initUtterance(){
+    utterance = new SpeechSynthesisUtterance();
+    utterance.lang = 'es-ES';
+
+    utterance.onend = function() {
+      if(isPlaying){
+        if(queue.length > 0)
+          msgPlay();
+        else
+          voicePlay();
+      }
+    };
+  }
+
+  function voicePlay(){
+    if (currentIndex >=0 && currentIndex < currentInstructions.length){
+      window.speechSynthesis.cancel();
+      //console.log(currentIndex);
+      queue = currentInstructions[currentIndex].split('.');
+      currentIndex ++;
+      isPlaying = true;
+      msgPlay();      
+    }    
+  }
+
+  function msgPlay(){
+    if (queue.length > 0){
+      utterance.text = queue.shift();
+      window.speechSynthesis.speak(utterance);
+    }
+    else
+      isPlaying = false;
+  }
+
+  /*function voiceStop(){
+    if (isPlaying){
+      window.speechSynthesis.stop();
+      currentIndex--;
+      isPlaying = false;
+    }
+  }*/
 
   function selectRecipe(json){
     //alert(recipeId);
     fillRecipeDetails(json[0]);
     $('#recipe-details').removeClass("invisible-block");
-    
+    $('#data-container').addClass("invisible-block");
+
     currentInstructions = json[0].instructions;
+    currentIndex = 0;
     text = "";
     for (var i = 0; i < currentInstructions.length; i++) {
       text += currentInstructions[i];
     };
-
-    /*var soapMessage =
-    '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:sexy="http://www.dreamsolutions.com/sexy_service/">' +
-      '<soapenv:Header/>' +
-        '<soapenv:Body>' +
-            '<sexy:id_recipe>3</sexy:id_recipe>' +
-        '</soapenv:Body>' +
-  '</soapenv:Envelope>';
-
-    $.ajax({
-      url: "http://200.16.7.111/wordpress/index.php?/wpws/?wsdl",
-      type: "POST",
-      contentType: 'text/xml; charset=utf-8',
-      headers: {
-          SOAPAction: "http://www.dreamsolutions.com/sexy_service/smartSelectRecipeService"
-      },
-      data: soapMessage,
-      success: function(soapResponse){
-          //DO SOMETHING
-          alert("OK");
-          //alert(soapResponse);
-        }
-        //error: alert("error")
-        
-    });
-  
-
-  /*$.soap({
-      url: 'http://200.16.7.111/wordpress/index.php?/wpws/?wsdl',
-      method: 'http://www.dreamsolutions.com/sexy_service/smartSelectRecipeService',
-      data: {
-          id_recipe: '2'
-      },
-      success: function (soapResponse) {
-        alert(soapResponse);
-        // do stuff with soapResponse
-      },
-      error: function (soapResponse) {
-          alert('that other server might be down...');
-      }
-  });*/
-    //alert("end");
   }
 
   function fillRecipeDetails(details){

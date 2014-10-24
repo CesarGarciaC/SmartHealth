@@ -15,6 +15,9 @@ body {
 }
 
 ._button {
+  border-style:solid;
+  border-color:#bbb #888 #666 #aaa;
+  border-width:1px 1.2px 1.2px 1px;
   display: block;
   float: left;
   height: 28px;
@@ -26,6 +29,14 @@ body {
   line-height: 1.38;
   text-align: center;
   color: rgb(0, 0, 0);
+  width: 30px;
+
+}
+
+._button:hover{
+  border-color: #666 #aaa #bbb #888;
+  border-width:1px 1.2px 1.2px 1px;
+  color:#000;
 }
 
 ._element {
@@ -70,7 +81,7 @@ body {
   font-size: 24px;
   height: 30px;
   margin: 10px 0 0 10px;
-  width: 400px;
+  width: 350px;
 }
 
 #ingredientesDiv {
@@ -133,9 +144,9 @@ body {
   width: 100px;
 }
 
-#voicePlayBtn{
+#voicePlayBtn,#voiceBckBtn,#voiceFwdBtn,#voiceStopBtn{
   float: right;
-  margin-right: 10px;
+  /*margin-right: 10px;*/
 }
 
 #ingredientsTable{
@@ -153,6 +164,11 @@ body {
   text-align: center;
   /*border: 1px solid black;
   border-collapse: collapse;*/
+}
+
+.imgIcon{
+  max-width:100%;
+  max-height:100%;
 }
 
 /*#ingredientsTable .umCell{
