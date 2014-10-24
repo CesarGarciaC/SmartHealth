@@ -24,7 +24,7 @@ $(document).ready(function(){
                 var id_recipe=$("#rating").attr("data-id");
                 var rating=rate;
                 var data="id_user="+id_user+"&id_recipe="+id_recipe+"&rating="+rating;
-
+//                alert(id_recipe+" - "+rating)
                 $.ajax({        
 
                     url: 'php/addRating.php',                  //the script to call to get data          
@@ -33,7 +33,7 @@ $(document).ready(function(){
                     async: false,
                     success: function(data)          //on recieve of reply
                     {
-                        alert(data)
+                        alert("Receta puntuada");
                     } 
                 });
          }
