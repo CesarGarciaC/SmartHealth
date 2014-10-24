@@ -165,7 +165,7 @@ $(document).ready($(function ()
     for ( var i=0; i<data2.recetas.length; i++ ) {
 		if(i%numColumns==0)	recetaDiv+='<tr>'
         recetaDiv+= '<td><div id="receta_'+i+'" class="detalle-receta">';
-		var puntuacion='<div id="star_'+i+'" class="rating">&nbsp;</div>';
+		var puntuacion='<div style="margin-bottom:5px" class="basic" data-average="'+data2.recetas[i].rating+'"data-id="'+1+'"></div>';
 		var textoReceta='<div id=textReceta_'+i+' class="texto-detalle"><p>'+data2.recetas[i].name+'</p></div>';
 		var imagenReceta='<div id=imagenReceta_'+i+' class="imagen-detalle"><img src="data:image/jpg;base64,'+data2.recetas[i].image+'" width="82 "height="76"></div>';
 		recetaDiv+=puntuacion+textoReceta+imagenReceta;
@@ -215,7 +215,6 @@ $(document).ready($(function ()
 		var updatedData= {
 			"recetas":json
 		};
-		alert(updatedData.recetas.length)
                 RecipesGlobal.length=0;
 		for(var i=0;i<updatedData.recetas.length;i++){
 			RecipesGlobal.push(updatedData.recetas[i]);

@@ -12,7 +12,6 @@
             async: false,
             success: function(data)          //on recieve of reply
             {
-                alert(data)
                 paintRecipes(3,data)
             } 
         });

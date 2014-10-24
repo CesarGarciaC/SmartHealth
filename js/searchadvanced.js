@@ -68,7 +68,7 @@ function filtrar()
               //Mejor valoradas
               case 1:
                   {
-                      dataFiltrada.sort(function(a,b){return b.evaluacion - a.evaluacion});
+                      dataFiltrada.sort(function(a,b){return b.rating - a.rating});
                       break;
                   }
                   
@@ -76,7 +76,7 @@ function filtrar()
               case 2:
                   {
 
-                      dataFiltrada.sort(function(a,b){return a.evaluacion - b.evaluacion});
+                      dataFiltrada.sort(function(a,b){return a.rating - b.rating});
                       break;
                   }
                   
@@ -84,7 +84,7 @@ function filtrar()
               case 3:
                   {
 
-                      dataFiltrada.sort(function(a,b){return a.tiempo - b.tiempo});
+                      dataFiltrada.sort(function(a,b){return a.time - b.time});
                       break;
                   }
                   
@@ -92,7 +92,7 @@ function filtrar()
               case 4:
                   {
 
-                      dataFiltrada.sort(function(a,b){return a.dificultad - b.dificultad});
+                      dataFiltrada.sort(function(a,b){return a.difficulty - b.difficulty});
                       break;
                   }
           }

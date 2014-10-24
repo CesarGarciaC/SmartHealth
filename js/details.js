@@ -15,7 +15,7 @@ $(document).ready($(function () {
 
   $('#favoritosBtn').click(function(){
   	try {
-            alert("Receta: "+idReceta);
+            
           var data="id_user="+"1"+"&id_recipe="+idReceta;
           $.ajax({        
 
