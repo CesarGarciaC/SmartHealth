@@ -1,11 +1,20 @@
+ 
+ var idReceta;
+ function seleccionarReceta(idRecetaSeleccionada){
+		getDetails(parseInt(idRecetaSeleccionada) + 2);
+		idReceta=parseInt(idRecetaSeleccionada)+2;
+		cancelarSeleccion(idRecetaSeleccionada);
+		$('#receta_'+idRecetaSeleccionada).removeClass('detalle-receta-seleccionada');
+ }
+
 $(document).ready($(function () {
     
-    var idReceta;
-  $('.detalle-receta').mousedown(function(){
+    
+  /*$('.detalle-receta').mousedown(function(){
 		  var id = $(this).attr("id").split("_")[1];
       getDetails(parseInt(id) + 2);
       idReceta=parseInt(id)+2;
-    });
+    });*/
 
   $('#volverBtn').click(function(){
   		$('#recipe-details').addClass("invisible-block"); 
