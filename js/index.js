@@ -148,7 +148,8 @@ var selectedRecipe='';
 $(document).ready($(function () 
   {
 
-  	var updatedData=busquedaRecetas(3,"",""); 
+  	var updatedData=busquedaRecetas(3,"","");
+	
   })); 
   
   function sleep(millis, callback) {
