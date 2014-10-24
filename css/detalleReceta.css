@@ -57,7 +57,7 @@ body {
   clear: both;
   z-index: 2;
   width: 500px;
-  height: 210px;
+  height: 290px;
   /*background-color: rgb(160, 210, 183);*/
 }
 
@@ -65,15 +65,15 @@ body {
   position: relative;
   z-index: 13;
   width: 300px;
-  height: 210px;
+  height: 290px;
   /*background-color: rgb(212, 236, 154);*/
 }
 
 #instructionsContainer {
   clear: both;
   width: 800px;
-  height: 280px;
-  font-size: 14px;
+  height: 200px;
+  font-size: 14px;  
   /*background-color: rgb(114, 117, 167);*/
 }
 
@@ -87,7 +87,7 @@ body {
 #ingredientesDiv {
   clear: both;
   font-size: 14px;
-  height: 161px;
+  height: 220px;
   margin: 8px 0 0 10px;
   overflow-y: scroll;
   width: 480px;
@@ -95,7 +95,7 @@ body {
 
 #recipePhoto {
   width: 280px;
-  height: 190px;
+  height: 290px;
   margin: 10px 0 0 10px;
 }
 
@@ -149,26 +149,88 @@ body {
   /*margin-right: 10px;*/
 }
 
-#ingredientsTable{
+/*#ingredientsTable{
   border: 1px solid black;
   border-collapse: collapse;
-}
+}*/
 
-#ingredientsTable th{
+/*#ingredientsTable th{
   /*font-weight: normal;
   /*border: 1px solid black;
-  border-collapse: collapse;*/
-}
+  border-collapse: collapse;
+}*/
 
-#ingredientsTable td{
+/*#ingredientsTable td{
   text-align: center;
   /*border: 1px solid black;
-  border-collapse: collapse;*/
-}
+  border-collapse: collapse;
+}*/
 
 .imgIcon{
   max-width:100%;
   max-height:100%;
+}
+
+.overlay{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #333333;
+  /*Cross-browser opacity below*/
+  -moz-opacity:.80;
+  filter:alpha(opacity=80);
+  opacity:.80;
+  z-index: 10000000;
+}
+
+#videoBtn{
+  width: 48px;
+  height: 48px;
+  
+  background-image: url('../images/play.png');  
+  z-index: 10000001;
+  position: absolute;
+  bottom: 35px;
+  right: 45px;
+  cursor: pointer;
+}
+
+.videolayer{
+  display: none;
+  width: 854px;
+  height: 510px;
+  padding:10px;
+  background-color: rgba(0,0,0,0.8);;
+  position: absolute;
+  left: 159px;
+  top: 98px;
+  z-index: 10000010;
+}
+
+#vl_closeBtn{
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: -15px;
+  right: -15px;
+  background-image: url('../images/close.png');
+  cursor: pointer;
+  z-index: 10000011;
+}
+
+#videoFrame{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  /*Cross-browser opacity below*/
+  -moz-opacity:.80;
+  filter:alpha(opacity=80);
+  opacity:.80;
+  z-index: 10000000;
 }
 
 /*#ingredientsTable .umCell{
@@ -271,3 +333,115 @@ body {
   margin-left: 93.5%;
 }
 
+/*ingredientesTable styles*/
+
+#ingredientsTable a:link {
+  color: #666;
+  font-weight: bold;
+  text-decoration:none;
+}
+#ingredientsTable a:visited {
+  color: #999999;
+  font-weight:bold;
+  text-decoration:none;
+}
+#ingredientsTable a:active,
+#ingredientsTable a:hover {
+  color: #bd5a35;
+  text-decoration:underline;
+}
+#ingredientsTable {
+  font-family:Arial, Helvetica, sans-serif;
+  color:#666;
+  font-size:12px;
+  text-shadow: 1px 1px 0px #fff;
+  background:#eaebec;
+  margin:20px;
+  border:#ccc 1px solid;
+
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+  border-radius:3px;
+
+  -moz-box-shadow: 0 1px 2px #d1d1d1;
+  -webkit-box-shadow: 0 1px 2px #d1d1d1;
+  box-shadow: 0 1px 2px #d1d1d1;
+}
+#ingredientsTable th {
+  padding:11px 15px 12px 15px;
+  border-top:1px solid #fafafa;
+  border-bottom:1px solid #e0e0e0;
+
+  background: #ededed;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));
+  background: -moz-linear-gradient(top,  #ededed,  #ebebeb);
+}
+#ingredientsTable th:first-child{
+  text-align: left;
+  padding-left:20px;
+}
+#ingredientsTable tr:first-child th:first-child{
+  -moz-border-radius-topleft:3px;
+  -webkit-border-top-left-radius:3px;
+  border-top-left-radius:3px;
+}
+#ingredientsTable tr:first-child th:last-child{
+  -moz-border-radius-topright:3px;
+  -webkit-border-top-right-radius:3px;
+  border-top-right-radius:3px;
+}
+#ingredientsTable tr{
+  text-align: center;
+  padding-left:20px;
+}
+#ingredientsTable tr td:first-child{
+  text-align: left;
+  padding-left:20px;
+  border-left: 0;
+}
+#ingredientsTable tr td {
+  padding:9px;
+  border-top: 1px solid #ffffff;
+  border-bottom:1px solid #e0e0e0;
+  border-left: 1px solid #e0e0e0;
+  
+  background: #fafafa;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#fafafa));
+  background: -moz-linear-gradient(top,  #fbfbfb,  #fafafa);
+}
+#ingredientsTable tr.even td{
+  background: #f6f6f6;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f6f6f6));
+  background: -moz-linear-gradient(top,  #f8f8f8,  #f6f6f6);
+}
+#ingredientsTable tr:last-child td{
+  border-bottom:0;
+}
+#ingredientsTable tr:last-child td:first-child{
+  -moz-border-radius-bottomleft:3px;
+  -webkit-border-bottom-left-radius:3px;
+  border-bottom-left-radius:3px;
+}
+#ingredientsTable tr:last-child td:last-child{
+  -moz-border-radius-bottomright:3px;
+  -webkit-border-bottom-right-radius:3px;
+  border-bottom-right-radius:3px;
+}
+#ingredientsTable tr:hover td{
+  background: #f2f2f2;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));
+  background: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);  
+}
+
+#dificultad_icons{
+  margin: 0px;
+  padding: 0px;
+}
+
+#dificultad_icons li{
+  float:left;
+  height: 32px;
+  width: 32px;  
+  list-style-type: none;
+  background-image: url('../images/chef-hat.png');
+}
