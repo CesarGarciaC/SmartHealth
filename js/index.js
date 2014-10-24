@@ -143,16 +143,12 @@ var categorias2={
 
 
 var RecipesGlobal =new Array();
-
+var selectedRecipe='';
 
 $(document).ready($(function () 
   {
-  
-	
-  	var updatedData=busquedaRecetas(3,"","");
-	//alert(RecipesGlobal[0].name);
-	//paintRecipes(3);
- 
+
+  	var updatedData=busquedaRecetas(3,"",""); 
   })); 
   
   function sleep(millis, callback) {
@@ -160,32 +156,80 @@ $(document).ready($(function ()
   }
 
   function paintRecipes(numColumns, data2){
+	
 	var targetdiv=$('#resultadoRecetas')
     var recetaDiv="<table>";
     for ( var i=0; i<data2.recetas.length; i++ ) {
 		if(i%numColumns==0)	recetaDiv+='<tr>'
         recetaDiv+= '<td><div id="receta_'+i+'" class="detalle-receta">';
-		var puntuacion='<div style="margin-bottom:20px" class="basicNoEditable" data-average="'+data2.recetas[i].rating+'"data-id="'+1+'"></div>';
+		var puntuacion='<div style="float:left; margin-bottom:20px;" class="basicNoEditable" data-average="'+data2.recetas[i].rating+'"data-id="'+1+'"></div>';
 		var textoReceta='<div id=textReceta_'+i+' class="texto-detalle"><p>'+data2.recetas[i].name+'</p></div>';
 		var imagenReceta='<div id=imagenReceta_'+i+' class="imagen-detalle"><img src="data:image/jpg;base64,'+data2.recetas[i].image+'" width="82 "height="76"></div>';
 		recetaDiv+=puntuacion+textoReceta+imagenReceta;
 		recetaDiv+='</div></td>';
 		if(i%numColumns==numColumns-1) recetaDiv+='</tr>'
     }
+
 	recetaDiv+='</table>';
 	targetdiv.html(recetaDiv);
 	
 	for ( var i=0; i<data2.recetas.length; i++ ){
-		$('#star_'+i).rating('votar.php', {maxvalue: 5, curvalue:1, id:20});
+		
+		//$('#star_'+i).rating('votar.php', {maxvalue: 5, curvalue:1, id:20});
 		$('#receta_'+i).mouseover(function(){
-			$(this).addClass('detalle-receta-seleccionada');				
+			$(this).addClass('detalle-receta-seleccionada');
+
 		});
 		$('#receta_'+i).mouseout(function(){
 			$(this).removeClass('detalle-receta-seleccionada');	
-	
-		});
+			
+
+		});	
+		$('#receta_'+i).mousedown(function(){
+			
+			
+			if(selectedRecipe.length){
+				var idDelete = selectedRecipe.split("_")[1];
+				var idActual=$(this).attr("id").split("_")[1];
+				if(idDelete!=idActual)				
+					cancelarSeleccion(idDelete);
+			}
+			
+			if($('#select_'+this.id).length){}
+			else{	
+				selectedRecipe=this.id;
+				var newdiv = document.createElement('div');
+				newdiv.setAttribute('id','select_'+this.id);
+				newdiv.setAttribute('class','submenu');
+				
+				var id = $(this).attr("id").split("_")[1];
+				
+				document.getElementById(this.id).appendChild(newdiv);
+				$('#select_'+this.id).html('<button id="botonFav_'+this.id+'">Favoritos +</button>'
+										+'<button id="botonVer_'+this.id+'" onclick="seleccionarReceta('+id+')">Ver</button>'
+										+'<button id="botonCan_'+this.id+'" onclick="cancelarSeleccion('+id+')" >Cancelar</button>');
+			
+										
+			}
+		});	
 	}
+	
   }
+  
+  $(document).click(function(event){
+	if(!$(event.target).is('#'+selectedRecipe)){
+		var idDelete = selectedRecipe.split("_")[1];
+		cancelarSeleccion(idDelete);
+	}
+  })
+  
+function cancelarSeleccion(idDiv){
+	var mainDiv=document.getElementById('receta_'+idDiv);
+	var deleteDiv=document.getElementById('select_receta_'+idDiv);
+	mainDiv.removeChild(deleteDiv);
+	selectedRecipe='';
+}
+  
   
   function busquedaRecetas(column, cat, keyword)
   {
@@ -215,10 +259,11 @@ $(document).ready($(function ()
 		var updatedData= {
 			"recetas":json
 		};
-                RecipesGlobal.length=0;
+		
+        RecipesGlobal.length=0;
 		for(var i=0;i<updatedData.recetas.length;i++){
 			RecipesGlobal.push(updatedData.recetas[i]);
-			//alert(RecipesGlobal[i].name);
+
 		}
 		
 		paintRecipes(column,updatedData);
@@ -232,8 +277,4 @@ $(document).ready($(function ()
   }
   
 
-  
-  function mouseOver() {
-    alert('Holi');
-}
   

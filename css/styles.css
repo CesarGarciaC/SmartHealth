@@ -117,12 +117,24 @@ body
 
 }
 
-.detalle-receta.submenu
+.submenu
 {
-	color:#A79595;
-	opacity: 0.4;
-	
+	float:none;
+	background-color:gray;
+	opacity: 0.9;
+	width:150px;
+	height:120px;
+	z-index:1;
+	position: absolute;
+	padding: 15px;
+}
 
+.submenu button
+{
+	background-color:cyan;
+	width:120px;
+	height:30px;
+	margin:5px 15px 5px 15px;
 }
 
 .detalle-receta-seleccionada{ 
@@ -136,6 +148,7 @@ body
 	width:70px;
 	height:70%;
 	overflow:hidden;
+	z-index:-1;
 
 }
 
@@ -151,7 +164,7 @@ body
 {
 	float:left;
 	margin-left:25px;
-	
+	z-index:-1;
 }
 
 .resultado-recetas

@@ -16,6 +16,7 @@ function mostrarAvanzada()
 	var bool=$("#categorias-menu ").is(":visible");
 	if(bool)	numColumns=2;
 	else		numColumns=3;
+	alert(keyword.val());
 	busquedaRecetas(numColumns,"",keyword.val());
     $("#search-advanced").show();
     $(".resultado-recetas").css("height","40%");
@@ -100,10 +101,46 @@ function actualizarResultados()
     
     recetaDiv+='</table>';
     targetdiv.html(recetaDiv);
+	for ( var i=0; i<data2.recetas.length; i++ ){
+		
+		//$('#star_'+i).rating('votar.php', {maxvalue: 5, curvalue:1, id:20});
+		$('#receta_'+i).mouseover(function(){
+			$(this).addClass('detalle-receta-seleccionada');
 
-//    for ( var i=0; i<dataFiltrada.length; i++ ){
-//            $('#star_'+i).rating('votar.php', {maxvalue: 5, curvalue:1, id:20});
-//    } 
+		});
+		$('#receta_'+i).mouseout(function(){
+			$(this).removeClass('detalle-receta-seleccionada');	
+			
+
+		});	
+		$('#receta_'+i).mousedown(function(){
+			
+			
+			if(selectedRecipe.length){
+				var idDelete = selectedRecipe.split("_")[1];
+				var idActual=$(this).attr("id").split("_")[1];
+				if(idDelete!=idActual)				
+					cancelarSeleccion(idDelete);
+			}
+			
+			if($('#select_'+this.id).length){}
+			else{	
+				selectedRecipe=this.id;
+				var newdiv = document.createElement('div');
+				newdiv.setAttribute('id','select_'+this.id);
+				newdiv.setAttribute('class','submenu');
+				
+				var id = $(this).attr("id").split("_")[1];
+				
+				document.getElementById(this.id).appendChild(newdiv);
+				$('#select_'+this.id).html('<button id="botonFav_'+this.id+'">Favoritos +</button>'
+										+'<button id="botonVer_'+this.id+'" onclick="seleccionarReceta('+id+')">Ver</button>'
+										+'<button id="botonCan_'+this.id+'" onclick="cancelarSeleccion('+id+')" >Cancelar</button>');
+			
+										
+			}
+		});	
+	}
 }
 
 
