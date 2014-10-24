@@ -34,6 +34,28 @@ $(document).ready($(function () {
         }
   });  
 
+  $('#videoBtn').hover(function () {       
+        $("#recipePhoto").stop(true).animate({opacity: 0.5}, 100);
+    },
+    function(){
+        $("#recipePhoto").stop(true).animate({opacity: 1}, 100);
+  });
+
+  $('#videoBtn').click(function(){
+        var ytvideo;
+        ytvideo = '<iframe width="854" height="510" src="//www.youtube.com/embed/ZUwKaS06SpA" frameborder="0" allowfullscreen></iframe>'
+
+        $("#main-container").stop(true).animate({opacity: 0.2}, 100);
+        $("#videolayer").fadeIn(200);
+        $('#ytiframe').html(ytvideo);
+  }); 
+
+  $('#vl_closeBtn').click(function(){        
+        $("#main-container").stop(true).animate({opacity: 1}, 100);
+        $('#ytiframe').html('');
+        $("#videolayer").fadeOut(100);
+  }); 
+
   $('#voicePlayBtn').click(function(){
     currentIndex = 0;
     /*if(isPlaying)
@@ -159,8 +181,12 @@ $(document).ready($(function () {
     $('#preparationDiv').html(pasosDisplay);
 
     // dificultad
-    $('#dificultad').html("Dificultad: " + details.difficulty);
-    
+    var difficulty = parseInt(details.difficulty);
+    $('#dificultad_icons').empty();
+    for (var i = 0; i < difficulty; i++) {
+        $('#dificultad_icons').append('<li></li>');
+    };
+
     // tiempo
     $('#duracion').html("Tiempo de preparación: " + details.time + " minutos");
     
@@ -179,6 +205,13 @@ $(document).ready($(function () {
     var image = details.image;
     var imgDisplay= '<img id="recipeImag" src="data:image/jpg;base64, ' + image + '"/>';
     $('#recipePhoto').html(imgDisplay);
+
+    // video
+    var video = details.video;
+    video = "https://www.youtube.com/watch?v=s65gsW5C_ZU";
+    if(video != ""){
+
+    }
   } 
 
   function getDetails(id_recipe) {
