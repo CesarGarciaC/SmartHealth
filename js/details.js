@@ -152,7 +152,6 @@ $(document).ready($(function () {
     //alert(recipeId);
 	
     fillRecipeDetails(json,id_recipe);
-	alert('holi');
     $('#recipe-details').removeClass("invisible-block");
     $('#data-container').addClass("invisible-block");
 
