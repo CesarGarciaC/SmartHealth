@@ -1,108 +1,5 @@
 //Variables Globales
 var numbuttons=4;
-
-var data2={
-	"recetas":[
-		{
-			"id":"01",
-			"nombre":"Batido de Fresa",
-			"palabras_clave":["fresa","batido","desayuno"],
-			"categorias":["1","2","5"],
-			"instrucciones":["En una batidora, combinar leche, pl�tano y fresas. Agregar vainilla y az�car de manera opcional. Bator hasta obtener la consistencia deseada. Verter en vasos y servir."],
-			"imagen":"01_batido_fresas.jpg",
-			"video":"",
-			"evaluaci�n":"4.5",
-			"porciones": 2,
-			"calorias":236,
-			"num_usuarios":832,
-			"tiempo": 5,
-			"link":"http://allrecipes.com/recipe/strawberry-oatmeal-breakfast-smoothie/"
-		},
-		{
-			"id":"02",
-			"nombre":"Langostinos Szechwan",
-			"palabras_clave":["langostinos","mariscos","szechwan"],
-			"categorias":["6"],
-			"instrucciones":["En un bowl, mezclar agua, ketchup, salsa de soya, maicena, miel, pimienta roja molida y jengibre. Dejar reservado.","Calentar aceite en una sart�n grande a fuego medio-alto. Poner cebollas y ajo y cocinar por 30 segundos. Agregar los langostinos y revolver para cubrir con aceite. Agregar a la salsa y cocinar revolviendo hasta que la salsa se encuentre burbujeando y espese."],
-			"imagen":"02_langostinos_szechwan.jpg",
-			"video":"",
-			"evaluaci�n":"4.5",
-			"porciones": 4,
-			"calorias":142,
-			"num_usuarios":2393,
-			"tiempo": 20,
-			"link":"http://allrecipes.com/recipe/szechwan-shrimp/"
-		},
-		{
-			"id":"03",
-			"nombre":"Quiche de tofu y espinaca sin huevo",
-			"palabras_clave":["tofu","espinaca","quiche","vegetariano"],
-			"categorias":["2","5","8"],
-			"instrucciones":["Precalentar el horno a 175 grados Celcius.",
-							"En una batidora, combinar el tofu y la leche; procesar hasta que est� cremoso a�adiendo m�s leche de ser necesario. A�adir sal y pimienta.",
-							"En un bowl mediano, combinar espinaca, ajo, cebolla, queso cheddar, queso suizo y la mezcla de tofu. Mezclar bien y poner en un molde de pie preparado.",
-							"Cocinar en el horno precalentado por 30 minutos o hasta que est� dorado en la superficie. Dejar reposar por 5 minutos antes de cortar."],
-			"imagen":"03_quiche_tofu.jpg",
-			"video":"",
-			"evaluaci�n":"4.5",
-			"porciones": 6,
-			"calorias":288,
-			"num_usuarios":152,
-			"tiempo": 45,
-			"link":"http://allrecipes.com/recipe/eggless-tofu-spinach-quiche/"
-		},
-		{
-			"id":"04",
-			"nombre":"Ensalada de Feta y Col Rizada",
-			"palabras_clave":["feta","col","ensalada","vegetariano"],
-			"categorias":["2","3","5","1"],
-			"instrucciones":["Mezclar la col con sal en un bowl por 2 minutos. Poner vinagre sobre la col y revolver. Trozar manzana, queso feta y pi�ones a la col."],
-			"imagen":"04_ensalada_feta_kale.jpg",
-			"video":"",
-			"evaluaci�n":"5",
-			"porciones": 8,
-			"calorias":43,
-			"num_usuarios":832,
-			"tiempo": 15,
-			"link":"http://allrecipes.com/Recipe/Kale-and-Feta-Salad/"
-		},
-		{
-			"id":"05",
-			"nombre":"Estofado de carne",
-			"palabras_clave":["carne","estofado"],
-			"categorias":["4"],
-			"instrucciones":["En una olla grande, cocinad la carne en aceite a fuego lento hasta que est� cocida. Disolver caldo en agua y verterlo en la olla. Esparcir romero, perejil y pimienta. Llevar a punto de ebullici�n y luego reducir la temperatura, cubrir la olla y cocer por 1 hora.",
-							"Poner papas, zanahorias, apio y cebolla dentro de la olla. Disolver maicena en 2 cucharaditas de agua fr�a y echar al estofado. Cubrir y dejas cocinar por 1 hora m�s."],
-			"imagen":"05_estofado.jpg",
-			"video":"",
-			"evaluaci�n":"4.5",
-			"porciones": 10,
-			"calorias":401,
-			"num_usuarios":1790,
-			"tiempo": 140,
-			"link":"http://allrecipes.com/Recipe/Beef-Stew-VI/"
-		},
-		{
-			"id":"06",
-			"nombre":"Keke de pl�tano",
-			"palabras_clave":["pl�tano","keke"],
-			"categorias":["3"],
-			"instrucciones":["Precalentar el horno a 175 grados Celcius. Engrasar un poco una sart�n de 9x5 pulgadas.",
-							"En un bowl grande, combinar la harina, el polvo de hornear y la sal. En un bowl separado, mezclar la mantequilla y el az�car rubia. Agregar los huevos y las bananas hasta que se encuentre bien mezclado. Unir la mezcla de las bananas y harina. Poner mantequilla en la sart�n preparado.",
-							"Cocinar en el horno precalentado de 60 a 65 minutos. Dejar enfriar en el molde por 10 minutos, luego voltearlo en otro recipiente."],
-			"imagen":"06_banana_bread.jpg",
-			"video":"",
-			"evaluaci�n":"4.5",
-			"porciones": 8,
-			"calorias":229,
-			"num_usuarios":10506,
-			"tiempo": 80,
-			"link":"http://allrecipes.com/Recipe/Banana-Banana-Bread/"
-		}
-	]
-
-}
-
   
 var categorias2={
 	"categorias":[ 
@@ -162,7 +59,7 @@ $(document).ready($(function ()
     var recetaDiv="<table>";
     for ( var i=0; i<data2.recetas.length; i++ ) {
 		if(i%numColumns==0)	recetaDiv+='<tr>'
-        recetaDiv+= '<td><div id="receta_'+data2.recetas[i].id+'" class="detalle-receta">';
+        recetaDiv+= '<td><div id="receta_'+i+'" value="receta_'+data2.recetas[i].id+'" class="detalle-receta">';
 		var puntuacion='<div style="float:left; margin-bottom:20px;" class="basicNoEditable" data-average="'+data2.recetas[i].rating+'"data-id="'+1+'"></div>';
 		var textoReceta='<div id=textReceta_'+i+' class="texto-detalle"><p>'+data2.recetas[i].name+'</p></div>';
 		var imagenReceta='<div id=imagenReceta_'+i+' class="imagen-detalle"><img src="data:image/jpg;base64,'+data2.recetas[i].image+'" width="82 "height="76"></div>';
@@ -203,7 +100,7 @@ $(document).ready($(function ()
 				newdiv.setAttribute('id','select_'+this.id);
 				newdiv.setAttribute('class','submenu');
 				
-				var id = $(this).attr("id").split("_")[1];
+				var id = $(this).attr("value").split("_")[1];
 				
 				document.getElementById(this.id).appendChild(newdiv);
 				$('#select_'+this.id).html('<button id="botonFav_'+this.id+'">Favoritos +</button>'
