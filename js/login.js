@@ -1,29 +1,28 @@
-//Variable global
 
-var User = "";
-
-//Objeto Usuario
-function UserData(nicename, email, favouritesRecipes) {
-    this.nicename = nicename;
-    this.email = email;
-    this.favoutitesRecipes = favouritesRecipes;
+function SendVariables(page, user) {
+    page += "?";
+    page += escape(user.ID) + "&"; /////////////////// ID
+    page += escape(user.user_nicename) + "&"; ///////////// NICENAME
+    page += escape(user.user_email);  //////////////// EMAIL
+    location.href = page;
 }
 
 function loginUser(user) {
-
-    if (user.user_login !== null) {
-        User = new UserData(user.user_nicename, user.user_email);
-        alert("Bienvenido " + User.nicename);       
+    if ((user.code) == "badLoginInformation") {
+        alert(user.message);
     }
-	//else {	alert("Bienvenido " + User.nicename); 
+    else {
+        alert("Bienvenido " + user.user_nicename);
+        SendVariables("index.html", user);
+    }
 }
 
 function InicioSesion()
 {
     try
     {
-        var user=(document.getElementById("user")).value;
-        var password=(document.getElementById("pass")).value;
+        var user = (document.getElementById("user")).value;
+        var password = (document.getElementById("pass")).value;
 
         var data = "";
         //Comprobar que el usuario y la contraseña no sean nulas
@@ -45,21 +44,21 @@ function InicioSesion()
                 {
 
                     loginUser(data.data);
-                    location.href="index.html";
                 }
-            });         
+            });
         }
-        else if(user == ""&&password == ""){
+        else if (user == "" && password == "") {
             alert("El nombre de usuario y la clave no pueden estar vacíos");
             return "El nombre de usuario y la clave no pueden estar vacíos";
         }
-        else if(user == ""){
+        else if (user == "") {
             alert("El nombre de usuario no pueden estar vacío");
-            return "El nombre de usuario no pueden estar vacío";}
-        else if(password == "")
+            return "El nombre de usuario no pueden estar vacío";
+        }
+        else if (password == "")
             alert("La clave no pueden estar vacía");
-            return "La clave no pueden estar vacía";
-        
+        return "La clave no pueden estar vacía";
+
     } catch (ex) {
         alert(ex.description)
     }
