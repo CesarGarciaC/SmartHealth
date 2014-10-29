@@ -29,7 +29,7 @@ function InicioSesion()
         if (user != "" && password != "") {
             data = {
                 username: user,
-                password: password,
+                password: password, 
             }
 
             //-----------------------------------------------------------------------
