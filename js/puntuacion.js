@@ -18,8 +18,21 @@ $(document).ready(function(){
                }
          });
          
-         function voteWebService(rate)
+         
+         
+         $("#btnPuntuacion").click(function()
          {
+             if ($("#listadoPuntuacion").is(":visible"))
+                $("#listadoPuntuacion").hide();
+             else
+                 $("#listadoPuntuacion").show();
+         })
+});
+
+function voteWebService(rate)
+         {
+             alert("Ratio:"+rate)
+             $("#listadoPuntuacion").hide();
                 var id_user="1";
                 var id_recipe=$("#rating").attr("data-id");
                 var rating=rate;
@@ -37,4 +50,3 @@ $(document).ready(function(){
                     } 
                 });
          }
-});
