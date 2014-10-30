@@ -17,6 +17,7 @@ and open the template in the editor.
             <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.min.js"></script>
             <!--<script type="text/javascript" src="js/jquery-1.6.3.min.js"></script>-->
             <script type="text/javascript" src="js/jRating.jquery.js"></script>
+            <script type="text/javascript" src="js/user.js"></script>
             <script type="text/javascript" src="js/index.js" charset="utf-8"></script>
             <script type="text/javascript" src="js/searchadvanced.js"></script>
             <script type="text/javascript" src="js/move_main.js"></script>
@@ -39,6 +40,7 @@ and open the template in the editor.
                             restrictInput : true,
                             preventPaste : true,
                         });
+                
 		});
             })    
                 
@@ -64,8 +66,9 @@ and open the template in the editor.
                                 <tr>
                                     <td>
                                         <center>
-                                        <!--<center><img src="images/user.png">Usuario</center>-->
-                                        <a href="login.html">Iniciar Sesión</a>
+                                            <div id="Usuario">
+                                                <a href="login.html">Iniciar Sesión</a>
+                                            </div>
                                         </center>
                                     </td>
                                 </tr>
@@ -83,7 +86,7 @@ and open the template in the editor.
                                 </tr>
 
                                 <tr>
-                                    <td class="menu-option">
+                                    <td class="menu-option" onclick="busquedaRecientes()">
                                         <center>Recientes</center>
                                     </td>
                                 </tr>

@@ -6,15 +6,14 @@
         
         $.ajax({        
 
-            url: 'php/getFavorites.php',                  //the script to call to get data          
+            url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=smartSearchFavService&format=json&',                  //the script to call to get data          
             data: data,                        //you can insert url argumnets here to pass to api.php                              //for example "id=5&parent=6"
             dataType: 'json',                //data format    
             async: false,
             success: function(data)          //on recieve of reply
-            {
-                json= JSON.parse(data);	
+            {	
                 var updatedData= {
-			"recetas":json
+			"recetas":data.data
 		};
                 
                 /*RecipesGlobal.length=0;

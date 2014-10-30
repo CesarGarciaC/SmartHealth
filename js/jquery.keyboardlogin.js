@@ -235,7 +235,7 @@ $.keyboard = function(el, options){
 		// ".ui-keyboard" class name.
 		if (!o.appendLocally && o.appendTo === 'body') {
 			// basic positioning before it is set by position utility
-			base.$keyboard.css({ position: 'absolute', left: 0, top: 0 });
+			base.$keyboard.css({ position: 'absolute', left: 50, top: 200 });
 		}
 
 		// beforeVisible event
@@ -477,7 +477,7 @@ $.keyboard = function(el, options){
 						break; // adding a break here to make jsHint happy
 
 					case 13:
-						$.keyboard.keyaction.enter(base, null, e);
+						$.keyboard.keyaction.aceptar(base);
 						break;
 
 					// Show capsLock
@@ -960,7 +960,7 @@ $.keyboard = function(el, options){
 		return !!accepted;
 	};
 
-	base.accept = function(){
+	base.aceptar = function(){
 		return base.close(true);
 	};
 
@@ -1163,9 +1163,9 @@ $.keyboard = function(el, options){
 							switch(action){
 
 								case 'a':
-								case 'accept':
+								case 'aceptar':
 									base
-										.addKey('accept', action)
+										.addKey('aceptar', action)
 										.addClass(o.css.buttonAction);
 									break;
 
@@ -1202,7 +1202,7 @@ $.keyboard = function(el, options){
 								case 'e':
 								case 'enter':
 									base
-										.addKey('enter', action)
+										.addKey('aceptar', action)
 										.addClass(o.css.buttonAction);
 									break;
 
@@ -1275,7 +1275,7 @@ $.keyboard = function(el, options){
 
 	// Action key function list
 	$.keyboard.keyaction = {
-		accept : function(base){
+		aceptar : function(base){
 			base.close(true); // same as base.accept();
 			return false;     // return false prevents further processing
 		},
@@ -1408,9 +1408,9 @@ $.keyboard = function(el, options){
 			'default': [
 				'` 1 2 3 4 5 6 7 8 9 0 - = {bksp}',
 				'{tab} q w e r t y u i o p [ ] \\',
-				'a s d f g h j k l ; \' {enter}',
+				'a s d f g h j k l ; \' {aceptar}',
 				'{shift} z x c v b n m , . / {shift}',
-				'{accept} {space} {cancel}'
+				' {space} {cancel}'
 			],
 			'shift': [
 				'~ ! @ # $ % ^ & * ( ) _ + {bksp}',
@@ -1525,8 +1525,8 @@ $.keyboard = function(el, options){
 		// *** change keyboard language & look ***
 		display : {
 			// check mark - same action as accept
-			'a'      : '\u2714:Accept (Shift-Enter)',
-			'accept' : 'Accept:Accept (Shift-Enter)',
+			'a'      : '\u2714:Aceptar (Shift-Enter)',
+			'aceptar' : 'Aceptar:Aceptar (Shift-Enter)',
 			// other alternatives \u2311
 			'alt'    : 'Alt:\u2325 AltGr',
 			// Left arrow (same as &larr;)

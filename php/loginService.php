@@ -26,9 +26,14 @@ print_r ($jsonFile);
 
 
 } catch (Exception $e) {
-
+    
+   
 printf("Message = %s ",$e->__toString());
-
+ 
+   
+/*$file = file_get_contents('login.html'); //cargo el archivo
+$file = str_ireplace('{error}', "prueba", $file); //tomo {titulo} y lo reemplazo por lo que quiera
+echo "hola";*/
 }
         
         ?>

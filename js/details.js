@@ -1,8 +1,8 @@
  
  var idReceta;
  function seleccionarReceta(idRecetaSeleccionada){
-		getDetails(parseInt(idRecetaSeleccionada) + 2);
-		idReceta=parseInt(idRecetaSeleccionada)+2;
+		getDetails(parseInt(idRecetaSeleccionada));
+		idReceta=parseInt(idRecetaSeleccionada);
 		cancelarSeleccion(idRecetaSeleccionada);
 		$('#receta_'+idRecetaSeleccionada).removeClass('detalle-receta-seleccionada');
  }
@@ -28,7 +28,7 @@ $(document).ready($(function () {
           var data="id_user="+"1"+"&id_recipe="+idReceta;
           $.ajax({        
 
-            url: 'php/addFavorites.php',                  //the script to call to get data          
+            url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=smartAddFavService&format=json&',                  //the script to call to get data          
             data: data,                        //you can insert url argumnets here to pass to api.php                              //for example "id=5&parent=6"
             dataType: 'json',                //data format    
             async: false,
@@ -150,11 +150,12 @@ $(document).ready($(function () {
 
   function selectRecipe(json,id_recipe){
     //alert(recipeId);
-    fillRecipeDetails(json[0],id_recipe);
+	
+    fillRecipeDetails(json,id_recipe);
     $('#recipe-details').removeClass("invisible-block");
     $('#data-container').addClass("invisible-block");
 
-    currentInstructions = json[0].instructions;
+    currentInstructions = json.instructions;
     currentIndex = 0;
     text = "";
     for (var i = 0; i < currentInstructions.length; i++) {
@@ -233,14 +234,14 @@ $(document).ready($(function () {
       //-----------------------------------------------------------------------
       $.ajax({        
     
-        url: 'php/selectRecipe.php',                  //the script to call to get data          
+        url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=smartSelectRecipeService&format=json&',                  //the script to call to get data          
         data: data,                        //you can insert url argumnets here to pass to api.php                              //for example "id=5&parent=6"
         dataType: 'json',                //data format    
         async: false,
         success: function(response)          //on recieve of reply
         {
-          json= JSON.parse(response); 
-          selectRecipe(json,id_recipe);        
+
+          selectRecipe(response.data,id_recipe);        
         } 
       });
     
