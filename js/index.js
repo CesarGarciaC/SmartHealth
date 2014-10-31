@@ -61,8 +61,9 @@ function sleep(millis, callback) {
 }
 
 function paintRecipes(numColumns, data2) {
-alert("?")
+
     var targetdiv = $('#resultadoRecetas')
+    if (numColumns==2) targetdiv.css("width","75%");
     var recetaDiv = "<table>";
     for (var i = 0; i < data2.recetas.length; i++) {
         if (i % numColumns == 0)

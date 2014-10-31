@@ -205,7 +205,7 @@
                                                                 <input id="cal_max" placeholder="Max" type="text" class="keyboardnum ui-keyboard-input ui-widget-content ui-corner-all selector s2" aria-haspopup="true" role="textbox">
                                                             
                                                         </td>
-                                                        <td width="100">
+<!--                                                        <td width="100">
                                                                 Categorías
                                                         </td>
                                                         <td>
@@ -236,7 +236,7 @@
                                                                         </td>
                                                                 </tr>
                                                                 </table>
-                                                        </td>
+                                                        </td>-->
                                                 </tr>
                                         </table>
                                 </div>
@@ -246,7 +246,7 @@
   
 
 						<div id="categorias-menu">
-								<ul class="categorias-menu">
+								<ul id="listaCategoriasNoBusqueda" class="categorias-menu">
 									
 										<li><a id="cat1" class="last" value="" onclick="busquedaRecetas(2,null,null)"><span>Todos</span></a></li>
 										<li><a id="cat2" class="last" value="6" onclick="busquedaRecetas(2,6,null)"><span>Bebidas</span></a></li>
@@ -256,6 +256,18 @@
 										<li><a id="cat6" class="last" value="13" onclick="busquedaRecetas(2,13,null)"><span>Postres</span></a></li>
 										<li><a id="cat7" class="last" value="10" onclick="busquedaRecetas(2,10,null)"><span>Vegetariano</span></a></li>
 										<li><a id="cat8" class="last" value="14" onclick="busquedaRecetas(2,14,null)"><span>Mariscos</span></a></li>
+									
+								</ul>
+                                                                <ul id="listaCategoriasBusquedaAvanzada" style="display:none" class="categorias-menu">
+									
+										<li><a data-id="-1" class="selector s3" class="last"><span>Todos</span></a></li>
+										<li><a data-id="6" class="selector s3" class="last" value="6"><span>Bebidas</span></a></li>
+										<li><a data-id="7" class="selector s3" class="last" value="7" ><span>Desayuno</span></a></li>
+										<li><a data-id="9" class="selector s3" class="last" value="9" ><span>Carnes</span></a></li>
+										<li><a data-id="12" class="selector s3" class="last" value="12"><span>Ensaladas</span></a></li>
+										<li><a data-id="13" class="selector s3" class="last" value="13"><span>Postres</span></a></li>
+										<li><a data-id="10" class="selector s3" class="last" value="10"><span>Vegetariano</span></a></li>
+										<li><a data-id="14" class="selector s3" class="last" value="14"><span>Mariscos</span></a></li>
 									
 								</ul>
 							</div>

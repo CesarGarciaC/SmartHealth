@@ -14,11 +14,15 @@ function mostrarAvanzada()
 	
 	var keyword=$('#keyboard')
 	var bool=$("#categorias-menu ").is(":visible");
-	if(bool)	numColumns=2;
-	else		numColumns=3;
+//	if(bool)	numColumns=2;
+//	else		numColumns=3;
+        numColumns=2;
 	alert("keyword: "+keyword.val());
 	busquedaRecetas(numColumns,"",keyword.val());
     $("#search-advanced").show();
+    $("#categorias-menu").show();
+    $("#listaCategoriasNoBusqueda").hide();
+    $("#listaCategoriasBusquedaAvanzada").show();
     $(".resultado-recetas").css("height","40%");
     $("#categorias-menu ").css("height","#1CC2EC 0px 0px 18px 6px");   
 }
@@ -81,12 +85,17 @@ function filtrar()
                   }
           }
     } 
-    actualizarResultados();
+//    actualizarResultados();
+    var dataF={
+        "recetas":dataFiltrada
+    };
+    paintRecipes(2,dataF);
 }
 
 function actualizarResultados()
-{   
+{
     var targetdiv=$('#resultadoRecetas')
+    targetdiv.css("width","75%");
     var recetaDiv="<table>";
     for ( var i=0; i<dataFiltrada.length; i++ ) {
         if(i%numColumns==0)	recetaDiv+='<tr>'
@@ -164,7 +173,8 @@ $(".selector").live('click',function()
     }
     
     //Selector de categorias
-    if ($(this).hasClass("s3"))
+    alert($(this).data("id"))
+    if (($(this).hasClass("s3")))
     {
         if (!selector3)
         {
@@ -179,6 +189,10 @@ $(".selector").live('click',function()
         }
         
         value_s3=$(this).data("id");
+        
+        if (($(this).data("id")==-1))
+            selector3=false;
+        
     }
     filtrar();
 })
