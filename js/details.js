@@ -22,26 +22,7 @@ $(document).ready($(function () {
        		
   });
 
-  $('#favoritosBtn').click(function(){
-  	try {
-            
-          var data="id_user="+"1"+"&id_recipe="+idReceta;
-          $.ajax({        
-
-            url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=smartAddFavService&format=json&',                  //the script to call to get data          
-            data: data,                        //you can insert url argumnets here to pass to api.php                              //for example "id=5&parent=6"
-            dataType: 'json',                //data format    
-            async: false,
-            success: function(response)          //on recieve of reply
-            {
-              alert("Receta agregada a favoritos!!!")    
-            } 
-          });
-
-        }catch(ex){
-//          alert(ex.description)
-        }
-  });  
+  
 
   $('#videoBtn').hover(function () {       
         $("#recipePhoto").stop(true).animate({opacity: 0.5}, 100);
@@ -52,7 +33,7 @@ $(document).ready($(function () {
 
   $('#videoBtn').click(function(){
         var ytvideo;
-        ytvideo = '<iframe width="854" height="510" src="//www.youtube.com/embed/ZUwKaS06SpA" frameborder="0" allowfullscreen></iframe>'
+        ytvideo = '<iframe width="854" height="510" src="http://www.youtube.com/embed/'+ $('#videoBtn').attr("ytVideoId") + '" frameborder="0" allowfullscreen></iframe>'
 
         $("#main-container").stop(true).animate({opacity: 0.2}, 100);
         $("#videolayer").fadeIn(200);
@@ -92,6 +73,33 @@ $(document).ready($(function () {
     isPlaying = false;
     window.speechSynthesis.cancel();
     voicePlay();
+  });
+
+  //Carrusel
+  $('.center').slick({
+    centerMode: true,
+    centerPadding: '225px',
+    slidesToShow: 3,  
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          arrows: false,
+          centerMode: true,
+          centerPadding: '40px',
+          slidesToShow: 3
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          arrows: false,
+          centerMode: true,
+          centerPadding: '40px',
+          slidesToShow: 1
+        }
+      }
+    ]
   });
 
   initUtterance();
@@ -184,9 +192,10 @@ $(document).ready($(function () {
     
     //instrucciones
     var instrucciones = details.instructions;
-    var pasosDisplay = "Instrucciones: <br/>";
+    //var pasosDisplay = "Instrucciones: <br/>";
+    var pasosDisplay = "";
     for (var i = 0; i < instrucciones.length; i++) {
-      pasosDisplay += "<br/>" + (i + 1) + ". " + instrucciones[i] +" <br/>";
+      pasosDisplay += (i + 1) + ". " + instrucciones[i] +" <br/><br/>";
     }
     $('#preparationDiv').html(pasosDisplay);
 
@@ -198,18 +207,89 @@ $(document).ready($(function () {
     };
 
     // tiempo
-    $('#duracion').html("Tiempo de preparación: " + details.time + " minutos");
+    $('#duracion').html("Tiempo: " + details.time + " min");
     
     // informacion nutricional
-    var nutriDisplay = "Información nutricional: <br/>";
+    var nutriTable = '<section class="performance-facts"> \
+                        <header class="performance-facts__header"> \
+                          <h1 class="performance-facts__title">Información nutricional</h1> \
+                        </header> \
+                        <table class="performance-facts__table"> \
+                          <thead> \
+                            <tr> \
+                              <th colspan="3" class="small-info"> \
+                              </th> \
+                            </tr> \
+                          </thead> \
+                          <tbody> \
+                            <tr> \
+                              <th colspan="2"> \
+                                <b>Calorías</b> ' + details.calories +
+                              ' gr </th>        \
+                            </tr> \
+                            <tr class="thick-row"> \
+                              <td colspan="3" class="small-info"> \
+                                <b>% Daily Value*</b> \
+                              </td> \
+                            </tr> \
+                            <tr> \
+                              <th colspan="2"> \
+                                <b>Grasas</b> ' + details.fat +
+                              ' gr </th> \
+                              <td> \
+                                <b>' + Math.round(details.fat / 65 * 100)+ '% </b> \
+                              </td> </tr> <tr> \
+                              <th colspan="2">\
+                                <b>Colesterol</b> ' + details.cholesterol +
+                              ' gr </th> \
+                              <td> \
+                                <b>' + Math.round(details.cholesterol / 0.3 * 100)+ '% </b> \
+                              </td> \
+                            </tr> \
+                            <tr> \
+                              <th colspan="2"> \
+                                <b>Sodio</b> ' + details.sodium +
+                              ' gr </th> \
+                              <td> \
+                                <b>' + Math.round(details.sodium / 2.4 * 100)+ '% </b> \
+                              </td> \
+                            </tr> \
+                            <tr> \
+                              <th colspan="2"> \
+                                <b>Carbohidratos</b> ' + details.carbohydrate + 
+                              ' gr </th> \
+                              <td> \
+                                <b>' + Math.round(details.carbohydrate / 300 * 100)+ '% </b> \
+                              </td> \
+                            </tr> \
+                            <tr> \
+                              <td class="blank-cell"> \
+                              </td> \
+                              <th>Fibra ' + details.fiber + 
+                              ' gr </th> \
+                              <td> \
+                                <b>' + Math.round(details.fiber / 25 * 100)+ '% </b> \
+                              </td> \
+                            </tr> \
+                            <tr class="thick-end"> \
+                              <th colspan="2"> \
+                                <b>Proteina</b> ' + details.proteins +
+                              ' gr </th> \
+                              <td> \
+                              </td> \
+                            </tr> \
+                          </tbody> \
+                        </table> </section>';
+
+    /*var nutriDisplay = "Información nutricional: <br/>";
     nutriDisplay += "Calorías: " + details.calories + " kcal <br/>";
     nutriDisplay += "Colesterol: " + details.cholesterol + " g <br/>";
     nutriDisplay += "Fibra: " + details.fiber + " g <br/>";
     nutriDisplay += "Sodio: " + details.sodium + " g <br/>";
     nutriDisplay += "Carbohidratos: " + details.carbohydrate + " g <br/>";
     nutriDisplay += "Grasas: " + details.fat + " g <br/>";
-    nutriDisplay += "Proteinas: " + details.proteins + " g <br/>";
-    $('#infoNutricional').html(nutriDisplay);
+    nutriDisplay += "Proteinas: " + details.proteins + " g <br/>";*/
+    $('#infoNutricional').html(nutriTable);
 
     // imagen (provisional)
     var image = details.image;
@@ -218,9 +298,15 @@ $(document).ready($(function () {
 
     // video
     var video = details.video;
-    video = "https://www.youtube.com/watch?v=s65gsW5C_ZU";
-    if(video != ""){
-
+    //video = "https://www.youtube.com/watch?v=s65gsW5C_ZU";
+    if(video == ""){
+      $('#videoBtn').addClass("invisible-block"); 
+      $('#videoBtn').removeClass("visible-block"); 
+    }
+    else{
+      $('#videoBtn').removeClass("invisible-block"); 
+      $('#videoBtn').addClass("visible-block"); 
+      $('#videoBtn').attr("ytVideoId",video);
     }
   } 
 
@@ -248,4 +334,39 @@ $(document).ready($(function () {
     }catch(ex){
       alert(ex.description)
     }
+  }
+  
+  $('#favoritosBtn').click(function(){
+  	agregarFavoritos();
+  });  
+  
+  
+  
+  function agregarFavoritos()
+  {
+      try {
+            
+          var data="id_user="+"1"+"&id_recipe="+idReceta;
+          $.ajax({        
+
+            url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=smartAddFavService&format=json&',                  //the script to call to get data          
+            data: data,                        //you can insert url argumnets here to pass to api.php                              //for example "id=5&parent=6"
+            dataType: 'json',                //data format    
+            async: false,
+            success: function(response)          //on recieve of reply
+            {
+              alert("Receta agregada a favoritos!!!")    
+            } 
+          });
+
+        }catch(ex){
+//          alert(ex.description)
+        }
+  }
+  
+  function agregarFavoritosPreview(idRecipe)
+  {
+      idReceta=idRecipe;
+      alert(idReceta)
+      agregarFavoritos()
   }

@@ -14,12 +14,18 @@ function mostrarAvanzada()
 	
 	var keyword=$('#keyboard')
 	var bool=$("#categorias-menu ").is(":visible");
-	if(bool)	numColumns=2;
-	else		numColumns=3;
-	alert(keyword.val());
+//	if(bool)	numColumns=2;
+//	else		numColumns=3;
+        numColumns=2;
+	alert("keyword: "+keyword.val());
 	busquedaRecetas(numColumns,"",keyword.val());
     $("#search-advanced").show();
-    $(".resultado-recetas").css("height","40%");
+    $("#categorias-menu").show();
+    $("#listaCategoriasNoBusqueda").hide();
+    $("#listaCategoriasBusquedaAvanzada").show();
+    $(".resultado-recetas").css("height","55%");
+	$(".resultado-recetas").css("width","70%");
+	$(".resultado-recetas").css("left","47px");
     $("#categorias-menu ").css("height","#1CC2EC 0px 0px 18px 6px");   
 }
 
@@ -80,18 +86,26 @@ function filtrar()
                       break;
                   }
           }
-    }    
-    actualizarResultados();
+    } 
+//    actualizarResultados();
+    var dataF={
+        "recetas":dataFiltrada
+    };
+    paintRecipes(2,dataF);
+	
+	$(".resultado-recetas").css("width","70%");
+	$(".resultado-recetas").css("left","47px");
 }
 
 function actualizarResultados()
-{   
+{
     var targetdiv=$('#resultadoRecetas')
+    targetdiv.css("width","75%");
     var recetaDiv="<table>";
     for ( var i=0; i<dataFiltrada.length; i++ ) {
         if(i%numColumns==0)	recetaDiv+='<tr>'
         recetaDiv+= '<td><div id="receta_'+i+'" class="detalle-receta">';
-        var puntuacion='<div style="margin-bottom:20px" class="basicNoEditable" data-average="'+dataFiltrada[i].rating+'"data-id="'+1+'"></div>';
+        var puntuacion = '<div style="float:left; margin-bottom:20px;" class="basicNoEditable" data-average="' + dataFiltrada[i].rating + '"data-id="' + dataFiltrada[i].id + '"></div>';
         var textoReceta='<div id=textReceta_'+i+' class="texto-detalle"><p>'+dataFiltrada[i].name+'</p></div>';
         var imagenReceta='<div id=imagenReceta_'+i+' class="imagen-detalle"><img src="data:image/jpg;base64,'+dataFiltrada[i].image+'" width="82 "height="76"></div>';
         recetaDiv+=puntuacion+textoReceta+imagenReceta;
@@ -164,7 +178,8 @@ $(".selector").live('click',function()
     }
     
     //Selector de categorias
-    if ($(this).hasClass("s3"))
+    alert($(this).data("id"))
+    if (($(this).hasClass("s3")))
     {
         if (!selector3)
         {
@@ -179,6 +194,10 @@ $(".selector").live('click',function()
         }
         
         value_s3=$(this).data("id");
+        
+        if (($(this).data("id")==-1))
+            selector3=false;
+        
     }
     filtrar();
 })

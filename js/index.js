@@ -73,12 +73,13 @@ function sleep(millis, callback) {
 function paintRecipes(numColumns, data2) {
 
     var targetdiv = $('#resultadoRecetas')
+    if (numColumns==2) targetdiv.css("width","75%");
     var recetaDiv = "<table>";
     for (var i = 0; i < data2.recetas.length; i++) {
         if (i % numColumns == 0)
             recetaDiv += '<tr>'
         recetaDiv += '<td><div id="receta_' + i + '" value="receta_' + data2.recetas[i].id + '" class="detalle-receta">';
-        var puntuacion = '<div style="float:left; margin-bottom:20px;" class="basicNoEditable" data-average="' + data2.recetas[i].rating + '"data-id="' + data2.recetas[i].id + '"></div>';
+        var puntuacion = '<div style="float:left; margin-bottom:20px;" class="basicNoEditable" data-average="' + parseInt(data2.recetas[i].rating/data2.recetas[i].raters) + '"data-id="' + data2.recetas[i].id + '"></div>';
         var textoReceta = '<div id=textReceta_' + i + ' class="texto-detalle"><p>' + data2.recetas[i].name + '</p></div>';
         var imagenReceta = '<div id=imagenReceta_' + i + ' class="imagen-detalle"><img src="data:image/jpg;base64,' + data2.recetas[i].image + '" width="82 "height="76"></div>';
         recetaDiv += puntuacion + textoReceta + imagenReceta;
@@ -123,7 +124,7 @@ function paintRecipes(numColumns, data2) {
                 var id = $(this).attr("value").split("_")[1];
 
                 document.getElementById(this.id).appendChild(newdiv);
-                $('#select_' + this.id).html('<button id="botonFav_' + this.id + '">Favoritos +</button>'
+                $('#select_' + this.id).html('<button id="botonFav_' + this.id + '" onclick="agregarFavoritosPreview(' + id + ')">Favoritos +</button>'
                         + '<button id="botonVer_' + this.id + '" onclick="seleccionarReceta(' + id + ')">Ver</button>'
                         + '<button id="botonCan_' + this.id + '" onclick="cancelarSeleccion(' + id + ')" >Cancelar</button>');
 
@@ -135,10 +136,12 @@ function paintRecipes(numColumns, data2) {
 }
 
 $(document).click(function(event) {
-    if (!$(event.target).is('#' + selectedRecipe)) {
-        var idDelete = selectedRecipe.split("_")[1];
-        cancelarSeleccion(idDelete);
-    }
+	if(selectedRecipe!=''){
+		if (!$(event.target).is('#' + selectedRecipe)) {
+			var idDelete = selectedRecipe.split("_")[1];
+			cancelarSeleccion(idDelete);
+		}
+	}
 })
 
 function cancelarSeleccion(idDiv) {
@@ -152,7 +155,11 @@ function busquedaRecientes() {
 
     try
     {
-
+		$("#search-advanced").hide();
+		$("#categorias-menu").hide();
+		$(".resultado-recetas").css("width","95%");
+		$(".resultado-recetas").css("height","70%");
+		$(".resultado-recetas").css("left","20px");
         var data = "";
         //-----------------------------------------------------------------------
         // 2) Send a http request with AJAX http://api.jquery.com/jQuery.ajax/
@@ -196,12 +203,60 @@ function busquedaRecientes() {
 
 }
 
+function busquedaTop10() {
+
+    try
+    {
+		$("#search-advanced").hide();
+		$("#categorias-menu").hide();
+		$(".resultado-recetas").css("width","95%");
+		$(".resultado-recetas").css("height","70%");
+		$(".resultado-recetas").css("left","20px");
+        var data = "";
+        //-----------------------------------------------------------------------
+        // 2) Send a http request with AJAX http://api.jquery.com/jQuery.ajax/
+        //-----------------------------------------------------------------------
+        $.ajax({
+            url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=smartGeneralSearchService&format=json&', //the script to call to get data          
+            data: data, //you can insert url argumnets here to pass to api.php                              //for example "id=5&parent=6"
+            dataType: 'json', //data format    
+            async: false,
+            success: function(data)          //on recieve of reply
+            {
+
+                data.data.sort(function(a, b) {
+                    return new Date(b.rating/b.raters) - new Date(a.rating/a.raters)
+                });
+
+                var updatedData = {
+                    "recetas": data.data
+                };
+
+                var RecipesLastTop10 = new Array();
+                for (var i = 0; i < 10; i++) {
+                        RecipesLastTop10.push(updatedData.recetas[i]);
+                }
+                var RecipesGet = {
+                    "recetas": RecipesLastTop10
+                };
+
+                paintRecipes(3, RecipesGet);
+                return updatedData;
+            }
+        });
+
+    } catch (ex) {
+        alert(ex.description)
+    }
+
+}
 
 function busquedaRecetas(column, cat, keyword)
 {
+
+	
     try
     {
-
         //var data_category='<mns1:id_category xmlns:mns1="http://www.dreamsolutions.com/sexy_service/">'+cat+'</mns1:id_category>'
         //var webServiceURL='http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/sexy_service.wsdl';
         //var soapRequest='<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.dreamsolutions.com/sexy_service/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ><SOAP-ENV:Body>'+data_category+'<mns1:keyword xmlns:mns1="http://www.dreamsolutions.com/sexy_service/"></mns1:keyword><mns1:low_cal xmlns:mns1="http://www.dreamsolutions.com/sexy_service/"></mns1:low_cal><mns1:high_cal xmlns:mns1="http://www.dreamsolutions.com/sexy_service/"></mns1:high_cal><mns1:low_rating xmlns:mns1="http://www.dreamsolutions.com/sexy_service/"></mns1:low_rating><mns1:high_rating xmlns:mns1="http://www.dreamsolutions.com/sexy_service/"></mns1:high_rating><mns1:low_time xmlns:mns1="http://www.dreamsolutions.com/sexy_service/"></mns1:low_time><mns1:high_time xmlns:mns1="http://www.dreamsolutions.com/sexy_service/"></mns1:high_time><mns1:low_dif xmlns:mns1="http://www.dreamsolutions.com/sexy_service/"></mns1:low_dif><mns1:high_dif xmlns:mns1="http://www.dreamsolutions.com/sexy_service/"></mns1:high_dif><mns1:low_fat xmlns:mns1="http://www.dreamsolutions.com/sexy_service/"></mns1:low_fat><mns1:high_fat xmlns:mns1="http://www.dreamsolutions.com/sexy_service/"></mns1:high_fat><mns1:low_carb xmlns:mns1="http://www.dreamsolutions.com/sexy_service/"></mns1:low_carb><mns1:high_carb xmlns:mns1="http://www.dreamsolutions.com/sexy_service/"></mns1:high_carb><mns1:low_fib xmlns:mns1="http://www.dreamsolutions.com/sexy_service/"></mns1:low_fib><mns1:high_fib xmlns:mns1="http://www.dreamsolutions.com/sexy_service/"></mns1:high_fib><mns1:low_pro xmlns:mns1="http://www.dreamsolutions.com/sexy_service/"></mns1:low_pro><mns1:high_pro xmlns:mns1="http://www.dreamsolutions.com/sexy_service/"></mns1:high_pro><mns1:low_col xmlns:mns1="http://www.dreamsolutions.com/sexy_service/"></mns1:low_col><mns1:high_col xmlns:mns1="http://www.dreamsolutions.com/sexy_service/"></mns1:high_col><mns1:low_sod xmlns:mns1="http://www.dreamsolutions.com/sexy_service/"></mns1:low_sod><mns1:high_sod xmlns:mns1="http://www.dreamsolutions.com/sexy_service/"></mns1:high_sod><mns1:low_created_at xmlns:mns1="http://www.dreamsolutions.com/sexy_service/"></mns1:low_created_at><mns1:high_created_at xmlns:mns1="http://www.dreamsolutions.com/sexy_service/"></mns1:high_created_at><mns1:low_hits xmlns:mns1="http://www.dreamsolutions.com/sexy_service/"></mns1:low_hits><mns1:high_hits xmlns:mns1="http://www.dreamsolutions.com/sexy_service/"></mns1:high_hits></SOAP-ENV:Body></SOAP-ENV:Envelope>'

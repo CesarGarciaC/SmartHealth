@@ -1,9 +1,4 @@
 <!DOCTYPE html>	
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
      
@@ -14,6 +9,7 @@ and open the template in the editor.
             <link href="http://code.jquery.com/ui/1.9.0/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
             <link href="css/keyboard.css" rel="stylesheet">
             <link rel="stylesheet" type="text/css" href="js/jRating.jquery.css" media="screen" />
+            <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
             <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.js"></script>
             <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.min.js"></script>
             <!--<script type="text/javascript" src="js/jquery-1.6.3.min.js"></script>-->
@@ -23,6 +19,8 @@ and open the template in the editor.
             <script type="text/javascript" src="js/searchadvanced.js"></script>
             <script type="text/javascript" src="js/move_main.js"></script>
             <script type="text/javascript" src="js/favorites.js"></script>
+            <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+            <script type="text/javascript" src="slick/slick.min.js"></script>
             <script type="text/javascript" src="js/details.js" charset="utf-8"></script>
             <script type="text/javascript" src="js/categories.js"></script>
             <script type="text/javascript" src="js/puntuacion.js"></script>
@@ -35,7 +33,6 @@ and open the template in the editor.
                        
         
         <title></title>
-        
         <script>
             $(document).ready(function()
             {
@@ -83,7 +80,7 @@ and open the template in the editor.
                                 </tr>
 
                                 <tr>
-                                    <td id="menu1" class="menu-option">
+                                    <td id="menu1" class="menu-option" onclick="busquedaTop10()">
                                         <center>Top 10</center>
                                     </td>
                                 </tr>
@@ -111,20 +108,46 @@ and open the template in the editor.
                     </td>
 
                     <td id="bloque-center">
+                        <div id="listadoPuntuacion" style="position:absolute;left:780px;top:50px;display:none;z-index:999"> 
+                                        <table>
+                                            <tr>
+                                                <td><button style="width:190px" onClick="voteWebService(5)"><img src="images/5stars.png"/>Excelente</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td><button style="width:190px" onClick="voteWebService(4)"><img src="images/4stars.png"/>Muy Bueno</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td><button style="width:190px" onClick="voteWebService(3)"><img src="images/3stars.png"/>Bueno</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td><button style="width:190px" onClick="voteWebService(2)"><img src="images/2stars.png"/>Regular</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td><button style="width:190px" onClick="voteWebService(1)"><img src="images/1stars.png"/>Malo</button></td>
+                                            </tr>
+                                        </table>
+                          </div>
                         <div id="recipe-details" class="invisible-block">
                                 <div id="topContainer" class="container clearfix">
                                     <button id="volverBtn" class="_button">Volver</button>
                                                                      
                                     <button id="favoritosBtn" class="_button">Favoritos +</button>
-                                    <div id="rating" style="left:420px;top:20px" class="basicEditable" data-average="1" data-id=""></div>
+                                    <!--<div id="rating" style="left:420px;top:20px" class="basicEditable" data-average="1" data-id=""></div>-->
+                                    
+                                    <button class="_button" style="position:absolute;width:130px;height:35px;top:3px;left:780px" id="btnPuntuacion">Calificar receta</button>
+                                    
+                                    
                                 </div>
                                 <div id="ingredientesContainer" class="container clearfix">
-                                    <div id="recipeTitle" class="embed-wrapper">                                        
+                                    <div id="recipeHeader" class="embed-wrapper">
+                                        <div id="recipeTitle" class="embed-wrapper"></div>
+                                        <div id="dificultad" class="embed-wrapper">
+                                            <ul id="dificultad_icons"></ul>                                    
+                                        </div>
+                                        <div id="duracion" class="embed-wrapper">
+                                            <!--<div id="duracionIcon" class="embed-wrapper" src="images/timer.png"></div>-->
+                                        </div>                                        
                                     </div>
-                                    <div id="voiceFwdBtn" class="_button"><img class="imgIcon" src="images/fordward.png"></div>
-                                    <div id="voiceStopBtn" class="_button"><img class="imgIcon" src="images/stop1.png"></div>
-                                    <div id="voicePlayBtn" class="_button"><img class="imgIcon" src="images/play1.png"></div>
-                                    <div id="voiceBckBtn" class="_button"><img class="imgIcon" src="images/backward.png"></div>
                                     <div id="ingredientesDiv" class="embed-wrapper">
                                     <table id="ingredientsTable">
                                         <tr>
@@ -140,12 +163,31 @@ and open the template in the editor.
                                     <div id="recipePhoto" class="embed-wrapper"></div>
                                 </div>
                                 <div id="instructionsContainer" class="container clearfix">
+                                    <div id="preparationTitle" class="embed-wrapper">Ingredientes: 
+                                        <div id="voiceFwdBtn" class="_button"><img class="imgIcon" src="images/fordward.png"></div>
+                                        <div id="voiceStopBtn" class="_button"><img class="imgIcon" src="images/stop1.png"></div>
+                                        <div id="voicePlayBtn" class="_button"><img class="imgIcon" src="images/play1.png"></div>
+                                        <div id="voiceBckBtn" class="_button"><img class="imgIcon" src="images/backward.png"></div>
+                                    </div>
                                     <div id="preparationDiv" class="embed-wrapper"></div>
-                                    <div id="dificultad" class="embed-wrapper"><ul id="dificultad_icons"></ul></div>
-                                    <div id="duracion" class="embed-wrapper"></div>
-                                    <div id="infoNutricional" class="embed-wrapper"></div>
+                                    <div id="infoNutricional" class="embed-wrapper">
+                                        
+                                    </div>
                                 </div>
-                                <div id="suggestionsContainer" class="container _element"></div>
+                                <div id="suggestionsContainer" class="container _element">
+                                    <section class="slick-section blue">
+                                      <div class="slick-content">     
+                                      <div class="slider center">
+                                          <div><h3><img src="images/01_batido_fresas.jpg"/></h3></div>
+                                          <div><h3><img src="images/02_langostinos_szechwan.jpg"/></h3></div>
+                                          <div><h3><img src="images/03_quiche_tofu.jpg"/></h3></div>
+                                          <div><h3><img src="images/04_ensalada_feta_kale.jpg"/></h3></div>
+                                          <div><h3><img src="images/05_estofado.jpg"/></h3></div>
+                                          <div><h3><img src="images/06_banana_bread.jpg"/></h3></div>
+                                        </div>
+                                      </div>
+                                    </section>
+                                </div>
                             </div>
                         <div id="data-container" class="bloque">
                             <div id="search">
@@ -198,7 +240,7 @@ and open the template in the editor.
                                                                 <input id="cal_max" placeholder="Max" type="text" class="keyboardnum ui-keyboard-input ui-widget-content ui-corner-all selector s2" aria-haspopup="true" role="textbox">
                                                             
                                                         </td>
-                                                        <td width="100">
+<!--                                                        <td width="100">
                                                                 Categorías
                                                         </td>
                                                         <td>
@@ -229,7 +271,7 @@ and open the template in the editor.
                                                                         </td>
                                                                 </tr>
                                                                 </table>
-                                                        </td>
+                                                        </td>-->
                                                 </tr>
                                         </table>
                                 </div>
@@ -239,7 +281,7 @@ and open the template in the editor.
   
 
 						<div id="categorias-menu">
-								<ul class="categorias-menu">
+								<ul id="listaCategoriasNoBusqueda" class="categorias-menu">
 									
 										<li><a id="cat1" class="last" value="" onclick="busquedaRecetas(2,null,null)"><span>Todos</span></a></li>
 										<li><a id="cat2" class="last" value="6" onclick="busquedaRecetas(2,6,null)"><span>Bebidas</span></a></li>
@@ -249,6 +291,18 @@ and open the template in the editor.
 										<li><a id="cat6" class="last" value="13" onclick="busquedaRecetas(2,13,null)"><span>Postres</span></a></li>
 										<li><a id="cat7" class="last" value="10" onclick="busquedaRecetas(2,10,null)"><span>Vegetariano</span></a></li>
 										<li><a id="cat8" class="last" value="14" onclick="busquedaRecetas(2,14,null)"><span>Mariscos</span></a></li>
+									
+								</ul>
+                                                                <ul id="listaCategoriasBusquedaAvanzada" style="display:none" class="categorias-menu">
+									
+										<li><a data-id="-1" class="selector s3" class="last"><span>Todos</span></a></li>
+										<li><a data-id="6" class="selector s3" class="last" value="6"><span>Bebidas</span></a></li>
+										<li><a data-id="7" class="selector s3" class="last" value="7" ><span>Desayuno</span></a></li>
+										<li><a data-id="9" class="selector s3" class="last" value="9" ><span>Carnes</span></a></li>
+										<li><a data-id="12" class="selector s3" class="last" value="12"><span>Ensaladas</span></a></li>
+										<li><a data-id="13" class="selector s3" class="last" value="13"><span>Postres</span></a></li>
+										<li><a data-id="10" class="selector s3" class="last" value="10"><span>Vegetariano</span></a></li>
+										<li><a data-id="14" class="selector s3" class="last" value="14"><span>Mariscos</span></a></li>
 									
 								</ul>
 							</div>
