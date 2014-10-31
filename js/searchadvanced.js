@@ -23,7 +23,9 @@ function mostrarAvanzada()
     $("#categorias-menu").show();
     $("#listaCategoriasNoBusqueda").hide();
     $("#listaCategoriasBusquedaAvanzada").show();
-    $(".resultado-recetas").css("height","40%");
+    $(".resultado-recetas").css("height","55%");
+	$(".resultado-recetas").css("width","70%");
+	$(".resultado-recetas").css("left","47px");
     $("#categorias-menu ").css("height","#1CC2EC 0px 0px 18px 6px");   
 }
 
@@ -90,6 +92,9 @@ function filtrar()
         "recetas":dataFiltrada
     };
     paintRecipes(2,dataF);
+	
+	$(".resultado-recetas").css("width","70%");
+	$(".resultado-recetas").css("left","47px");
 }
 
 function actualizarResultados()

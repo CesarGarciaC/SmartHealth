@@ -69,7 +69,7 @@ function paintRecipes(numColumns, data2) {
         if (i % numColumns == 0)
             recetaDiv += '<tr>'
         recetaDiv += '<td><div id="receta_' + i + '" value="receta_' + data2.recetas[i].id + '" class="detalle-receta">';
-        var puntuacion = '<div style="float:left; margin-bottom:20px;" class="basicNoEditable" data-average="' + data2.recetas[i].rating + '"data-id="' + data2.recetas[i].id + '"></div>';
+        var puntuacion = '<div style="float:left; margin-bottom:20px;" class="basicNoEditable" data-average="' + parseInt(data2.recetas[i].rating/data2.recetas[i].raters) + '"data-id="' + data2.recetas[i].id + '"></div>';
         var textoReceta = '<div id=textReceta_' + i + ' class="texto-detalle"><p>' + data2.recetas[i].name + '</p></div>';
         var imagenReceta = '<div id=imagenReceta_' + i + ' class="imagen-detalle"><img src="data:image/jpg;base64,' + data2.recetas[i].image + '" width="82 "height="76"></div>';
         recetaDiv += puntuacion + textoReceta + imagenReceta;
@@ -126,10 +126,12 @@ function paintRecipes(numColumns, data2) {
 }
 
 $(document).click(function(event) {
-    if (!$(event.target).is('#' + selectedRecipe)) {
-        var idDelete = selectedRecipe.split("_")[1];
-        cancelarSeleccion(idDelete);
-    }
+	if(selectedRecipe!=''){
+		if (!$(event.target).is('#' + selectedRecipe)) {
+			var idDelete = selectedRecipe.split("_")[1];
+			cancelarSeleccion(idDelete);
+		}
+	}
 })
 
 function cancelarSeleccion(idDiv) {
@@ -143,7 +145,11 @@ function busquedaRecientes() {
 
     try
     {
-
+		$("#search-advanced").hide();
+		$("#categorias-menu").hide();
+		$(".resultado-recetas").css("width","95%");
+		$(".resultado-recetas").css("height","70%");
+		$(".resultado-recetas").css("left","20px");
         var data = "";
         //-----------------------------------------------------------------------
         // 2) Send a http request with AJAX http://api.jquery.com/jQuery.ajax/
@@ -187,9 +193,58 @@ function busquedaRecientes() {
 
 }
 
+function busquedaTop10() {
+
+    try
+    {
+		$("#search-advanced").hide();
+		$("#categorias-menu").hide();
+		$(".resultado-recetas").css("width","95%");
+		$(".resultado-recetas").css("height","70%");
+		$(".resultado-recetas").css("left","20px");
+        var data = "";
+        //-----------------------------------------------------------------------
+        // 2) Send a http request with AJAX http://api.jquery.com/jQuery.ajax/
+        //-----------------------------------------------------------------------
+        $.ajax({
+            url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=smartGeneralSearchService&format=json&', //the script to call to get data          
+            data: data, //you can insert url argumnets here to pass to api.php                              //for example "id=5&parent=6"
+            dataType: 'json', //data format    
+            async: false,
+            success: function(data)          //on recieve of reply
+            {
+
+                data.data.sort(function(a, b) {
+                    return new Date(b.rating/b.raters) - new Date(a.rating/a.raters)
+                });
+
+                var updatedData = {
+                    "recetas": data.data
+                };
+
+                var RecipesLastTop10 = new Array();
+                for (var i = 0; i < 10; i++) {
+                        RecipesLastTop10.push(updatedData.recetas[i]);
+                }
+                var RecipesGet = {
+                    "recetas": RecipesLastTop10
+                };
+
+                paintRecipes(3, RecipesGet);
+                return updatedData;
+            }
+        });
+
+    } catch (ex) {
+        alert(ex.description)
+    }
+
+}
 
 function busquedaRecetas(column, cat, keyword)
 {
+
+	
     try
     {
         //var data_category='<mns1:id_category xmlns:mns1="http://www.dreamsolutions.com/sexy_service/">'+cat+'</mns1:id_category>'

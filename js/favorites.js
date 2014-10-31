@@ -1,7 +1,14 @@
  
     function obtenerFavoritos()
     {
-        alert("entrando a favoritos...")
+       
+		
+		$("#search-advanced").hide();
+		$("#categorias-menu").hide();
+		$(".resultado-recetas").css("width","95%");
+		$(".resultado-recetas").css("height","70%");
+		$(".resultado-recetas").css("left","20px");
+		
         var data="id_user=1";
         
         $.ajax({        
@@ -22,8 +29,10 @@
 			//alert(RecipesGlobal[i].name);
 		}*/
 		
-                paintRecipes(2,updatedData)
+                paintRecipes(3,updatedData)
                 return updatedData;
+				
+				
             } 
         });
     }

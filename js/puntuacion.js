@@ -33,7 +33,7 @@ function voteWebService(rate)
          {
              alert("Ratio:"+rate)
              $("#listadoPuntuacion").hide();
-                var id_user="1";
+                var id_user=User.id;
                 var id_recipe=idReceta;
                 alert(id_recipe)
                 var rating=rate;
@@ -41,7 +41,7 @@ function voteWebService(rate)
 //                alert(id_recipe+" - "+rating)
                 $.ajax({        
 
-                    url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=smartAddRatingService&format=json&',                  //the script to call to get data          
+                    url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=smartAddPointService&format=json&',                  //the script to call to get data          
                     data: data,                        //you can insert url argumnets here to pass to api.php                              //for example "id=5&parent=6"
                     dataType: 'json',                //data format    
                     async: false,
