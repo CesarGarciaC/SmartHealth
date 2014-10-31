@@ -256,6 +256,10 @@ td .menu-option
     
 }
 
+#CloseSesion:hover
+{
+	cursor: pointer;
+}
 td .menu-option:hover
 {
     background-color:orange;

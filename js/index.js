@@ -45,7 +45,7 @@ $(document).ready($(function()
 {     /////////////////////////////Nombre usuario al iniciar sesion////////
     if (User.id != "") {
         var targetdiv = $('#Usuario');
-        var UserDiv = "<center><img src=\"images/user.png\">" + User.nicename + "</center>";
+        var UserDiv = "<center><img src=\"images/user.png\">" + User.nicename + "</center>" + "<center id=\"CloseSesion\" onclick=\"CloseSesion()\">Cerrar Sesión</center>";
         targetdiv.html(UserDiv);
     }
 
@@ -53,6 +53,16 @@ $(document).ready($(function()
 
 
 }));
+
+function CloseSesion() {
+    if (confirm("¿Seguro desea cerrar la sesión? \n Recetas favoritas y las opciones de compartir y valorar recetas no estaras disponibles.")) {
+        var targetdiv = $('#Usuario');
+        var UserDiv = "<a href=\"login.html\">Iniciar Sesión</a>";
+        targetdiv.html(UserDiv);
+        User= new UserData("", "", "");
+    }
+
+}
 
 function sleep(millis, callback) {
     setTimeout(function() {
