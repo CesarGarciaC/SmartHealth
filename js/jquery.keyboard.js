@@ -1145,8 +1145,9 @@ $.keyboard = function(el, options){
         //Smart Health FUncion Aceptar
 	$.keyboard.keyaction = {
 		accept : function(base){
-                        mostrarAvanzada();
+                        
 			base.close(true); // same as base.accept();
+                        mostrarAvanzada();
 			return false;     // return false prevents further processing
 		},
 		alt : function(base,el){

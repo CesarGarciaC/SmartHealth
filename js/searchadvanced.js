@@ -16,7 +16,7 @@ function mostrarAvanzada()
 	var bool=$("#categorias-menu ").is(":visible");
 	if(bool)	numColumns=2;
 	else		numColumns=3;
-	alert(keyword.val());
+	alert("keyword: "+keyword.val());
 	busquedaRecetas(numColumns,"",keyword.val());
     $("#search-advanced").show();
     $(".resultado-recetas").css("height","40%");
@@ -80,7 +80,7 @@ function filtrar()
                       break;
                   }
           }
-    }    
+    } 
     actualizarResultados();
 }
 
@@ -91,7 +91,7 @@ function actualizarResultados()
     for ( var i=0; i<dataFiltrada.length; i++ ) {
         if(i%numColumns==0)	recetaDiv+='<tr>'
         recetaDiv+= '<td><div id="receta_'+i+'" class="detalle-receta">';
-        var puntuacion='<div style="margin-bottom:20px" class="basicNoEditable" data-average="'+dataFiltrada[i].rating+'"data-id="'+1+'"></div>';
+        var puntuacion = '<div style="float:left; margin-bottom:20px;" class="basicNoEditable" data-average="' + dataFiltrada[i].rating + '"data-id="' + dataFiltrada[i].id + '"></div>';
         var textoReceta='<div id=textReceta_'+i+' class="texto-detalle"><p>'+dataFiltrada[i].name+'</p></div>';
         var imagenReceta='<div id=imagenReceta_'+i+' class="imagen-detalle"><img src="data:image/jpg;base64,'+dataFiltrada[i].image+'" width="82 "height="76"></div>';
         recetaDiv+=puntuacion+textoReceta+imagenReceta;
