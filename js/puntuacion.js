@@ -1,4 +1,6 @@
-$(document).ready(function(){
+//$(document).ready(function(){
+    function reloadRating()
+    {
         $(".basicNoEditable").jRating({
 
                length : 5, // nb of stars
@@ -27,7 +29,10 @@ $(document).ready(function(){
              else
                  $("#listadoPuntuacion").show();
          })
-});
+     }
+     
+     reloadRating();
+//});
 
 function voteWebService(rate)
          {

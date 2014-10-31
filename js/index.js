@@ -132,6 +132,7 @@ function paintRecipes(numColumns, data2) {
             }
         });
     }
+    reloadRating();
 
 }
 
