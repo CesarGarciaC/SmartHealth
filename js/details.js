@@ -350,7 +350,7 @@ $(document).ready($(function () {
   function agregarFavoritos()
   {
       try {
-            alert(User.id)
+//            alert(User.id)
           var data="id_user="+User.id+"&id_recipe="+idReceta;
           $.ajax({        
 

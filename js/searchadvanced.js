@@ -17,7 +17,7 @@ function mostrarAvanzada()
 //	if(bool)	numColumns=2;
 //	else		numColumns=3;
         numColumns=2;
-	alert("keyword: "+keyword.val());
+//	alert("keyword: "+keyword.val());
 	busquedaRecetas(numColumns,"",keyword.val());
     $("#search-advanced").show();
     $("#categorias-menu").show();
@@ -178,7 +178,7 @@ $(".selector").live('click',function()
     }
     
     //Selector de categorias
-    alert($(this).data("id"))
+//    alert($(this).data("id"))
     if (($(this).hasClass("s3")))
     {
         if (!selector3)
