@@ -48,6 +48,11 @@ $(document).ready($(function()
         var UserDiv = "<center><img src=\"images/user.png\">" + User.nicename + "</center>" + "<center id=\"CloseSesion\" onclick=\"CloseSesion()\">Cerrar Sesión</center>";
         targetdiv.html(UserDiv);
     }
+    else
+    {
+        $("#menuFavoritos").removeAttr('onclick')
+        
+    }
 
     var updatedData = busquedaRecetas(3, "", "");
 
@@ -124,7 +129,11 @@ function paintRecipes(numColumns, data2) {
                 var id = $(this).attr("value").split("_")[1];
 
                 document.getElementById(this.id).appendChild(newdiv);
-                $('#select_' + this.id).html('<button id="botonFav_' + this.id + '" onclick="agregarFavoritosPreview(' + id + ')">Favoritos +</button>'
+                var btnFav='<button id="botonFav_' + this.id + '" onclick="agregarFavoritosPreview(' + id + ')">Favoritos +</button>';
+                if (User.id=="")
+                    btnFav='<button disabled="true" id="botonFav_' + this.id + '" onclick="agregarFavoritosPreview(' + id + ')">Favoritos +</button>';
+                
+                $('#select_' + this.id).html(btnFav
                         + '<button id="botonVer_' + this.id + '" onclick="seleccionarReceta(' + id + ')">Ver</button>'
                         + '<button id="botonCan_' + this.id + '" onclick="cancelarSeleccion(' + id + ')" >Cancelar</button>');
 
@@ -300,6 +309,3 @@ function busquedaRecetas(column, cat, keyword)
         alert(ex.description)
     }
 }
-
-
-

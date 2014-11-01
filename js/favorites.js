@@ -9,7 +9,7 @@
 		$(".resultado-recetas").css("height","70%");
 		$(".resultado-recetas").css("left","20px");
 		
-        var data="id_user=1";
+        var data="id_user="+User.id;
         
         $.ajax({        
 

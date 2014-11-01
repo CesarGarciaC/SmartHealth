@@ -1,6 +1,11 @@
  
  var idReceta;
  function seleccionarReceta(idRecetaSeleccionada){
+                if (User.id=="")
+                {
+                    $("#favoritosBtn").hide();
+                    $("#btnPuntuacion").hide();
+                }
 		getDetails(parseInt(idRecetaSeleccionada));
 		idReceta=parseInt(idRecetaSeleccionada);
 		cancelarSeleccion(idRecetaSeleccionada);
@@ -345,8 +350,8 @@ $(document).ready($(function () {
   function agregarFavoritos()
   {
       try {
-            
-          var data="id_user="+"1"+"&id_recipe="+idReceta;
+            alert(User.id)
+          var data="id_user="+User.id+"&id_recipe="+idReceta;
           $.ajax({        
 
             url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=smartAddFavService&format=json&',                  //the script to call to get data          
@@ -367,6 +372,6 @@ $(document).ready($(function () {
   function agregarFavoritosPreview(idRecipe)
   {
       idReceta=idRecipe;
-      alert(idReceta)
+//      alert(idReceta)
       agregarFavoritos()
   }
