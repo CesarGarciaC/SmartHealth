@@ -116,8 +116,10 @@ body {
 
 #preparationDiv {
   width: 61.25%;
-  height: 229px;
+  height: 200px;
   margin: 10px 0 0 10px;
+  overflow-y: scroll;
+  line-height: 1.2; 
 }
 
 #preparationTitle {
@@ -161,7 +163,8 @@ body {
   z-index: 6;
   width: 35.125%;
   height: 256px;
-  margin: -267px 0 0 63.625%;
+  margin-left: 10px;
+  margin-top: -30px;
 }
 
 #volverBtn {

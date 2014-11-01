@@ -372,6 +372,6 @@ $(document).ready($(function () {
   function agregarFavoritosPreview(idRecipe)
   {
       idReceta=idRecipe;
-//      alert(idReceta)
+      //alert(idReceta)
       agregarFavoritos()
   }

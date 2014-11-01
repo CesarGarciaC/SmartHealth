@@ -36,10 +36,11 @@
 
 function voteWebService(rate)
          {
+             //alert("Ratio:"+rate)
              $("#listadoPuntuacion").hide();
                 var id_user=User.id;
                 var id_recipe=idReceta;
-//                alert(id_recipe)
+                //alert(id_recipe)
                 var rating=rate;
                 var data="id_user="+id_user+"&id_recipe="+id_recipe+"&rating="+rating;
 //                alert(id_recipe+" - "+rating)
