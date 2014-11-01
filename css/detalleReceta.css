@@ -78,10 +78,16 @@ body {
 }
 
 #recipeTitle {
-  font-size: 24px;
+  font-size: 24px; 
+  line-height: 1.1; 
+  width: 250px;
+}
+
+#recipeHeader {
   height: 30px;
   margin: 10px 0 0 10px;
-  width: 350px;
+  width: 480px;
+  overflow: visible;
 }
 
 #ingredientesDiv {
@@ -94,40 +100,64 @@ body {
 }
 
 #recipePhoto {
-  width: 280px;
-  height: 290px;
+  width: 270px;
+  height: 270px;
   margin: 10px 0 0 10px;
+}
+
+#recipePhoto img{
+  width: 100%;
+  height: 100%;
 }
 
 #preparationDiv {
   width: 61.25%;
-  height: 259px;
+  height: 229px;
   margin: 10px 0 0 10px;
+}
+
+#preparationTitle {
+  margin-top: 0px;
+  width: 61.25%;
+  height: 30px;
+  margin: 10px 0 0 10px;
+}
+
+#preparationTitle ._button{
+  margin-top: 0px;
+}
+
+#voiceFwdBtn{
+  margin-right: 10px;
 }
 
 #dificultad {
   position: relative;
-  z-index: 8;
+  float: right;
+  margin-left: 10px;
+  /*z-index: 8;
   width: 35.25%;
   height: 33px;
-  margin: 10px 0 0 1.125%;
+  margin: 10px 0 0 1.125%;*/
 }
 
 #duracion {
   position: relative;
-  clear: both;
+  float: right;
+  margin-top: 10px;
+  /*clear: both;
   z-index: 9;
   width: 35.25%;
   height: 33px;
-  margin: -215px 0 0 63.59961%;
+  margin: -215px 0 0 63.59961%;*/
 }
 
 #infoNutricional {
   position: relative;
   z-index: 6;
   width: 35.125%;
-  height: 166px;
-  margin: -167px 0 0 63.625%;
+  height: 256px;
+  margin: -267px 0 0 63.625%;
 }
 
 #volverBtn {
@@ -440,8 +470,118 @@ body {
 
 #dificultad_icons li{
   float:left;
-  height: 32px;
-  width: 32px;  
+  height: 26px;
+  width: 26px;  
   list-style-type: none;
-  background-image: url('../images/chef-hat.png');
+  background-image: url('../images/diff.png');
+}
+
+/*Información nutricional*/
+
+body {
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+p {
+  margin: 0;
+}
+
+.performance-facts {
+  border: 1px solid black;
+ /* margin: 20px;*/
+  float: left;
+  width: 260px;
+  padding: 5px;
+  background-color: rgb(250,250,250);
+}
+.performance-facts table {
+  border-collapse: collapse;
+}
+
+.performance-facts__title {
+  font-weight: bold;
+  font-size: 16px;
+  margin: 0 0 0.25rem 0;
+}
+
+.performance-facts__header {
+  border-bottom: 5px solid black;
+  padding: 0px;
+  margin: 0 0 0.5rem 0;
+}
+.performance-facts__header p {
+  margin: 0;
+}
+
+.performance-facts__table, .performance-facts__table--small, .performance-facts__table--grid {
+  width: 100%;
+}
+.performance-facts__table thead tr th, .performance-facts__table--small thead tr th, .performance-facts__table--grid thead tr th, .performance-facts__table thead tr td, .performance-facts__table--small thead tr td, .performance-facts__table--grid thead tr td {
+  border: 0;
+}
+.performance-facts__table th, .performance-facts__table--small th, .performance-facts__table--grid th, .performance-facts__table td, .performance-facts__table--small td, .performance-facts__table--grid td {
+  font-weight: normal;
+  text-align: left;
+  padding: 3px 0;
+  border-top: 1px solid black;
+  white-space: nowrap;
+}
+.performance-facts__table td:last-child, .performance-facts__table--small td:last-child, .performance-facts__table--grid td:last-child {
+  text-align: right;
+}
+.performance-facts__table .blank-cell, .performance-facts__table--small .blank-cell, .performance-facts__table--grid .blank-cell {
+  width: 1rem;
+  border-top: 0;
+}
+.performance-facts__table .thick-row th, .performance-facts__table--small .thick-row th, .performance-facts__table--grid .thick-row th, .performance-facts__table .thick-row td, .performance-facts__table--small .thick-row td, .performance-facts__table--grid .thick-row td {
+  border-top-width: 2px;
+}
+
+.performance-facts__table{
+  font-size: 11px;  
+}
+
+.small-info {
+  font-size: 10px;
+}
+
+.performance-facts__table--small {
+  border-bottom: 1px solid #999;
+  margin: 0 0 0.5rem 0;
+}
+.performance-facts__table--small thead tr {
+  border-bottom: 1px solid black;
+}
+.performance-facts__table--small td:last-child {
+  text-align: left;
+}
+.performance-facts__table--small th, .performance-facts__table--small td {
+  border: 0;
+  padding: 0;
+}
+
+.performance-facts__table--grid {
+  margin: 0 0 0.5rem 0;
+  font-size: 12px;
+}
+.performance-facts__table--grid td:last-child {
+  text-align: left;
+}
+.performance-facts__table--grid td:last-child::before {
+  content: "•";
+  font-weight: bold;
+  margin: 0 0.25rem 0 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.thick-end {
+  border-bottom: 1px solid black;
+}
+
+.thin-end {
+  border-bottom: 1px solid black;
 }
