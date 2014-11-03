@@ -41,6 +41,9 @@ var categorias2 = {
 var RecipesGlobal = new Array();
 var selectedRecipe = '';
 
+var columns;
+var totalResults;
+
 $(document).ready($(function()
 {     /////////////////////////////Nombre usuario al iniciar sesion////////
     if (User.id != "") {
@@ -55,6 +58,129 @@ $(document).ready($(function()
     }
 
     var updatedData = busquedaRecetas(3, "", "");
+
+    // keyboard events
+    var leftMenuElements = ["menu1","menuFavoritos","menuRecientes","menuCategorias"];
+    var activeElementIndex = 0;
+    var isInDetailView = false;
+    var activeElement = leftMenuElements[0];
+    var activeElementType = "leftMenu";
+    
+    $(document).keydown(function(event) {
+        //alert(event.keyCode);
+        if(activeElementType == "results")
+            $("#" + activeElement).removeClass('detalle-receta-seleccionada');    
+        else if (activeElementType == "leftMenu"){
+            $("#" + activeElement).css("background-color","");
+        }
+        var keyCode = event.keyCode;
+        var activeId;
+        if(keyCode == 37){ // left
+            $(activeElement).removeClass("hover");
+        
+            if(!isInDetailView && activeElementType == "results"){
+                //activeId = parseInt(activeElement.split("_")[1]);
+                if(activeElementIndex == 0){
+                    activeElementType = "leftMenu";
+                    activeElement = leftMenuElements[activeElementIndex];
+                }
+                else{
+                    activeElementIndex --;
+                    activeElement = "receta_" + activeElementIndex;
+                }
+            }
+        }
+        else if(keyCode == 38){ // up
+            if(activeElementType == "leftMenu"){
+                if(activeElementIndex > 0){
+                    activeElementIndex--;
+                    activeElement = leftMenuElements[activeElementIndex];
+                }
+            }
+            else if (!isInDetailView && activeElementType == "results"){
+                var activeId = activeElementIndex - columns;
+                if(activeId >= 0){
+                    activeElementIndex -= columns;
+                    activeElement = "receta_" + activeElementIndex;
+                }
+            }
+        }
+        else if(keyCode == 39){ // right
+            if(!isInDetailView && activeElementType == "leftMenu"){
+                activeElementType = "results";
+                activeElementIndex = 0; 
+                activeElement = "receta_0"; 
+            }
+            else if(!isInDetailView && activeElementType == "results"){
+                //activeId = parseInt(activeElement.split("_")[1]);
+                if(activeElementIndex < totalResults - 1){
+                    activeElementIndex ++;
+                    activeElement = "receta_" + activeElementIndex;
+                }
+            }    
+        }
+        else if(keyCode == 40){ // down
+            if(activeElementType == "leftMenu"){
+                if(activeElementIndex < leftMenuElements.length - 1){
+                    activeElementIndex++;
+                    activeElement = leftMenuElements[activeElementIndex];
+                }
+            }
+            else if (!isInDetailView && activeElementType == "results"){
+                var activeId = activeElementIndex + columns;
+                if(activeId < totalResults){
+                    activeElementIndex += columns;
+                    activeElement = "receta_" + activeElementIndex;
+                }
+            }    
+        }
+        else if(keyCode == 13){ // enter
+            if(activeElementType == "leftMenu"){
+                $("#" + activeElement).click();
+            }    
+            else if (!isInDetailView && activeElementType == "results"){
+                seleccionarReceta($("#" + activeElement).attr("value").split("_")[1]);
+            }
+        }
+        else if(keyCode == 461){ // back
+            $('#recipe-details').addClass("invisible-block"); 
+            $('#data-container').removeClass("invisible-block");       
+            isInDetailView = false;
+        }
+        else if(keyCode == 33){ // page up
+            
+        }
+        else if(keyCode == 34){ // page down
+            
+        }
+        else if(keyCode == 415 || keyCode == 80){ // play
+            $('#voicePlayBtn').click();            
+        }
+        else if(keyCode == 413 || keyCode == 83){ // stop
+            $('#voiceStopBtn').click();    
+        }
+        else if(keyCode == 19 || keyCode == 179){ // pause
+            var audio = new Audio();
+            audio.src ='http://translate.google.com/translate_tts?ie=utf-8&tl=en&q=Hello%20World.';
+            audio.play();
+        }
+        else if(keyCode == 412 || keyCode == 177){ // rwd
+            $('#voiceBckBtn').click();
+            //alert("rwd");
+        }
+        else if(keyCode == 417 || keyCode == 176){ // fwd
+            $('#voiceFwdBtn').click();            
+        }
+        //console.log(activeElement);
+        if(activeElementType == "results"){
+            $("#" + activeElement).addClass('detalle-receta-seleccionada');    
+        }
+        else if (activeElementType == "leftMenu"){
+            $("#" + activeElement).css("background-color","orange");
+        }
+
+    });
+
 
 
 }));
@@ -76,7 +202,8 @@ function sleep(millis, callback) {
 }
 
 function paintRecipes(numColumns, data2) {
-
+    totalResults = data2.recetas.length;
+    
     var targetdiv = $('#resultadoRecetas')
     if (numColumns==2) targetdiv.css("width","75%");
     var recetaDiv = "<table>";
@@ -163,6 +290,7 @@ function cancelarSeleccion(idDiv) {
 
 function busquedaRecientes() {
 
+    columns = 3;
     try
     {
 		$("#search-advanced").hide();
@@ -215,6 +343,8 @@ function busquedaRecientes() {
 
 function busquedaTop10() {
 
+    columns = 3;
+
     try
     {
 		$("#search-advanced").hide();
@@ -263,9 +393,8 @@ function busquedaTop10() {
 
 function busquedaRecetas(column, cat, keyword)
 {
-	
-
-	
+	columns = column;
+    
     try
     {
         //var data_category='<mns1:id_category xmlns:mns1="http://www.dreamsolutions.com/sexy_service/">'+cat+'</mns1:id_category>'
@@ -310,3 +439,20 @@ function busquedaRecetas(column, cat, keyword)
         alert(ex.description)
     }
 }
+
+var idReceta;
+ function seleccionarReceta(idRecetaSeleccionada){
+                if (User.id=="")
+                {
+                    $("#favoritosBtn").hide();
+                    $("#btnPuntuacion").hide();
+                }
+        isInDetailView = true;
+        getDetails(parseInt(idRecetaSeleccionada));
+        idReceta=parseInt(idRecetaSeleccionada);
+        cancelarSeleccion(idRecetaSeleccionada);
+        $('#receta_'+idRecetaSeleccionada).removeClass('detalle-receta-seleccionada');
+        
+ }
+
+
