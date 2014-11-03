@@ -1,6 +1,6 @@
 //Variables Globales
 var numbuttons = 4;
-
+var isTop10=false;
 var categorias2 = {
     "categorias": [
         {
@@ -214,12 +214,19 @@ function paintRecipes(numColumns, data2) {
         var puntuacion = '<div style="float:left; margin-bottom:20px;" class="basicNoEditable" data-average="' + parseInt(data2.recetas[i].rating/data2.recetas[i].raters) + '"data-id="' + data2.recetas[i].id + '"></div>';
         var textoReceta = '<div id=textReceta_' + i + ' class="texto-detalle"><p>' + data2.recetas[i].name + '</p></div>';
         var imagenReceta = '<div id=imagenReceta_' + i + ' class="imagen-detalle"><img src="data:image/jpg;base64,' + data2.recetas[i].image + '" width="82 "height="76"></div>';
-        recetaDiv += puntuacion + textoReceta + imagenReceta;
+		recetaDiv += puntuacion + textoReceta + imagenReceta;
+		if(isTop10){
+		
+			var top='<div id="top_'+i+'" style="float: left;position: relative; background: url(images/smooth-star.png); width: 40px; height: 40px;"><h2 align=center>'+(i+1)+'</h2></div>';
+			recetaDiv+=top;
+			
+		}
+		
         recetaDiv += '</div></td>';
         if (i % numColumns == numColumns - 1)
             recetaDiv += '</tr>'
     }
-
+	isTop10=false;
     recetaDiv += '</table>';
     targetdiv.html(recetaDiv);
 
@@ -347,6 +354,7 @@ function busquedaTop10() {
 
     try
     {
+		isTop10=true;
 		$("#search-advanced").hide();
 		$("#categorias-menu").hide();
 		$(".resultado-recetas").css("width","95%");

@@ -167,6 +167,26 @@ body
 	z-index:-1;
 }
 
+.detalle-receta .imagen-top
+{
+
+	float:left;
+	margin:10px px 0px 0px;
+	background: url(../images/smooth-star.png) no-repeat 10px 6px;
+
+}
+
+h2{
+
+	float:left;
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	top: -5px;
+	right: 0.8px
+
+}
+
 .resultado-recetas
 {
 	height:70%;
