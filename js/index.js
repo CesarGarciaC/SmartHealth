@@ -180,10 +180,69 @@ $(document).ready($(function()
         }
 
     });
+    
+    $('#usuarioLogin').click(function() {
+        var userIframe;
+        userIframe = '<iframe id="loginIframe" width="854" height="510" src="login.html" frameborder="0" allowfullscreen></iframe>';
+
+        $("#main-container").stop(true).animate({opacity: 0.2}, 100);
+        $("#userlayer").fadeIn(200);
+        $('#userHtml').html(userIframe);
+    });
+
+    $('#user_closeBtn').click(function() {
+        $("#main-container").stop(true).animate({opacity: 1}, 100);
+        $('#userHtml').html('');
+        $("#userlayer").fadeOut(100);
+    });
+
+$('#fb_closeBtn').click(function() {
+        $("#main-container").stop(true).animate({opacity: 1}, 100);
+        $('#facebookHtml').html('');
+        $("#facebooklayer").fadeOut(100);
+    });
+
+    $('#usuarioLogout').click(function() {
+        if (confirm("¿Seguro desea cerrar la sesión? \n Recetas favoritas y las opciones de compartir y valorar recetas no estaras disponibles.")) {
+            document.getElementById('usuarioLogin').innerHTML = " Iniciar Sesión";
+            document.getElementById('usuarioLogout').innerHTML = "";
+            document.getElementById('iniSesion').innerHTML = "";
+            User = new UserData("", "", "");
+        }
+    });
+
 
 
 
 }));
+
+
+function closeIframe() {
+    $("#main-container").stop(true).animate({opacity: 1}, 100);
+    $('#userHtml').html('');
+    $("#userlayer").fadeOut(100);
+}
+
+function facebookLayer() {
+    var faceIframe;
+    faceIframe = '<iframe id="faceIframe" width="854" height="510" src="https://www.facebook.com/plugins/likebox.php?href=https://www.facebook.com/FacebookDevelopers" scrolling="no" frameborder="0"  allowfullscreen></iframe>';
+    $("#main-container").stop(true).animate({opacity: 0.2}, 100);
+    $("#facebooklayer").fadeIn(200);
+    $('#facebookHtml').html(faceIframe);
+}
+
+
+function CloseSesion() {
+    if (confirm("¿Seguro desea cerrar la sesión? \n Recetas favoritas y las opciones de compartir y valorar recetas no estaras disponibles.")) {
+        /* var targetdiv = $('#Usuario');
+         var UserDiv = "<center id=\"usuarioLogin\"><img src=\"\"> Iniciar Sesión </center>";
+         targetdiv.html(UserDiv);*/
+        document.getElementById('usuarioLogin').innerHTML = "<img src=\"\"> Iniciar Sesión ";
+        //User= new UserData("", "", "");
+    }
+
+}
+
 
 function CloseSesion() {
     if (confirm("¿Seguro desea cerrar la sesión? \n Recetas favoritas y las opciones de compartir y valorar recetas no estaras disponibles.")) {

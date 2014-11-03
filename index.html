@@ -1,58 +1,73 @@
 <!DOCTYPE html>	
 <html>
     <head>
-     
-            <link rel="stylesheet" type="text/css" href="css/styles.css"/>
-            <link rel="stylesheet" type="text/css" href="css/detalleReceta.css"/>
-            <link rel="stylesheet" type="text/css" href="css/rating.css" />
-            <link rel="stylesheet" type="text/css" href="css/menu.css" />
-            <link href="http://code.jquery.com/ui/1.9.0/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
-            <link href="css/keyboard.css" rel="stylesheet">
-            <link rel="stylesheet" type="text/css" href="js/jRating.jquery.css" media="screen" />
-            <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
-            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.js"></script>
-            <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.min.js"></script>
-            <!--<script type="text/javascript" src="js/jquery-1.6.3.min.js"></script>-->
-            <script type="text/javascript" src="js/jRating.jquery.js"></script>
-            <script type="text/javascript" src="js/user.js"></script>
-            <script type="text/javascript" src="js/index.js" charset="utf-8"></script>
-            <script type="text/javascript" src="js/searchadvanced.js"></script>
-            <script type="text/javascript" src="js/move_main.js"></script>
-            <script type="text/javascript" src="js/favorites.js"></script>
-            <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
-            <script type="text/javascript" src="slick/slick.min.js"></script>
-            <script type="text/javascript" src="js/details.js" charset="utf-8"></script>
-            <script type="text/javascript" src="js/categories.js"></script>
-            <script type="text/javascript" src="js/puntuacion.js"></script>
-            <script type="text/javascript" src="js/menu.js"></script>
-            <script type="text/javascript" src="js/facebook.js"></script>
-            <script type="text/javascript" src="js/jquery.keyboard.js"></script>
-            
-            
-      <meta charset="utf-8">      
-                       
-        
+
+        <!-------------MEta facebook---------->
+        <meta property="og:url" content="http://developando.com" />
+        <meta property="og:title" content="Developando Web & Móvil" />
+        <meta property="og:description" content="Empresa encarga de desarrollar aplicaciones movil y web con calidad" />
+        <meta property="og:image" content="http://developando.com/images/developandoLogo.jpeg" />
+
+        <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+        <link rel="stylesheet" type="text/css" href="css/detalleReceta.css"/>
+        <link rel="stylesheet" type="text/css" href="css/rating.css" />
+        <link rel="stylesheet" type="text/css" href="css/menu.css" />
+        <link href="http://code.jquery.com/ui/1.9.0/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
+        <link href="css/keyboard.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="js/jRating.jquery.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.js"></script>
+        <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.min.js"></script>
+        <!--<script type="text/javascript" src="js/jquery-1.6.3.min.js"></script>-->
+        <script type="text/javascript" src="js/jRating.jquery.js"></script>
+        <script type="text/javascript" src="js/user.js"></script>
+        <script type="text/javascript" src="js/logout.js"></script>
+        <script type="text/javascript" src="js/index.js" charset="utf-8"></script>
+        <script type="text/javascript" src="js/searchadvanced.js"></script>
+        <script type="text/javascript" src="js/move_main.js"></script>
+        <script type="text/javascript" src="js/favorites.js"></script>
+        <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
+        <script type="text/javascript" src="slick/slick.min.js"></script>
+        <script type="text/javascript" src="js/details.js" charset="utf-8"></script>
+        <script type="text/javascript" src="js/categories.js"></script>
+        <script type="text/javascript" src="js/puntuacion.js"></script>
+        <script type="text/javascript" src="js/menu.js"></script>
+        <script type="text/javascript" src="js/facebook.js"></script>
+        <script type="text/javascript" src="js/jquery.keyboard.js"></script>
+
+
+        <meta charset="utf-8">      
+
+
         <title></title>
         <script>
             $(document).ready(function()
             {
-		$(function(){
-			$('#keyboard').keyboard();
-                        $(".keyboardnum").keyboard({
-                            layout:'num',
-                            restrictInput : true,
-                            preventPaste : true,
-                        });
-                
-		});
-            })    
-            	
+                $(function() {
+                    $('#keyboard').keyboard();
+                    $(".keyboardnum").keyboard({
+                        layout: 'num',
+                        restrictInput: true,
+                        preventPaste: true,
+                    });
 
-	
+                });
+            })
+
+
+
 
         </script>
     </head>
     <body>
+        <div id="facebooklayer" class="videolayer">
+            <a id="fb_closeBtn"></a>
+            <div id="facebookHtml"></div>
+        </div> 
+        <div id="userlayer" class="videolayer">
+            <a id="user_closeBtn"></a>
+            <div id="userHtml"></div>
+        </div>
         <div id="videolayer" class="videolayer">
             <a id="vl_closeBtn"></a>
             <div id="ytiframe"></div>
@@ -65,42 +80,44 @@
                             <table cellspacing="50">
                                 <tr>
                                     <td>
-                                        <center><img src="images/logo.png"></center>
-                                         </td>
+                                <center><img src="images/logo.png"></center>
+                                </td>
                                 </tr>
 
                                 <tr>
                                     <td class="CloseSesion">
-                                        <center>
-                                            <div id="Usuario">
-                                                <a href="login.html">Iniciar Sesión</a>
-                                            </div>
-                                        </center>
-                                    </td>
+                                <center>
+                                    <div id="Usuario">
+                                         <center id="iniSesion"></center>
+                                        <center id="usuarioLogin"> Iniciar Sesión </center>
+                                        <center id="usuarioLogout"></center>
+                                    </div>
+                                </center>
+                                </td>
                                 </tr>
 
                                 <tr>
                                     <td id="menu1" class="menu-option" onclick="busquedaTop10()">
-                                        <center>Top 10</center>
-                                    </td>
+                                <center>Top 10</center>
+                                </td>
                                 </tr>
 
                                 <tr>
                                     <td id="menuFavoritos" class="menu-option" onclick="obtenerFavoritos()">
-                                        <center>Favoritos</center>
-                                    </td>
+                                <center>Favoritos</center>
+                                </td>
                                 </tr>
 
                                 <tr>
                                     <td id="menuRecientes" class="menu-option" onclick="busquedaRecientes()">
-                                        <center>Recientes</center>
-                                    </td>
+                                <center>Recientes</center>
+                                </td>
                                 </tr>
 
                                 <tr>
                                     <td id="menuCategorias" class="menu-option" onclick="mostrarCategories()">
-                                        <center>Categorías</center>
-                                    </td>
+                                <center>Categorías</center>
+                                </td>
                                 </tr>
 
                             </table>
@@ -109,46 +126,46 @@
 
                     <td id="bloque-center">
                         <div id="listadoPuntuacion" style="position:absolute;left:780px;top:50px;display:none;z-index:999"> 
-                                        <table>
-                                            <tr>
-                                                <td><button style="width:190px" onClick="voteWebService(5)"><img src="images/5stars.png"/>Excelente</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td><button style="width:190px" onClick="voteWebService(4)"><img src="images/4stars.png"/>Muy Bueno</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td><button style="width:190px" onClick="voteWebService(3)"><img src="images/3stars.png"/>Bueno</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td><button style="width:190px" onClick="voteWebService(2)"><img src="images/2stars.png"/>Regular</button></td>
-                                            </tr>
-                                            <tr>
-                                                <td><button style="width:190px" onClick="voteWebService(1)"><img src="images/1stars.png"/>Malo</button></td>
-                                            </tr>
-                                        </table>
-                          </div>
+                            <table>
+                                <tr>
+                                    <td><button style="width:190px" onClick="voteWebService(5)"><img src="images/5stars.png"/>Excelente</button></td>
+                                </tr>
+                                <tr>
+                                    <td><button style="width:190px" onClick="voteWebService(4)"><img src="images/4stars.png"/>Muy Bueno</button></td>
+                                </tr>
+                                <tr>
+                                    <td><button style="width:190px" onClick="voteWebService(3)"><img src="images/3stars.png"/>Bueno</button></td>
+                                </tr>
+                                <tr>
+                                    <td><button style="width:190px" onClick="voteWebService(2)"><img src="images/2stars.png"/>Regular</button></td>
+                                </tr>
+                                <tr>
+                                    <td><button style="width:190px" onClick="voteWebService(1)"><img src="images/1stars.png"/>Malo</button></td>
+                                </tr>
+                            </table>
+                        </div>
                         <div id="recipe-details" class="invisible-block">
-                                <div id="topContainer" class="container clearfix">
-                                    <button id="volverBtn" class="_button">Volver</button>
-                                                                     
-                                    <button id="favoritosBtn" class="_button">Favoritos +</button>
-                                    <!--<div id="rating" style="left:420px;top:20px" class="basicEditable" data-average="1" data-id=""></div>-->
-                                    
-                                    <button class="_button" style="position:absolute;width:130px;height:35px;top:3px;left:780px" id="btnPuntuacion">Calificar receta</button>
-                                    
-                                    
-                                </div>
-                                <div id="ingredientesContainer" class="container clearfix">
-                                    <div id="recipeHeader" class="embed-wrapper">
-                                        <div id="recipeTitle" class="embed-wrapper"></div>
-                                        <div id="dificultad" class="embed-wrapper">
-                                            <ul id="dificultad_icons"></ul>                                    
-                                        </div>
-                                        <div id="duracion" class="embed-wrapper">
-                                            <!--<div id="duracionIcon" class="embed-wrapper" src="images/timer.png"></div>-->
-                                        </div>                                        
+                            <div id="topContainer" class="container clearfix">
+                                <button id="volverBtn" class="_button">Volver</button>
+
+                                <button id="favoritosBtn" class="_button">Favoritos +</button>
+                                <!--<div id="rating" style="left:420px;top:20px" class="basicEditable" data-average="1" data-id=""></div>-->
+
+                                <button class="_button" style="position:absolute;width:130px;height:35px;top:3px;left:780px" id="btnPuntuacion">Calificar receta</button>
+
+
+                            </div>
+                            <div id="ingredientesContainer" class="container clearfix">
+                                <div id="recipeHeader" class="embed-wrapper">
+                                    <div id="recipeTitle" class="embed-wrapper"></div>
+                                    <div id="dificultad" class="embed-wrapper">
+                                        <ul id="dificultad_icons"></ul>                                    
                                     </div>
-                                    <div id="ingredientesDiv" class="embed-wrapper">
+                                    <div id="duracion" class="embed-wrapper">
+                                        <!--<div id="duracionIcon" class="embed-wrapper" src="images/timer.png"></div>-->
+                                    </div>                                        
+                                </div>
+                                <div id="ingredientesDiv" class="embed-wrapper">
                                     <table id="ingredientsTable">
                                         <tr>
                                             <th>Ingrediente</th>
@@ -156,39 +173,39 @@
                                             <th>Cantidad</th>
                                         </tr>                                        
                                     </table>
-                                    </div>
-                                </div>
-                                <div id="photoContainer" class="container clearfix">
-                                    <div id="videoBtn"></div>
-                                    <div id="recipePhoto" class="embed-wrapper"></div>
-                                </div>
-                                <div id="instructionsContainer" class="container clearfix">
-                                    <div id="preparationTitle" class="embed-wrapper">Ingredientes: 
-                                        <div id="voiceFwdBtn" class="_button"><img class="imgIcon" src="images/fordward.png"></div>
-                                        <div id="voiceStopBtn" class="_button"><img class="imgIcon" src="images/stop1.png"></div>
-                                        <div id="voicePlayBtn" class="_button"><img class="imgIcon" src="images/play1.png"></div>
-                                        <div id="voiceBckBtn" class="_button"><img class="imgIcon" src="images/backward.png"></div>
-                                    </div>
-                                    <div id="preparationDiv" class="embed-wrapper"></div>
-                                    <div id="infoNutricional" class="embed-wrapper">
-                                        
-                                    </div>
-                                </div>
-                                <div id="suggestionsContainer" class="container _element">
-                                    <section class="slick-section blue">
-                                      <div class="slick-content">     
-                                      <div class="slider center">
-                                          <div><h3><img src="images/01_batido_fresas.jpg"/></h3></div>
-                                          <div><h3><img src="images/02_langostinos_szechwan.jpg"/></h3></div>
-                                          <div><h3><img src="images/03_quiche_tofu.jpg"/></h3></div>
-                                          <div><h3><img src="images/04_ensalada_feta_kale.jpg"/></h3></div>
-                                          <div><h3><img src="images/05_estofado.jpg"/></h3></div>
-                                          <div><h3><img src="images/06_banana_bread.jpg"/></h3></div>
-                                        </div>
-                                      </div>
-                                    </section>
                                 </div>
                             </div>
+                            <div id="photoContainer" class="container clearfix">
+                                <div id="videoBtn"></div>
+                                <div id="recipePhoto" class="embed-wrapper"></div>
+                            </div>
+                            <div id="instructionsContainer" class="container clearfix">
+                                <div id="preparationTitle" class="embed-wrapper">Ingredientes: 
+                                    <div id="voiceFwdBtn" class="_button"><img class="imgIcon" src="images/fordward.png"></div>
+                                    <div id="voiceStopBtn" class="_button"><img class="imgIcon" src="images/stop1.png"></div>
+                                    <div id="voicePlayBtn" class="_button"><img class="imgIcon" src="images/play1.png"></div>
+                                    <div id="voiceBckBtn" class="_button"><img class="imgIcon" src="images/backward.png"></div>
+                                </div>
+                                <div id="preparationDiv" class="embed-wrapper"></div>
+                                <div id="infoNutricional" class="embed-wrapper">
+
+                                </div>
+                            </div>
+                            <div id="suggestionsContainer" class="container _element">
+                                <section class="slick-section blue">
+                                    <div class="slick-content">     
+                                        <div class="slider center">
+                                            <div><h3><img src="images/01_batido_fresas.jpg"/></h3></div>
+                                            <div><h3><img src="images/02_langostinos_szechwan.jpg"/></h3></div>
+                                            <div><h3><img src="images/03_quiche_tofu.jpg"/></h3></div>
+                                            <div><h3><img src="images/04_ensalada_feta_kale.jpg"/></h3></div>
+                                            <div><h3><img src="images/05_estofado.jpg"/></h3></div>
+                                            <div><h3><img src="images/06_banana_bread.jpg"/></h3></div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
                         <div id="data-container" class="bloque">
                             <div id="search">
                                 <table>
@@ -198,118 +215,118 @@
                                         </td>
                                         <td>
                                             <form style="left:200px" id="search-box" action="javascript:mostrarAvanzada()" method="get">
-                                                    <!--<input type="text" id="keyboard" name="q" size="40" placeholder="Buscar..." />-->
-                                                    <!--<div id="wrap">-->
-                                                    <input id="keyboard" placeholder="Buscar..." type="text" class="ui-keyboard-input ui-widget-content ui-corner-all" aria-haspopup="true" role="textbox">
-                                                    <!--</div>-->
+                                                <!--<input type="text" id="keyboard" name="q" size="40" placeholder="Buscar..." />-->
+                                                <!--<div id="wrap">-->
+                                                <input id="keyboard" placeholder="Buscar..." type="text" class="ui-keyboard-input ui-widget-content ui-corner-all" aria-haspopup="true" role="textbox">
+                                                <!--</div>-->
                                             </form>
                                         </td>
                                     </tr>
                                 </table>
                             </div>
-														
-							
+
+
                             <div id="search-advanced">
-                                        <table>
-                                                <tr>
-                                                        <td width="100">
-                                                                Ordenar por:
-                                                        </td>
-                                                        <td width="80">
-                                                                <input data-order-option="1" class="selector s1" type="button" value="Mejor&#x00A;Valoradas"/>
-                                                        </td>
-                                                        <td width="80">
-                                                                <input data-order-option="2" class="selector s1" type="button" value="Recientes"/>
-                                                        </td>
-                                                        <td width="80">
-                                                                <input data-order-option="3" class="selector s1" type="button" value="Tiempo de&#x00A;elaboración"/>
-                                                        </td>
-                                                        <td width="80">
-                                                                <input data-order-option="4" class="selector s1" type="button" value="Dificultad"/>
-                                                        </td>
-                                                </tr>
-                                                <tr>
-                                                        <td>
-                                                                Rango Calórico
-                                                        </td>
-                                                        <td>
-                                                            
-                                                                <input id="cal_min" placeholder="Min" type="text" class="keyboardnum ui-keyboard-input ui-widget-content ui-corner-all  selector s2" aria-haspopup="true" role="textbox">
-                                                            
-                                                            
-                                                                <input id="cal_max" placeholder="Max" type="text" class="keyboardnum ui-keyboard-input ui-widget-content ui-corner-all selector s2" aria-haspopup="true" role="textbox">
-                                                            
-                                                        </td>
-<!--                                                        <td width="100">
-                                                                Categorías
-                                                        </td>
-                                                        <td>
-                                                                <table>
-                                                                <tr>
-                                                                        <td >
-                                                                                <input data-id="6" class="selector s3" type="button" value="Bebida"/>
-                                                                        </td>
-                                                                        <td >
-                                                                                <input data-id="9" class="selector s3" type="button" value="Carnes"/>
-                                                                        </td>
-                                                                        <td>
-                                                                                <input data-id="7" class="selector s3" type="button" value="Desayuno"/>
-                                                                        </td>
-                                                                        <td>
-                                                                                <input data-id="12" class="selector s3" type="button" value="Ensaladas"/>
-                                                                        </td>
-                                                                </tr>
-                                                                <tr>
-                                                                        <td>
-                                                                                <input data-id="14" class="selector s3" type="button" value="Mariscos"/>
-                                                                        </td>
-                                                                        <td>
-                                                                                <input data-id="13" class="selector s3" type="button" value="Postres"/>
-                                                                        </td>
-                                                                        <td>
-                                                                                <input data-id="10" class="selector s3" type="button" value="Vegetariano"/>
-                                                                        </td>
-                                                                </tr>
-                                                                </table>
-                                                        </td>-->
-                                                </tr>
-                                        </table>
-                                </div>
+                                <table>
+                                    <tr>
+                                        <td width="100">
+                                            Ordenar por:
+                                        </td>
+                                        <td width="80">
+                                            <input data-order-option="1" class="selector s1" type="button" value="Mejor&#x00A;Valoradas"/>
+                                        </td>
+                                        <td width="80">
+                                            <input data-order-option="2" class="selector s1" type="button" value="Recientes"/>
+                                        </td>
+                                        <td width="80">
+                                            <input data-order-option="3" class="selector s1" type="button" value="Tiempo de&#x00A;elaboración"/>
+                                        </td>
+                                        <td width="80">
+                                            <input data-order-option="4" class="selector s1" type="button" value="Dificultad"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Rango Calórico
+                                        </td>
+                                        <td>
 
-                            
-						
-  
+                                            <input id="cal_min" placeholder="Min" type="text" class="keyboardnum ui-keyboard-input ui-widget-content ui-corner-all  selector s2" aria-haspopup="true" role="textbox">
 
-						<div id="categorias-menu">
-								<ul id="listaCategoriasNoBusqueda" class="categorias-menu">
-									
-										<li><a id="cat1" class="last" value="" onclick="busquedaRecetas(2,null,null)"><span>Todos</span></a></li>
-										<li><a id="cat2" class="last" value="6" onclick="busquedaRecetas(2,6,null)"><span>Bebidas</span></a></li>
-										<li><a id="cat3" class="last" value="7" onclick="busquedaRecetas(2,7,null)"><span>Desayuno</span></a></li>
-										<li><a id="cat4" class="last" value="9" onclick="busquedaRecetas(2,9,null)"><span>Carnes</span></a></li>
-										<li><a id="cat5" class="last" value="12" onclick="busquedaRecetas(2,12,null)"><span>Ensaladas</span></a></li>
-										<li><a id="cat6" class="last" value="13" onclick="busquedaRecetas(2,13,null)"><span>Postres</span></a></li>
-										<li><a id="cat7" class="last" value="10" onclick="busquedaRecetas(2,10,null)"><span>Vegetariano</span></a></li>
-										<li><a id="cat8" class="last" value="14" onclick="busquedaRecetas(2,14,null)"><span>Mariscos</span></a></li>
-									
-								</ul>
-                                                                <ul id="listaCategoriasBusquedaAvanzada" style="display:none" class="categorias-menu">
-									
-										<li><a data-id="-1" class="selector s3" class="last"><span>Todos</span></a></li>
-										<li><a data-id="6" class="selector s3" class="last" value="6"><span>Bebidas</span></a></li>
-										<li><a data-id="7" class="selector s3" class="last" value="7" ><span>Desayuno</span></a></li>
-										<li><a data-id="9" class="selector s3" class="last" value="9" ><span>Carnes</span></a></li>
-										<li><a data-id="12" class="selector s3" class="last" value="12"><span>Ensaladas</span></a></li>
-										<li><a data-id="13" class="selector s3" class="last" value="13"><span>Postres</span></a></li>
-										<li><a data-id="10" class="selector s3" class="last" value="10"><span>Vegetariano</span></a></li>
-										<li><a data-id="14" class="selector s3" class="last" value="14"><span>Mariscos</span></a></li>
-									
-								</ul>
-							</div>
-                            <div id="resultadoRecetas" class="resultado-recetas">
-                                
+
+                                            <input id="cal_max" placeholder="Max" type="text" class="keyboardnum ui-keyboard-input ui-widget-content ui-corner-all selector s2" aria-haspopup="true" role="textbox">
+
+                                        </td>
+                                        <!--                                                        <td width="100">
+                                                                                                        Categorías
+                                                                                                </td>
+                                                                                                <td>
+                                                                                                        <table>
+                                                                                                        <tr>
+                                                                                                                <td >
+                                                                                                                        <input data-id="6" class="selector s3" type="button" value="Bebida"/>
+                                                                                                                </td>
+                                                                                                                <td >
+                                                                                                                        <input data-id="9" class="selector s3" type="button" value="Carnes"/>
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                        <input data-id="7" class="selector s3" type="button" value="Desayuno"/>
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                        <input data-id="12" class="selector s3" type="button" value="Ensaladas"/>
+                                                                                                                </td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                                <td>
+                                                                                                                        <input data-id="14" class="selector s3" type="button" value="Mariscos"/>
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                        <input data-id="13" class="selector s3" type="button" value="Postres"/>
+                                                                                                                </td>
+                                                                                                                <td>
+                                                                                                                        <input data-id="10" class="selector s3" type="button" value="Vegetariano"/>
+                                                                                                                </td>
+                                                                                                        </tr>
+                                                                                                        </table>
+                                                                                                </td>-->
+                                    </tr>
+                                </table>
                             </div>
-							
+
+
+
+
+
+                            <div id="categorias-menu">
+                                <ul id="listaCategoriasNoBusqueda" class="categorias-menu">
+
+                                    <li><a id="cat1" class="last" value="" onclick="busquedaRecetas(2, null, null)"><span>Todos</span></a></li>
+                                    <li><a id="cat2" class="last" value="6" onclick="busquedaRecetas(2, 6, null)"><span>Bebidas</span></a></li>
+                                    <li><a id="cat3" class="last" value="7" onclick="busquedaRecetas(2, 7, null)"><span>Desayuno</span></a></li>
+                                    <li><a id="cat4" class="last" value="9" onclick="busquedaRecetas(2, 9, null)"><span>Carnes</span></a></li>
+                                    <li><a id="cat5" class="last" value="12" onclick="busquedaRecetas(2, 12, null)"><span>Ensaladas</span></a></li>
+                                    <li><a id="cat6" class="last" value="13" onclick="busquedaRecetas(2, 13, null)"><span>Postres</span></a></li>
+                                    <li><a id="cat7" class="last" value="10" onclick="busquedaRecetas(2, 10, null)"><span>Vegetariano</span></a></li>
+                                    <li><a id="cat8" class="last" value="14" onclick="busquedaRecetas(2, 14, null)"><span>Mariscos</span></a></li>
+
+                                </ul>
+                                <ul id="listaCategoriasBusquedaAvanzada" style="display:none" class="categorias-menu">
+
+                                    <li><a data-id="-1" class="selector s3" class="last"><span>Todos</span></a></li>
+                                    <li><a data-id="6" class="selector s3" class="last" value="6"><span>Bebidas</span></a></li>
+                                    <li><a data-id="7" class="selector s3" class="last" value="7" ><span>Desayuno</span></a></li>
+                                    <li><a data-id="9" class="selector s3" class="last" value="9" ><span>Carnes</span></a></li>
+                                    <li><a data-id="12" class="selector s3" class="last" value="12"><span>Ensaladas</span></a></li>
+                                    <li><a data-id="13" class="selector s3" class="last" value="13"><span>Postres</span></a></li>
+                                    <li><a data-id="10" class="selector s3" class="last" value="10"><span>Vegetariano</span></a></li>
+                                    <li><a data-id="14" class="selector s3" class="last" value="14"><span>Mariscos</span></a></li>
+
+                                </ul>
+                            </div>
+                            <div id="resultadoRecetas" class="resultado-recetas">
+
+                            </div>
+
                         </div>
                     </td>
 
@@ -318,13 +335,14 @@
                             <table>
                                 <tr>
                                     <td>
-                                         <div id="fb-root"></div>
+                                        <button id="FacebookButton" onclick="facebookLayer()"><img src="images/Facebook_Logo.png" width=40 height=40> </button>
+                                        <!--<div id="fb-root"></div>
                                         <div class="fb-share-button" data-href="http://localhost:8080/SmartHealth/index.html"></div>
-                                    </td>
+                                        --></td>
                                 </tr>
                                 <tr>
                                     <td>
-                                         <img src="images/tip.jpg">Tip1
+                                        <img src="images/tip.jpg">Tip1
                                     </td>
                                 </tr>
                                 <tr>

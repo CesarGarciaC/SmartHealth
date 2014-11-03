@@ -205,6 +205,28 @@ h2{
 
 }
 
+#fb_closeBtn{
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: -15px;
+  right: -15px;
+  background-image: url('../images/close.png');
+  cursor: pointer;
+  z-index: 10000011;
+}
+
+#user_closeBtn{
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: -15px;
+  right: -15px;
+  background-image: url('../images/close.png');
+  cursor: pointer;
+  z-index: 10000011;
+}
+
 
 #categorias-menu 
 {
@@ -277,11 +299,16 @@ td .menu-option
     font-weight:bold;
     
 }
-
-#CloseSesion:hover
+#usuarioLogin:hover
 {
 	cursor: pointer;
 }
+#usuarioLogout:hover
+{
+	cursor: pointer;
+}
+
+
 td .menu-option:hover
 {
     background-color:orange;

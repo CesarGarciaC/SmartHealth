@@ -1,19 +1,15 @@
 
-function SendVariables(page, user) {
-    page += "?";
-    page += escape(user.ID) + "&"; /////////////////// ID
-    page += escape(user.user_nicename) + "&"; ///////////// NICENAME
-    page += escape(user.user_email);  //////////////// EMAIL
-    location.href = page;
-}
-
 function loginUser(user) {
     if ((user.code) == "badLoginInformation") {
         alert(user.message);
     }
     else {
         alert("Bienvenido " + user.user_nicename);
-        SendVariables("index.html", user);
+        parent.document.getElementById('usuarioLogin').innerHTML="";
+        parent.document.getElementById('iniSesion').innerHTML="<img src=images/user.png >"+user.user_nicename;
+        parent.document.getElementById('usuarioLogout').innerHTML="Cerrar Sesión";
+        parent.userLogin(user.ID,user.user_nicename,user.user_email);
+        parent.closeIframe();
     }
 }
 
