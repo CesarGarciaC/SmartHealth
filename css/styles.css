@@ -183,7 +183,9 @@ h2{
 	width: 40px;
 	height: 40px;
 	top: -5px;
-	right: 0.8px
+	right: 0.8px;
+	color: #5D5D58;
+	text-shadow: 1px 1px 1px #84720A;
 
 }
 

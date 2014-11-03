@@ -281,6 +281,7 @@ function paintRecipes(numColumns, data2) {
 
 $(document).click(function(event) {
 	if(selectedRecipe!=''){
+
 		if (!$(event.target).is('#' + selectedRecipe)) {
 			var idDelete = selectedRecipe.split("_")[1];
 			cancelarSeleccion(idDelete);
@@ -289,10 +290,14 @@ $(document).click(function(event) {
 })
 
 function cancelarSeleccion(idDiv) {
+
     var mainDiv = document.getElementById('receta_' + idDiv);
     var deleteDiv = document.getElementById('select_receta_' + idDiv);
-    mainDiv.removeChild(deleteDiv);
-    selectedRecipe = '';
+	try{
+	mainDiv.removeChild(deleteDiv);
+	selectedRecipe = '';
+	}catch(ex){}
+
 }
 
 function busquedaRecientes() {
@@ -449,7 +454,7 @@ function busquedaRecetas(column, cat, keyword)
 }
 
 var idReceta;
- function seleccionarReceta(idRecetaSeleccionada){
+ function seleccionarReceta(idRecetaSeleccionada,i){
                 if (User.id=="")
                 {
                     $("#favoritosBtn").hide();
