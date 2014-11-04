@@ -4,6 +4,7 @@ function loginUser(user) {
         alert(user.message);
     }
     else {
+        
         alert("Bienvenido " + user.user_nicename);
         parent.document.getElementById('usuarioLogin').innerHTML="";
         parent.document.getElementById('iniSesion').innerHTML="<img src=images/user.png >"+user.user_nicename;
