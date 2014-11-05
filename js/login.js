@@ -7,8 +7,8 @@ function loginUser(user) {
         
         alert("Bienvenido " + user.user_nicename);
 				
-        alert(document.getElementById('usuarioLogin'));
-		alert('holi');
+        parent.document.getElementById('usuarioLogin').innerHTML="";
+
         parent.document.getElementById('iniSesion').innerHTML="<img src=images/user.png >"+user.user_nicename;
 		
 
