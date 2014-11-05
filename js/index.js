@@ -264,7 +264,7 @@ function paintRecipes(numColumns, data2) {
     totalResults = data2.recetas.length;
     
     var targetdiv = $('#resultadoRecetas')
-    if (numColumns==2) targetdiv.css("width","75%");
+    if (numColumns==2) targetdiv.css("width","70%");
     var recetaDiv = "<table>";
     for (var i = 0; i < data2.recetas.length; i++) {
         if (i % numColumns == 0)

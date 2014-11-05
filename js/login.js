@@ -10,7 +10,7 @@ function loginUser(user) {
         parent.document.getElementById('usuarioLogin').innerHTML="";
 
         parent.document.getElementById('iniSesion').innerHTML="<img src=images/user.png >"+user.user_nicename;
-		
+		parent.document.getElementById('menuFavoritos').setAttribute('onclick','obtenerFavoritos()');
 
         parent.document.getElementById('usuarioLogout').innerHTML="Cerrar Sesión";
         parent.userLogin(user.ID,user.user_nicename,user.user_email);
