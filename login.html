@@ -12,7 +12,7 @@ and open the template in the editor.
         <link rel="stylesheet" type="text/css" href="css/loginStyle.css"/>
         <script type="text/javascript" src="js/login.js"></script>
         <script type="text/javascript" src="js/jquery.keyboardlogin.js"></script>
-        
+
         <link href="css/keyboardLogin.css" rel="stylesheet"/>
         <meta charset="UTF-8">
         <script>
@@ -27,7 +27,8 @@ and open the template in the editor.
     <body>
 
         <div class="login-card">
-            <h1>Iniciar Sesión</h1><br>
+            <h1 style="margin-bottom: 0px;">Iniciar Sesión</h1>
+            <b style="position: relative;padding-left: 230px;padding-bottom: 20px;">PUCP</b><br>
 
 
             <form id="tabla" >
@@ -38,14 +39,16 @@ and open the template in the editor.
 
             </form>
 
-             
+
             <input type="submit" name="login" class="login login-submit" value="Acceder" onclick="InicioSesion()">
+
+            <a id="lostPassword" onclick="alert('Para restaurar tu contraseña accede a http://200.16.7.111/wordpress/ ');">¿Has olvidado la contraseña?</a><a id="noUSer" onclick="alert('Si no cuenta con un usuario PUCP, registrese en http://200.16.7.111/wordpress/');" style="padding-left:15px;">Registrarse</a>
 
 
 
         </div>
 
 
-         
+
     </body>
 </html>
