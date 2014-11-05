@@ -60,10 +60,11 @@ $(document).ready($(function()
     var updatedData = busquedaRecetas(3, "", "");
 
     // keyboard events
-    var leftMenuElements = ["menu1","menuFavoritos","menuRecientes","menuCategorias"];
-    var activeElementIndex = 0;
+    var leftMenuElements = ["Usuario","menu1","menuFavoritos","menuRecientes","menuCategorias"];
+    var activeElementIndex = 1;
     var isInDetailView = false;
-    var activeElement = leftMenuElements[0];
+    var activeElement = leftMenuElements[1];
+    $("#" + activeElement).css("background-color","orange");
     var activeElementType = "leftMenu";
     
     $(document).keydown(function(event) {
@@ -102,6 +103,11 @@ $(document).ready($(function()
                 if(activeId >= 0){
                     activeElementIndex -= columns;
                     activeElement = "receta_" + activeElementIndex;
+                }
+                else{
+                    $("#keyboard").getkeyboard().reveal();
+                    activeElement = "keyboard";
+                    activeElementType = "searchKeyboard";
                 }
             }
         }
@@ -142,10 +148,18 @@ $(document).ready($(function()
                 seleccionarReceta($("#" + activeElement).attr("value").split("_")[1]);
             }
         }
-        else if(keyCode == 461){ // back
-            $('#recipe-details').addClass("invisible-block"); 
-            $('#data-container').removeClass("invisible-block");       
-            isInDetailView = false;
+        else if(keyCode == 461 || keyCode == 72){ // back
+            if(activeElementType == "searchKeyboard"){
+                $("#keyboard").getkeyboard().close();
+                activeElementType = "results";
+                activeElementIndex = 0; 
+                activeElement = "receta_0"; 
+            }
+            else {
+                $('#recipe-details').addClass("invisible-block"); 
+                $('#data-container').removeClass("invisible-block");       
+                isInDetailView = false;
+            }
         }
         else if(keyCode == 33){ // page up
             
@@ -159,11 +173,11 @@ $(document).ready($(function()
         else if(keyCode == 413 || keyCode == 83){ // stop
             $('#voiceStopBtn').click();    
         }
-        else if(keyCode == 19 || keyCode == 179){ // pause
+        /*else if(keyCode == 19 || keyCode == 179){ // pause
             var audio = new Audio();
             audio.src ='http://translate.google.com/translate_tts?ie=utf-8&tl=en&q=Hello%20World.';
             audio.play();
-        }
+        }*/
         else if(keyCode == 412 || keyCode == 177){ // rwd
             $('#voiceBckBtn').click();
             //alert("rwd");
@@ -171,6 +185,7 @@ $(document).ready($(function()
         else if(keyCode == 417 || keyCode == 176){ // fwd
             $('#voiceFwdBtn').click();            
         }
+
         //console.log(activeElement);
         if(activeElementType == "results"){
             $("#" + activeElement).addClass('detalle-receta-seleccionada');    
@@ -196,7 +211,7 @@ $(document).ready($(function()
         $("#userlayer").fadeOut(100);
     });
 
-$('#fb_closeBtn').click(function() {
+    $('#fb_closeBtn').click(function() {
         $("#main-container").stop(true).animate({opacity: 1}, 100);
         $('#facebookHtml').html('');
         $("#facebooklayer").fadeOut(100);
@@ -211,8 +226,8 @@ $('#fb_closeBtn').click(function() {
         }
     });
 
-
-
+    $("#menu1").click();  
+    //$('#keyboard').getkeyboard().addNavigation();  
 
 }));
 
