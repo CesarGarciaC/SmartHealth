@@ -6,8 +6,12 @@ function loginUser(user) {
     else {
         
         alert("Bienvenido " + user.user_nicename);
-        parent.document.getElementById('usuarioLogin').innerHTML="";
+				
+        alert(document.getElementById('usuarioLogin'));
+		alert('holi');
         parent.document.getElementById('iniSesion').innerHTML="<img src=images/user.png >"+user.user_nicename;
+		
+
         parent.document.getElementById('usuarioLogout').innerHTML="Cerrar Sesión";
         parent.userLogin(user.ID,user.user_nicename,user.user_email);
         parent.closeIframe();
