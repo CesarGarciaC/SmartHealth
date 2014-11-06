@@ -337,7 +337,15 @@ function paintRecipes(numColumns, data2) {
             recetaDiv += '<tr>'
         recetaDiv += '<td><div id="receta_' + i + '" value="receta_' + data2.recetas[i].id + '" class="detalle-receta">';
         var puntuacion = '<div style="float:left; margin-bottom:20px;" class="basicNoEditable" data-average="' + parseInt(data2.recetas[i].rating/data2.recetas[i].raters) + '"data-id="' + data2.recetas[i].id + '"></div>';
-        var textoReceta = '<div id=textReceta_' + i + ' class="texto-detalle"><p>' + data2.recetas[i].name + '</p></div>';
+        
+		var nameAlt=data2.recetas[i].name;
+		if(nameAlt.length>=50){
+		nameAlt=nameAlt.substring(0,48);
+		nameAlt+="...";
+		}
+		
+		
+		var textoReceta = '<div id=textReceta_' + i + ' class="texto-detalle"><p>' + nameAlt + '</p></div>';
         var imagenReceta = '<div id=imagenReceta_' + i + ' class="imagen-detalle"><img src="data:image/jpg;base64,' + data2.recetas[i].image + '" width="82 "height="76"></div>';
 		recetaDiv += puntuacion + textoReceta + imagenReceta;
 		if(isTop10){
@@ -541,6 +549,14 @@ function busquedaTop10() {
         alert(ex.description)
     }
 
+}
+
+function cambiarMouseSelected(){
+	document.body.style.cursor = 'pointer';
+}
+
+function quitarMouseSelected(){
+	document.body.style.cursor = 'pointer';
 }
 
 function busquedaRecetas(column, cat, keyword)

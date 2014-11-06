@@ -140,6 +140,7 @@ body
 .detalle-receta-seleccionada{ 
 	border: 2px solid #1CC2EC !important;
 	-webkit-box-shadow: #1CC2EC 0px 0px 6px 3px;
+	cursor:pointer;
 }
 
 .detalle-receta .texto-detalle
@@ -294,6 +295,7 @@ input[type='button']:hover
 
 td .menu-option
 {
+
     color:khaki;
     font-size: 20px;
     font-weight:bold;
@@ -311,6 +313,7 @@ td .menu-option
 
 td .menu-option:hover
 {
+	cursor: pointer;
     background-color:orange;
     
 }
