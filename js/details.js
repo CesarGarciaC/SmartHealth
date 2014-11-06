@@ -360,7 +360,7 @@ $(document).ready($(function () {
             async: false,
             success: function(response)          //on recieve of reply
             {
-              alert("Receta agregada a favoritos!!!")    
+                mostrarMensajeInformativo("Receta agregada a favoritos");
             } 
           });
 
