@@ -1,16 +1,3 @@
- 
- var idReceta;
- function seleccionarReceta(idRecetaSeleccionada){
-                if (User.id=="")
-                {
-                    $("#favoritosBtn").hide();
-                    $("#btnPuntuacion").hide();
-                }
-		getDetails(parseInt(idRecetaSeleccionada));
-		idReceta=parseInt(idRecetaSeleccionada);
-		cancelarSeleccion(idRecetaSeleccionada);
-		$('#receta_'+idRecetaSeleccionada).removeClass('detalle-receta-seleccionada');
- }
 
 $(document).ready($(function () {
     
@@ -24,7 +11,7 @@ $(document).ready($(function () {
   $('#volverBtn').click(function(){
   		$('#recipe-details').addClass("invisible-block"); 
       $('#data-container').removeClass("invisible-block"); 
-       		
+      isInDetailView = false; 		
   });
 
   

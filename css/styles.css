@@ -114,7 +114,7 @@ body
 	-webkit-border-radius: 10px; 
 	-moz-border-radius: 10px;
 	border-radius: 10px;
-
+	padding-right: 10px;
 }
 
 .submenu
@@ -140,6 +140,7 @@ body
 .detalle-receta-seleccionada{ 
 	border: 2px solid #1CC2EC !important;
 	-webkit-box-shadow: #1CC2EC 0px 0px 6px 3px;
+	cursor:pointer;
 }
 
 .detalle-receta .texto-detalle
@@ -167,11 +168,33 @@ body
 	z-index:-1;
 }
 
+.detalle-receta .imagen-top
+{
+
+	float:left;
+	margin:10px px 0px 0px;
+	background: url(../images/smooth-star.png) no-repeat 10px 6px;
+
+}
+
+h2{
+
+	float:left;
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	top: -5px;
+	right: 0.8px;
+	color: #5D5D58;
+	text-shadow: 1px 1px 1px #84720A;
+
+}
+
 .resultado-recetas
 {
 	height:70%;
 	width:95%;
-	overflow-y:scroll;
+	overflow-y:auto;
 	position:relative;
 	top:120px;
 	left:20px;
@@ -181,6 +204,28 @@ body
 {
 	border-spacing:15px;
 
+}
+
+#fb_closeBtn{
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: -15px;
+  right: -15px;
+  background-image: url('../images/close.png');
+  cursor: pointer;
+  z-index: 10000011;
+}
+
+#user_closeBtn{
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: -15px;
+  right: -15px;
+  background-image: url('../images/close.png');
+  cursor: pointer;
+  z-index: 10000011;
 }
 
 
@@ -250,18 +295,25 @@ input[type='button']:hover
 
 td .menu-option
 {
+
     color:khaki;
     font-size: 20px;
     font-weight:bold;
     
 }
-
-#CloseSesion:hover
+#usuarioLogin:hover
 {
 	cursor: pointer;
 }
+#usuarioLogout:hover
+{
+	cursor: pointer;
+}
+
+
 td .menu-option:hover
 {
+	cursor: pointer;
     background-color:orange;
     
 }

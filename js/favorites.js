@@ -1,7 +1,6 @@
  
     function obtenerFavoritos()
     {
-       
 		
 		$("#search-advanced").hide();
 		$("#categorias-menu").hide();
