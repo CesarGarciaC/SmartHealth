@@ -68,7 +68,11 @@ $(document).ready($(function()
         $("#menuFavoritos").removeAttr('onclick')
         
     }
+	//Categorias
 
+	getCategories(false);
+	getCategories(true);
+	
     var updatedData = busquedaRecetas(3, "", "");
 
     $("#" + activeElement).css("background-color","orange");
