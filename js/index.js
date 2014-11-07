@@ -215,6 +215,15 @@ $(document).ready($(function()
                 cancelarSeleccion(activeElementIndex);
             }*/
             
+            $('#recipe-details').addClass("invisible-block"); 
+            $('#data-container').removeClass("invisible-block"); 
+            isInDetailView = false; 	
+            $("#ratingUsuario").remove();
+            $("#ratingPromedio").remove();
+
+            $("#imgRatingUsuario").remove();
+            $("#imgRatingPromedio").remove();
+      
             if(activeElementType == "searchKeyboard"){
                 $("#keyboard").getkeyboard().close();
                 activeElementType = "results";
