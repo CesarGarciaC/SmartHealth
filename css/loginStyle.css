@@ -1,5 +1,5 @@
 body {
-    background: gray;
+    background: #FF8944;
     height:320px;
     width:800px;
 }
@@ -70,7 +70,7 @@ body {
   border: 0px;
   color: #fff;
   text-shadow: 0 1px rgba(0,0,0,0.1); 
-  background-color: #4d90fe;
+  background-color: #FF8944;
   /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
 }
 
@@ -78,7 +78,7 @@ body {
   /* border: 1px solid #2f5bb7; */
   border: 0px;
   text-shadow: 0 1px rgba(0,0,0,0.3);
-  background-color: #357ae8;
+  background-color: #FAB586;
   /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
 }
 
@@ -94,7 +94,7 @@ body {
 
 .login-card b {
   text-decoration: none;
-  color: blue;
+  color: #FF8944;
   font-weight: bold;
   text-align: center;
   display: inline-block;
