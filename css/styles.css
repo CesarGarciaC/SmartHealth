@@ -194,7 +194,7 @@ h2{
 {
 	height:70%;
 	width:95%;
-	overflow-y:auto;
+	overflow-y:hidden;
 	position:relative;
 	top:120px;
 	left:20px;
@@ -311,12 +311,12 @@ td .menu-option
 }
 
 
-td .menu-option:hover
+/*td .menu-option:hover
 {
 	cursor: pointer;
     background-color:orange;
     
-}
+}*/
 
 a
 {
@@ -331,4 +331,23 @@ a
 
 .invisible-block{
 	display: none;
+}
+
+#menu-container .menu-option{
+	border:2px solid transparent;	
+}
+
+#menu-container .menu-option:hover{
+	border: 2px solid orange;
+	border-radius: 5px;
+}
+
+#menu-container .menu-option.keynav{
+	border: 2px solid orange;
+	border-radius: 5px;
+}
+
+#menu-container .menu-option.selected{
+	background-color: orange;
+	border-radius: 5px;
 }
