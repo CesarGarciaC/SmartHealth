@@ -55,7 +55,7 @@ var activeElement = leftMenuElements[1];
 var activeElementType = "leftMenu";
 //var isClicked = false;
 var selectedMenuItem = "menu1";
-    
+var isInFavoriteView=false;
 
 $(document).ready($(function()
 {     /////////////////////////////Nombre usuario al iniciar sesion////////
@@ -440,9 +440,16 @@ function clickReceta(elemId, id, value){
 
             document.getElementById(elemId).appendChild(newdiv);
             var btnFav='<button id="botonFav_' + elemId + '" onclick="agregarFavoritosPreview(' + id + ')">Favoritos +</button>';
-            if (User.id=="")
-                btnFav='<button disabled="true" id="botonFav_' + elemId + '" onclick="agregarFavoritosPreview(' + id + ')">Favoritos +</button>';
-                
+            if (isInFavoriteView)
+            {
+                btnFav='<button id="botonFav_' + elemId + '" onclick="eliminarFavoritosPreview(' + id + ')">Quitar de favoritos</button>';
+            }
+            else
+            {
+                if (User.id=="")
+                    btnFav='<button disabled="true" id="botonFav_' + elemId + '" onclick="agregarFavoritosPreview(' + id + ')">Favoritos +</button>';
+             
+            }
             $('#select_' + elemId).html(btnFav
                 + '<button id="botonVer_' + elemId + '" onclick="seleccionarReceta(' + id + ')">Ver</button>'
                 + '<button id="botonCan_' + elemId + '" onclick="cancelarSeleccion(' + id + ')" >Cancelar</button>');
@@ -625,11 +632,11 @@ function busquedaRecetas(column, cat, keyword)
 
 var idReceta;
  function seleccionarReceta(idRecetaSeleccionada,i){
-                /*if (User.id=="")
+                if (User.id=="")
                 {
                     $("#favoritosBtn").hide();
                     $("#btnPuntuacion").hide();
-                }*/
+                }
         isInDetailView = true;
         //isClicked = false;
         getDetails(parseInt(idRecetaSeleccionada));
@@ -638,5 +645,3 @@ var idReceta;
         $('#receta_'+idRecetaSeleccionada).removeClass('detalle-receta-seleccionada');
         
  }
-
-
