@@ -61,9 +61,12 @@ function voteWebService(rate)
  {
      if (ratingUsuario>0)
      {
-//         alert(ratingUsuario+"-"+ratingPromedio)
-        $("#topContainer").append("<div id='ratingUsuario' style='left:200px;top:20px' class='basicNoEditable' data-average='"+ratingUsuario+"'></div>")
-        $("#topContainer").append("<div id='ratingPromedio' style='left:450px' class='basicNoEditable' data-average='"+ratingPromedio+"'></div>")
+        alert("Receta ya calificada")
+        $("#recipeHeader").append("<img id='imgRatingUsuario' style='position:absolute;left:690px;top:0px' src='images/user_one.png' />")
+        $("#recipeHeader").append("<div id='ratingUsuario' style='left:330px;top:0px' class='basicNoEditable' data-average='"+ratingUsuario+"'></div>")
+        
+        $("#recipeHeader").append("<img id='imgRatingPromedio' style='position:absolute;left:690px' src='images/user_much.png' />")
+        $("#recipeHeader").append("<div id='ratingPromedio' style='position:absolute!important;left:730px;margin-top:10px' class='basicNoEditable' data-average='"+ratingPromedio+"'></div>")
         reloadRating();
         $("#btnPuntuacion").hide();
      }

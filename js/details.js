@@ -11,7 +11,12 @@ $(document).ready($(function () {
   $('#volverBtn').click(function(){
   		$('#recipe-details').addClass("invisible-block"); 
       $('#data-container').removeClass("invisible-block"); 
-      isInDetailView = false; 		
+      isInDetailView = false; 	
+      $("#ratingUsuario").remove();
+      $("#ratingPromedio").remove();
+      
+      $("#imgRatingUsuario").remove();
+      $("#imgRatingPromedio").remove();
   });
 
   

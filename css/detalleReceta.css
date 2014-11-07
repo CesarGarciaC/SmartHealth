@@ -110,9 +110,10 @@
 
 #recipeHeader {
   position: relative;
-  height: 50px;
+  height: 100px;
   width: 100%;
   overflow: hidden;
+  padding-top:10px;
 }
 
 #ingredientesDiv {
@@ -205,7 +206,7 @@
 #favoritosBtn {
   position: absolute;
   height: 35px;
-  right: 160px;
+  right: 10px;
   top: -10px;
   width: 100px;  
 }
