@@ -52,7 +52,7 @@ function paintEventsTips(){
 		var direccion=event[i].address;
 		var lugar=direccion.split(",")[0];
 		 eventDiv+='<tr><td><div class="detalleDiv" style="background: url(images/tipBackground.png)">'+
-		 '<p style="margin-bottom:10px; height:20%;color: rgb(58,58,58);font-weight: bold;font-size: 14px;">'+event[i].name+'</p>'+
+		 '<p style="margin-bottom:10px; height:25%;color: rgb(58,58,58);font-weight: bold;font-size: 14px;">'+event[i].name+'</p>'+
 		 '<div style="text-align:left;float:left;margin-bottom:10px;">'+
 		 '<p style="display: inline;margin-right:5px;font-weight: bold;">Fecha:</p>'+
 		 '<p style="display: inline;margin-bottom:5px;">Sin Fecha </p></div><br>' +

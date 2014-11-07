@@ -79,19 +79,26 @@ $(document).ready($(function () {
 
   //Slider vertical
 
-  $('#vertical_slider_bar').click(function(){
-      $('#ingredientesContainer').fadeToggle(500); 
-      $('#instructionsContainer').fadeToggle(500);       
-  });
+   $("#vertical_slider_bar").toggle(function() {
+      $(this).animate({right: '+=695px'});
 
-  $("#vertical_slider_bar").toggle(function() {
-    $(this).animate({right: '+=695px'});
+      $('#ingredientesContainer').fadeOut(500).promise().done(function(){
+        $('#instructionsContainer').fadeIn(500);
+      });
+
+      $('#vsliderbar_arrow').css('background-image','url(images/ArrowRight.png)');
+
   }, function() {
       $(this).animate({right: '-=695px'});
+
+      $('#instructionsContainer').fadeOut(500).promise().done(function(){
+        $('#ingredientesContainer').fadeIn(500);
+      });
+
+      $('#vsliderbar_arrow').css('background-image','url(images/ArrowLeft.png)');
   });
 
 
-  //Carrusel
   $('.center').slick({
     centerMode: true,
     centerPadding: '35px',
@@ -359,7 +366,7 @@ $(document).ready($(function () {
       try {
 //            alert(User.id)
           var data="id_user="+User.id+"&id_recipe="+idReceta;
-          alert(data)
+
           $.ajax({        
 
             url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=smartAddFavService&format=json&',                  //the script to call to get data          
