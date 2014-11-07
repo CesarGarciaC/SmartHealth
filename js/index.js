@@ -54,6 +54,7 @@ var isInDetailView = false;
 var activeElement = leftMenuElements[1];
 var activeElementType = "leftMenu";
 var isClicked = false;
+var isInFavoriteView=false;
     
 
 $(document).ready($(function()
@@ -429,9 +430,16 @@ function clickReceta(elemId, id, value){
 
             document.getElementById(elemId).appendChild(newdiv);
             var btnFav='<button id="botonFav_' + elemId + '" onclick="agregarFavoritosPreview(' + id + ')">Favoritos +</button>';
-            if (User.id=="")
-                btnFav='<button disabled="true" id="botonFav_' + elemId + '" onclick="agregarFavoritosPreview(' + id + ')">Favoritos +</button>';
-                
+            if (isInFavoriteView)
+            {
+                btnFav='<button id="botonFav_' + elemId + '" onclick="eliminarFavoritosPreview(' + id + ')">Quitar de favoritos</button>';
+            }
+            else
+            {
+                if (User.id=="")
+                    btnFav='<button disabled="true" id="botonFav_' + elemId + '" onclick="agregarFavoritosPreview(' + id + ')">Favoritos +</button>';
+             
+            }
             $('#select_' + elemId).html(btnFav
                 + '<button id="botonVer_' + elemId + '" onclick="seleccionarReceta(' + id + ')">Ver</button>'
                 + '<button id="botonCan_' + elemId + '" onclick="cancelarSeleccion(' + id + ')" >Cancelar</button>');
