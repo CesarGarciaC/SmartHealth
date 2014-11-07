@@ -12,7 +12,7 @@
  }));
  
     function obtenerFavoritos()
-    {   if(User.id!==""){
+    {   if(User.id!=""){
         mostrarLoading();
         isInFavoriteView=true;
 		$("#search-advanced").hide();
