@@ -46,16 +46,16 @@ var totalResults;
 
 // keyboard events
 var leftMenuElements = ["Usuario","menu1","menuFavoritos","menuRecientes","menuCategorias"];
-var recipeMenuElements = ["botonFav_","botonVer_","botonCan_"];
-var activeRecipeMenuElement = "botonVer_";
-var recipeMenuIndex = 1;
+//var recipeMenuElements = ["botonFav_","botonVer_","botonCan_"];
+//var activeRecipeMenuElement = "botonVer_";
+//var recipeMenuIndex = 1;
 var activeElementIndex = 1;
 var isInDetailView = false;
 var activeElement = leftMenuElements[1];
 var activeElementType = "leftMenu";
-var isClicked = false;
-
-
+//var isClicked = false;
+var selectedMenuItem = "menu1";
+var isInFavoriteView=false;
 
 $(document).ready($(function()
 {     /////////////////////////////Nombre usuario al iniciar sesion////////
@@ -76,48 +76,49 @@ $(document).ready($(function()
 	
     var updatedData = busquedaRecetas(3, "", "");
 
-    $("#" + activeElement).css("background-color","orange");
+    $("#" + selectedMenuItem).addClass("selected");
     
-    window.addEventListener("keydown", function(e) {
-    // space and arrow keys
-        if(isClicked && [37, 38, 39, 40].indexOf(e.keyCode) > -1) {
-            e.preventDefault();
-        }
-    }, false);
+    $('.menu-option').mousedown(function(){
+        $("#" + selectedMenuItem).removeClass("selected");
+        selectedMenuItem = this.id;
+        $(this).addClass("selected");
+                
+    });
 
     $(document).keydown(function(event) {
         //alert(event.keyCode);
         if(activeElementType == "results")
             $("#" + activeElement).removeClass('detalle-receta-seleccionada');    
         else if (activeElementType == "leftMenu"){
-            $("#" + activeElement).css("background-color","");
+            $("#" + activeElement).removeClass("keynav");
         }
-        else if (isClicked){
+        /*else if (isClicked){
             //event.preventDefault();
             $('#' + activeRecipeMenuElement + activeElementIndex).css("background-color","");
-        }
+        }*/
         var keyCode = event.keyCode;
         //alert(keyCode);
         var activeId;
         if(keyCode == 37){ // left
-            if(!isClicked){
-                $(activeElement).removeClass("hover");
+            //if(!isClicked){
+                //$(activeElement).removeClass("hover");
             
                 if(!isInDetailView && activeElementType == "results"){
                     //activeId = parseInt(activeElement.split("_")[1]);
-                    if(activeElementIndex == 0){
+                    if(activeElementIndex % columns == 0){
                         activeElementType = "leftMenu";
-                        activeElement = leftMenuElements[activeElementIndex];
+                        activeElement = leftMenuElements[1];
+                        activeElementIndex = 1;
                     }
                     else{
                         activeElementIndex --;
                         activeElement = "receta_" + activeElementIndex;
                     }
                 }
-            }
+            //}
         }
         else if(keyCode == 38){ // up
-            if (!isClicked){
+            //if (!isClicked){
                 if(activeElementType == "leftMenu"){
                     if(activeElementIndex > 0){
                         activeElementIndex--;
@@ -130,7 +131,13 @@ $(document).ready($(function()
                         activeElementIndex -= columns;
                         activeElement = "receta_" + activeElementIndex;
                         //scrollToPosition("#resultadoRecetas",activeElementIndex / columns * (150 + 5));
-                        scrollToPosition("#resultadoRecetas","#" + activeElement);
+                        //scrollToPosition("#resultadoRecetas","#" + activeElement);
+                        var container = $("#resultadoRecetas");
+                        var scrollTo = $('#' + activeElement);
+
+                        container.animate({
+                            scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
+                        });                        
                     }
                     else{
                         $("#keyboard").getkeyboard().reveal();
@@ -138,14 +145,14 @@ $(document).ready($(function()
                         activeElementType = "searchKeyboard";
                     }
                 }
-            }
-            else{
-                alert("click");
+            //}
+            /*else{
+                //alert("click");
                 if (recipeMenuIndex - 1 >= 0){
                     recipeMenuIndex--;
                     activeElement = recipeMenuElements[recipeMenuIndex];
                 }
-            }
+            }*/
         }
         else if(keyCode == 39){ // right
             if(!isInDetailView && activeElementType == "leftMenu"){
@@ -165,8 +172,7 @@ $(document).ready($(function()
             if(activeElementType == "leftMenu"){
                 if(activeElementIndex < leftMenuElements.length - 1){
                     activeElementIndex++;
-                    activeElement = leftMenuElements[activeElementIndex];
-                    scrollToPosition("#resultadoRecetas","#" + activeElement);
+                    activeElement = leftMenuElements[activeElementIndex];                    
                 }
             }
             else if (!isInDetailView && activeElementType == "results"){
@@ -174,26 +180,36 @@ $(document).ready($(function()
                 if(activeId < totalResults){
                     activeElementIndex += columns;
                     activeElement = "receta_" + activeElementIndex;
+
+                    var container = $("#resultadoRecetas");
+                    var scrollTo = $('#' + activeElement);
+
+                    container.animate({
+                        scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
+                    });                    
                 }
             }    
         }
         else if(keyCode == 13){ // enter
             if(activeElementType == "leftMenu"){
+                $("#" + selectedMenuItem).removeClass("selected");
+                selectedMenuItem = activeElement;
+                $("#" + selectedMenuItem).addClass("selected");
                 $("#" + activeElement).click();
             }    
             else if (!isInDetailView && activeElementType == "results"){
-                var temp = document.getElementById(activeElement);
-                clickReceta(temp.id, $(temp).attr("id"),$(temp).attr("value"));
-                //seleccionarReceta($("#" + activeElement).attr("value").split("_")[1]);
-                //isInDetailView = true;
+                //var temp = document.getElementById(activeElement);
+                //clickReceta(temp.id, $(temp).attr("id"),$(temp).attr("value"));
+                seleccionarReceta($("#" + activeElement).attr("value").split("_")[1]);
+                isInDetailView = true;
                 activeElementType = "detailsView";
             }
         }
         else if(keyCode == 461 || keyCode == 72 || keyCode == 27){ // back
-            if (isClicked){
+            /*if (isClicked){
                 //alert("cancelar");
                 cancelarSeleccion(activeElementIndex);
-            }
+            }*/
             
             if(activeElementType == "searchKeyboard"){
                 $("#keyboard").getkeyboard().close();
@@ -237,11 +253,12 @@ $(document).ready($(function()
             $("#" + activeElement).addClass('detalle-receta-seleccionada');    
         }
         else if (activeElementType == "leftMenu"){
-            $("#" + activeElement).css("background-color","orange");
+            $("#" + activeElement).addClass("keynav");
+            //$("#" + activeElement).addClass("hover");
         }
-        else if (isClicked){
+        /*else if (isClicked){
             $('#' + activeRecipeMenuElement + activeElementIndex).css("background-color","orange");
-        }
+        }*/
         return false;
     });
     
@@ -293,8 +310,7 @@ function closeIframe() {
     $("#main-container").stop(true).animate({opacity: 1}, 100);
     $('#userHtml').html('');
     $("#userlayer").fadeOut(100);
-    
-        
+            
 }
 
 function facebookLayer() {
@@ -378,9 +394,9 @@ function paintRecipes(numColumns, data2) {
             if(activeElementType == "results"){
                 $("#" + activeElement).removeClass('detalle-receta-seleccionada');                    
             }
-            else if (activeElementType == "leftMenu"){
+            /*else if (activeElementType == "leftMenu"){
                 $("#" + activeElement).css("background-color","");
-            }
+            }*/
             $(this).addClass('detalle-receta-seleccionada');
             activeElement = 'receta_' + i;
             activeElementType = "results";
@@ -394,7 +410,7 @@ function paintRecipes(numColumns, data2) {
         $('#receta_' + i).mousedown(function(){
             clickReceta(this.id, $(this).attr("id"),$(this).attr("value"));
             activeElementType = "detailsView";
-            isClicked = true;
+            //isClicked = true;
         });
     }
     reloadRating();
@@ -412,8 +428,8 @@ $(document).click(function(event) {
 })
 
 function clickReceta(elemId, id, value){
-    $('#botonVer_' + id).css("background-color","orange");
-    isClicked = true;
+    //$('#botonVer_' + id).css("background-color","orange");
+    //isClicked = true;
     if (selectedRecipe.length) {
         var idDelete = selectedRecipe.split("_")[1];
         var idActual = id.split("_")[1];
@@ -433,9 +449,16 @@ function clickReceta(elemId, id, value){
 
             document.getElementById(elemId).appendChild(newdiv);
             var btnFav='<button id="botonFav_' + elemId + '" onclick="agregarFavoritosPreview(' + id + ')">Favoritos +</button>';
-            if (User.id=="")
-                btnFav='<button disabled="true" id="botonFav_' + elemId + '" onclick="agregarFavoritosPreview(' + id + ')">Favoritos +</button>';
-                
+            if (isInFavoriteView)
+            {
+                btnFav='<button id="botonFav_' + elemId + '" onclick="eliminarFavoritosPreview(' + id + ')">Quitar de favoritos</button>';
+            }
+            else
+            {
+                if (User.id=="")
+                    btnFav='<button disabled="true" id="botonFav_' + elemId + '" onclick="agregarFavoritosPreview(' + id + ')">Favoritos +</button>';
+             
+            }
             $('#select_' + elemId).html(btnFav
                 + '<button id="botonVer_' + elemId + '" onclick="seleccionarReceta(' + id + ')">Ver</button>'
                 + '<button id="botonCan_' + elemId + '" onclick="cancelarSeleccion(' + id + ')" >Cancelar</button>');
@@ -450,7 +473,7 @@ function cancelarSeleccion(idDiv) {
 	try{
 	mainDiv.removeChild(deleteDiv);
 	selectedRecipe = '';
-    isClicked = false;
+    //isClicked = false;
 	}catch(ex){}
 
 }
@@ -463,7 +486,7 @@ function busquedaRecientes() {
 		$("#search-advanced").hide();
 		$("#categorias-menu").hide();
 		$(".resultado-recetas").css("width","95%");
-		$(".resultado-recetas").css("height","70%");
+		$(".resultado-recetas").css("height","75%");
 		$(".resultado-recetas").css("left","20px");
         var data = "";
         //-----------------------------------------------------------------------
@@ -518,7 +541,7 @@ function busquedaTop10() {
 		$("#search-advanced").hide();
 		$("#categorias-menu").hide();
 		$(".resultado-recetas").css("width","95%");
-		$(".resultado-recetas").css("height","70%");
+		$(".resultado-recetas").css("height","75%");
 		$(".resultado-recetas").css("left","20px");
         var data = "";
         //-----------------------------------------------------------------------
@@ -624,12 +647,10 @@ var idReceta;
                     $("#btnPuntuacion").hide();
                 }
         isInDetailView = true;
-        isClicked = false;
+        //isClicked = false;
         getDetails(parseInt(idRecetaSeleccionada));
         idReceta=parseInt(idRecetaSeleccionada);
         cancelarSeleccion(idRecetaSeleccionada);
         $('#receta_'+idRecetaSeleccionada).removeClass('detalle-receta-seleccionada');
         
  }
-
-
