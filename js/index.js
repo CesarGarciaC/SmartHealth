@@ -56,6 +56,7 @@ var activeElementType = "leftMenu";
 //var isClicked = false;
 var selectedMenuItem = "menu1";
 var isInFavoriteView=false;
+var recipeIsInFavorites=false;
 
 $(document).ready($(function()
 {     /////////////////////////////Nombre usuario al iniciar sesion////////
@@ -459,7 +460,25 @@ function clickReceta(elemId, id, value){
             else
             {
                 if (User.id=="")
+                {
+                    
                     btnFav='<button disabled="true" id="botonFav_' + elemId + '" onclick="agregarFavoritosPreview(' + id + ')">Favoritos +</button>';
+                }
+                else
+                {
+                    var listaFavoritos=obtenerListaFavoritos();
+//                    alert(listaFavoritos)
+                    var divR="#textReceta_"+elemId.split("_")[1];
+                    var nombreReceta=$(divR).children().html();
+                    if (listaFavoritos.indexOf(nombreReceta)>0)
+                    {
+                        recipeIsInFavorites=true;
+                        btnFav='<button disabled="true" id="botonFav_' + elemId + '" onclick="agregarFavoritosPreview(' + id + ')">Favoritos ✓✓</button>';
+                    }
+                    else
+                        btnFav='<button id="botonFav_' + elemId + '" onclick="agregarFavoritosPreview(' + id + ')">Favoritos +</button>';
+                    
+                }
              
             }
             $('#select_' + elemId).html(btnFav
@@ -644,11 +663,20 @@ function busquedaRecetas(column, cat, keyword)
 
 var idReceta;
  function seleccionarReceta(idRecetaSeleccionada,i){
-                if (User.id=="")
-                {
-                    $("#favoritosBtn").hide();
-                    $("#btnPuntuacion").hide();
-                }
+        if (User.id=="")
+        {
+            $("#favoritosBtn").hide();
+            $("#btnPuntuacion").hide();
+        }
+        else
+        {
+            obtenerPuntuacion(idRecetaSeleccionada)
+            if (recipeIsInFavorites)
+            {
+                $("#favoritosBtn").html("Favoritos ✓✓")
+                $("#favoritosBtn").prop("disabled","true");
+            }
+        }
         isInDetailView = true;
         //isClicked = false;
         getDetails(parseInt(idRecetaSeleccionada));
