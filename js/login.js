@@ -1,20 +1,20 @@
 
 function loginUser(user) {
     if ((user.code) == "badLoginInformation") {
-        alert(user.message);
+        mostrarMensajeError(user.message);
+        return user.message;
     }
     else {
-        
-        alert("Bienvenido " + user.user_nicename);
-				
-        parent.document.getElementById('usuarioLogin').innerHTML="";
 
-        parent.document.getElementById('iniSesion').innerHTML="<img src=images/user.png >"+user.user_nicename;
-		parent.document.getElementById('menuFavoritos').setAttribute('onclick','obtenerFavoritos()');
+        parent.document.getElementById('usuarioLogin').innerHTML = "";
 
-        parent.document.getElementById('usuarioLogout').innerHTML="Cerrar Sesión";
-        parent.userLogin(user.ID,user.user_nicename,user.user_email);
+        parent.document.getElementById('iniSesion').innerHTML = "<img src=images/user.png >" + user.user_nicename;
+        parent.document.getElementById('menuFavoritos').setAttribute('onclick', 'obtenerFavoritos()');
+
+        parent.document.getElementById('usuarioLogout').innerHTML = "Cerrar Sesión";
+        parent.userLogin(user.ID, user.user_nicename, user.user_email);
         parent.closeIframe();
+        return "Bienvenido"+user.user_nicename;
     }
 }
 
@@ -30,7 +30,7 @@ function InicioSesion()
         if (user != "" && password != "") {
             data = {
                 username: user,
-                password: password, 
+                password: password,
             }
 
             //-----------------------------------------------------------------------
@@ -45,20 +45,23 @@ function InicioSesion()
                 {
 
                     loginUser(data.data);
+                },
+                error: function() {
+                    alert("Error con el servidor");
                 }
             });
         }
         else if (user == "" && password == "") {
-            alert("El nombre de usuario y la clave no pueden estar vacíos");
-            return "El nombre de usuario y la clave no pueden estar vacíos";
+          //  mostrarMensajeError("El nombre de usuario y la contraseña no pueden estar vacíos");
+            return "El nombre de usuario y la contraseña no pueden estar vacíos";
         }
         else if (user == "") {
-            alert("El nombre de usuario no pueden estar vacío");
+            mostrarMensajeError("El nombre de usuario no pueden estar vacío");
             return "El nombre de usuario no pueden estar vacío";
         }
         else if (password == "")
-            alert("La clave no pueden estar vacía");
-        return "La clave no pueden estar vacía";
+            mostrarMensajeError("La contraseña no pueden estar vacía");
+        return "La contraseña no pueden estar vacía";
 
     } catch (ex) {
         alert(ex.description)
