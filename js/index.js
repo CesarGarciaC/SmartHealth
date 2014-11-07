@@ -471,15 +471,15 @@ function clickReceta(elemId, id, value){
             var id = value.split("_")[1];
 
             document.getElementById(elemId).appendChild(newdiv);
-            var btnFav='<button id="botonFav_' + elemId + '" onclick="agregarFavoritosPreview(' + id + ')">Favoritos +</button>';
+            var btnFav='<button id="botonFav_' + elemId + '" onclick="agregarFavoritosPreview(' + id + ')">Favoritos (+)</button>';
             if (isInFavoriteView)
             {
-                btnFav='<button id="botonFav_' + elemId + '" onclick="eliminarFavoritosPreview(' + id + ')">Quitar de favoritos</button>';
+                btnFav='<button id="botonFav_' + elemId + '" onclick="eliminarFavoritosPreview(' + id + ')">Favoritos (X)</button>';
             }
             else
             {
                 if (User.id=="")
-                    btnFav='<button disabled="true" id="botonFav_' + elemId + '" onclick="agregarFavoritosPreview(' + id + ')">Favoritos +</button>';
+                    btnFav='<button disabled="true" id="botonFav_' + elemId + '" onclick="agregarFavoritosPreview(' + id + ')">Favoritos (+)</button>';
              
             }
             $('#select_' + elemId).html(btnFav
