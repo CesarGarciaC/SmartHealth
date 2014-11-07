@@ -78,6 +78,13 @@ $(document).ready($(function()
 
     $("#" + selectedMenuItem).addClass("selected");
     
+    $('.menu-option').mousedown(function(){
+        $("#" + selectedMenuItem).removeClass("selected");
+        selectedMenuItem = this.id;
+        $(this).addClass("selected");
+                
+    });
+
     $(document).keydown(function(event) {
         //alert(event.keyCode);
         if(activeElementType == "results")
@@ -287,7 +294,7 @@ $(document).ready($(function()
 
     $("#menu1").click();  
     //$('#keyboard').getkeyboard().addNavigation();  
-    //$(".mCustomScrollbar").mCustomScrollbar({autoHideScrollbar: true});
+    $(".mCustomScrollbar").mCustomScrollbar({autoHideScrollbar: true});
     /*$(".mCustomScrollbar").mousedown(function(event){
       $(".mCustomScrollbar").mCustomScrollbar("scrollTo",event.clientY);
     });*/
@@ -477,7 +484,7 @@ function busquedaRecientes() {
 		$("#search-advanced").hide();
 		$("#categorias-menu").hide();
 		$(".resultado-recetas").css("width","95%");
-		$(".resultado-recetas").css("height","70%");
+		$(".resultado-recetas").css("height","75%");
 		$(".resultado-recetas").css("left","20px");
         var data = "";
         //-----------------------------------------------------------------------
@@ -532,7 +539,7 @@ function busquedaTop10() {
 		$("#search-advanced").hide();
 		$("#categorias-menu").hide();
 		$(".resultado-recetas").css("width","95%");
-		$(".resultado-recetas").css("height","70%");
+		$(".resultado-recetas").css("height","75%");
 		$(".resultado-recetas").css("left","20px");
         var data = "";
         //-----------------------------------------------------------------------
