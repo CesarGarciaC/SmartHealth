@@ -48,6 +48,30 @@
         });
     }
     
+    function obtenerListaFavoritos()
+    {
+        var data="id_user="+User.id;
+        
+        var resp=$.ajax({        
+
+            url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=smartSearchFavService&format=json&',                  //the script to call to get data          
+            data: data,                        //you can insert url argumnets here to pass to api.php                              //for example "id=5&parent=6"
+            dataType: 'json',                //data format    
+            async: false,
+            success: function(data)          //on recieve of reply
+            {	
+                removerLoading();
+                var updatedData= {
+			"recetas":data.data
+		};
+                return updatedData;
+            } 
+        });
+        
+//        alert(resp.responseText)
+        return resp.responseText;
+    }
+    
     function eliminarFavoritosPreview(id_recipe)
     {
        var data="id_user="+User.id+"&id_recipe="+id_recipe; 
