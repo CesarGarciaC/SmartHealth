@@ -1,6 +1,6 @@
 function mostrarMensajeError(msg)
 {
-    alert("¡???")
+    //alert("¡???")
     $().toastmessage('showErrorToast', msg);
 }
 

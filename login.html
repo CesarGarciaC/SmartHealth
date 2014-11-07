@@ -10,7 +10,10 @@ and open the template in the editor.
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.js"></script>
         <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.min.js"></script>
         <link rel="stylesheet" type="text/css" href="css/loginStyle.css"/>
+        <link type="text/css" href="css/jquery.toastmessage.css" rel="stylesheet">
         <script type="text/javascript" src="js/login.js"></script>
+        <script type="text/javascript" src="js/jquery.toastmessage.js"></script>
+        <script type="text/javascript" src="js/msgBoxSmart.js"></script>
         <script type="text/javascript" src="js/jquery.keyboardlogin.js"></script>
 
         <link href="css/keyboardLogin.css" rel="stylesheet"/>
@@ -42,7 +45,7 @@ and open the template in the editor.
 
             <input type="submit" name="login" class="login login-submit" value="Acceder" onclick="InicioSesion()">
 
-            <a id="lostPassword" onclick="alert('Para restaurar tu contraseña accede a http://200.16.7.111/wordpress/ ');">¿Has olvidado la contraseña?</a><a id="noUSer" onclick="alert('Si no cuenta con un usuario PUCP, registrese en http://200.16.7.111/wordpress/');" style="padding-left:15px;">Registrarse</a>
+            <a id="lostPassword" onclick="mostrarMensajeError('Para restaurar tu contraseña accede a http://200.16.7.111/wordpress/ ');">¿Has olvidado la contraseña?</a><a id="noUSer" onclick="mostrarMensajeError('Si no cuenta con un usuario PUCP, registrese en http://200.16.7.111/wordpress/');" style="padding-left:15px;">Registrarse</a>
 
 
 

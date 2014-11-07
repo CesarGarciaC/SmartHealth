@@ -54,7 +54,8 @@ var isInDetailView = false;
 var activeElement = leftMenuElements[1];
 var activeElementType = "leftMenu";
 var isClicked = false;
-    
+
+
 
 $(document).ready($(function()
 {     /////////////////////////////Nombre usuario al iniciar sesion////////
@@ -288,9 +289,12 @@ function scrollToPosition(elem, pos){
 }
 
 function closeIframe() {
+   mostrarMensajeInformativo("Bienvenido " + User.nicename);
     $("#main-container").stop(true).animate({opacity: 1}, 100);
     $('#userHtml').html('');
     $("#userlayer").fadeOut(100);
+    
+        
 }
 
 function facebookLayer() {
