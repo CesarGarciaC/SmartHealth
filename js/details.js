@@ -359,7 +359,7 @@ $(document).ready($(function () {
       try {
 //            alert(User.id)
           var data="id_user="+User.id+"&id_recipe="+idReceta;
-          alert(data)
+
           $.ajax({        
 
             url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=smartAddFavService&format=json&',                  //the script to call to get data          
