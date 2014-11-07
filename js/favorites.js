@@ -12,7 +12,7 @@
  }));
  
     function obtenerFavoritos()
-    {
+    {   if(User.id!==""){
         mostrarLoading();
         isInFavoriteView=true;
 		$("#search-advanced").hide();
@@ -46,7 +46,8 @@
                 return updatedData;
             } 
         });
-    }
+    }else
+        mostrarMensajeInformativo("Es necesario iniciar sesión para acceder a favoritos");}
     
     function eliminarFavoritosPreview(id_recipe)
     {

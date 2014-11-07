@@ -66,7 +66,8 @@ $(document).ready($(function()
     }
     else
     {
-        $("#menuFavoritos").removeAttr('onclick')
+        //$("#menuFavoritos").removeAttr('onclick')
+        //mostrarMensajeInformativo("Es necesario iniciar sesión para acceder a favoritos")
         
     }
 	//Categorias
@@ -291,6 +292,13 @@ $(document).ready($(function()
             document.getElementById('usuarioLogin').innerHTML = " Iniciar Sesión";
             document.getElementById('usuarioLogout').innerHTML = "";
             document.getElementById('iniSesion').innerHTML = "";
+            if(isInFavoriteView){
+                isInFavoriteView=false;
+                isTop10=true;
+                busquedaTop10();
+                $("#menuFavoritos").removeClass("selected");
+                $("#menu1").addClass("selected");
+                      }
             User = new UserData("", "", "");
         }
     });
@@ -325,17 +333,19 @@ function facebookLayer() {
 }
 
 
-function CloseSesion() {
+/*function CloseSesion() {
     if (confirm("¿Seguro desea cerrar la sesión? \n Recetas favoritas y las opciones de compartir y valorar recetas no estaras disponibles.")) {
         /* var targetdiv = $('#Usuario');
          var UserDiv = "<center id=\"usuarioLogin\"><img src=\"\"> Iniciar Sesión </center>";
-         targetdiv.html(UserDiv);*/
-        document.getElementById('usuarioLogin').innerHTML = "<img src=\"\"> Iniciar Sesión ";
+         targetdiv.html(UserDiv);
+        document.getElementById('usuarioLogin').innerHTML = "<img src=\"\"> "+isInFavoriteView;
+        //if(!isInFavoriteView)
+            alert(isInFavoriteView);
         //User= new UserData("", "", "");
     }
 
 }
-
+*/
 
 function CloseSesion() {
     if (confirm("¿Seguro desea cerrar la sesión? \n Recetas favoritas y las opciones de compartir y valorar recetas no estaras disponibles.")) {
