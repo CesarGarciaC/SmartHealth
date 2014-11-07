@@ -70,7 +70,10 @@
         });
         
 //        alert(resp.responseText)
-        return resp.responseText;
+        var r=resp.responseText.replace(/\+/g," ");
+        var r2=unescape(r)
+        alert(r2)
+        return r2;
     }
     
     function eliminarFavoritosPreview(id_recipe)
