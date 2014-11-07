@@ -113,6 +113,17 @@ body
 
 }
 
+.detalleDiv
+{
+	width:150px;
+	height:120px;
+	border: 2px solid white;
+	-webkit-border-radius: 10px; 
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	padding: 10px 10px 0px 10px;
+}
+
 .detalle-receta
 {
 	padding:15px;
@@ -257,8 +268,8 @@ h2{
 
 #sugerencias-container table
 {
-	padding-top:50px;
-	border-spacing:30px;
+	padding-top:40px;
+	border-spacing:20px;
 }
 
 #sugerencias-container td
@@ -314,6 +325,8 @@ td .menu-option
     font-weight:bold;
     
 }
+
+
 #usuarioLogin:hover
 {
 	cursor: pointer;
