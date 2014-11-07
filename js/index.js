@@ -56,6 +56,7 @@ var activeElementType = "leftMenu";
 //var isClicked = false;
 var selectedMenuItem = "menu1";
 var isInFavoriteView=false;
+var recipeIsInFavorites=false;
 
 $(document).ready($(function()
 {     /////////////////////////////Nombre usuario al iniciar sesion////////
@@ -214,6 +215,15 @@ $(document).ready($(function()
                 //alert("cancelar");
                 cancelarSeleccion(activeElementIndex);
             }*/
+            
+            $('#recipe-details').addClass("invisible-block"); 
+            $('#data-container').removeClass("invisible-block"); 
+            isInDetailView = false; 	
+            $("#ratingUsuario").remove();
+            $("#ratingPromedio").remove();
+
+            $("#imgRatingUsuario").remove();
+            $("#imgRatingPromedio").remove();
             
             if(activeElementType == "searchKeyboard"){
                 $("#keyboard").getkeyboard().close();
@@ -655,10 +665,19 @@ function busquedaRecetas(column, cat, keyword)
 var idReceta;
  function seleccionarReceta(idRecetaSeleccionada,i){
                 if (User.id=="")
-                {
-                    $("#favoritosBtn").hide();
-                    $("#btnPuntuacion").hide();
-                }
+        {
+            $("#favoritosBtn").hide();
+            $("#btnPuntuacion").hide();
+        }
+        else
+        {
+            obtenerPuntuacion(idRecetaSeleccionada)
+            if (recipeIsInFavorites)
+            {
+                $("#favoritosBtn").html("Favoritos ✓✓")
+                $("#favoritosBtn").prop("disabled","true");
+            }
+        }
         isInDetailView = true;
         //isClicked = false;
         getDetails(parseInt(idRecetaSeleccionada));
