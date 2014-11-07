@@ -51,15 +51,20 @@ function paintEventsTips(){
 		try{
 		var direccion=event[i].address;
 		var lugar=direccion.split(",")[0];
-		 eventDiv+='<tr><td><div class="detalleDiv"><p style="margin-bottom:10px; height:20%;">'+event[i].name+'</p>'+
-		 '<p align="left" style="margin-bottom:5px">Fecha:&nbspHoli </p>' +
+		 eventDiv+='<tr><td><div class="detalleDiv" style="background: url(images/tipBackground.png)">'+
+		 '<p style="margin-bottom:10px; height:20%;color: rgb(58,58,58);font-weight: bold;font-size: 14px;">'+event[i].name+'</p>'+
+		 '<div style="text-align:left;float:left;margin-bottom:10px;">'+
+		 '<p style="display: inline;margin-right:5px;font-weight: bold;">Fecha:</p>'+
+		 '<p style="display: inline;margin-bottom:5px;">Sin Fecha </p></div><br>' +
 		 //'<p align="left" style="margin-bottom:5px">Hora: </p>' +
-		 '<p align="left" style="margin-bottom:5px">Lugar:&nbsp&nbsp'+lugar+' </p></div>'+
-		 '<p style="margin-left: 17px;margin-top: 1px; ">Evento</p></td></tr>';
+		 '<div style="text-align:left;float:left;margin-bottom:10px;">'+
+		 '<p style="display: inline;margin-right:6px;font-weight: bold;">Lugar:</p>'+
+		 '<p style="display: inline;margin-bottom:5px;">'+lugar+' </p></div></div>'+
+		 '<p style="margin-left: 17px;margin-top: 2px;font-weight: bold;font-size: 14px; ">Evento</p></td></tr>';
 		 }
 		 catch(ex){
-				eventDiv+='<tr><td><div class="detalleDiv" style="background: url(images/tip.jpg)"></div>'+
-				'<p style="margin-left: 17px;margin-top: 1px; ">Consejo</p></td></tr>';
+				eventDiv+='<tr><td><div class="detalleDiv" style="background: url(images/tip.png)"></div>'+
+				'<p style="margin-left: 17px;margin-top: 2px;font-weight: bold;font-size: 14px; ">Consejo</p></td></tr>';
 		 }
 	}
 	targetdiv.html(fbButton+eventDiv);	

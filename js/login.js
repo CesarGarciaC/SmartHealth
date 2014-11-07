@@ -52,7 +52,7 @@ function InicioSesion()
             });
         }
         else if (user == "" && password == "") {
-          //  mostrarMensajeError("El nombre de usuario y la contraseña no pueden estar vacíos");
+            mostrarMensajeError("El nombre de usuario y la contraseña no pueden estar vacíos");
             return "El nombre de usuario y la contraseña no pueden estar vacíos";
         }
         else if (user == "") {

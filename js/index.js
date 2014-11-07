@@ -213,14 +213,6 @@ $(document).ready($(function()
                 //alert("cancelar");
                 cancelarSeleccion(activeElementIndex);
             }*/
-            $('#recipe-details').addClass("invisible-block"); 
-            $('#data-container').removeClass("invisible-block"); 
-            isInDetailView = false; 	
-            $("#ratingUsuario").remove();
-            $("#ratingPromedio").remove();
-
-            $("#imgRatingUsuario").remove();
-            $("#imgRatingPromedio").remove();
             
             if(activeElementType == "searchKeyboard"){
                 $("#keyboard").getkeyboard().close();
@@ -467,25 +459,8 @@ function clickReceta(elemId, id, value){
             else
             {
                 if (User.id=="")
-                {
-                    
                     btnFav='<button disabled="true" id="botonFav_' + elemId + '" onclick="agregarFavoritosPreview(' + id + ')">Favoritos +</button>';
-                }
-                else
-                {
-                    var listaFavoritos=obtenerListaFavoritos();
-//                    alert(listaFavoritos)
-                    var divR="#textReceta_"+elemId.split("_")[1];
-                    var nombreReceta=$(divR).children().html();
-                    if (listaFavoritos.indexOf(nombreReceta)>0)
-                    {
-                        recipeIsInFavorites=true;
-                        btnFav='<button disabled="true" id="botonFav_' + elemId + '" onclick="agregarFavoritosPreview(' + id + ')">Favoritos ✓✓</button>';
-                    }
-                    else
-                        btnFav='<button id="botonFav_' + elemId + '" onclick="agregarFavoritosPreview(' + id + ')">Favoritos +</button>';
-                    
-                }
+             
             }
             $('#select_' + elemId).html(btnFav
                 + '<button id="botonVer_' + elemId + '" onclick="seleccionarReceta(' + id + ')">Ver</button>'
@@ -669,20 +644,11 @@ function busquedaRecetas(column, cat, keyword)
 
 var idReceta;
  function seleccionarReceta(idRecetaSeleccionada,i){
-        if (User.id=="")
-        {
-            $("#favoritosBtn").hide();
-            $("#btnPuntuacion").hide();
-        }
-        else
-        {
-            obtenerPuntuacion(idRecetaSeleccionada)
-            if (recipeIsInFavorites)
-            {
-                $("#favoritosBtn").html("Favoritos ✓✓")
-                $("#favoritosBtn").prop("disabled","true");
-            }
-        }
+                if (User.id=="")
+                {
+                    $("#favoritosBtn").hide();
+                    $("#btnPuntuacion").hide();
+                }
         isInDetailView = true;
         //isClicked = false;
         getDetails(parseInt(idRecetaSeleccionada));
