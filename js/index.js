@@ -74,6 +74,9 @@ $(document).ready($(function()
 	getCategories(false);
 	getCategories(true);
 	
+	//Tips y Eventos
+	paintEventsTips();
+	
     var updatedData = busquedaRecetas(3, "", "");
 
     $("#" + selectedMenuItem).addClass("selected");
