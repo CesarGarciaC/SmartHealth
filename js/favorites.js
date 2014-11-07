@@ -1,7 +1,7 @@
  
     function obtenerFavoritos()
     {
-		
+		alert("?")
 		$("#search-advanced").hide();
 		$("#categorias-menu").hide();
 		$(".resultado-recetas").css("width","95%");
