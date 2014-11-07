@@ -67,10 +67,24 @@ $(document).ready($(function () {
     voicePlay();
   });
 
+  //Slider vertical
+
+  $('#vertical_slider_bar').click(function(){
+      $('#ingredientesContainer').fadeToggle(500); 
+      $('#instructionsContainer').fadeToggle(500);       
+  });
+
+  $("#vertical_slider_bar").toggle(function() {
+    $(this).animate({right: '+=695px'});
+  }, function() {
+      $(this).animate({right: '-=695px'});
+  });
+
+
   //Carrusel
   $('.center').slick({
     centerMode: true,
-    centerPadding: '225px',
+    centerPadding: '65px',
     slidesToShow: 3,  
     responsive: [
       {

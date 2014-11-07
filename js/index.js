@@ -191,10 +191,10 @@ $(document).ready($(function()
                 $("#" + activeElement).click();
             }    
             else if (!isInDetailView && activeElementType == "results"){
-                var temp = document.getElementById(activeElement);
-                clickReceta(temp.id, $(temp).attr("id"),$(temp).attr("value"));
-                //seleccionarReceta($("#" + activeElement).attr("value").split("_")[1]);
-                //isInDetailView = true;
+                //var temp = document.getElementById(activeElement);
+                //clickReceta(temp.id, $(temp).attr("id"),$(temp).attr("value"));
+                seleccionarReceta($("#" + activeElement).attr("value").split("_")[1]);
+                isInDetailView = true;
                 activeElementType = "detailsView";
             }
         }
@@ -625,11 +625,11 @@ function busquedaRecetas(column, cat, keyword)
 
 var idReceta;
  function seleccionarReceta(idRecetaSeleccionada,i){
-                if (User.id=="")
+                /*if (User.id=="")
                 {
                     $("#favoritosBtn").hide();
                     $("#btnPuntuacion").hide();
-                }
+                }*/
         isInDetailView = true;
         //isClicked = false;
         getDetails(parseInt(idRecetaSeleccionada));
