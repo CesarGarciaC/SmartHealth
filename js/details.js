@@ -7,6 +7,11 @@ $(document).ready($(function () {
       getDetails(parseInt(id) + 2);
       idReceta=parseInt(id)+2;
     });*/
+    
+  
+  $('#favoritosBtn').click(function(){
+  	agregarFavoritos(1);
+  }); 
 
   $('#volverBtn').click(function(){
   		$('#recipe-details').addClass("invisible-block"); 
@@ -345,19 +350,16 @@ $(document).ready($(function () {
     }catch(ex){
       alert(ex.description)
     }
-  }
-  
-  $('#favoritosBtn').click(function(){
-  	agregarFavoritos();
-  });  
+  } 
   
   
   
-  function agregarFavoritos()
+  function agregarFavoritos(e)
   {
       try {
 //            alert(User.id)
           var data="id_user="+User.id+"&id_recipe="+idReceta;
+          alert(data)
           $.ajax({        
 
             url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=smartAddFavService&format=json&',                  //the script to call to get data          
@@ -366,7 +368,10 @@ $(document).ready($(function () {
             async: false,
             success: function(response)          //on recieve of reply
             {
+                if (e==1)
+                    seleccionarReceta(idReceta)
                 mostrarMensajeInformativo("Receta agregada a favoritos");
+                $("#favoritosBtn").html("Favoritos ✓✓");
             } 
           });
 
@@ -379,6 +384,6 @@ $(document).ready($(function () {
   {
       idReceta=idRecipe;
       //alert(idReceta)
-      agregarFavoritos()
+      agregarFavoritos(0)
       busquedaTop10();
   }

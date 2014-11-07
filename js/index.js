@@ -495,7 +495,10 @@ function clickReceta(elemId, id, value){
                         btnFav='<button disabled="true" id="botonFav_' + elemId + '" onclick="agregarFavoritosPreview(' + id + ')">Favoritos ✓✓</button>';
                     }
                     else
+                    {
                         btnFav='<button id="botonFav_' + elemId + '" onclick="agregarFavoritosPreview(' + id + ')">Favoritos +</button>';
+                        recipeIsInFavorites=false;
+                    }
                     
                 }
             }

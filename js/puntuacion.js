@@ -42,7 +42,6 @@ function voteWebService(rate)
                 //alert(id_recipe)
                 var rating=rate;
                 var data="id_user="+id_user+"&id_recipe="+id_recipe+"&rating="+rating;
-//                alert(id_recipe+" - "+rating)
                 $.ajax({        
 
                     url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=smartAddPointService&format=json&',                  //the script to call to get data          
@@ -52,6 +51,7 @@ function voteWebService(rate)
                     success: function(data)          //on recieve of reply
                     {
 //                        alert("Receta puntuada");
+                        seleccionarReceta(id_recipe);
                         mostrarMensajeInformativo("Receta puntuada")
                     } 
                 });
@@ -61,6 +61,12 @@ function voteWebService(rate)
  {
      if (ratingUsuario>0)
      {
+         
+        $("#imgRatingUsuario").remove();
+        $("#ratingUsuario").remove();
+        $("#imgRatingPromedio").remove();
+        $("#ratingPromedio").remove();
+         
         $("#recipeHeader").append("<img id='imgRatingUsuario' style='position:absolute;left:690px;top:-5px' src='images/user_one.png' />")
         $("#recipeHeader").append("<div id='ratingUsuario' style='left:330px;top:-5px' class='basicNoEditable' data-average='"+ratingUsuario+"'></div>")
         
