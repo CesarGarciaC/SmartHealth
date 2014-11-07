@@ -83,11 +83,21 @@ $(document).ready($(function()
 
     $("#" + selectedMenuItem).addClass("selected");
     
-    $('.menu-option').mousedown(function(){
+     $('.menu-option').mousedown(function(){
+        if(this.id=="menuFavoritos"){
+            if(User.id!==""){
         $("#" + selectedMenuItem).removeClass("selected");
         selectedMenuItem = this.id;
         $(this).addClass("selected");
+            }
+        }
+        else {
+                $("#" + selectedMenuItem).removeClass("selected");
+                selectedMenuItem = this.id;
+                $(this).addClass("selected");
+            }
                 
+
     });
 
     $(document).keydown(function(event) {
@@ -306,6 +316,7 @@ $(document).ready($(function()
                 isInFavoriteView=false;
                 isTop10=true;
                 busquedaTop10();
+                selectedMenuItem = "menu1";
                 $("#menuFavoritos").removeClass("selected");
                 $("#menu1").addClass("selected");
                       }
