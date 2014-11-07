@@ -380,4 +380,5 @@ $(document).ready($(function () {
       idReceta=idRecipe;
       //alert(idReceta)
       agregarFavoritos()
+      busquedaTop10();
   }
