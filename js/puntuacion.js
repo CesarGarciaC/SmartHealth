@@ -7,7 +7,7 @@
                rateMax: 5,
                isDisabled: true,
                onSuccess : function(){
-                 alert('Success : your rate has been saved :)');
+                 mostrarMensajeInformativo("La receta ha sido puntuada")
                }
          });
 
@@ -61,7 +61,7 @@ function voteWebService(rate)
  {
      if (ratingUsuario>0)
      {
-         
+
         $("#imgRatingUsuario").remove();
         $("#ratingUsuario").remove();
         $("#imgRatingPromedio").remove();
@@ -73,14 +73,33 @@ function voteWebService(rate)
         $("#recipeHeader").append("<img id='imgRatingPromedio' style='position:absolute;left:690px' src='images/user_much.png' />")
         $("#recipeHeader").append("<div id='ratingPromedio' style='position:absolute!important;left:730px;margin-top:5px' class='basicNoEditable' data-average='"+ratingPromedio+"'></div>")
         reloadRating();
-        $("#btnPuntuacion").hide();
+        $("#btnPuntuacion").show();
+		
+		
      }
+	 else{
+
+		$("#imgRatingUsuario").remove();
+        $("#ratingUsuario").remove();
+        $("#imgRatingPromedio").remove();
+        $("#ratingPromedio").remove();
+		$("#recipeHeader").append("<img id='imgRatingPromedio' style='position:absolute;left:690px' src='images/user_much.png' />")
+        $("#recipeHeader").append("<div id='ratingPromedio' style='position:absolute!important;left:730px;margin-top:5px' class='basicNoEditable' data-average='"+ratingPromedio+"'></div>")
+        reloadRating();
+		var id_user=User.id;
+		if(id_user!=""){
+		$("#btnPuntuacion").show();
+		}
+		else {$("#btnPuntuacion").hide();}
+	 }
  }
 
 
  function obtenerPuntuacion(id_recipe)
  {
+	 
      var id_user=User.id;
+
      var data="id_user="+id_user+"&id_recipe="+id_recipe;
         $.ajax({        
 
@@ -92,12 +111,15 @@ function voteWebService(rate)
             {
 //                alert("usuario:"+data.data.rating+" Promedio:"+(data.data.recipe_rating/data.data.recipe_raters))
                 //No hay puntuacion
-                if (data.data.code=="noResults")
+				mostrarRatingDetallado(data.data.rating,(data.data.recipe_rating/data.data.recipe_raters));
+
+                if (data.data.rating=="noResults")
                 {
                     $("#btnPuntuacion").show();
                     return 1;
                 }
-                mostrarRatingDetallado(data.data.rating,(data.data.recipe_rating/data.data.recipe_raters))
+				
+                
                 return (data.data.rating);
             } 
         });

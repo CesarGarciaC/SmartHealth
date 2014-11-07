@@ -686,18 +686,19 @@ var idReceta;
  function seleccionarReceta(idRecetaSeleccionada,i){
         if (User.id=="")
         {
+
             $("#favoritosBtn").hide();
             $("#btnPuntuacion").hide();
-        }
-        else
-        {
-            obtenerPuntuacion(idRecetaSeleccionada)
-            if (recipeIsInFavorites)
+        }else{
+			if (recipeIsInFavorites)
             {
                 $("#favoritosBtn").html("Favoritos ✓✓")
                 $("#favoritosBtn").prop("disabled","true");
             }
-        }
+		}
+        obtenerPuntuacion(idRecetaSeleccionada)
+
+
         isInDetailView = true;
         //isClicked = false;
         getDetails(parseInt(idRecetaSeleccionada));

@@ -1,11 +1,12 @@
 
 function loginUser(user) {
+
     if ((user.code) == "badLoginInformation") {
         mostrarMensajeError(user.message);
         return user.message;
     }
     else {
-
+		
         parent.document.getElementById('usuarioLogin').innerHTML = "";
 
         parent.document.getElementById('iniSesion').innerHTML = "<img src=images/user.png >" + user.user_nicename;
@@ -44,10 +45,11 @@ function InicioSesion()
                 success: function(data)          //on recieve of reply
                 {
 
+
                     loginUser(data.data);
                 },
                 error: function() {
-                    alert("Error con el servidor");
+					mostrarMensajeError("Error con el servidor");
                 }
             });
         }

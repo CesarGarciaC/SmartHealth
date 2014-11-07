@@ -1,4 +1,4 @@
-///Iniciación usuario
+//Iniciación usuario
 var User = new UserData("", "", "");
 
 

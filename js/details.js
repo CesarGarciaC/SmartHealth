@@ -94,7 +94,7 @@ $(document).ready($(function () {
   //Carrusel
   $('.center').slick({
     centerMode: true,
-    centerPadding: '65px',
+    centerPadding: '35px',
     slidesToShow: 3,  
     responsive: [
       {
@@ -223,7 +223,7 @@ $(document).ready($(function () {
     };
 
     // tiempo
-    $('#duracion').html("Tiempo: " + details.time + " min");
+    $('#duracion_text').html(details.time + " min"); 
     
     // informacion nutricional
     var nutriTable = '<section class="performance-facts"> \
