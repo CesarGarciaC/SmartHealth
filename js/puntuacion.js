@@ -86,6 +86,12 @@ function voteWebService(rate)
             success: function(data)          //on recieve of reply
             {
 //                alert("usuario:"+data.data.rating+" Promedio:"+(data.data.recipe_rating/data.data.recipe_raters))
+                //No hay puntuacion
+                if (data.data.code=="noResults")
+                {
+                    $("#btnPuntuacion").show();
+                    return 1;
+                }
                 mostrarRatingDetallado(data.data.rating,(data.data.recipe_rating/data.data.recipe_raters))
                 return (data.data.rating);
             } 
