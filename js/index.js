@@ -55,6 +55,7 @@ var activeElement = leftMenuElements[1];
 var activeElementType = "leftMenu";
 //var isClicked = false;
 var selectedMenuItem = "menu1";
+var isInFavoriteView=false;
     
 
 $(document).ready($(function()
