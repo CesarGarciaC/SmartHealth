@@ -75,7 +75,7 @@
 
 #topMargin {
   width: 100%;
-  height: 30px;  
+  height: 10px;  
 }
 
 #ingredientesContainer {
@@ -120,7 +120,7 @@
 
 #recipeHeader {
   position: relative;
-  height: 50px;
+  height: 70px;
   width: 960px;
   overflow: hidden;
   background-color: rgba(204,102,51,0.5);
@@ -149,10 +149,10 @@
 }
 
 #preparationDiv {
-  width: 640px;
-  height: 350px;
+  width: 650px;
+  height: 322px;
   margin-top: 20px;
-  overflow-y: hidden;
+  overflow: hidden;
   line-height: 1.2;
   margin-left: 10px;
 }
