@@ -65,7 +65,7 @@ function colorCentro() {
         i=6;
         contCen++;
     }
-    document.getElementById("bloque-center").style.backgroundImage = "url(css/images/prueba" + i + "Fondo.png)";
+    document.getElementById("bloque-center").style.backgroundImage = "url(css/images/prueba" + i + "fondo.png)";
    }
 var contDer = 0;
 function colorDerecho() {
@@ -98,6 +98,6 @@ function colorDerecho() {
         i=6;
         contDer++;
     }
-    document.getElementById("bloque-right").style.backgroundImage = "url(css/images/prueba" + i + "Fondo.png)";
+    document.getElementById("bloque-right").style.backgroundImage = "url(css/images/prueba" + i + "fondo.png)";
 }
 
