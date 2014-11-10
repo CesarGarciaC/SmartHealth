@@ -134,7 +134,8 @@ body
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 	padding-right: 10px;
-	background-color: #FAB586;
+	//background-color: #FAB586;
+        background-image: url(images/prueba1receta.png);
 }
 
 .detalle-receta div{
