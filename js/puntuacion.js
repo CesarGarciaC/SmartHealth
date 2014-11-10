@@ -45,7 +45,6 @@ function voteWebService(rate)
              $("#listadoPuntuacion").hide();
                 var id_user=User.id;
                 var id_recipe=idReceta;
-                //alert(id_recipe)
                 var rating=rate;
                 var data="id_user="+id_user+"&id_recipe="+id_recipe+"&rating="+rating;
                 $.ajax({        

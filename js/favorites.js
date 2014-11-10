@@ -94,10 +94,11 @@
         
     }
     
-    var f;
+    
     
     function isInFavorites(idReceta)
     {
+        var flagFavorites;
         var data="id_recipe="+idReceta+"&id_user="+User.id; 
        var resp=$.ajax({        
 
@@ -107,12 +108,8 @@
             async: false,
             success: function(data)          //on recieve of reply
             {	
-                f=data.data.isFavorite;
-                alert(f);
+                flagFavorites=data.data.isFavorite;
             } 
         }); 
-        
-//        alert(resp.responseText)
-//        return resp.responseText;
-        alert(f)
+        return flagFavorites;
     }

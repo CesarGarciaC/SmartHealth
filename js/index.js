@@ -599,8 +599,8 @@ function clickReceta(elemId, id, value){
                 else
                 {
 //                    var listaFavoritos=obtenerListaFavoritos();
-                    var f=isInFavorites(id);
-                    if (f>0)
+                    var flagFavorites=isInFavorites(id);
+                    if (flagFavorites>0)
                     {
                         recipeIsInFavorites=true;
                         btnFav='<button disabled="true" id="botonFav_' + elemId + '" onclick="agregarFavoritosPreview(' + id + ')">Favoritos ✓✓</button>';
