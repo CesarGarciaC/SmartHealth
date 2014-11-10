@@ -80,7 +80,7 @@ $(document).ready($(function () {
   //Slider vertical
 
    $("#vertical_slider_bar").toggle(function() {
-      $(this).animate({right: '+=695px'});
+      $(this).animate({right: '+=680px'});
 
       $('#ingredientesContainer').fadeOut(500).promise().done(function(){
         $('#instructionsContainer').fadeIn(500);
@@ -89,7 +89,7 @@ $(document).ready($(function () {
       $('#vsliderbar_arrow').css('background-image','url(images/ArrowRight.png)');
 
   }, function() {
-      $(this).animate({right: '-=695px'});
+      $(this).animate({right: '-=680px'});
 
       $('#instructionsContainer').fadeOut(500).promise().done(function(){
         $('#ingredientesContainer').fadeIn(500);

@@ -283,7 +283,7 @@ $(document).ready($(function()
         /*else if (isClicked){
             $('#' + activeRecipeMenuElement + activeElementIndex).css("background-color","orange");
         }*/
-        return false;
+        //return false;
     });
     
     $('#usuarioLogin').click(function() {
