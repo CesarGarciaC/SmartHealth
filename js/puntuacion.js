@@ -36,6 +36,12 @@ $(document).ready(function(){
 
 function voteWebService(rate)
          {
+             if (User.id=="")
+             {
+                 mostrarMensajeError("Debe iniciar sesión para poder calificar esta receta.")
+                 return 0;
+             }
+             
              $("#listadoPuntuacion").hide();
                 var id_user=User.id;
                 var id_recipe=idReceta;
@@ -57,40 +63,29 @@ function voteWebService(rate)
                 });
          }
          
- function mostrarRatingDetallado(ratingUsuario,ratingPromedio)
+ function mostrarRatingDetallado(ratingUsuario,ratingPromedio,numVotos)
  {
+     $("#puntuacionPromedio").html(ratingPromedio.toFixed(1));
+     $("#numVotos").html(numVotos+" votos");
+     $("#ratingUsuario").remove();
+     
      if (ratingUsuario>0)
      {
-        $("#imgRatingUsuario").remove();
-        $("#ratingUsuario").remove();
-        $("#imgRatingPromedio").remove();
-        $("#ratingPromedio").remove();
-         
-        $("#recipeHeader").append("<img id='imgRatingUsuario' style='position:absolute;left:690px;top:-5px' src='images/user_one.png' />")
-        $("#recipeHeader").append("<div id='ratingUsuario' style='left:330px;top:-5px' class='basicNoEditable' data-average='"+ratingUsuario+"'></div>")
+        $("#recipeHeader").append("<div id='ratingUsuario' style='left:360px;top:30px' class='basicEditable' data-average='"+ratingUsuario+"'></div>")
         
-        $("#recipeHeader").append("<img id='imgRatingPromedio' style='position:absolute;left:690px' src='images/user_much.png' />")
-        $("#recipeHeader").append("<div id='ratingPromedio' style='position:absolute!important;left:730px;margin-top:5px' class='basicNoEditable' data-average='"+ratingPromedio+"'></div>")
-        reloadRating();
-        $("#btnPuntuacion").show();
-		
-		
      }
-	 else{
-
-		$("#imgRatingUsuario").remove();
-        $("#ratingUsuario").remove();
-        $("#imgRatingPromedio").remove();
-        $("#ratingPromedio").remove();
-		$("#recipeHeader").append("<img id='imgRatingPromedio' style='position:absolute;left:690px' src='images/user_much.png' />")
-        $("#recipeHeader").append("<div id='ratingPromedio' style='position:absolute!important;left:730px;margin-top:5px' class='basicNoEditable' data-average='"+ratingPromedio+"'></div>")
-        reloadRating();
-		var id_user=User.id;
-		if(id_user!=""){
-		$("#btnPuntuacion").show();
-		}
-		else {$("#btnPuntuacion").hide();}
-	 }
+     else
+     {
+         $("#recipeHeader").append("<div id='ratingUsuario' style='left:360px;top:30px' class='basicEditable' data-average='0'></div>")
+     }
+         
+//     else{
+//        var id_user=User.id;
+//        if(id_user!=""){
+//        $("#btnPuntuacion").show();
+//        }
+//      }
+      reloadRating();
  }
 
 
@@ -110,14 +105,13 @@ function voteWebService(rate)
             {
 //                alert("usuario:"+data.data.rating+" Promedio:"+(data.data.recipe_rating/data.data.recipe_raters))
                 //No hay puntuacion
-				mostrarRatingDetallado(data.data.rating,(data.data.recipe_rating/data.data.recipe_raters));
+                mostrarRatingDetallado(data.data.rating,(data.data.recipe_rating/data.data.recipe_raters),data.data.recipe_raters);
 
                 if (data.data.rating=="noResults")
                 {
                     $("#btnPuntuacion").show();
                     return 1;
                 }
-				
                 
                 return (data.data.rating);
             } 

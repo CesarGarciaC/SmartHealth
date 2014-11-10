@@ -394,3 +394,31 @@ a
 #search #keyboard{
 	background-color: #F1F1F1;
 }
+
+#puntuacionPromedio
+{
+    position:absolute;
+    top:20px;
+    left:15px;
+    font-weight: bold;
+}
+
+#divStarHead
+{
+/*    width:70px;
+    border-right: 1px solid black;*/
+}
+
+#numVotos{
+    
+    
+    
+    
+}
+
+#txtPuntuacion
+{
+    position:absolute;
+    top:5px;
+    left:80px
+}

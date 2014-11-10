@@ -10,7 +10,10 @@ $(document).ready($(function () {
     
   
   $('#favoritosBtn').click(function(){
-  	agregarFavoritos(1);
+      if (User.id=="")
+            mostrarMensajeError("Debe iniciar sesión para poder agregar esta receta a sus favoritos.")
+      else
+            agregarFavoritos(1);
   }); 
 
   $('#volverBtn').click(function(){
@@ -378,7 +381,7 @@ $(document).ready($(function () {
                 if (e==1)
                     seleccionarReceta(idReceta)
                 mostrarMensajeInformativo("Receta agregada a favoritos");
-                $("#favoritosBtn").html("Favoritos ✓✓");
+//                $("#favoritosBtn").html("Favoritos ✓✓");
             } 
           });
 

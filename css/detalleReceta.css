@@ -55,6 +55,26 @@
 
 }
 
+_buttonFav
+{
+   border-style:solid;
+  border-color:#bbb #888 #666 #aaa;
+  border-width:1px 1.2px 1.2px 1px;
+  display: block;
+  float: left;
+  height: 28px;
+  margin-top: 12px;
+  border-radius: 3px;
+  background-color: rgb(222, 222, 222);
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.38;
+  text-align: center;
+  color: rgb(0, 0, 0);
+  width: 30px; 
+}
+
+
 ._button:hover{
   border-color: #666 #aaa #bbb #888;
   border-width:1px 1.2px 1.2px 1px;
@@ -224,16 +244,26 @@
 #BtnContainer{
   position: relative;
   float: right;
-  width: 250px;
+  width: 280px;
   height: 35px;
 }
 
 #favoritosBtn {
   position: absolute;
-  height: 35px;
+  height: 52px;
   right: 10px;
-  top: -10px;
-  width: 100px;  
+  top: 10px;
+  width: 48px;  
+  background-image: url('../images/addFavorites.png');
+  -webkit-border-radius: 5px 10px;  /* Safari  */
+  -moz-border-radius: 5px 10px;     /* Firefox */
+  background-color: #FCBD57;
+}
+
+#favoritosBtn:hover
+{
+    background-color: orange;
+    
 }
 
 #btnPuntuacion {
