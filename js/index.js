@@ -598,14 +598,9 @@ function clickReceta(elemId, id, value){
                 }
                 else
                 {
-                    var listaFavoritos=obtenerListaFavoritos();
-//                    alert(listaFavoritos)
-                    var divR="#textReceta_"+elemId.split("_")[1];
-                    var nombreReceta=$(divR).children().html();
-                    var idReceta=elemId.split("_")[1];
-                    var f=isInFavorites(idReceta);
-                    alert(f);
-                    if (listaFavoritos.indexOf(nombreReceta)>0)
+//                    var listaFavoritos=obtenerListaFavoritos();
+                    var f=isInFavorites(id);
+                    if (f>0)
                     {
                         recipeIsInFavorites=true;
                         btnFav='<button disabled="true" id="botonFav_' + elemId + '" onclick="agregarFavoritosPreview(' + id + ')">Favoritos ✓✓</button>';
@@ -615,7 +610,6 @@ function clickReceta(elemId, id, value){
                         btnFav='<button id="botonFav_' + elemId + '" onclick="agregarFavoritosPreview(' + id + ')">Favoritos +</button>';
                         recipeIsInFavorites=false;
                     }
-                    
                 }
             }
             $('#select_' + elemId).html(btnFav
