@@ -195,7 +195,14 @@ $(document).ready($(function () {
   }
 
   function fillRecipeDetails(details,id_recipe){
-    $('#recipeTitle').html(details.name);
+    if(details.name.length > 32){
+      $('#recipeTitle').css('line-height','1.1');  
+      $('#recipeTitle').html(details.name);  
+    }
+    else{
+      $('#recipeTitle').css('line-height','50px');
+      $('#recipeTitle').html(details.name);
+    }
     $("#rating").attr("data-id",id_recipe);
     //ingredientes
     var ingredientes = details.ingredients;

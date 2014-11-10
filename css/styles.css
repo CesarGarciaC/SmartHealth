@@ -391,6 +391,39 @@ a
 	border-radius: 5px;
 }
 
+#Usuario.keynav{
+	border: 2px solid #F1F1F1 !important;
+	-webkit-box-shadow: #F1F1F1 0px 0px 6px 3px;
+	cursor:pointer;
+	border-radius: 5px;
+}
+
 #search #keyboard{
 	background-color: #F1F1F1;
 }
+
+#listaCategoriasBusquedaAvanzada li:hover{
+	border: 2px solid #F1F1F1 !important;
+	-webkit-box-shadow: #F1F1F1 0px 0px 6px 3px;
+	cursor:pointer;
+	border-radius: 5px;
+}
+
+#listaCategoriasBusquedaAvanzada li.keynav{
+	border: 2px solid #F1F1F1 !important;
+	-webkit-box-shadow: #F1F1F1 0px 0px 6px 3px;
+	cursor:pointer;
+	border-radius: 5px;
+}
+
+#listaCategoriasBusquedaAvanzada li{
+	border:2px solid transparent;	
+	border-radius: 5px;
+}
+
+#listaCategoriasBusquedaAvanzada li.selected{
+	background-color: rgba(240,240,240,0.5);
+	border-radius: 5px;
+}
+
+

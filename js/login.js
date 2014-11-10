@@ -21,6 +21,7 @@ function loginUser(user) {
 
 function InicioSesion()
 {
+    inLogin = false;
     try
     {
         var user = (document.getElementById("user")).value;
