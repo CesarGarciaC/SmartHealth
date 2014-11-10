@@ -132,10 +132,12 @@ _buttonFav
 }
 
 #recipeTitle {
+  height: 70px;
+  line-height: 70px;
   font-size: 24px; 
-  line-height: 1.1; 
-  width: 380px;
+  width: 370px;
   margin-left: 20px;
+  margin-top: 10px;
 }
 
 #recipeHeader {
@@ -194,13 +196,13 @@ _buttonFav
 
 #dificultad {
   position: absolute;
-  margin-left: 590px;
-  margin-top: 5px;  
+  margin-left: 565px;
+  margin-top: 15px;  
 }
 
 #duracion {
   position: absolute;
-  margin-top: 5px;
+  margin-top: 20px;
   margin-left: 400px;
   font-size: 15px;
 }
@@ -221,8 +223,8 @@ _buttonFav
 
 #recipeHeader p{
   position: absolute;
-  margin-left: 520px;
-  margin-top: 5px;
+  margin-left: 495px;
+  margin-top: 20px;
   font-size: 15px;
 }
 
