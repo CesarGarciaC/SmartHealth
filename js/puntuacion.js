@@ -61,7 +61,6 @@ function voteWebService(rate)
  {
      if (ratingUsuario>0)
      {
-
         $("#imgRatingUsuario").remove();
         $("#ratingUsuario").remove();
         $("#imgRatingPromedio").remove();
@@ -123,4 +122,9 @@ function voteWebService(rate)
                 return (data.data.rating);
             } 
         });
+ }
+ 
+ function hackStars()
+ {
+     $(".jStar").css("background-image","url(js/icons/starsMenu.png)")
  }

@@ -72,8 +72,8 @@
 //        alert(resp.responseText)
         var r=resp.responseText.replace(/\+/g," ");
         var r2=unescape(r)
-        alert(r2)
-        return r2;
+//        alert(r2)
+        return resp.responseText;
     }
     
     function eliminarFavoritosPreview(id_recipe)
