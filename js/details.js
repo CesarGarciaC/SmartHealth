@@ -184,7 +184,7 @@ $(document).ready($(function () {
 
   function selectRecipe(json,id_recipe){
     //alert(recipeId);
-	
+	getRelatedRecipes(json);
     fillRecipeDetails(json,id_recipe);
     $('#recipe-details').removeClass("invisible-block");
     $('#data-container').addClass("invisible-block");
