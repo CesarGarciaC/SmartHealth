@@ -34,6 +34,8 @@
         <script type="text/javascript" src="js/categories.js"></script>
         <script type="text/javascript" src="js/puntuacion.js"></script>
         <script type="text/javascript" src="js/menu.js"></script>
+        <script type="text/javascript" src="js/Fondo.js"></script>
+        <script type="text/javascript" src="js/ColorReceta.js"></script>
         <script type="text/javascript" src="js/facebook.js"></script>
         <script type="text/javascript" src="js/jquery.keyboard.js"></script>
         <script type="text/javascript" src="js/jquery.keyboard.extension-navigation.js"></script>
@@ -125,7 +127,10 @@
                                 <center>Categorías</center>
                                 </td>
                                 </tr>
-
+                                            
+                                <tr>
+                                <button id="colorIzquierdo" onclick="colorIzquierdo()">colorIzquierdo</button>
+                                </tr>
                             </table>
                         </div>
                     </td>
@@ -224,7 +229,7 @@
                     </div>
                 </section>
             </div>
-            
+            <button id="colorReceta" onclick="colorReceta()">colorReceta</button>
         </div>
                         <div id="data-container" class="bloque">
                             <div id="search">
@@ -328,6 +333,7 @@
                             </div>
 
                         </div>
+                        <button id="colorCentro" onclick="colorCentro()">colorCentro</button>
                     </td>
 
                     <td id="bloque-right">
@@ -335,6 +341,7 @@
                             <table id="tabRight">
                             </table>
                         </div>
+                        <button id="colorDerecho" onclick="colorDerecho()">colorDerecho</button>
                     </td>
                 </tr>
             </table>
