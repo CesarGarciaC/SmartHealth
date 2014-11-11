@@ -51,26 +51,51 @@ function getRelatedRecipesKeyword(keyword)
     }
 }
 
+//Distintos
+
+Array.prototype.contains = function(v) {
+    for(var i = 0; i < this.length; i++) {
+        if(this[i].id === v) return true;
+    }
+    return false;
+};
+ 
+Array.prototype.unique = function() {
+    var arr = [];
+    for(var i = 0; i < this.length; i++) {
+        if(!arr.contains(this[i].id)) {
+            arr.push(this[i]);
+        }
+    }
+    return arr;
+}
+
+
 function getRelatedRecipes(recipe){
 
 		
   						
 		for(var i=0;i<recipe.categories.length;i++){
+			
 			getRelatedRecipesCategory(recipe.categories[i].id);
 		}	
 		
-		relatedRecipes.sort(function(a, b) {
+		distinctRecipes=relatedRecipes.unique();
+		
+		distinctRecipes.sort(function(a, b) {
                     return Math.random() - Math.random;
         });
 		
+		
+		
 		var targetdiv = $('#suggestionsContainer');
 		var carruselSugeridas='<section class="slick-section blue"><div class="slick-content"><div class="slider center">';
-		var factor=3;
-		for(var i=0;i<relatedRecipes.length*factor;i++){
+		var factor=5;
+		for(var i=0;i<distinctRecipes.length*factor;i++){
 
 			//alert(relatedRecipes[i].name);
 			//targetdiv.append('<div><h3><img src="data:image/jpg;base64,' + relatedRecipes[i%relatedRecipes.length].image + '"  width="170" height="170"/></h3></div>');
-			carruselSugeridas+='<div><h3><img src="data:image/jpg;base64,' + relatedRecipes[i%relatedRecipes.length].image + '" height="150" height="150"/></h3></div>';//
+			carruselSugeridas+='<div><h3><img onclick="seleccionarReceta('+distinctRecipes[i%distinctRecipes.length].id+')" src="data:image/jpg;base64,' + distinctRecipes[i%distinctRecipes.length].image + '" height="150" height="150"/></h3></div>';//
 			//$("#img_"+i).attr('src','data:image/jpg;base64,' + relatedRecipes[i%relatedRecipes.length].image + '');
 
 			
@@ -106,11 +131,8 @@ $('.center').slick({
     }
   ]
 });
-		
-		
-		
 
-		        
+			        
 }
 
 

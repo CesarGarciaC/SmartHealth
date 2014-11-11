@@ -101,7 +101,7 @@ $(document).ready($(function () {
       $('#vsliderbar_arrow').css('background-image','url(images/ArrowLeft.png)');
   });
 
-  document.getElementById("slick-next").click();
+	
 	
 	/*
   $('.center').slick({
@@ -197,6 +197,12 @@ $(document).ready($(function () {
     for (var i = 0; i < currentInstructions.length; i++) {
       text += currentInstructions[i];
     };
+    //Iniciar carrusel abierto
+	try{
+	var elements=document.getElementsByClassName('slick-next');
+	elements[0].click();
+	}catch(ex){}
+
   }
 
   function fillRecipeDetails(details,id_recipe){
