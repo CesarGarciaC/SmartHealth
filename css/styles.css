@@ -134,7 +134,8 @@ body
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 	padding-right: 10px;
-	background-color: #FAB586;
+	//background-color: #FAB586;
+        background-image: url(images/prueba1receta.png);
 }
 
 .detalle-receta div{
@@ -426,4 +427,31 @@ a
 	border-radius: 5px;
 }
 
+#puntuacionPromedio
+{
+    position:absolute;
+    top:20px;
+    left:15px;
+    font-weight: bold;
+}
+
+#divStarHead
+{
+/*    width:70px;
+    border-right: 1px solid black;*/
+}
+
+#numVotos{
+    
+    
+    
+    
+}
+
+#txtPuntuacion
+{
+    position:absolute;
+    top:5px;
+    left:80px
+}
 
