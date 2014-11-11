@@ -73,13 +73,13 @@ function getRelatedRecipes(recipe){
 
 		relatedRecipes= new Array();
 
-		alert(recipe.keyword);
+
 		var keywordsRecipe=recipe.keyword.split(",");
 				
 		for(var i=0;i<keywordsRecipe.length;i++){			
 			getRelatedRecipesKeyword(keywordsRecipe[i]);
 		}	
-		alert(relatedRecipes.length);
+
 		for(var i=0;i<recipe.categories.length;i++){
 			if(relatedRecipes.length<7){
 				getRelatedRecipesCategory(recipe.categories[i].id);
