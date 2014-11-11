@@ -101,7 +101,9 @@ $(document).ready($(function () {
       $('#vsliderbar_arrow').css('background-image','url(images/ArrowLeft.png)');
   });
 
-
+  document.getElementById("slick-next").click();
+	
+	/*
   $('.center').slick({
     centerMode: true,
     centerPadding: '35px',
@@ -126,7 +128,7 @@ $(document).ready($(function () {
         }
       }
     ]
-  });
+  });*/
 
   initUtterance();
 

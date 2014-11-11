@@ -52,9 +52,9 @@ function getRelatedRecipesKeyword(keyword)
 }
 
 function getRelatedRecipes(recipe){
+
 		
-		
-		
+  						
 		for(var i=0;i<recipe.categories.length;i++){
 			getRelatedRecipesCategory(recipe.categories[i].id);
 		}	
@@ -63,16 +63,54 @@ function getRelatedRecipes(recipe){
                     return Math.random() - Math.random;
         });
 		
-		var targetdiv = $('#slider_sugeridas');
-		var carruselSugeridas='';//<div class="slick-content"> <div class="slider center">';//<section class="slick-section blue"><div class="slick-content"><div class="slider center">';
-		for(var i=0;i<relatedRecipes.length;i++){
+		var targetdiv = $('#suggestionsContainer');
+		var carruselSugeridas='<section class="slick-section blue"><div class="slick-content"><div class="slider center">';
+		var factor=3;
+		for(var i=0;i<relatedRecipes.length*factor;i++){
+
 			//alert(relatedRecipes[i].name);
-			carruselSugeridas+='<div><h3><img src="data:image/jpg;base64,' + relatedRecipes[i].image + '"  width="170" height="170"/></h3></div>';//
+			//targetdiv.append('<div><h3><img src="data:image/jpg;base64,' + relatedRecipes[i%relatedRecipes.length].image + '"  width="170" height="170"/></h3></div>');
+			carruselSugeridas+='<div><h3><img src="data:image/jpg;base64,' + relatedRecipes[i%relatedRecipes.length].image + '" height="150" height="150"/></h3></div>';//
+			//$("#img_"+i).attr('src','data:image/jpg;base64,' + relatedRecipes[i%relatedRecipes.length].image + '');
+
+			
+			
 		}
-		carruselSugeridas+='';//</div></div>';//</div></div></section>';
+		alert('holi');
+		carruselSugeridas+='</div></div></section>';
 		//alert(carruselSugeridas);
-		//targetdiv.html(carruselSugeridas);
-                      
+		targetdiv.html(carruselSugeridas);
+		
+$('.center').slick({
+  centerMode: true,
+  centerPadding: '35px',
+  slidesToShow: 3,
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 3
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 1
+      }
+    }
+  ]
+});
+		
+		
+		
+
+		        
 }
 
 
