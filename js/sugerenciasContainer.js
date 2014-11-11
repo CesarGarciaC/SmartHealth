@@ -4,7 +4,7 @@ function getRelatedRecipesCategory(category)
 {	
     try
     {
-		relatedRecipes= new Array();
+		
         var data = 'id_category='+category;
         $.ajax({
             url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=smartGeneralSearchService&format=json&', //the script to call to get data          
@@ -13,9 +13,6 @@ function getRelatedRecipesCategory(category)
             async: false,
             success: function(data)          //on recieve of reply
             {
-				data.data.sort(function(a, b) {
-                    return Math.random() - Math.random;
-                });
 				for(var i=0;i<data.data.length;i++){
 					relatedRecipes.push(data.data[i]);
 				}				
@@ -73,12 +70,22 @@ Array.prototype.unique = function() {
 
 function getRelatedRecipes(recipe){
 
-		
-  						
-		for(var i=0;i<recipe.categories.length;i++){
-			
-			getRelatedRecipesCategory(recipe.categories[i].id);
+
+		relatedRecipes= new Array();
+
+		alert(recipe.keyword);
+		var keywordsRecipe=recipe.keyword.split(",");
+				
+		for(var i=0;i<keywordsRecipe.length;i++){			
+			getRelatedRecipesKeyword(keywordsRecipe[i]);
 		}	
+		alert(relatedRecipes.length);
+		for(var i=0;i<recipe.categories.length;i++){
+			if(relatedRecipes.length<7){
+				getRelatedRecipesCategory(recipe.categories[i].id);
+			}
+			else	break;
+		}
 		
 		distinctRecipes=relatedRecipes.unique();
 		
@@ -87,10 +94,10 @@ function getRelatedRecipes(recipe){
         });
 		
 		
-		
 		var targetdiv = $('#suggestionsContainer');
 		var carruselSugeridas='<section class="slick-section blue"><div class="slick-content"><div class="slider center">';
 		var factor=5;
+		if(distinctRecipes>5)	factor=1;
 		for(var i=0;i<distinctRecipes.length*factor;i++){
 
 			//alert(relatedRecipes[i].name);
