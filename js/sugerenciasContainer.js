@@ -76,7 +76,7 @@ function getRelatedRecipes(recipe){
 			
 			
 		}
-		alert('holi');
+
 		carruselSugeridas+='</div></div></section>';
 		//alert(carruselSugeridas);
 		targetdiv.html(carruselSugeridas);
