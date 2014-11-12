@@ -4,7 +4,7 @@
   top: 3px;
   left: 3px;
   width: 1020px;
-  height: 701px;
+  height: 722px;
 }
 
 #vertical_slider_bar{
@@ -115,19 +115,20 @@ _buttonFav
 
 #instructionsContainer {
   clear: both;
-  width: 670px;
-  height: 400px;
   font-size: 18px;
+  
+  /*width: 670px;
+  height: 400px;
   display: none;
   background-color: rgba(204,102,51,0.5);
   margin-left: 40px;
-  margin-top: 10px;
+  margin-top: 10px;*/
 }
 
 #suggestionsContainer{
   height: 190px;
   width: 670px;
-  margin-top: 10px;
+  margin-top: 30px;
   margin-left: 40px;
 }
 
@@ -161,7 +162,7 @@ _buttonFav
 
 #recipePhoto {
   width: 270px;
-  height: 270px;
+  height: 250px;
   margin: 10px 0 0 10px;
 }
 
@@ -171,18 +172,18 @@ _buttonFav
 }
 
 #preparationDiv {
-  width: 650px;
-  height: 322px;
+  width: 100%;
+  height: 100%;
   margin-top: 20px;
   overflow: hidden;
   line-height: 1.2;
   margin-left: 10px;
+  text-align: left;
 }
 
 #preparationTitle {
-  width: 660px;
+  width: 100%;
   height: 30px;
-  margin: 10px 0 0 10px;    
 }
 
 #preparationTitle ._button{
@@ -191,20 +192,22 @@ _buttonFav
 }
 
 #voiceFwdBtn{
-  margin-right: 10px;
+  margin-right: 270px;
 }
 
 #dificultad {
   position: absolute;
-  margin-left: 565px;
-  margin-top: 15px;  
+  margin-left: 830px;
+  margin-top: -125px;
 }
 
 #duracion {
   position: absolute;
-  margin-top: 20px;
-  margin-left: 400px;
+  margin-top: -125px;
+  margin-left: 740px;
   font-size: 15px;
+  height: 70px;
+  width: 70px;
 }
 
 #duracion_icon{
@@ -212,13 +215,19 @@ _buttonFav
     height: 32px;
     width: 32px;
     display: inline-block;
+    margin-left: 5px;
 }
 
 #duracion_text{
     height: 32px;
-    width: 55px;    
+    width: 55px;
     display: inline-block;
-    line-height: 32px; 
+    line-height: 32px;
+    margin-top: -5px;
+}
+
+#diffTitle{
+  font-size: 14px;
 }
 
 #recipeHeader p{
@@ -232,7 +241,7 @@ _buttonFav
   position: absolute;
   width: 290px;
   height: 360px;
-  top: 380px;
+  top: 430px;
   right:0px;
  }
 
@@ -252,14 +261,15 @@ _buttonFav
 
 #favoritosBtn {
   position: absolute;
-  height: 52px;
-  right: 10px;
+  height: 48px;
+  right: 20px;
   top: 10px;
   width: 48px;  
-  background-image: url('../images/addFavorites.png');
-  -webkit-border-radius: 5px 10px;  /* Safari  */
-  -moz-border-radius: 5px 10px;     /* Firefox */
-  background-color: #FCBD57;
+  background-image: url('images/AddFavorites.png');
+  background-size: 100%;
+  -webkit-border-radius: 2px 2px;  /* Safari  */
+  -moz-border-radius: 2px 2px;     /* Firefox */
+  background-color: rgba(10,10,10,0.3);
 }
 
 #favoritosBtn:hover
@@ -322,7 +332,7 @@ _buttonFav
   height: 48px;
   background-image: url('../images/play.png');
   position: absolute;
-  bottom: 35px;
+  bottom: 65px;
   right: 45px;
   cursor: pointer;
 }
@@ -481,21 +491,22 @@ _buttonFav
   text-decoration:underline;
 }
 #ingredientsTable {
-  font-family:Arial, Helvetica, sans-serif;
+  /*font-family:Arial, Helvetica, sans-serif;*/
   color:#666;
   font-size:16px;
-  text-shadow: 1px 1px 0px #fff;
+  /*text-shadow: 1px 1px 0px #fff;*/
   background:#eaebec;
-  margin:20px;
+  /*margin:20px;*/
+  width: 100%;
   border:#ccc 1px solid;
 
   -moz-border-radius:3px;
   -webkit-border-radius:3px;
   border-radius:3px;
 
-  -moz-box-shadow: 0 1px 2px #d1d1d1;
+  /*-moz-box-shadow: 0 1px 2px #d1d1d1;
   -webkit-box-shadow: 0 1px 2px #d1d1d1;
-  box-shadow: 0 1px 2px #d1d1d1;
+  box-shadow: 0 1px 2px #d1d1d1;*/
 }
 #ingredientsTable th {
   padding:11px 15px 12px 15px;
@@ -566,6 +577,7 @@ _buttonFav
 #dificultad_icons{
   margin: 0px 20px 0px 0px;
   padding: 0px;
+  margin-top: 5px;
 }
 
 #dificultad_icons li{
@@ -590,7 +602,7 @@ _buttonFav
 .slick-slide .image{padding:10px;-moz-box-sizing:border-box;box-sizing:border-box;}
 .slick-slide img{border:5px solid #FFF;display:block;width:100%;-moz-box-sizing:border-box;box-sizing:border-box;}
 .slick-slide img.slick-loading{border:0;-moz-box-sizing:border-box;box-sizing:border-box; }
-.slick-slider{margin:5px auto 5px;-moz-box-sizing:border-box;box-sizing:border-box;}
+.slick-slider{margin:0px auto 5px;-moz-box-sizing:border-box;box-sizing:border-box;}
 
 /*Información nutricional*/
 
@@ -617,7 +629,7 @@ p {
 
 .performance-facts__title {
   font-weight: bold;
-  font-size: 22px;
+  font-size: 18px;
   margin: 0 0 0.25rem 0;
 }
 
@@ -655,7 +667,7 @@ p {
 }
 
 .performance-facts__table{
-  font-size: 17px;  
+  font-size: 14px;  
 }
 
 .small-info {
@@ -700,4 +712,44 @@ p {
 
 .thin-end {
   border-bottom: 1px solid black;
+}
+
+/* tabs */
+.tabs.tabs-style-bar{
+  width: 670px;
+  margin-left: 40px;
+  margin-top: 20px;
+}
+
+.content-wrap{
+  margin-top: 5px;
+  height: 340px;
+  background-color: white;
+}
+
+.tabs-style-bar nav ul li a span{
+  color: #2a2a2a;
+  font-size: 14px;
+}
+
+.tabs-style-bar nav{
+  margin-top: 10px;
+}
+
+.tabs-style-bar nav a{
+  text-decoration: none;
+}
+
+.tabs-style-bar nav ul li a:hover,
+.tabs-style-bar nav ul li a:focus {
+  color: #2CC185;
+}
+
+.tabs-style-bar nav ul li.tab-current a {
+  background: #2CC185;
+  color: #fff;
+}
+
+#section-flip-1{
+  padding: 30px;
 }

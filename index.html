@@ -9,7 +9,6 @@
         <meta property="og:image" content="http://developando.com/images/developandoLogo.jpeg" />
 
         <link rel="stylesheet" type="text/css" href="css/styles.css"/>
-        <link rel="stylesheet" type="text/css" href="css/detalleReceta.css"/>
         <link rel="stylesheet" type="text/css" href="css/rating.css" />
         <link rel="stylesheet" type="text/css" href="css/menu.css" />
         <link href="http://code.jquery.com/ui/1.9.0/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
@@ -17,8 +16,12 @@
         <link rel="stylesheet" type="text/css" href="js/jRating.jquery.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
         <link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.css" />
+        <!--<link rel="stylesheet" type="text/css" href="css/normalize.css" />-->
+        <link rel="stylesheet" type="text/css" href="css/tabs.css" />
+        <link rel="stylesheet" type="text/css" href="css/tabstyles.css" />
         <link type="text/css" href="css/jquery.toastmessage.css" rel="stylesheet">
-        
+        <link rel="stylesheet" type="text/css" href="css/detalleReceta.css"/>
+        <link href='http://fonts.googleapis.com/css?family=Lato:400,700,900&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.js"></script>
         <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.min.js"></script>
         <!--<script type="text/javascript" src="js/jquery-1.6.3.min.js"></script>-->
@@ -30,10 +33,13 @@
         <script type="text/javascript" src="js/favorites.js"></script>
         <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
         <script type="text/javascript" src="slick/slick.min.js"></script>
+		<script type="text/javascript" src="slick/slick.js"></script>
         <script type="text/javascript" src="js/details.js" charset="utf-8"></script>
         <script type="text/javascript" src="js/categories.js"></script>
         <script type="text/javascript" src="js/puntuacion.js"></script>
         <script type="text/javascript" src="js/menu.js"></script>
+        <script type="text/javascript" src="js/Fondo.js"></script>
+        <script type="text/javascript" src="js/ColorReceta.js"></script>
         <script type="text/javascript" src="js/facebook.js"></script>
         <script type="text/javascript" src="js/jquery.keyboard.js"></script>
         <script type="text/javascript" src="js/jquery.keyboard.extension-navigation.js"></script>
@@ -43,6 +49,10 @@
         <script type="text/javascript" src="js/jquery.blockUI.js"></script>
         <script type="text/javascript" src="js/msgLoading.js"></script>
 		<script type="text/javascript" src="js/tips.js"></script>
+		<script type="text/javascript" src="js/sugerenciasContainer.js"></script>
+        <script type="text/javascript" src="js/cbpFWTabs.js"></script>
+        <script type="text/javascript" src="js/modernizr.custom.js"></script>
+
         <meta charset="utf-8">      
 
 
@@ -125,7 +135,10 @@
                                 <center>Categorías</center>
                                 </td>
                                 </tr>
-
+                                            
+                                <tr>
+                                <button id="colorIzquierdo" onclick="colorIzquierdo()">colorIzquierdo</button>
+                                </tr>
                             </table>
                         </div>
                     </td>
@@ -151,7 +164,7 @@
                             </table>
                         </div>
                         <div id="recipe-details" class="invisible-block">
-            <div id="vertical_slider_bar"><div id="vsliderbar_arrow"></div></div> 
+            <!--<div id="vertical_slider_bar"><div id="vsliderbar_arrow"></div></div> -->
             <div id="topMargin" class="container clearfix">
 
             </div>
@@ -159,7 +172,7 @@
                 <div id="recipeTitle" class="embed-wrapper"></div>
                 <div id="BtnContainer">
                     <div id="divStarHead">
-                        <img src="images/starHead.png"/>
+                        <img id="pointIcon" src="images/points.png"/>
                         <div id="puntuacionPromedio"></div>
                         <div id="numVotos"></div>
                     </div>
@@ -171,17 +184,39 @@
                     <input type="button" id="favoritosBtn"/>
                     
                 </div>
-                <div id="duracion" class="embed-wrapper">
-                    <a id='duracion_icon'></a><div id='duracion_text'></div> 
-                        <!--<div id="duracionIcon" class="embed-wrapper" src="images/timer.png"></div>-->
-                </div>
-                <p>Dificultad: </p>
-                <div id="dificultad" class="embed-wrapper">
-                    <ul id="dificultad_icons"></ul>                                    
-                </div>
                                                      
                 </div>
-            <div id="ingredientesContainer" class="clearfix">
+                <div class="tabs tabs-style-bar">
+                    <nav>
+                        <ul>
+                            <li><a href="#section-flip-1"><span>Ingredientes</span></a></li>
+                            <li><a href="#section-flip-2"><span>Instrucciones</span></a></li>
+                        </ul>
+                    </nav>
+                    <div class="content-wrap">
+                        <section id="section-flip-1">
+                            <table id="ingredientsTable">
+                                    <tr>
+                                        <th>Ingrediente</th>
+                                        <th>Unidad de Medida</th>      
+                                        <th>Cantidad</th>
+                                    </tr>                                        
+                            </table>
+                        </section>
+                        <section id="section-flip-2">
+                            <div id="instructionsContainer" class="container clearfix">
+                                <div id="preparationTitle" class="embed-wrapper"> 
+                                    <div id="voiceFwdBtn" class="_button"><img class="imgIcon" src="images/fordward.png"></div>
+                                    <div id="voiceStopBtn" class="_button"><img class="imgIcon" src="images/stop1.png"></div>
+                                    <div id="voicePlayBtn" class="_button"><img class="imgIcon" src="images/play1.png"></div>
+                                    <div id="voiceBckBtn" class="_button"><img class="imgIcon" src="images/backward.png"></div>
+                                </div>
+                                <div id="preparationDiv" class="embed-wrapper mCustomScrollbar"></div>                
+                            </div>
+                        </section>
+                    </div><!-- /content -->
+                </div><!-- /tabs -->
+            <!--<div id="ingredientesContainer" class="clearfix">
                 
                 <div id="ingredientesDiv" class="embed-wrapper mCustomScrollbar">
                     <table id="ingredientsTable">
@@ -192,15 +227,23 @@
                         </tr>                                        
                     </table>
                 </div>
-            </div>
+            </div>-->
             <div id="photoContainer" class="clearfix">
                 <div id="recipePhoto" class="embed-wrapper"></div>
                 <div id="videoBtn"></div>
             </div>
+            <div id="duracion" class="embed-wrapper">
+                <a id='duracion_icon'></a><div id='duracion_text'></div> 
+                        <!--<div id="duracionIcon" class="embed-wrapper" src="images/timer.png"></div>-->
+            </div>
+            <div id="dificultad" class="embed-wrapper">
+                <p id="diffTitle">Dificultad: </p>
+                <ul id="dificultad_icons"></ul>                                    
+            </div>
             <div id="infoNutricional" class="embed-wrapper">
 
             </div>
-            <div id="instructionsContainer" class="container clearfix">
+            <!--<div id="instructionsContainer" class="container clearfix">
                 <div id="preparationTitle" class="embed-wrapper">Instrucciones de preparación: 
                     <div id="voiceFwdBtn" class="_button"><img class="imgIcon" src="images/fordward.png"></div>
                     <div id="voiceStopBtn" class="_button"><img class="imgIcon" src="images/stop1.png"></div>
@@ -209,22 +252,10 @@
                 </div>
                 <div id="preparationDiv" class="embed-wrapper mCustomScrollbar"></div>                
                 <!--Aca iba info nutricional-->
-            </div>
+            <!--</div>-->
             <div id="suggestionsContainer" class="container _element">
-                <section class="slick-section blue">
-                    <div class="slick-content">     
-                        <div class="slider center">
-                            <div><h3><img src="images/01_batido_fresas.jpg"/></h3></div>
-                            <div><h3><img src="images/02_langostinos_szechwan.jpg"/></h3></div>
-                            <div><h3><img src="images/03_quiche_tofu.jpg"/></h3></div>
-                            <div><h3><img src="images/04_ensalada_feta_kale.jpg"/></h3></div>
-                            <div><h3><img src="images/05_estofado.jpg"/></h3></div>
-                            <div><h3><img src="images/06_banana_bread.jpg"/></h3></div>
-                        </div>
-                    </div>
-                </section>
             </div>
-            
+            <button id="colorReceta" onclick="colorReceta()">colorReceta</button>
         </div>
                         <div id="data-container" class="bloque">
                             <div id="search">
@@ -328,6 +359,7 @@
                             </div>
 
                         </div>
+                        <button id="colorCentro" onclick="colorCentro()">colorCentro</button>
                     </td>
 
                     <td id="bloque-right">
@@ -335,9 +367,20 @@
                             <table id="tabRight">
                             </table>
                         </div>
+                        <button id="colorDerecho" onclick="colorDerecho()">colorDerecho</button>
                     </td>
                 </tr>
             </table>
-        </div>        
+        </div>
+        <script>
+            (function() {
+
+                [].slice.call( document.querySelectorAll( '.tabs' ) ).forEach( function( el ) {
+                    new CBPFWTabs( el );
+                });
+
+            })();
+        </script>
+                
     </body>
 </html>

@@ -566,7 +566,7 @@ $(document).click(function(event) {
 function clickReceta(elemId, id, value){
     //$('#botonVer_' + id).css("background-color","orange");
     //isClicked = true;
-    if (selectedRecipe.length) {
+    /*if (selectedRecipe.length) {
         var idDelete = selectedRecipe.split("_")[1];
         var idActual = id.split("_")[1];
         if (idDelete != idActual)
@@ -616,7 +616,15 @@ function clickReceta(elemId, id, value){
                 + '<button id="botonVer_' + elemId + '" onclick="seleccionarReceta(' + id + ')">Ver</button>'
                 + '<button id="botonCan_' + elemId + '" onclick="cancelarSeleccion(' + id + ')" >Cancelar</button>');
 
-        }   
+        }*/
+
+		/**********************/
+		//Click defrente a Detalle Receta
+		/**********************/
+		
+		seleccionarReceta($("#" + elemId).attr("value").split("_")[1]);
+        isInDetailView = true;
+        activeElementType = "detailsView";
 }
 
 function cancelarSeleccion(idDiv) {
