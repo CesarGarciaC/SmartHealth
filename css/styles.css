@@ -4,8 +4,7 @@ body
 	/*padding: 20px 10px 20px 10px;*/
     margin:0;
 	width:1280px;	
-	/*color: rgb(58,58,58);*/
-	color:	white;
+	color: rgb(58,58,58);
 	/*font-family: LG Display-Regular;*/
 	font-size: 14px;
 	background-color: rgb(58,58,58);
@@ -25,7 +24,7 @@ body
 	height:680px;
 	padding:0;
 	width:220px;
-	background-color: rgb(246,117,0);
+	background-color: #FF8944;
 }
 
 #menu-container
@@ -45,7 +44,7 @@ body
 #bloque-center
 {
 	width:800px;
-	background-image: -webkit-gradient(radial, center center, 0, center center, 500, from(rgb(233,71,0)), to(rgb(246,117,0)));
+	background-color: #FF8944;
 }
 
 #data-container
@@ -73,7 +72,7 @@ body
 #bloque-right
 {
 	width:220px;
-	background-color: #3a3a3a;
+	background-color: #FF8944;
 }
 
 #sugerencias-container
@@ -138,10 +137,8 @@ body
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 	padding-right: 10px;
-	background-color: white;
-	color: #2a2a2a;
-	font-weight: bold;
-    /*    background-image: url(images/prueba1receta.png);*/
+	//background-color: #FAB586;
+        background-image: url(images/prueba1receta.png);
 }
 
 .detalle-receta div{
@@ -169,16 +166,15 @@ body
 }
 
 .detalle-receta-seleccionada{ 
-	/*border: 2px solid #F1F1F1 !important;*/
+	border: 2px solid #F1F1F1 !important;
 	/*-webkit-box-shadow: #F1F1F1 0px 0px 6px 3px;*/
-	border: 2px solid rgb(233,71,0) !important;
 	cursor:pointer;
 }
 
 .detalle-receta .texto-detalle
 {
 	float:left;
-	width:72px;
+	width:70px;
 	height:70%;
 	overflow:hidden;
 	z-index:-1;
@@ -395,13 +391,8 @@ a
 }
 
 #menu-container .menu-option.selected{
-	/*background-color: rgba(240,240,240,0.5);*/
-	background-color: rgb(233,71,0);
+	background-color: rgba(240,240,240,0.5);
 	border-radius: 5px;
-}
-
-#menu-container .menu-option{
-	background-color: #2a2a2a;
 }
 
 #Usuario.keynav{

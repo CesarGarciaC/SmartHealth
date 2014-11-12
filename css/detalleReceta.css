@@ -1,10 +1,10 @@
 #recipe-details{
-  background-color: rgb(253,155,22);
+  background-color: #FF8944;
   position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 1026px;
-  height: 725px
+  top: 3px;
+  left: 3px;
+  width: 1020px;
+  height: 722px;
 }
 
 #vertical_slider_bar{
@@ -139,7 +139,6 @@ _buttonFav
   width: 370px;
   margin-left: 20px;
   margin-top: 10px;
-  font-weight: bold;
 }
 
 #recipeHeader {
@@ -180,8 +179,6 @@ _buttonFav
   line-height: 1.2;
   margin-left: 10px;
   text-align: left;
-  color: #2f2f2f;
-  font-weight: bold;
 }
 
 #preparationTitle {
@@ -594,7 +591,7 @@ _buttonFav
 /*Carrusel*/
 
 /**{-moz-box-sizing:border-box;box-sizing:border-box;}*/
-.blue{background:rgba(204,102,51,0.5);color:#f1f1f1-moz-box-sizing:border-box;box-sizing:border-box;}
+.blue{background:#CC6633;color:#f1f1f1-moz-box-sizing:border-box;box-sizing:border-box;}
 .blue h3{background:#fff;color:#3498db;font-size:36px;line-height:100px;margin:10px;padding:2%;position:relative;text-align:center;-moz-box-sizing:border-box;box-sizing:border-box;}
 
 .center .slick-center h3{-moz-transform:scale(1.08);-ms-transform:scale(1.08);-o-transform:scale(1.08);-webkit-transform:scale(1.08);color:#e67e22;opacity:1;transform:scale(1.08);-moz-box-sizing:border-box;box-sizing:border-box;}
@@ -628,14 +625,12 @@ p {
 }
 .performance-facts table {
   border-collapse: collapse;
-  color: #2a2a2a;
 }
 
 .performance-facts__title {
   font-weight: bold;
   font-size: 18px;
   margin: 0 0 0.25rem 0;
-  color: #2a2a2a;
 }
 
 .performance-facts__header {
@@ -735,7 +730,6 @@ p {
 .tabs-style-bar nav ul li a span{
   color: #2a2a2a;
   font-size: 14px;
-  font-weight: bold;
 }
 
 .tabs-style-bar nav{
@@ -748,12 +742,12 @@ p {
 
 .tabs-style-bar nav ul li a:hover,
 .tabs-style-bar nav ul li a:focus {
-  color: rgb(233,71,0);
+  color: #2CC185;
 }
 
 .tabs-style-bar nav ul li.tab-current a {
-  background: rgb(233,71,0);
-  color: white;
+  background: #2CC185;
+  color: #fff;
 }
 
 #section-flip-1{
