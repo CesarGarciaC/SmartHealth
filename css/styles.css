@@ -8,7 +8,8 @@ body
 	/*font-family: LG Display-Regular;*/
 	font-size: 14px;
 	background-color: rgb(58,58,58);
-  	font: 400 1em/1.38 Helvetica;  
+  	/*font: 400 1em/1.38 Helvetica;  */
+  	font-family: 'Lato', sans-serif;
 }
 
 #main-container, table
@@ -92,7 +93,9 @@ body
 #search input[type="text"] {  
 	background: url(../images/search.png) no-repeat 10px 6px white; 
 	border: 0 none; 
-	font: bold 16px Arial,Helvetica,Sans-serif; 
+	/*font: bold 16px Arial,Helvetica,Sans-serif; */
+	font-weight: bold;
+	font-size: 16px;
 	color: rgb(58,58,58);
 	width: 300px;
 	padding: 6px 15px 6px 35px; 
@@ -433,25 +436,27 @@ a
     top:20px;
     left:15px;
     font-weight: bold;
+    color: white;
+	font-size: 14px;
 }
 
-#divStarHead
+#pointIcon
 {
-/*    width:70px;
-    border-right: 1px solid black;*/
+	max-width: 50px;
+	max-height: 50px;
 }
 
 #numVotos{
-    
-    
-    
-    
+   	margin-left: 5px;
+	font-size: 14px;
+	margin-top: -5px;     
 }
 
 #txtPuntuacion
 {
     position:absolute;
-    top:5px;
-    left:80px
+    top: 5px;
+	left: 80px;
+	font-size: 14px;
 }
 

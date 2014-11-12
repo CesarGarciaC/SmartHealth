@@ -4,7 +4,7 @@
   top: 3px;
   left: 3px;
   width: 1020px;
-  height: 701px;
+  height: 722px;
 }
 
 #vertical_slider_bar{
@@ -128,7 +128,7 @@ _buttonFav
 #suggestionsContainer{
   height: 190px;
   width: 670px;
-  margin-top: 10px;
+  margin-top: 30px;
   margin-left: 40px;
 }
 
@@ -162,7 +162,7 @@ _buttonFav
 
 #recipePhoto {
   width: 270px;
-  height: 270px;
+  height: 250px;
   margin: 10px 0 0 10px;
 }
 
@@ -197,15 +197,17 @@ _buttonFav
 
 #dificultad {
   position: absolute;
-  margin-left: 565px;
-  margin-top: 15px;  
+  margin-left: 830px;
+  margin-top: -125px;
 }
 
 #duracion {
   position: absolute;
-  margin-top: 20px;
-  margin-left: 400px;
+  margin-top: -125px;
+  margin-left: 740px;
   font-size: 15px;
+  height: 70px;
+  width: 70px;
 }
 
 #duracion_icon{
@@ -213,13 +215,19 @@ _buttonFav
     height: 32px;
     width: 32px;
     display: inline-block;
+    margin-left: 5px;
 }
 
 #duracion_text{
     height: 32px;
-    width: 55px;    
+    width: 55px;
     display: inline-block;
-    line-height: 32px; 
+    line-height: 32px;
+    margin-top: -5px;
+}
+
+#diffTitle{
+  font-size: 14px;
 }
 
 #recipeHeader p{
@@ -233,7 +241,7 @@ _buttonFav
   position: absolute;
   width: 290px;
   height: 360px;
-  top: 380px;
+  top: 430px;
   right:0px;
  }
 
@@ -253,14 +261,15 @@ _buttonFav
 
 #favoritosBtn {
   position: absolute;
-  height: 52px;
-  right: 10px;
+  height: 48px;
+  right: 20px;
   top: 10px;
   width: 48px;  
-  background-image: url('../images/addFavorites.png');
-  -webkit-border-radius: 5px 10px;  /* Safari  */
-  -moz-border-radius: 5px 10px;     /* Firefox */
-  background-color: #FCBD57;
+  background-image: url('images/AddFavorites.png');
+  background-size: 100%;
+  -webkit-border-radius: 2px 2px;  /* Safari  */
+  -moz-border-radius: 2px 2px;     /* Firefox */
+  background-color: rgba(10,10,10,0.3);
 }
 
 #favoritosBtn:hover
@@ -323,7 +332,7 @@ _buttonFav
   height: 48px;
   background-image: url('../images/play.png');
   position: absolute;
-  bottom: 35px;
+  bottom: 65px;
   right: 45px;
   cursor: pointer;
 }
@@ -482,7 +491,7 @@ _buttonFav
   text-decoration:underline;
 }
 #ingredientsTable {
-  font-family:Arial, Helvetica, sans-serif;
+  /*font-family:Arial, Helvetica, sans-serif;*/
   color:#666;
   font-size:16px;
   /*text-shadow: 1px 1px 0px #fff;*/
@@ -568,6 +577,7 @@ _buttonFav
 #dificultad_icons{
   margin: 0px 20px 0px 0px;
   padding: 0px;
+  margin-top: 5px;
 }
 
 #dificultad_icons li{
@@ -592,7 +602,7 @@ _buttonFav
 .slick-slide .image{padding:10px;-moz-box-sizing:border-box;box-sizing:border-box;}
 .slick-slide img{border:5px solid #FFF;display:block;width:100%;-moz-box-sizing:border-box;box-sizing:border-box;}
 .slick-slide img.slick-loading{border:0;-moz-box-sizing:border-box;box-sizing:border-box; }
-.slick-slider{margin:5px auto 5px;-moz-box-sizing:border-box;box-sizing:border-box;}
+.slick-slider{margin:0px auto 5px;-moz-box-sizing:border-box;box-sizing:border-box;}
 
 /*Información nutricional*/
 
@@ -619,7 +629,7 @@ p {
 
 .performance-facts__title {
   font-weight: bold;
-  font-size: 22px;
+  font-size: 18px;
   margin: 0 0 0.25rem 0;
 }
 
@@ -657,7 +667,7 @@ p {
 }
 
 .performance-facts__table{
-  font-size: 17px;  
+  font-size: 14px;  
 }
 
 .small-info {
