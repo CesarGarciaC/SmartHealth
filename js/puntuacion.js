@@ -64,6 +64,7 @@ function voteWebService(rate)
          
  function mostrarRatingDetallado(ratingUsuario,ratingPromedio,numVotos)
  {
+     alert("Mostrar rating..."+idReceta)
      $("#puntuacionPromedio").html(ratingPromedio.toFixed(1));
      $("#numVotos").html(numVotos+" votos");
      $("#ratingUsuario").remove();
@@ -92,7 +93,7 @@ function voteWebService(rate)
  {
 	 
      var id_user=User.id;
-
+//     alert(id_user+" - "+id_recipe)
      var data="id_user="+id_user+"&id_recipe="+id_recipe;
         $.ajax({        
 
@@ -106,7 +107,7 @@ function voteWebService(rate)
                 //No hay puntuacion
                 mostrarRatingDetallado(data.data.rating,(data.data.recipe_rating/data.data.recipe_raters),data.data.recipe_raters);
 
-                if (data.data.rating=="noResults")
+                if (data.data.code=="noResults")
                 {
                     $("#btnPuntuacion").show();
                     return 1;

@@ -794,7 +794,7 @@ function busquedaRecetas(column, cat, keyword)
 
 var idReceta;
  function seleccionarReceta(idRecetaSeleccionada,i){
-        if (User.id=="")
+     if (User.id=="")
         {
 
 //            $("#favoritosBtn").hide();
