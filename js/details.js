@@ -9,12 +9,15 @@ $(document).ready($(function () {
     });*/
     
   
-  $('#favoritosBtn').click(function(){
-      if (User.id=="")
-            mostrarMensajeError("Debe iniciar sesión para poder agregar esta receta a sus favoritos.")
-      else
-            agregarFavoritos(1);
-  }); 
+//  $('#favoritosBtn').click(function(){
+//      if (User.id=="")
+//      {
+//            mostrarMensajeError("Debe iniciar sesión para poder agregar esta receta a sus favoritos.")
+//            
+//      }
+//      else
+//            agregarFavoritos(1);
+//  }); 
 
   $('#volverBtn').click(function(){
   		$('#recipe-details').addClass("invisible-block"); 
@@ -379,7 +382,7 @@ $(document).ready($(function () {
   
   
   
-  function agregarFavoritos(e)
+  function agregarFavoritos(idRec)
   {
       try {
 //            alert(User.id)
@@ -390,13 +393,13 @@ $(document).ready($(function () {
             url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=smartAddFavService&format=json&',                  //the script to call to get data          
             data: data,                        //you can insert url argumnets here to pass to api.php                              //for example "id=5&parent=6"
             dataType: 'json',                //data format    
-            async: false,
+            async: true,
             success: function(response)          //on recieve of reply
             {
-                if (e==1)
-                    seleccionarReceta(idReceta)
+//               seleccionarReceta(idRec)
+                $("#favoritosBtn").attr("onclick","eliminarFavoritosPreview(+"+idRec+")");
+                $("#favoritosBtn").css("background-image","url('images/RemoveFavorites.png')");
                 mostrarMensajeInformativo("Receta agregada a favoritos");
-//                $("#favoritosBtn").html("Favoritos ✓✓");
             } 
           });
 

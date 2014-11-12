@@ -327,6 +327,9 @@ $(document).ready($(function()
                 cancelarSeleccion(activeElementIndex);
             }*/
             
+            if (isInFavoriteView)
+                obtenerFavoritos()
+            
             $('#recipe-details').addClass("invisible-block"); 
             $('#data-container').removeClass("invisible-block"); 
             isInDetailView = false; 	
@@ -804,16 +807,20 @@ var idReceta;
  function seleccionarReceta(idRecetaSeleccionada,i){
      if (User.id=="")
         {
-
-//            $("#favoritosBtn").hide();
             $("#btnPuntuacion").hide();
         }else{
-			if (recipeIsInFavorites)
+            recipeIsInFavorites=isInFavorites(idRecetaSeleccionada);
+            if (recipeIsInFavorites)
             {
-//                $("#favoritosBtn").html("Favoritos ✓✓")
-                $("#favoritosBtn").prop("disabled","true");
+                $("#favoritosBtn").css("background-image","url('images/RemoveFavorites.png')");
+                $("#favoritosBtn").attr("onclick","eliminarFavoritosPreview(+"+idRecetaSeleccionada+")");
             }
-		}
+            else
+            {
+                $("#favoritosBtn").css("background-image","url('css/images/AddFavorites.png')");
+                $("#favoritosBtn").attr("onclick","agregarFavoritos("+idRecetaSeleccionada+")");
+            }
+        }
         obtenerPuntuacion(idRecetaSeleccionada)
 
 
