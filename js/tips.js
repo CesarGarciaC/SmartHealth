@@ -44,7 +44,7 @@ function paintEventsTips(){
 	getEvents();
 	
 	var targetdiv = $('#tabRight');
-	var fbButton='<tr><td><button id="FacebookButton" onclick="facebookLayer()"><img src="images/Facebook_Logo.png" width=40 height=40> </button></td></tr>';
+	/*var fbButton='<tr><td><button id="FacebookButton" onclick="facebookLayer()"><img src="images/Facebook_Logo.png" width=40 height=40> </button></td></tr>';*/
 	var eventDiv='';
 	for(var i=0;i<3;i++){
 
@@ -52,8 +52,8 @@ function paintEventsTips(){
 
 		var direccion=event[i].address;
 		var lugar=direccion.split(",")[0];
-		 eventDiv+='<tr><td><div class="detalleDiv" style="background: url(images/tipBackground.png)">'+
-		 '<p style="margin-bottom:10px; height:28%;color: rgb(58,58,58);font-weight: bold;font-size: 16px;">'+event[i].name+'</p>'+
+		 eventDiv+='<tr><td><div class="detalleDiv" style="background-color: rgb(243,125,1)">'+
+		 '<p style="margin-bottom:10px; height:28%;color: white;font-weight: bold;font-size: 16px;">'+event[i].name+'</p>'+
 		 '<div style="text-align:left;float:left;margin-bottom:5px;">'+
 		 '<p style="display: inline;margin-right:5px;font-weight: bold;font-size: 14px;">Fecha:</p>'+
 		 '<p style="display: inline;margin-bottom:3px;font-size: 14px;">Sin Fecha </p></div><br>' +
@@ -68,5 +68,6 @@ function paintEventsTips(){
 				'<p style="margin-left: 17px;margin-top: 2px;font-weight: bold;font-size: 14px; ">Consejo</p></td></tr>';
 		 }
 	}
-	targetdiv.html(fbButton+eventDiv);	
+	//targetdiv.html(fbButton+eventDiv);	
+	targetdiv.html(eventDiv);	
 }
