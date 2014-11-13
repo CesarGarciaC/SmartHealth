@@ -92,11 +92,8 @@
                 mostrarMensajeInformativo("Receta eliminada de tus favoritos.")
                 $("#favoritosBtn").css("background-image","url('css/images/AddFavorites.png')");
                 $("#favoritosBtn").attr("onclick","agregarFavoritos("+id_recipe+")");
-                
             } 
         }); 
-        
-        
     }
     
     

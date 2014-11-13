@@ -807,7 +807,7 @@ var idReceta;
  function seleccionarReceta(idRecetaSeleccionada,i){
      if (User.id=="")
         {
-            $("#btnPuntuacion").hide();
+            $("#favoritosBtn").attr("onclick","mostrarMensajeError('Debe iniciar sesión para poder agregar esta receta a sus favoritos.')");
         }else{
             recipeIsInFavorites=isInFavorites(idRecetaSeleccionada);
             if (recipeIsInFavorites)

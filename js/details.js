@@ -9,14 +9,12 @@ $(document).ready($(function () {
     });*/
     
   
-//  $('#favoritosBtn').click(function(){
+//  $('#favoritosBtn').click(function(){alert("dddddd")
 //      if (User.id=="")
 //      {
 //            mostrarMensajeError("Debe iniciar sesión para poder agregar esta receta a sus favoritos.")
 //            
 //      }
-//      else
-//            agregarFavoritos(1);
 //  }); 
 
   $('#volverBtn').click(function(){
