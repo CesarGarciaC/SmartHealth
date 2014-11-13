@@ -76,3 +76,12 @@ ul li {
 #footer { text-align: center; height: 50px; line-height: 50px; margin: 0px auto; background-color: #3a3a3a; color:#fff; }
 #footer a {color: #fff;}
 #footer a:hover{ color: #e14448;  }
+
+
+.selected{
+	background-color: blue !important;
+}
+
+.keynav{
+	background-color: blue !important;
+}

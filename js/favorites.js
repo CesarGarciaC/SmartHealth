@@ -41,7 +41,7 @@
 			RecipesGlobal.push(updatedData.recetas[i]);
 			//alert(RecipesGlobal[i].name);
 		}*/
-		
+		        activeView = "view_favoritos";
                 paintRecipes(3,updatedData);
                 return updatedData;
             } 
