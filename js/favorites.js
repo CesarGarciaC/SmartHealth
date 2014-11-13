@@ -84,14 +84,16 @@
             url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=smartDeleteFavService&format=json&',                  //the script to call to get data          
             data: data,                        //you can insert url argumnets here to pass to api.php                              //for example "id=5&parent=6"
             dataType: 'json',                //data format    
-            async: false,
+            async: true,
             success: function(data)          //on recieve of reply
             {	
-                obtenerFavoritos();
+//                obtenerFavoritos();
+//                seleccionarReceta(id_recipe);
+                mostrarMensajeInformativo("Receta eliminada de tus favoritos.")
+                $("#favoritosBtn").css("background-image","url('css/images/AddFavorites.png')");
+                $("#favoritosBtn").attr("onclick","agregarFavoritos("+id_recipe+")");
             } 
         }); 
-        
-        
     }
     
     
