@@ -119,12 +119,12 @@ body
 .detalleDiv
 {
 	width:150px;
-	height:120px;
-	border: 2px solid #3A3A3A;
+	height:132px;
+	/*border: 2px solid #3A3A3A;
 	-webkit-border-radius: 10px; 
 	-moz-border-radius: 10px;
-	border-radius: 10px;
-	padding: 5px 10px 0px 10px;
+	border-radius: 10px;*/
+	padding: 23px 10px 0px 10px;
 }
 
 .detalle-receta
@@ -272,8 +272,8 @@ h2{
 
 #sugerencias-container table
 {
-	padding-top:40px;
-	border-spacing:20px;
+	padding-top:80px;
+	border-spacing:20px 15px;
 }
 
 #sugerencias-container td
