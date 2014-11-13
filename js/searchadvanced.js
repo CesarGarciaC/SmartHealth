@@ -65,8 +65,7 @@ function filtrar()
               //Recientes
               case 2:
                   {
-
-                      dataFiltrada.sort(function(a,b){return a.rating - b.rating});
+                      dataFiltrada.sort(function(a,b){return a.created_at - b.created_at});
                       break;
                   }
                   
