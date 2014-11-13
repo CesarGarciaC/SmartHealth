@@ -4,12 +4,12 @@ function mostrarMensajeError(msg)
 }
 
 function mostrarMensajeInformativo(msg)
-{
-    $().toastmessage('showSuccessToast', msg);
-//    $().toastmessage('showSuccessToast', {
-//       text     : msg,
-//       stayTime   : 10000
-//    });
+{alert("ss=\n\ss")
+//    $().toastmessage('showSuccessToast', msg);
+    $().toastmessage('showSuccessToast', {
+       text     : 'Helloooo',
+       stayTime   : 10000,
+    });
 }
 
 function mostrarMensajeAdvertencia(msg)
