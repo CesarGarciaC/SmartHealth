@@ -14,7 +14,7 @@ function mostrarCategories()
 	$("#listaCategoriasNoBusqueda").hide();
 	$("#listaCategoriasBusquedaAvanzada").show();
 	
-
+    activeView = "view_categorias";
 }
 
 function getCategories(isFiltroAvanzado)

@@ -45,17 +45,19 @@ var columns;
 var totalResults;
 
 // keyboard events
+var activeView = "view_top10";
+
+
 var leftMenuElements = ["Usuario","menu1","menuFavoritos","menuRecientes","menuCategorias"];
-//var recipeMenuElements = ["botonFav_","botonVer_","botonCan_"];
-//var activeRecipeMenuElement = "botonVer_";
-//var recipeMenuIndex = 1;
+var filterElements = ["filtroPuntuacion","filtroRecientes","filtroTiempo","filtroDificultad"];
+var voiceBtnElements = ["voiceBckBtn","voicePlayBtn","voiceStopBtn","voiceFwdBtn"];
+
 var activeElementIndex = 1;
-var isInDetailView = false;
-var activeElement = leftMenuElements[1];
-var activeElementType = "leftMenu";
-//var isClicked = false;
 var selectedMenuItem = "menu1";
 var selectedCategorieItem;
+var activeElement = leftMenuElements[1];
+var activeElementType = "leftMenu";
+
 var isInFavoriteView=false;
 var recipeIsInFavorites=false;
 var inLogin = false;
@@ -83,245 +85,56 @@ $(document).ready($(function()
 	
     var updatedData = busquedaRecetas(3, "", "");
 
-    $("#" + selectedMenuItem).addClass("selected");
-    $("#" + selectedMenuItem).addClass("keynav");
+    initView(activeView);
     
-     $('.menu-option').mousedown(function(){
-        if(this.id=="menuFavoritos"){
-            if(User.id!==""){
-        $("#" + selectedMenuItem).removeClass("selected");
-        selectedMenuItem = this.id;
-        $(this).addClass("selected");
-            }
-        }
-        else {
-                $("#" + selectedMenuItem).removeClass("selected");
-                selectedMenuItem = this.id;
-                $(this).addClass("selected");
-            }
-                
-
-    });
-
     $(document).keydown(function(event) {
-        if(activeElementType == "results")
-            $("#" + activeElement).removeClass('detalle-receta-seleccionada');    
-        else if (activeElementType == "leftMenu"){
-            $("#" + activeElement).removeClass("keynav");
-        }
-        else if (activeElementType == "categories"){
-            var temp = $('#listaCategoriasBusquedaAvanzada').children().toArray()[activeElementIndex];
-            $(temp).removeClass('keynav');
-        }
-        /*else if (isClicked){
-            //event.preventDefault();
-            $('#' + activeRecipeMenuElement + activeElementIndex).css("background-color","");
-        }*/
+        // capturar si son teclas de navegación
+        // deseleccionar el elemento seleccionado
+        // llamar a la navegacion de la vista actual
+        // actualizar elemento seleccionado
+
+        // capturar si es la tecla enter
+
+        // capturar si es la tecla back
+        cleanNavigation();
+        
         var keyCode = event.keyCode;
         //alert(keyCode);
         var activeId;
-        if(keyCode == 37){ // left
-            //if(!isClicked){
-                //$(activeElement).removeClass("hover");
-            
-                if(!isInDetailView && activeElementType == "results"){
-                        if(activeElementIndex % columns == 0){
-                            if (selectedMenuItem == "menuCategorias"){
-                                activeElementType = "categories";
-                                activeElementIndex = 0;
-                                var temp = $('#listaCategoriasBusquedaAvanzada').children().toArray()[0];
-                                $(temp).addClass('keynav');
-                            }
-                            else{
-                                activeElementType = "leftMenu";
-                                activeElement = leftMenuElements[1];
-                                activeElementIndex = 1;
-                            }
-                        }
-                        else{
-                            activeElementIndex --;
-                            activeElement = "receta_" + activeElementIndex;
-                            var container = $("#resultadoRecetas");
-                            var scrollTo = $('#' + activeElement);
-
-                            container.animate({
-                                scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
-                            });
-                        }
-                    
-                }
-                else if(!isInDetailView && activeElementType == "categories"){
-                    activeElementType = "leftMenu";
-                    activeElement = leftMenuElements[1];
-                    activeElementIndex = 1;
-                }
-            //}
-        }
-        else if(keyCode == 38){ // up
-            //if (!isClicked){
-                if(!isInDetailView && activeElementType == "leftMenu"){
-                    if(activeElementIndex > 0){
-                        activeElementIndex--;
-                        activeElement = leftMenuElements[activeElementIndex];
-                    }
-                }
-                else if (!isInDetailView && activeElementType == "categories"){
-                    if (activeElementIndex > 0){
-                        activeElementIndex  --;
-                        var temp = $('#listaCategoriasBusquedaAvanzada').children().toArray()[activeElementIndex];
-                        $(temp).addClass('keynav');
-                    }
-                    else{
-                        var temp = $('#listaCategoriasBusquedaAvanzada').children().toArray()[activeElementIndex];
-                        $(temp).addClass('keynav');   
-                    }
-                }
-                else if (!isInDetailView && activeElementType == "results"){
-                    var activeId = activeElementIndex - columns;
-                    if(activeId >= 0){
-                        activeElementIndex -= columns;
-                        activeElement = "receta_" + activeElementIndex;
-                        var container = $("#resultadoRecetas");
-                        var scrollTo = $('#' + activeElement);
-
-                        container.animate({
-                            scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
-                        });                        
-                    }
-                    else{
-                        $("#keyboard").getkeyboard().reveal();
-                        activeElement = "keyboard";
-                        activeElementType = "searchKeyboard";
-                    }
-                }
-            //}
-            /*else{
-                //alert("click");
-                if (recipeMenuIndex - 1 >= 0){
-                    recipeMenuIndex--;
-                    activeElement = recipeMenuElements[recipeMenuIndex];
-                }
-            }*/
-        }
-        else if(keyCode == 39){ // right
-            if(!isInDetailView && activeElementType == "leftMenu"){
-                if (selectedMenuItem == "menuCategorias"){
-                    activeElementType = "categories";
-                    activeElementIndex = 0;
-                    var temp = $('#listaCategoriasBusquedaAvanzada').children().toArray()[0];
-                    $(temp).addClass('keynav');
-                }
-                else{
-
-                    activeElementType = "results";
-                    activeElementIndex = 0; 
-                    activeElement = "receta_0"; 
-                    var container = $("#resultadoRecetas");
-                    var scrollTo = $('#' + activeElement);
-
-                    container.animate({
-                        scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
-                    });
-                }
+        
+        if (keyCode >= 37 && keyCode <= 40) {
+            if (activeView == "view_top10"){
+                navigateTop10(keyCode);
             }
-            else if (!isInDetailView && activeElementType == "categories"){
-                activeElementType = "results";
-                activeElementIndex = 0; 
-                activeElement = "receta_0"; 
-                var container = $("#resultadoRecetas");
-                var scrollTo = $('#' + activeElement);
-
-                container.animate({
-                    scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
-                });
+            else if (activeView == "view_recientes"){
+                navigateTop10(keyCode);
             }
-            else if(!isInDetailView && activeElementType == "results"){
-                //activeId = parseInt(activeElement.split("_")[1]);
-                if(activeElementIndex < totalResults - 1){
-                    activeElementIndex ++;
-                    activeElement = "receta_" + activeElementIndex;
-                    var container = $("#resultadoRecetas");
-                        var scrollTo = $('#' + activeElement);
-
-                        container.animate({
-                            scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
-                        });
-                }
-            }    
-        }
-        else if(keyCode == 40){ // down
-            if(!isInDetailView && activeElementType == "leftMenu"){
-                if(activeElementIndex < leftMenuElements.length - 1){
-                    activeElementIndex++;
-                    activeElement = leftMenuElements[activeElementIndex];                    
-                }
+            else if (activeView == "view_favoritos"){
+                navigateTop10(keyCode);
             }
-            else if (!isInDetailView && activeElementType == "categories"){
-                    if (activeElementIndex < $('#listaCategoriasBusquedaAvanzada').children().length - 1){
-                        activeElementIndex  ++;
-                        var temp = $('#listaCategoriasBusquedaAvanzada').children().toArray()[activeElementIndex];
-                        $(temp).addClass('keynav');
-                    }
-                    else{
-                        var temp = $('#listaCategoriasBusquedaAvanzada').children().toArray()[activeElementIndex];
-                        $(temp).addClass('keynav');   
-                    }
-                }
-            else if (!isInDetailView && activeElementType == "results"){
-                var activeId = activeElementIndex + columns;
-                if(activeId < totalResults){
-                    activeElementIndex += columns;
-                    activeElement = "receta_" + activeElementIndex;
-
-                    var container = $("#resultadoRecetas");
-                    var scrollTo = $('#' + activeElement);
-
-                    container.animate({
-                        scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
-                    });                    
-                }
-            }    
+            else if (activeView == "view_categorias"){
+                navigateCategories(keyCode);
+            }
+            else if (activeView == "view_login"){
+                navigateLogin(keyCode);
+            }
+            else if (activeView == "view_busqueda"){
+                navigateSearch(keyCode);
+            }
+            else if (activeView == "view_detalles"){
+                navigateDetails(keyCode);
+            }
+            else return true;
         }
+
         else if(keyCode == 13){ // enter
-            if(!isInDetailView && activeElementType == "leftMenu"){
-                $("#" + selectedMenuItem).removeClass("selected");
-                selectedMenuItem = activeElement;
-                $("#" + selectedMenuItem).addClass("selected");
-                if(activeElement == "Usuario"){
-                    if (User.id != ""){
-                        $('#usuarioLogout').click();                        
-                    }
-                    else{
-                        inLogin = true;
-                        $('#usuarioLogin').click();
-                    }                    
-                }
-                else if(activeElement == "menuCategorias"){
-                    selectedCategorieItem = $('#listaCategoriasBusquedaAvanzada').children().toArray()[0];
-                    $(selectedCategorieItem).addClass("selected");
-                    $("#" + activeElement).click();
-                }
-                else{
-                    $("#" + activeElement).click();
-                }
-            }   
-            else if (!isInDetailView && activeElementType == "categories"){
-                $(selectedCategorieItem).removeClass("selected");
-
-                selectedCategorieItem = $('#listaCategoriasBusquedaAvanzada').children().toArray()[activeElementIndex];
-                $(selectedCategorieItem).removeClass("selected");
-
-                $(temp).find('a').click();     
-            } 
-            else if (!isInDetailView && activeElementType == "results"){
-                //var temp = document.getElementById(activeElement);
-                //clickReceta(temp.id, $(temp).attr("id"),$(temp).attr("value"));
-                seleccionarReceta($("#" + activeElement).attr("value").split("_")[1]);
-                isInDetailView = true;
-                activeElementType = "detailsView";
-            }
+            executeElement();   
         }
+        
         else if(keyCode == 461 || keyCode == 72 || keyCode == 27){ // back
+            if (activeView == "view_video"){
+                $("#vl_closeBtn").click();
+            }
             /*if (isClicked){
                 //alert("cancelar");
                 cancelarSeleccion(activeElementIndex);
@@ -330,63 +143,20 @@ $(document).ready($(function()
             if (isInFavoriteView)
                 obtenerFavoritos()
             
-            $('#recipe-details').addClass("invisible-block"); 
-            $('#data-container').removeClass("invisible-block"); 
-            isInDetailView = false; 	
-            $("#ratingUsuario").remove();
-            $("#ratingPromedio").remove();
-
-            $("#imgRatingUsuario").remove();
-            $("#imgRatingPromedio").remove();
-            
-            if(activeElementType == "searchKeyboard"){
-                $("#keyboard").getkeyboard().close();
-                activeElementType = "results";
-                activeElementIndex = 0; 
-                activeElement = "receta_0"; 
-            }
-            else {
+            else if (activeView == "view_detalles"){
                 $('#recipe-details').addClass("invisible-block"); 
-                $('#data-container').removeClass("invisible-block");       
-                isInDetailView = false;
-                activeElementType = "results";
+                $('#data-container').removeClass("invisible-block");
+                activeView = "view_top10"; 
             }
+            else if(activeView == "view_keyboard"){
+                $("#keyboard").getkeyboard().close();
+                activeView = "view_top10"; 
+            }
+            initView(activeView);
         }
-        else if(keyCode == 33){ // page up
-            
-        }
-        else if(keyCode == 34){ // page down
-            
-        }
-        else if(keyCode == 415 || keyCode == 80){ // play
-            $('#voicePlayBtn').click();            
-        }
-        else if(keyCode == 413 || keyCode == 83){ // stop
-            $('#voiceStopBtn').click();    
-        }
-        /*else if(keyCode == 19 || keyCode == 179){ // pause
-            var audio = new Audio();
-            audio.src ='http://translate.google.com/translate_tts?ie=utf-8&tl=en&q=Hello%20World.';
-            audio.play();
-        }*/
-        else if(keyCode == 412 || keyCode == 177){ // rwd
-            $('#voiceBckBtn').click();
-        }
-        else if(keyCode == 417 || keyCode == 176){ // fwd
-            $('#voiceFwdBtn').click();            
-        }
-
-        //console.log(activeElement);
-        if(activeElementType == "results"){
-            $("#" + activeElement).addClass('detalle-receta-seleccionada');    
-        }
-        else if (activeElementType == "leftMenu"){
-            $("#" + activeElement).addClass("keynav");
-            //$("#" + activeElement).addClass("hover");
-        }
-        /*else if (isClicked){
-            $('#' + activeRecipeMenuElement + activeElementIndex).css("background-color","orange");
-        }*/
+        
+        addNavigation();
+        
         return false;
     });
     
@@ -397,6 +167,10 @@ $(document).ready($(function()
         $("#main-container").stop(true).animate({opacity: 0.2}, 100);
         $("#userlayer").fadeIn(200);
         $('#userHtml').html(userIframe);
+        activeView = "view_login";
+        initView(activeView);
+        //alert($("#user").attr("id"));
+        
     });
 
     $('#user_closeBtn').click(function() {
@@ -435,6 +209,33 @@ $(document).ready($(function()
     /*$(".mCustomScrollbar").mousedown(function(event){
       $(".mCustomScrollbar").mCustomScrollbar("scrollTo",event.clientY);
     });*/
+    $(".menu-option").click(function(){
+        /*if(activeElementType == "results")
+            $("#" + activeElement).removeClass('detalle-receta-seleccionada');    
+        else if (activeElementType == "leftMenu"){
+            $("#" + activeElement).removeClass("keynav");
+        }*/
+        cleanNavigation();
+        activeElement = $(this).attr("id");
+        activeElementIndex = leftMenuElements.indexOf(activeElement);
+        $("#" + selectedMenuItem).removeClass("selected");
+        selectedMenuItem = activeElement;
+        $("#" + selectedMenuItem).addClass("selected");
+        addNavigation();
+
+        /*if(this.id=="menuFavoritos"){
+            if(User.id!==""){
+                $("#" + selectedMenuItem).removeClass("selected");
+                selectedMenuItem = this.id;
+                $(this).addClass("selected");
+            }
+        }
+        else {
+                $("#" + selectedMenuItem).removeClass("selected");
+                selectedMenuItem = this.id;
+                $(this).addClass("selected");
+            }*/
+    });  
 
 }));
 
@@ -546,9 +347,9 @@ function paintRecipes(numColumns, data2) {
             $(this).removeClass('detalle-receta-seleccionada');
 
         });
-        $('#receta_' + i).mousedown(function(){
+        $('#receta_' + i).click(function(){
             clickReceta(this.id, $(this).attr("id"),$(this).attr("value"));
-            activeElementType = "detailsView";
+            //activeElementType = "detailsView";
             //isClicked = true;
         });
     }
@@ -626,8 +427,8 @@ function clickReceta(elemId, id, value){
 		/**********************/
 		
 		seleccionarReceta($("#" + elemId).attr("value").split("_")[1]);
-        isInDetailView = true;
-        activeElementType = "detailsView";
+        //isInDetailView = true;
+        //activeElementType = "detailsView";
 }
 
 function cancelarSeleccion(idDiv) {
@@ -643,7 +444,7 @@ function cancelarSeleccion(idDiv) {
 }
 
 function busquedaRecientes() {
-
+    activeView = "view_recientes";
     columns = 3;
     try
     {
@@ -735,6 +536,7 @@ function busquedaTop10() {
                     "recetas": RecipesLastTop10
                 };
 
+                activeView = "view_top10";
                 paintRecipes(3, RecipesGet);
                 return updatedData;
             }
@@ -805,6 +607,8 @@ function busquedaRecetas(column, cat, keyword)
 
 var idReceta;
  function seleccionarReceta(idRecetaSeleccionada,i){
+    activeView = "view_detalles";
+    initView("view_detalles");
      if (User.id=="")
         {
             $("#favoritosBtn").attr("onclick","mostrarMensajeError('Debe iniciar sesión para poder agregar esta receta a sus favoritos.')");
@@ -824,7 +628,7 @@ var idReceta;
         obtenerPuntuacion(idRecetaSeleccionada)
 
 
-        isInDetailView = true;
+        //isInDetailView = true;
         //isClicked = false;
         getDetails(parseInt(idRecetaSeleccionada));
         idReceta=parseInt(idRecetaSeleccionada);

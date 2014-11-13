@@ -11,6 +11,7 @@ var value_s3=-1;
 var dataFiltrada;
 function mostrarAvanzada()
 {
+  activeView = "view_busqueda";
 	
 	var keyword=$('#keyboard')
 	var bool=$("#categorias-menu ").is(":visible");
