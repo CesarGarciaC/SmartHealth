@@ -102,7 +102,7 @@ function getRelatedRecipes(recipe){
 
 			//alert(relatedRecipes[i].name);
 			//targetdiv.append('<div><h3><img src="data:image/jpg;base64,' + relatedRecipes[i%relatedRecipes.length].image + '"  width="170" height="170"/></h3></div>');
-			carruselSugeridas+='<div id="sugeridas_'+i+'"><h3 style="float:left;"><img onclick="seleccionarReceta('+distinctRecipes[i%distinctRecipes.length].id+')" src="data:image/jpg;base64,' + distinctRecipes[i%distinctRecipes.length].image + '" height="150" height="150"/></h3></div>';//
+			carruselSugeridas+='<div id="sugeridas_'+i+'" align="center"><h3 style="float:left;"><img onclick="seleccionarReceta('+distinctRecipes[i%distinctRecipes.length].id+')" src="data:image/jpg;base64,' + distinctRecipes[i%distinctRecipes.length].image + '" height="150" height="150"/></h3></div>';//
 			//$("#img_"+i).attr('src','data:image/jpg;base64,' + relatedRecipes[i%relatedRecipes.length].image + '');			
 			
 		}
@@ -181,11 +181,11 @@ function mostrarDetallesSugeridas(elemId, name){
 function desvanecerDetallesSugeridas(elemId){
 
 	if(selected_carrusel_id!=elemId){
-	var mainDiv = document.getElementById(elemId);
-	var deleteDiv = document.getElementById('detail_'+elemId);
-	try{		
-		mainDiv.removeChild(deleteDiv);
-	}catch(ex){}
+		var mainDiv = document.getElementById(elemId);
+		var deleteDiv = document.getElementById('detail_'+elemId);
+		try{		
+			mainDiv.removeChild(deleteDiv);
+		}catch(ex){}
 	
 	}
 

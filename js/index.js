@@ -1,6 +1,6 @@
 //Variables Globales
 var urlConexion='http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php';
-
+//'http://200.16.7.111/dev/sexy_service/sexy_restful.php';//
 var numbuttons = 4;
 var isTop10=false;
 var categorias2 = {
