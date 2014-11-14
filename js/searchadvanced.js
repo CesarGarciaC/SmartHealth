@@ -222,17 +222,22 @@ function filtrarCalorias(min, max)
     var dataFiltroCalorias=new Array();
     if (max=="") max=999999999;
     if (min=="") min=0;
-    if (dataFiltrada!=null)
-    {
-        for (i=0;i<dataFiltrada.length;i++)
+    
+    var datosFiltro;
+    if (dataFiltrada!=null) datosFiltro=dataFiltrada;
+    else datosFiltro=RecipesGlobal;
+    
+//    if (dataFiltrada!=null)
+//    {
+        for (i=0;i<datosFiltro.length;i++)
         {
-            if ((dataFiltrada[i].calories<max) && (dataFiltrada[i].calories>=min))
-                dataFiltroCalorias.push(dataFiltrada[i]);
+            if ((datosFiltro[i].calories<max) && (datosFiltro[i].calories>=min))
+                dataFiltroCalorias.push(datosFiltro[i]);
         }
         
         var dataF={
             "recetas":dataFiltroCalorias
         };
         paintRecipes(2,dataF);
-    }
+//    }
 }

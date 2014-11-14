@@ -1147,7 +1147,17 @@ $.keyboard = function(el, options){
 		accept : function(base){
 			base.close(true); // same as base.accept();
                         if (($("#cal_min").val()!="") ||  ($("#cal_max").val()!=""))
+                        {
+                            if (($("#cal_min").val()!="") && ($("#cal_max").val()!=""))
+                            {
+                                if (($("#cal_min").val())> ($("#cal_max").val()))
+                                {
+                                    mostrarMensajeError("El valor para calorías mínimas debe ser mayor al de calorías máximas.")
+                                    return false;
+                                }
+                            }
                             filtrarCalorias($("#cal_min").val(),$("#cal_max").val())
+                        }
                         else
                             mostrarAvanzada();
 			return false;     // return false prevents further processing
