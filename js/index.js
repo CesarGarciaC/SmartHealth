@@ -292,7 +292,6 @@ function sleep(millis, callback) {
 
 function paintRecipes(numColumns, data2) {
     totalResults = data2.recetas.length;
-    
     var targetdiv = $('#resultadoRecetas')
     if (numColumns==2) targetdiv.css("width","70%");
     var recetaDiv = "<table>";
