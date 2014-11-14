@@ -1,4 +1,6 @@
 
+var urlConexion='http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php';
+
 function loginUser(user) {
 
     if ((user.code) == "badLoginInformation") {
@@ -21,12 +23,14 @@ function loginUser(user) {
 
 function InicioSesion()
 {
+
+	
     inLogin = false;
     try
     {
         var user = (document.getElementById("user")).value;
         var password = (document.getElementById("pass")).value;
-
+		
         var data = "";
         //Comprobar que el usuario y la contraseña no sean nulas
         if (user != "" && password != "") {
@@ -34,6 +38,8 @@ function InicioSesion()
                 username: user,
                 password: password,
             }
+			
+			
 
             //-----------------------------------------------------------------------
             // 2) Send a http request with AJAX http://api.jquery.com/jQuery.ajax/
@@ -45,7 +51,6 @@ function InicioSesion()
                 async: false,
                 success: function(data)          //on recieve of reply
                 {
-
 
                     loginUser(data.data);
                 },
