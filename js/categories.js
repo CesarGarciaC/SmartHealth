@@ -4,6 +4,7 @@
 function mostrarCategories()
 {
 
+	lastWindow.windows='Categorias';
     $("#search-advanced").hide();
     busquedaRecetas(2);
     $(".resultado-recetas").css("width","70%");

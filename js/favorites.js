@@ -13,6 +13,8 @@
  
     function obtenerFavoritos()
     {   if(User.id!=""){
+	
+		lastWindow.windows='Favoritos';
         mostrarLoading();
         isInFavoriteView=true;
 		$("#search-advanced").hide();

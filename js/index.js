@@ -2,6 +2,13 @@
 var urlConexion='http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php';
 //'http://200.16.7.111/dev/sexy_service/sexy_restful.php';//
 var numbuttons = 4;
+
+var lastWindow={
+	windows:'holi',
+	categories:'',
+	keyword:'',
+}
+
 var isTop10=false;
 var categorias2 = {
     "categorias": [
@@ -64,8 +71,10 @@ var isInFavoriteView=false;
 var recipeIsInFavorites=false;
 var inLogin = false;
 
-$(document).ready($(function()
-{     /////////////////////////////Nombre usuario al iniciar sesion////////
+$(document).ready($(function()	
+{    
+
+ /////////////////////////////Nombre usuario al iniciar sesion////////
     if (User.id != "") {
         var targetdiv = $('#Usuario');
         var UserDiv = "<center><img src=\"images/user.png\">" + User.nicename + "</center>" + "<center id=\"CloseSesion\" onclick=\"CloseSesion()\">Cerrar Sesión</center>";
@@ -448,6 +457,8 @@ function cancelarSeleccion(idDiv) {
 }
 
 function busquedaRecientes() {
+
+	lastWindow.windows='Novedades';
     activeView = "view_recientes";
     columns = 3;
     try
@@ -501,7 +512,7 @@ function busquedaRecientes() {
 }
 
 function busquedaTop10() {
-
+	lastWindow.windows='Top10';
     columns = 3;
 
     try

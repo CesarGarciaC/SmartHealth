@@ -76,7 +76,7 @@
 /*#categorias-menu li a:hover { background:url(images/base-select.gif) no-repeat -163px 0; }*/
 #categorias-menu li span {
     line-height:14px;
-    padding:0 19px 11px 17px;
+    padding:0 19px 8px 17px;
     display:block;
 }
 *+html #categorias-menu li span { padding-bottom:10px; }
