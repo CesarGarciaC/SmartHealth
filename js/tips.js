@@ -8,7 +8,7 @@ function getEvents()
 		event= new Array();
         var data = '';
         $.ajax({
-            url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=getEvents&format=json&', //the script to call to get data          
+            url: urlConexion+'?method=getEvents&format=json&', //the script to call to get data          
             data: data, //you can insert url argumnets here to pass to api.php                              //for example "id=5&parent=6"
             dataType: 'json', //data format    
             async: false,
@@ -35,7 +35,7 @@ function getTips()
 			
         var data = '';
         $.ajax({
-            url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=getTips&format=json&', //the script to call to get data          
+            url: urlConexion+'?method=getTips&format=json&', //the script to call to get data          
             data: data, //you can insert url argumnets here to pass to api.php                              //for example "id=5&parent=6"
             dataType: 'json', //data format    
             async: false,

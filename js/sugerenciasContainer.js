@@ -7,7 +7,7 @@ function getRelatedRecipesCategory(category)
 		
         var data = 'id_category='+category;
         $.ajax({
-            url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=smartGeneralSearchService&format=json&', //the script to call to get data          
+            url: urlConexion+'?method=smartGeneralSearchService&format=json&', //the script to call to get data          
             data: data, //you can insert url argumnets here to pass to api.php                              //for example "id=5&parent=6"
             dataType: 'json', //data format    
             async: false,
@@ -30,7 +30,7 @@ function getRelatedRecipesKeyword(keyword)
 		
         var data = 'keyword='+keyword;
         $.ajax({
-            url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=smartGeneralSearchService&format=json&', //the script to call to get data          
+            url: urlConexion+'?method=smartGeneralSearchService&format=json&', //the script to call to get data          
             data: data, //you can insert url argumnets here to pass to api.php                              //for example "id=5&parent=6"
             dataType: 'json', //data format    
             async: false,
@@ -102,16 +102,25 @@ function getRelatedRecipes(recipe){
 
 			//alert(relatedRecipes[i].name);
 			//targetdiv.append('<div><h3><img src="data:image/jpg;base64,' + relatedRecipes[i%relatedRecipes.length].image + '"  width="170" height="170"/></h3></div>');
-			carruselSugeridas+='<div><h3><img onclick="seleccionarReceta('+distinctRecipes[i%distinctRecipes.length].id+')" src="data:image/jpg;base64,' + distinctRecipes[i%distinctRecipes.length].image + '" height="150" height="150"/></h3></div>';//
-			//$("#img_"+i).attr('src','data:image/jpg;base64,' + relatedRecipes[i%relatedRecipes.length].image + '');
-
-			
+			carruselSugeridas+='<div id="sugeridas_'+i+'"><h3 style="float:left;"><img onclick="seleccionarReceta('+distinctRecipes[i%distinctRecipes.length].id+')" src="data:image/jpg;base64,' + distinctRecipes[i%distinctRecipes.length].image + '" height="150" height="150"/></h3></div>';//
+			//$("#img_"+i).attr('src','data:image/jpg;base64,' + relatedRecipes[i%relatedRecipes.length].image + '');			
 			
 		}
 
 		carruselSugeridas+='</div></div></section>';
 		//alert(carruselSugeridas);
 		targetdiv.html(carruselSugeridas);
+		
+		for(var i=0;i<distinctRecipes.length*factor;i++){
+			$('#sugeridas_'+i).mouseover(function(){
+				var id=$(this).attr("id").split("_")[1];
+				mostrarDetallesSugeridas($(this).attr("id"),distinctRecipes[id%distinctRecipes.length].name);
+			});
+			$('#sugeridas_'+i).mouseout(function(){
+				desvanecerDetallesSugeridas($(this).attr("id"));
+			});
+			
+		}	
 		
 $('.center').slick({
   centerMode: true,
@@ -138,8 +147,50 @@ $('.center').slick({
     }
   ]
 });
-
 			        
+}
+
+var selected_carrusel_id='';
+
+function mostrarDetallesSugeridas(elemId, name){
+	
+	if(selected_carrusel_id!=elemId){
+	try{
+		var mainDiv = document.getElementById(selected_carrusel_id);
+		var deleteDiv = document.getElementById('detail_'+selected_carrusel_id);
+		mainDiv.removeChild(deleteDiv);
+	}
+	catch(ex){
+	}
+	
+	selected_carrusel_id=elemId;
+	var newdiv = document.createElement('div');
+    newdiv.setAttribute('id', 'detail_' + elemId);
+    newdiv.setAttribute('class', 'detalle-sugeridas');	
+	document.getElementById(elemId).appendChild(newdiv);
+	
+	$('#detail_'+elemId).html('<p>'+name+'</p>');
+	
+	$('#detail_'+elemId).mouseout(function(){
+				selected_carrusel_id=elemId='';
+	});
+	}
+	
+}
+
+function desvanecerDetallesSugeridas(elemId){
+
+	if(selected_carrusel_id!=elemId){
+	var mainDiv = document.getElementById(elemId);
+	var deleteDiv = document.getElementById('detail_'+elemId);
+	try{		
+		mainDiv.removeChild(deleteDiv);
+	}catch(ex){}
+	
+	}
+
+	
+	
 }
 
 
