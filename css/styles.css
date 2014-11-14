@@ -12,11 +12,17 @@ body
   	font-family: 'Lato', sans-serif;
 }
 
-#main-container, table
+#main-container
 {
-	width:90%;
+	width:1280px;
+	height: 720px;
+	background-color: white;	
+}
+
+#main-container table{
+	width:100%;
+	height: 100%;
 	table-layout: fixed;
-	
 }
 
 #bloque-left
