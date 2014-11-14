@@ -1,4 +1,11 @@
 
+// scroll en vista de detalle
+var topIngredientes = 0;
+var topInstrucciones = 0;
+var step = 50;
+var maxInstrucciones;
+
+  
 $(document).ready($(function () {
     
     
@@ -38,6 +45,8 @@ $(document).ready($(function () {
   });
 
   $('#videoBtn').click(function(){
+        activeView = "view_video";
+        initView(activeView);
         var ytvideo;
         ytvideo = '<iframe width="854" height="510" src="http://www.youtube.com/embed/'+ $('#videoBtn').attr("ytVideoId") + '" frameborder="0" allowfullscreen></iframe>'
 
@@ -50,6 +59,8 @@ $(document).ready($(function () {
         $("#main-container").stop(true).animate({opacity: 1}, 100);
         $('#ytiframe').html('');
         $("#videolayer").fadeOut(100);
+        activeView = "view_detalles";
+        initView(activeView);
   }); 
 
   $('#voicePlayBtn').click(function(){
@@ -79,6 +90,66 @@ $(document).ready($(function () {
     isPlaying = false;
     window.speechSynthesis.cancel();
     voicePlay();
+  });
+
+  // Scroll
+
+  $('.scroll-up-btn img').click(function(){
+    if ($('#ingredientesTab').hasClass("tab-current")){
+      var container = $("#ingredientsContainer");  
+      if (topIngredientes - step > 0){
+        topIngredientes = topIngredientes - step;
+      }
+      else{
+        topIngredientes = 0;
+      }
+      
+      container.animate({
+        scrollTop: topIngredientes
+      });
+    }
+    else{
+      var container = $("#preparationDiv");
+      if (topInstrucciones - step > 0){
+        topInstrucciones = topInstrucciones - step;
+      }
+      else{
+        topInstrucciones = 0;
+      }
+    
+      container.animate({
+        scrollTop: topInstrucciones
+      });
+    }
+    
+    
+  });
+
+  $('.scroll-down-btn img').click(function(){
+    if ($('#ingredientesTab').hasClass("tab-current")){
+      if (topIngredientes + step < $('#ingredientsContainer').prop('scrollHeight')){
+        topIngredientes= topIngredientes + step;
+      }
+      else{
+        topIngredientes = $('#ingredientsContainer').prop('scrollHeight');
+      }
+      
+      $('#ingredientsContainer').animate({
+        scrollTop: topIngredientes
+      });
+    }
+    else{
+      if (topInstrucciones + step < $("#preparationDiv").prop('scrollHeight')){
+        topInstrucciones = topInstrucciones + step;
+      }
+      else{
+        topInstrucciones = $("#preparationDiv").prop('scrollHeight');
+      }
+    
+      $("#preparationDiv").animate({
+        scrollTop: topInstrucciones
+      });
+    }
   });
 
   //Slider vertical
@@ -240,6 +311,8 @@ $(document).ready($(function () {
       pasosDisplay += (i + 1) + ". " + instrucciones[i] +" <br/><br/>";
     }
     $('#preparationDiv').html(pasosDisplay);
+    maxInstrucciones = $('#preparationDiv').prop('scrollHeight');
+    //alert($('#preparationDiv')[0].scrollHeight);
 
     // dificultad
     var difficulty = parseInt(details.difficulty);

@@ -134,6 +134,8 @@ $(document).ready($(function()
         else if(keyCode == 461 || keyCode == 72 || keyCode == 27){ // back
             if (activeView == "view_video"){
                 $("#vl_closeBtn").click();
+                activeView = "view_detalles";
+                initView(activeView);
             }
             /*if (isClicked){
                 //alert("cancelar");
