@@ -176,10 +176,11 @@ function mostrarDetallesSugeridas(elemId, name){
 	});
 	}
 	
+	
 }
 
 function desvanecerDetallesSugeridas(elemId){
-
+try{
 	if(selected_carrusel_id!=elemId){
 		var mainDiv = document.getElementById(elemId);
 		var deleteDiv = document.getElementById('detail_'+elemId);
@@ -189,8 +190,10 @@ function desvanecerDetallesSugeridas(elemId){
 	
 	}
 
-	
+}
+catch(ex2){}	
 	
 }
+
 
 
