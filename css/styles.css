@@ -146,16 +146,7 @@ body
 }
 
 
-.submenu
-{
-	float:none;
-	background-color: rgba(58,58,58,0.5);
-	width:150px;
-	height:120px;
-	z-index:1;
-	position: absolute;
-	padding: 15px;
-}
+
 
 .submenu button
 {
@@ -280,6 +271,38 @@ h2{
 {
 	text-align:center;
 }
+
+.submenu
+{
+	float:none;
+	background-color: rgba(58,58,58,0.5);
+	width:150px;
+	height:120px;
+	z-index:1;
+	position: absolute;
+	padding: 15px;
+}
+
+.detalle-sugeridas{
+	top:102px;
+	float:none;
+	background-color: rgba(251,247,247,0.8);
+	width:140px;
+	height: 60px;
+	z-index: 999;
+	position: absolute;
+	padding: 5px;
+	margin-left: 10px;
+	overflow: hidden;
+}
+
+.detalle-sugeridas p{
+ 
+	color: rgb(58,58,58);
+	font-weight: bold;
+	font-size: 16px;
+}
+
 
 #search-advanced
 {

@@ -25,7 +25,7 @@
         
         $.ajax({        
 
-            url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=smartSearchFavService&format=json&',                  //the script to call to get data          
+            url: urlConexion+'?method=smartSearchFavService&format=json&',                  //the script to call to get data          
             data: data,                        //you can insert url argumnets here to pass to api.php                              //for example "id=5&parent=6"
             dataType: 'json',                //data format    
             async: false,
@@ -55,7 +55,7 @@
         
         var resp=$.ajax({        
 
-            url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=smartSearchFavService&format=json&',                  //the script to call to get data          
+            url: urlConexion+'?method=smartSearchFavService&format=json&',                  //the script to call to get data          
             data: data,                        //you can insert url argumnets here to pass to api.php                              //for example "id=5&parent=6"
             dataType: 'json',                //data format    
             async: false,
@@ -81,7 +81,7 @@
        var data="id_user="+User.id+"&id_recipe="+id_recipe; 
        $.ajax({        
 
-            url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=smartDeleteFavService&format=json&',                  //the script to call to get data          
+            url: urlConexion+'?method=smartDeleteFavService&format=json&',                  //the script to call to get data          
             data: data,                        //you can insert url argumnets here to pass to api.php                              //for example "id=5&parent=6"
             dataType: 'json',                //data format    
             async: true,
@@ -104,7 +104,7 @@
         var data="id_recipe="+idReceta+"&id_user="+User.id; 
        var resp=$.ajax({        
 
-            url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=smartIsFavorite&format=json&',                  //the script to call to get data          
+            url: urlConexion+'?method=smartIsFavorite&format=json&',                  //the script to call to get data          
             data: data,                        //you can insert url argumnets here to pass to api.php                              //for example "id=5&parent=6"
             dataType: 'json',                //data format    
             async: false,
