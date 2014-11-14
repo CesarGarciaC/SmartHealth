@@ -1145,9 +1145,11 @@ $.keyboard = function(el, options){
         //Smart Health FUncion Aceptar
 	$.keyboard.keyaction = {
 		accept : function(base){
-                        
 			base.close(true); // same as base.accept();
-                        mostrarAvanzada();
+                        if (($("#cal_min").val()!="") ||  ($("#cal_max").val()!=""))
+                            filtrarCalorias($("#cal_min").val(),$("#cal_max").val())
+                        else
+                            mostrarAvanzada();
 			return false;     // return false prevents further processing
 		},
 		alt : function(base,el){

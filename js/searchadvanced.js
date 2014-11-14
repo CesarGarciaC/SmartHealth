@@ -8,7 +8,8 @@ var numColumns=3;
 var value_s1;
 var value_s2;
 var value_s3=-1;
-var dataFiltrada;
+var dataFiltrada=null;
+var flagFiltroCalorias=false;
 function mostrarAvanzada()
 {
   activeView = "view_busqueda";
@@ -28,6 +29,7 @@ function mostrarAvanzada()
 	$(".resultado-recetas").css("width","70%");
 	$(".resultado-recetas").css("left","47px");
     $("#categorias-menu ").css("height","#1CC2EC 0px 0px 18px 6px");   
+    flagFiltroCalorias=true;
 }
 
 function filtrar()
@@ -95,7 +97,7 @@ function filtrar()
 	
 	$(".resultado-recetas").css("width","70%");
 	$(".resultado-recetas").css("left","47px");
-}
+};
 
 function actualizarResultados()
 {
@@ -208,3 +210,22 @@ $(".selector").live('click',function()
     filtrar();
 })
 
+function filtrarCalorias(min, max)
+{
+    var dataFiltroCalorias=new Array();
+    if (max=="") max=999999999;
+    if (min=="") min=0;
+    if (dataFiltrada!=null)
+    {
+        for (i=0;i<dataFiltrada.length;i++)
+        {
+            if ((dataFiltrada[i].calories<max) && (dataFiltrada[i].calories>=min))
+                dataFiltroCalorias.push(dataFiltrada[i]);
+        }
+        
+        var dataF={
+            "recetas":dataFiltroCalorias
+        };
+        paintRecipes(2,dataF);
+    }
+}
