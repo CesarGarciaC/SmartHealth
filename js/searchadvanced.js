@@ -14,7 +14,7 @@ function mostrarAvanzada()
 
 	lastWindow.windows='Busqueda';
 	
-  activeView = "view_busqueda";
+	activeView = "view_busqueda";
 	
 	var keyword=$('#keyboard')
 

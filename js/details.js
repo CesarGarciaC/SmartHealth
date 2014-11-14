@@ -33,6 +33,8 @@ $(document).ready($(function () {
       
       $("#imgRatingUsuario").remove();
       $("#imgRatingPromedio").remove();
+	  alert('holi');
+	  actualizarVolver();
   });
 
   
@@ -55,12 +57,13 @@ $(document).ready($(function () {
         $('#ytiframe').html(ytvideo);
   }); 
 
-  $('#vl_closeBtn').click(function(){        
+  $('#vl_closeBtn').click(function(){   
         $("#main-container").stop(true).animate({opacity: 1}, 100);
         $('#ytiframe').html('');
         $("#videolayer").fadeOut(100);
         activeView = "view_detalles";
         initView(activeView);
+		
   }); 
 
   $('#voicePlayBtn').click(function(){

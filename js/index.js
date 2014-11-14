@@ -143,6 +143,7 @@ $(document).ready($(function()
         }
         
         else if(keyCode == 461 || keyCode == 72 || keyCode == 27){ // back
+			
             if (activeView == "view_video"){
                 $("#vl_closeBtn").click();
                 activeView = "view_detalles";
@@ -153,8 +154,8 @@ $(document).ready($(function()
                 cancelarSeleccion(activeElementIndex);
             }*/
             
-            if (isInFavoriteView)
-                obtenerFavoritos()
+            //if (isInFavoriteView)
+            //    obtenerFavoritos()
             
             else if (activeView == "view_detalles"){
                 $('#recipe-details').addClass("invisible-block"); 
@@ -166,6 +167,8 @@ $(document).ready($(function()
                 activeView = "view_top10"; 
             }
             initView(activeView);
+			actualizarVolver();
+
         }
         
         addNavigation();
