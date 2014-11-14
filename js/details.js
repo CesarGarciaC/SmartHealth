@@ -1,4 +1,11 @@
 
+// scroll en vista de detalle
+var topIngredientes = 0;
+var topInstrucciones = 0;
+var step = 50;
+var maxInstrucciones;
+
+  
 $(document).ready($(function () {
     
     
@@ -26,6 +33,8 @@ $(document).ready($(function () {
       
       $("#imgRatingUsuario").remove();
       $("#imgRatingPromedio").remove();
+	  alert('holi');
+	  actualizarVolver();
   });
 
   
@@ -38,6 +47,8 @@ $(document).ready($(function () {
   });
 
   $('#videoBtn').click(function(){
+        activeView = "view_video";
+        initView(activeView);
         var ytvideo;
         ytvideo = '<iframe width="854" height="510" src="http://www.youtube.com/embed/'+ $('#videoBtn').attr("ytVideoId") + '" frameborder="0" allowfullscreen></iframe>'
 
@@ -46,10 +57,13 @@ $(document).ready($(function () {
         $('#ytiframe').html(ytvideo);
   }); 
 
-  $('#vl_closeBtn').click(function(){        
+  $('#vl_closeBtn').click(function(){   
         $("#main-container").stop(true).animate({opacity: 1}, 100);
         $('#ytiframe').html('');
         $("#videolayer").fadeOut(100);
+        activeView = "view_detalles";
+        initView(activeView);
+		
   }); 
 
   $('#voicePlayBtn').click(function(){
@@ -81,29 +95,67 @@ $(document).ready($(function () {
     voicePlay();
   });
 
-  //Slider vertical
+  // Scroll
 
-   $("#vertical_slider_bar").toggle(function() {
-      $(this).animate({right: '+=680px'});
-
-      $('#ingredientesContainer').fadeOut(500).promise().done(function(){
-        $('#instructionsContainer').fadeIn(500);
+  $('.scroll-up-btn img').click(function(){
+    if ($('#ingredientesTab').hasClass("tab-current")){
+      var container = $("#ingredientsContainer");  
+      if (topIngredientes - step > 0){
+        topIngredientes = topIngredientes - step;
+      }
+      else{
+        topIngredientes = 0;
+      }
+      
+      container.animate({
+        scrollTop: topIngredientes
       });
-
-      $('#vsliderbar_arrow').css('background-image','url(images/ArrowRight.png)');
-
-  }, function() {
-      $(this).animate({right: '-=680px'});
-
-      $('#instructionsContainer').fadeOut(500).promise().done(function(){
-        $('#ingredientesContainer').fadeIn(500);
+    }
+    else{
+      var container = $("#preparationDiv");
+      if (topInstrucciones - step > 0){
+        topInstrucciones = topInstrucciones - step;
+      }
+      else{
+        topInstrucciones = 0;
+      }
+    
+      container.animate({
+        scrollTop: topInstrucciones
       });
-
-      $('#vsliderbar_arrow').css('background-image','url(images/ArrowLeft.png)');
+    }
+    
+    
   });
 
-	
-	
+  $('.scroll-down-btn img').click(function(){
+    if ($('#ingredientesTab').hasClass("tab-current")){
+      if (topIngredientes + step < $('#ingredientsContainer').prop('scrollHeight')){
+        topIngredientes= topIngredientes + step;
+      }
+      else{
+        topIngredientes = $('#ingredientsContainer').prop('scrollHeight');
+      }
+      
+      $('#ingredientsContainer').animate({
+        scrollTop: topIngredientes
+      });
+    }
+    else{
+      if (topInstrucciones + step < $("#preparationDiv").prop('scrollHeight')){
+        topInstrucciones = topInstrucciones + step;
+      }
+      else{
+        topInstrucciones = $("#preparationDiv").prop('scrollHeight');
+      }
+    
+      $("#preparationDiv").animate({
+        scrollTop: topInstrucciones
+      });
+    }
+  });
+
+ 	
 	/*
   $('.center').slick({
     centerMode: true,
@@ -240,6 +292,8 @@ $(document).ready($(function () {
       pasosDisplay += (i + 1) + ". " + instrucciones[i] +" <br/><br/>";
     }
     $('#preparationDiv').html(pasosDisplay);
+    maxInstrucciones = $('#preparationDiv').prop('scrollHeight');
+    //alert($('#preparationDiv')[0].scrollHeight);
 
     // dificultad
     var difficulty = parseInt(details.difficulty);
@@ -267,7 +321,7 @@ $(document).ready($(function () {
                             <tr> \
                               <th colspan="2"> \
                                 <b>Calorías</b> ' + details.calories +
-                              ' gr </th>        \
+                              ' kcal </th>        \
                             </tr> \
                             <tr class="thick-row"> \
                               <td colspan="3" class="small-info"> \
@@ -362,7 +416,7 @@ $(document).ready($(function () {
       //-----------------------------------------------------------------------
       $.ajax({        
     
-        url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=smartSelectRecipeService&format=json&',                  //the script to call to get data          
+        url: urlConexion+'?method=smartSelectRecipeService&format=json&',                  //the script to call to get data          
         data: data,                        //you can insert url argumnets here to pass to api.php                              //for example "id=5&parent=6"
         dataType: 'json',                //data format    
         async: false,
@@ -388,7 +442,7 @@ $(document).ready($(function () {
 
           $.ajax({        
 
-            url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=smartAddFavService&format=json&',                  //the script to call to get data          
+            url: urlConexion+'?method=smartAddFavService&format=json&',                  //the script to call to get data          
             data: data,                        //you can insert url argumnets here to pass to api.php                              //for example "id=5&parent=6"
             dataType: 'json',                //data format    
             async: true,

@@ -53,6 +53,7 @@
 		<script type="text/javascript" src="js/sugerenciasContainer.js"></script>
         <script type="text/javascript" src="js/cbpFWTabs.js"></script>
         <script type="text/javascript" src="js/modernizr.custom.js"></script>
+		<script type="text/javascript" src="js/actualizarVolver.js"></script>
         
 
         <meta charset="utf-8">      
@@ -128,7 +129,7 @@
 
                                 <tr>
                                     <td id="menuRecientes" class="menu-option" onclick="busquedaRecientes()">
-                                <center>Recientes</center>
+                                <center>Novedades</center>
                                 </td>
                                 </tr>
 
@@ -138,9 +139,9 @@
                                 </td>
                                 </tr>
                                             
-                                <tr>
+                                <!--<tr>
                                 <button id="colorIzquierdo" onclick="colorIzquierdo()">colorIzquierdo</button>
-                                </tr>
+                                </tr>-->
                             </table>
                         </div>
                     </td>
@@ -197,15 +198,21 @@
                     </nav>
                     <div class="content-wrap">
                         <section id="section-flip-1">
-                            <table id="ingredientsTable">
+                            <div id="scrollUp1" class="scroll-btn scroll-up-btn"><img src="images/up2.png"></div>
+                            <div id="scrollDown1" class="scroll-btn scroll-down-btn"><img src="images/down2.png"></div>
+                            <div id="ingredientsContainer">
+                                <table id="ingredientsTable">
                                     <tr>
                                         <th>Ingrediente</th>
                                         <th>Unidad de Medida</th>      
                                         <th>Cantidad</th>
                                     </tr>                                        
-                            </table>
+                                </table>
+                            </div>
                         </section>
                         <section id="section-flip-2">
+                            <div id="scrollUp2" class="scroll-btn scroll-up-btn"><img src="images/up2.png"></div>
+                            <div id="scrollDown2" class="scroll-btn scroll-down-btn"><img src="images/down2.png"></div>
                             <div id="instructionsContainer" class="container clearfix">
                                 <div id="preparationTitle" class="embed-wrapper"> 
                                     <div id="voiceFwdBtn" class="_button"><img class="imgIcon" src="images/fordward.png"></div>
@@ -213,7 +220,9 @@
                                     <div id="voicePlayBtn" class="_button"><img class="imgIcon" src="images/play1.png"></div>
                                     <div id="voiceBckBtn" class="_button"><img class="imgIcon" src="images/backward.png"></div>
                                 </div>
-                                <div id="preparationDiv" class="embed-wrapper mCustomScrollbar"></div>                
+                                <div id="preparationContainer">
+                                    <div id="preparationDiv" class="embed-wrapper mCustomScrollbar"></div>                  
+                                </div>                                
                             </div>
                         </section>
                     </div><!-- /content -->
@@ -257,7 +266,7 @@
             <!--</div>-->
             <div id="suggestionsContainer" class="container _element">
             </div>
-            <button id="colorReceta" onclick="colorReceta()">colorReceta</button>
+            <!--<button id="colorReceta" onclick="colorReceta()">colorReceta</button>-->
         </div>
                         <div id="data-container" class="bloque">
                             <div id="search">
@@ -361,7 +370,7 @@
                             </div>
 
                         </div>
-                        <button id="colorCentro" onclick="colorCentro()">colorCentro</button>
+                       <!-- <button id="colorCentro" onclick="colorCentro()">colorCentro</button>-->
                     </td>
 
                     <td id="bloque-right">
@@ -369,7 +378,7 @@
                             <table id="tabRight">
                             </table>
                         </div>
-                        <button id="colorDerecho" onclick="colorDerecho()">colorDerecho</button>
+                        <!--<button id="colorDerecho" onclick="colorDerecho()">colorDerecho</button>-->
                     </td>
                 </tr>
             </table>

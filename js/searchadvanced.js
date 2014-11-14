@@ -12,9 +12,14 @@ var dataFiltrada=null;
 var flagFiltroCalorias=false;
 function mostrarAvanzada()
 {
-  activeView = "view_busqueda";
+
+	lastWindow.windows='Busqueda';
+	
+	activeView = "view_busqueda";
 	
 	var keyword=$('#keyboard')
+
+	lastWindow.keyword=keyword.val();
 	var bool=$("#categorias-menu ").is(":visible");
 //	if(bool)	numColumns=2;
 //	else		numColumns=3;
@@ -34,9 +39,11 @@ function mostrarAvanzada()
 
 function filtrar()
 {
+	lastWindow.categoria=value_s3;
     var t=RecipesGlobal.length;
     if (selector3)
     {
+		
         for (i=0;i<t;i++)
         {
               for (c=0;c<RecipesGlobal[i].categories.length;c++)

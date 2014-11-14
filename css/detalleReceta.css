@@ -98,11 +98,9 @@ _buttonFav
   height: 10px;  
 }
 
-#ingredientesContainer {
-  clear: both;
-  z-index: 2;
-  width: 720px;
+#ingredientsContainer {
   height: 400px;
+  overflow: hidden;
 }
 
 #photoContainer {
@@ -172,10 +170,8 @@ _buttonFav
 }
 
 #preparationDiv {
-  width: 100%;
+  width: 560px;
   height: 100%;
-  margin-top: 20px;
-  overflow: hidden;
   line-height: 1.2;
   margin-left: 10px;
   text-align: left;
@@ -491,22 +487,17 @@ _buttonFav
   text-decoration:underline;
 }
 #ingredientsTable {
-  /*font-family:Arial, Helvetica, sans-serif;*/
+  margin-left: 20px;
+  margin-top: 20px;
+  width: 550px;
   color:#666;
   font-size:16px;
-  /*text-shadow: 1px 1px 0px #fff;*/
   background:#eaebec;
-  /*margin:20px;*/
-  width: 100%;
   border:#ccc 1px solid;
 
   -moz-border-radius:3px;
   -webkit-border-radius:3px;
-  border-radius:3px;
-
-  /*-moz-box-shadow: 0 1px 2px #d1d1d1;
-  -webkit-box-shadow: 0 1px 2px #d1d1d1;
-  box-shadow: 0 1px 2px #d1d1d1;*/
+  border-radius:3px;  
 }
 #ingredientsTable th {
   padding:11px 15px 12px 15px;
@@ -751,5 +742,33 @@ p {
 }
 
 #section-flip-1{
-  padding: 30px;
+  /*padding: 30px;*/
 }
+
+.scroll-btn{
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  margin-left: 580px;   
+  cursor: pointer;
+}
+
+.scroll-btn img{
+  width: 100%;
+  height: 100%;
+}
+
+.scroll-up-btn{
+  margin-top: 70px;  
+}
+
+.scroll-down-btn{
+  margin-top: 120px;
+}
+
+#preparationContainer{
+  height: 250px;
+  margin-top: 50px;
+  padding-right: 10px;
+}
+

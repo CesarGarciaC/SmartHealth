@@ -1,5 +1,14 @@
 //Variables Globales
+var urlConexion='http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php';
+//'http://200.16.7.111/dev/sexy_service/sexy_restful.php';//
 var numbuttons = 4;
+
+var lastWindow={
+	windows:'holi',
+	categories:'',
+	keyword:'',
+}
+
 var isTop10=false;
 var categorias2 = {
     "categorias": [
@@ -62,8 +71,10 @@ var isInFavoriteView=false;
 var recipeIsInFavorites=false;
 var inLogin = false;
 
-$(document).ready($(function()
-{     /////////////////////////////Nombre usuario al iniciar sesion////////
+$(document).ready($(function()	
+{    
+
+ /////////////////////////////Nombre usuario al iniciar sesion////////
     if (User.id != "") {
         var targetdiv = $('#Usuario');
         var UserDiv = "<center><img src=\"images/user.png\">" + User.nicename + "</center>" + "<center id=\"CloseSesion\" onclick=\"CloseSesion()\">Cerrar Sesión</center>";
@@ -132,27 +143,33 @@ $(document).ready($(function()
         }
         
         else if(keyCode == 461 || keyCode == 72 || keyCode == 27){ // back
+			
             if (activeView == "view_video"){
                 $("#vl_closeBtn").click();
+                activeView = "view_detalles";
+                initView(activeView);
             }
             /*if (isClicked){
                 //alert("cancelar");
                 cancelarSeleccion(activeElementIndex);
             }*/
             
-            if (isInFavoriteView)
-                obtenerFavoritos()
+            //if (isInFavoriteView)
+            //    obtenerFavoritos()
             
             else if (activeView == "view_detalles"){
                 $('#recipe-details').addClass("invisible-block"); 
                 $('#data-container').removeClass("invisible-block");
                 activeView = "view_top10"; 
+                actualizarVolver();
             }
             else if(activeView == "view_keyboard"){
                 $("#keyboard").getkeyboard().close();
                 activeView = "view_top10"; 
             }
             initView(activeView);
+			
+
         }
         
         addNavigation();
@@ -443,6 +460,8 @@ function cancelarSeleccion(idDiv) {
 }
 
 function busquedaRecientes() {
+
+	lastWindow.windows='Novedades';
     activeView = "view_recientes";
     columns = 3;
     try
@@ -457,7 +476,7 @@ function busquedaRecientes() {
         // 2) Send a http request with AJAX http://api.jquery.com/jQuery.ajax/
         //-----------------------------------------------------------------------
         $.ajax({
-            url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=smartGeneralSearchService&format=json&', //the script to call to get data          
+            url: urlConexion+'?method=smartGeneralSearchService&format=json&', //the script to call to get data          
             data: data, //you can insert url argumnets here to pass to api.php                              //for example "id=5&parent=6"
             dataType: 'json', //data format    
             async: false,
@@ -496,7 +515,7 @@ function busquedaRecientes() {
 }
 
 function busquedaTop10() {
-
+	lastWindow.windows='Top10';
     columns = 3;
 
     try
@@ -512,7 +531,7 @@ function busquedaTop10() {
         // 2) Send a http request with AJAX http://api.jquery.com/jQuery.ajax/
         //-----------------------------------------------------------------------
         $.ajax({
-            url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=smartGeneralSearchService&format=json&', //the script to call to get data          
+            url: urlConexion+'?method=smartGeneralSearchService&format=json&', //the script to call to get data          
             data: data, //you can insert url argumnets here to pass to api.php                              //for example "id=5&parent=6"
             dataType: 'json', //data format    
             async: false,
@@ -575,7 +594,7 @@ function busquedaRecetas(column, cat, keyword)
         // 2) Send a http request with AJAX http://api.jquery.com/jQuery.ajax/
         //-----------------------------------------------------------------------
         $.ajax({
-            url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=smartGeneralSearchService&format=json&', //the script to call to get data          
+            url: urlConexion+'?method=smartGeneralSearchService&format=json&', //the script to call to get data          
             data: data, //you can insert url argumnets here to pass to api.php                              //for example "id=5&parent=6"
             dataType: 'json', //data format    
             async: false,

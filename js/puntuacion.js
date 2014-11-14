@@ -39,9 +39,9 @@ function voteWebService(rate)
              if (User.id=="")
              {
                  $("#ratingUsuario").remove();
-                 $("#recipeHeader").append("<div id='ratingUsuario' style='left:360px;top:30px' class='basicEditable' data-average='0'></div>")
-                 mostrarMensajeError("Debe iniciar sesión para poder calificar esta receta.")
-                 
+                 $("#recipeHeader").append("<div id='ratingUsuario' style='left:360px;top:30px' class='basicEditable' data-average='0'></div>");
+                 mostrarMensajeError("Debe iniciar sesión para poder calificar esta receta.");
+
                  reloadRating();
                  return 0;
              }
@@ -53,7 +53,7 @@ function voteWebService(rate)
                 var data="id_user="+id_user+"&id_recipe="+id_recipe+"&rating="+rating;
                 $.ajax({        
 
-                    url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=smartAddPointService&format=json&',                  //the script to call to get data          
+                    url: urlConexion+'?method=smartAddPointService&format=json&',                  //the script to call to get data          
                     data: data,                        //you can insert url argumnets here to pass to api.php                              //for example "id=5&parent=6"
                     dataType: 'json',                //data format    
                     async: true,
@@ -100,7 +100,7 @@ function voteWebService(rate)
      var data="id_user="+id_user+"&id_recipe="+id_recipe;
         $.ajax({        
 
-            url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=smartGetPointService&format=json&',                  //the script to call to get data          
+            url: urlConexion+'?method=smartGetPointService&format=json&',                  //the script to call to get data          
             data: data,                        //you can insert url argumnets here to pass to api.php                              //for example "id=5&parent=6"
             dataType: 'json',                //data format    
             async: false,

@@ -30,9 +30,10 @@ Active Element Type:
 function initView(view){
 	if(view == "view_top10"){
 		cleanNavigation();
-		//cleanSelection();
+        activeElementType = "leftMenu";
+        activeElement = "menu1";
 		$("#menu1").addClass("selected");
-    	$("#menu1").addClass("keynav");
+    	addNavigation();
 	}
 	else if(view == "view_recientes"){
 		
@@ -58,7 +59,10 @@ function initView(view){
 		addNavigation();
 	}
 	else if(view == "view_video"){
-		
+		cleanNavigation();
+
+        activeElement = "ytiframe";
+        addNavigation();
 	}
 
 }
@@ -548,12 +552,17 @@ function navigateDetails(keyCode){
     	}
     	else if (activeElementType == "suggestions"){
     		if (activeElement == "slick-center"){
+                activeElementType = "suggestions";
     			activeElement = "slick-prev";
     		}
     		else if (activeElement == "slick-next"){
+                activeElementType = "suggestions";
     			activeElement = "slick-center";
     		}
     	}
+        else if (activeElementType == "scroll"){
+            
+        }
 	}
     else if(keyCode == 38){ // up
     	if(activeElementType == "header"){
@@ -572,9 +581,27 @@ function navigateDetails(keyCode){
     		activeElement = "instruccionesTab";
     	}
     	else if (activeElementType == "suggestions"){
-    		activeElementType = "tabs";
-    		activeElement = "ingredientesTab";
+    		activeElementType = "scroll";
+            if ($('#ingredientesTab').hasClass("tab-current")){
+    		  activeElement = "scrollDown1";
+            }
+            else{
+              activeElement = "scrollDown2";
+            }
     	}
+        else if (activeElementType == "scroll"){
+            if (activeElement == "scrollUp1" || activeElement == "scrollUp2"){
+                activeElementType = "tabs";
+                activeElement = "instruccionesTab";    
+            }
+            else if (activeElement == "scrollDown1"){
+                activeElement = "scrollUp1";
+            }
+            else if (activeElement == "scrollDown2"){
+                activeElement = "scrollUp2";    
+            }
+            
+        }
     }
     else if(keyCode == 39){ // right
     	if(activeElementType == "header"){
@@ -602,16 +629,21 @@ function navigateDetails(keyCode){
     		else{
     			activeElementType = "photo";
     			activeElement = "recipeImag";
-    		}
+    		}            
     	}
     	else if (activeElementType == "suggestions"){
     		if (activeElement == "slick-center"){
     			activeElement = "slick-next";
     		}
     		else if (activeElement == "slick-prev"){
+                activeElementType = "suggestions";
     			activeElement = "slick-center";
     		}
     	}
+        else if (activeElementType == "scroll"){
+            activeElementType = "photo";
+            activeElement = "recipeImag";
+        }
     }
     else if(keyCode == 40){ // down
     	if(activeElementType == "header"){
@@ -620,8 +652,8 @@ function navigateDetails(keyCode){
     	}
     	else if (activeElementType == "tabs"){
     		if (activeElement == "ingredientesTab"){
-    			activeElementType = "suggestions";
-    			activeElement = "slick-center";
+    			activeElementType = "scroll";
+    			activeElement = "scrollUp1";
     		}
     		else if (activeElement == "instruccionesTab"){
     			activeElementType = "voice";
@@ -633,12 +665,25 @@ function navigateDetails(keyCode){
     		
     	}
     	else if (activeElementType == "voice"){
-    		activeElementType = "suggestions";
-    		activeElement = "slick-center";
+    		activeElementType = "scroll";
+    		activeElement = "scrollUp2";
     	}
     	else if (activeElementType == "suggestions"){
     		
     	}
+        else if (activeElementType == "scroll"){
+            if (activeElement == "scrollUp1"){
+                activeElement = "scrollDown1";    
+            }
+            else if (activeElement == "scrollUp2"){
+                activeElement = "scrollDown2";    
+            }
+            else if (activeElement == "scrollDown1" || activeElement == "scrollDown2"){
+                activeElementType = "suggestions";
+                activeElement = "slick-center";
+            }
+            
+        }
     }
 }
 
@@ -647,9 +692,14 @@ function cleanNavigation(){
 		$(activeElement).removeClass('keynav');	
 	}
 	else if(activeElementType == "suggestions"){
-		$("." + activeElement).removeClass('keynav');	
-	}
-	else{
+        if(activeElement == "slick-center"){
+            $("." + activeElement + " img").removeClass('keynav2');
+        }
+        else{
+            $("." + activeElement).removeClass('keynav');  
+        }
+    }
+    else{
 		$("#" + activeElement).removeClass('keynav');
 	}
 }
@@ -659,8 +709,13 @@ function addNavigation(){
 		$(activeElement).addClass('keynav');	
 	}
 	else if(activeElementType == "suggestions"){
-		$("." + activeElement).addClass('keynav');	
-	}
+        if(activeElement == "slick-center"){
+            $("." + activeElement + " img").addClass('keynav2');
+        }
+        else{
+            $("." + activeElement).addClass('keynav');  
+        }
+    }
 	else{
 		$("#" + activeElement).addClass('keynav');	
 	}
@@ -668,23 +723,37 @@ function addNavigation(){
 }
 
 function executeElement(){
-	cleanSelection();
+    cleanSelection();
 	if(activeElementType == "categories"){
-		$(activeElement).click();	
+		
+        $(activeElement).find('a').click();	
 	}
 	else if (activeElementType == "photo"){
 		$("#videoBtn").click();		
 		activeView = "view_video";
 	}
-	else if (activeElement == "slick-center"){
+	/*else if (activeElement == "slick-center"){
 		$("." + activeElement).children('img').click();
-	}
+	}*/
 	else if(activeElementType == "suggestions"){
-		$("." + activeElement).click();	
+        if(activeElement == "slick-center"){
+            $("." + activeElement + " img").click();
+        }
+        else{
+            $("." + activeElement).click();  
+        }
 	}
 	else if (activeElement == "keyword"){
 		$("#keyboard").getkeyboard().reveal();
 	}
+    else if (activeElementType == "scroll"){
+        if($('#' + activeElement).hasClass("scroll-up-btn")){
+            $('.scroll-up-btn img').click();
+        }
+        else if($('#' + activeElement).hasClass("scroll-down-btn")){
+            $('.scroll-down-btn img').click();
+        }
+    }
 	else{
 		$("#" + activeElement).click();	
 	}
