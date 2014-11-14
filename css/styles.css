@@ -16,7 +16,6 @@ body
 {
 	width:90%;
 	table-layout: fixed;
-        color:white;
 	
 }
 
@@ -25,8 +24,7 @@ body
 	height:680px;
 	padding:0;
 	width:220px;
-	//background-color: #FF8944;
-        background-image: url("images/fondoIzquierdo2.png");
+	background-color: #FF8944;
 }
 
 #menu-container
@@ -45,9 +43,8 @@ body
 
 #bloque-center
 {
-	width:840px;
-	//background-color: #FF8944;
-        background-image: url("images/fondoDefinitivo3.png");
+	width:800px;
+	background-color: #FF8944;
 }
 
 #data-container
@@ -75,8 +72,7 @@ body
 #bloque-right
 {
 	width:220px;
-	//background-color: #FF8944;
-        background-image: url("images/fondoDerecho2.png");
+	background-color: #FF8944;
 }
 
 #sugerencias-container
@@ -141,10 +137,8 @@ body
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 	padding-right: 10px;
-        
 	//background-color: #FAB586;
-        background-image: url(images/boton4.png);
-        background-size: cover;
+        background-image: url(images/prueba1receta.png);
 }
 
 .detalle-receta div{
@@ -174,10 +168,8 @@ body
 	width:70px;
 	height:70%;
 	overflow:hidden;
-        color:#eeeeee;
 	z-index:-1;
-	font-size: 17px;
-        font-weight: bold;
+	font-size: 15px;
 }
 
 .detalle-receta .texto-detalle p
@@ -369,25 +361,9 @@ td .menu-option
 
 #usuarioLogin
 {
-	border: 1px solid black;
-    border-radius: 60px;
-    font-size: 18px;
-    background-color: #f65d00;
+	font-size: 16px;
 }
 
-#iniSesion{
-    font-size: 20px;
-    font-weight: bold;
-    font-family: cursive;
-    color:black;
-}
-
-#usuarioLogout{
-    
-    background-color: #f65d00;
-    font-size: 20px;
-    border-radius: 0px 0px 10px 10px;
-}
 #usuarioLogout:hover
 {
 	cursor: pointer;
@@ -417,9 +393,7 @@ a
 }
 
 #menu-container .menu-option{
-	border:2px solid #3A3A3A;
-        background-image: url("images/boton4.png");
-        background-size: cover;
+	border:2px solid #3A3A3A;	
 	border-radius: 5px;
 }
 
@@ -440,9 +414,7 @@ a
 }
 
 #menu-container .menu-option.selected{
-	//background-color: rgba(240,240,240,0.5);
-        background-image:url("images/boton2.png");
-        background-size: cover;
+	background-color: rgba(240,240,240,0.5);
 	border-radius: 5px;
 }
 

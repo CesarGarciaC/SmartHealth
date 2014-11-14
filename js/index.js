@@ -39,9 +39,6 @@ var categorias2 = {
 
 }
 
-function urlConex(){
-     return urlConexion;
-}
 
 var RecipesGlobal = new Array();
 var selectedRecipe = '';

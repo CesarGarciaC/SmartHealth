@@ -21,12 +21,12 @@ function loginUser(user) {
 
 function InicioSesion()
 {
-    //inLogin = false;
-    
+    inLogin = false;
     try
     {
         var user = (document.getElementById("user")).value;
         var password = (document.getElementById("pass")).value;
+
         var data = "";
         //Comprobar que el usuario y la contraseña no sean nulas
         if (user != "" && password != "") {
@@ -39,12 +39,13 @@ function InicioSesion()
             // 2) Send a http request with AJAX http://api.jquery.com/jQuery.ajax/
             //-----------------------------------------------------------------------
             $.ajax({
-                url: parent.urlConex()+'?method=loginService&format=json&', //the script to call to get data          
+                url: urlConexion+'?method=loginService&format=json&', //the script to call to get data          
                 data: data, //you can insert url argumnets here to pass to api.php                              //for example "id=5&parent=6"
                 dataType: 'json', //data format    
                 async: false,
                 success: function(data)          //on recieve of reply
                 {
+
 
                     loginUser(data.data);
                 },

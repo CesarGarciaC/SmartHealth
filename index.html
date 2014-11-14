@@ -2,7 +2,11 @@
 <html>
     <head>
 
-        
+        <!-------------MEta facebook---------->
+        <meta property="og:url" content="http://developando.com" />
+        <meta property="og:title" content="Developando Web & Móvil" />
+        <meta property="og:description" content="Empresa encarga de desarrollar aplicaciones movil y web con calidad" />
+        <meta property="og:image" content="http://developando.com/images/developandoLogo.jpeg" />
 
         <link rel="stylesheet" type="text/css" href="css/styles.css"/>
         <link rel="stylesheet" type="text/css" href="css/rating.css" />
@@ -87,11 +91,11 @@
             <div id="ytiframe"></div>
         </div>        
         <div id="main-container">
-            <table style="border-collapse: collapse;">
+            <table>
                 <tr>
                     <td id="bloque-left">
                         <div id="menu-container" class="bloque">
-                            <table cellspacing="20">
+                            <table cellspacing="50">
                                 <tr>
                                     <td>
                                 <center><img id="applogo" src="images/logo.png"></center>
@@ -134,7 +138,9 @@
                                 </td>
                                 </tr>
                                             
-                                
+                                <tr>
+                                <button id="colorIzquierdo" onclick="colorIzquierdo()">colorIzquierdo</button>
+                                </tr>
                             </table>
                         </div>
                     </td>
@@ -262,14 +268,14 @@
             <button id="colorReceta" onclick="colorReceta()">colorReceta</button>
         </div>
                         <div id="data-container" class="bloque">
-                            <div id="search" style="margin-left:10px;margin-top:15px;">
+                            <div id="search">
                                 <table>
                                     <tr>
                                         <td>
-                                            <h3 style="font-size: 60px;font-family:initial;color: brown;margin-top: 10px;">SmartHealht</h3>
+                                            <h3>&nbsp;</h3>
                                         </td>
                                         <td>
-                                            <form style="left:200px;padding-left: 110px;" id="search-box" action="javascript:mostrarAvanzada()" method="get">
+                                            <form style="left:200px" id="search-box" action="javascript:mostrarAvanzada()" method="get">
                                                 <!--<input type="text" id="keyboard" name="q" size="40" placeholder="Buscar..." />-->
                                                 <!--<div id="wrap">-->
                                                 <input id="keyboard" placeholder="Buscar..." type="text" class="ui-keyboard-input ui-widget-content ui-corner-all" aria-haspopup="true" role="textbox">
@@ -363,7 +369,7 @@
                             </div>
 
                         </div>
-                        
+                        <button id="colorCentro" onclick="colorCentro()">colorCentro</button>
                     </td>
 
                     <td id="bloque-right">
@@ -371,7 +377,7 @@
                             <table id="tabRight">
                             </table>
                         </div>
-                        
+                        <button id="colorDerecho" onclick="colorDerecho()">colorDerecho</button>
                     </td>
                 </tr>
             </table>
