@@ -141,3 +141,10 @@
     margin-top: -40px;
     top: 50%;
 }
+
+.toast-position-suggested-recipes {
+    position: absolute;
+	top: 140%;
+	left: 28%;
+	margin-left: -140px;
+}
