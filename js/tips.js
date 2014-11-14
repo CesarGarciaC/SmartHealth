@@ -69,6 +69,13 @@ function paintEventsTips(){
 	for(var i=0;i<3;i++){
 
 		try{
+		var date='';
+		if(event[i].date==null)	date='Sin Fecha';
+		else {
+		date=event[i].date;
+		var dateFormated=new Date(date);
+		date=dateFormated.getUTCDate()+'/'+(dateFormated.getUTCMonth()+1)+'/'+dateFormated.getUTCFullYear();
+		}
 
 		var direccion=event[i].address;
 		var lugar=direccion.split(",")[0];
@@ -76,24 +83,24 @@ function paintEventsTips(){
 		 '<p style="margin-bottom:10px; height:28%;color: rgb(58,58,58);font-weight: bold;font-size: 16px;">'+event[i].name+'</p>'+
 		 '<div style="text-align:left;float:left;margin-bottom:5px;">'+
 		 '<p style="display: inline;margin-right:5px;font-weight: bold;font-size: 14px;">Fecha:</p>'+
-		 '<p style="display: inline;margin-bottom:3px;font-size: 14px;">Sin Fecha </p></div><br>' +
+		 '<p style="display: inline;margin-bottom:3px;font-size: 14px;">'+date+'</p></div><br>' +
 		 //'<p align="left" style="margin-bottom:5px">Hora: </p>' +
 		 '<div style="text-align:left;float:left;margin-bottom:5px;font-size: 14px;">'+
 		 '<p style="display: inline;margin-right:6px;font-weight: bold;font-size: 14px;">Lugar:</p>'+
 		 '<p style="display: inline;margin-bottom:3px;font-size: 14px;">'+lugar+' </p></div></div>'+
-		 '<p style="margin-left: 17px;margin-top: 2px;font-weight: bold;font-size: 14px; ">Evento</p></td></tr>';
+		 '<p style="margin-left: 17px;margin-top: 2px;font-weight: bold;font-size: 16px; ">Evento</p></td></tr>';
 		 }
 		 catch(ex){
 			if(sep==-1)	sep=i;
 			try{
 				tipDiv+='<tr><td><div class="detalleDiv" style="background: url(images/tipBackground.png)">'+
 				'<p style="margin-bottom:10px; height:28%;color: rgb(58,58,58);font-weight: bold;font-size: 14px;">'+tips[i-sep].name+'</p></div>'+
-				'<p style="margin-left: 17px;margin-top: 2px;font-weight: bold;font-size: 14px; ">Consejo</p></td></tr>';
+				'<p style="margin-left: 17px;margin-top: 2px;font-weight: bold;font-size: 16px; ">Consejo</p></td></tr>';
 			}
 			catch(ex2)
 			{
 				eventDiv+='<tr><td><div class="detalleDiv" style="background: url(images/tip.png)"></div>'+
-				'<p style="margin-left: 17px;margin-top: 2px;font-weight: bold;font-size: 14px; ">Consejo</p></td></tr>';
+				'<p style="margin-left: 17px;margin-top: 2px;font-weight: bold;font-size: 16px; ">Consejo</p></td></tr>';
 			}
 				
 				
