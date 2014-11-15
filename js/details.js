@@ -52,7 +52,7 @@ $(document).ready($(function () {
         var ytvideo;
         ytvideo = '<iframe width="854" height="510" src="http://www.youtube.com/embed/'+ $('#videoBtn').attr("ytVideoId") + '" frameborder="0" allowfullscreen></iframe>'
 
-        $("#main-container").stop(true).animate({opacity: 0.2}, 100);
+        $("#main-container").stop(true).animate({opacity: 0.8}, 100);
         $("#videolayer").fadeIn(200);
         $('#ytiframe').html(ytvideo);
   }); 

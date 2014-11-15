@@ -1,6 +1,4 @@
 
-var urlConexion='http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php';
-
 function loginUser(user) {
 
     if ((user.code) == "badLoginInformation") {
@@ -15,6 +13,7 @@ function loginUser(user) {
         parent.document.getElementById('menuFavoritos').setAttribute('onclick', 'obtenerFavoritos()');
 
         parent.document.getElementById('usuarioLogout').innerHTML = "Cerrar Sesión";
+        parent.document.getElementById('usuarioLogout').css = "border: 1px solid black;";
         parent.userLogin(user.ID, user.user_nicename, user.user_email);
         parent.closeIframe();
         return "Bienvenido"+user.user_nicename;
@@ -44,8 +43,10 @@ function InicioSesion()
             //-----------------------------------------------------------------------
             // 2) Send a http request with AJAX http://api.jquery.com/jQuery.ajax/
             //-----------------------------------------------------------------------
+            var url = 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php' + 
+                        '?method=loginService&format=json&'; 
             $.ajax({
-                url: urlConexion+'?method=loginService&format=json&', //the script to call to get data          
+                url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=loginService&format=json&', //the script to call to get data          
                 data: data, //you can insert url argumnets here to pass to api.php                              //for example "id=5&parent=6"
                 dataType: 'json', //data format    
                 async: false,

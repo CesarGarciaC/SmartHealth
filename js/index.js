@@ -459,6 +459,11 @@ function cancelarSeleccion(idDiv) {
 
 }
 
+function urlConex(){
+    return urlConexion;
+    
+}
+
 function busquedaRecientes() {
 
 	lastWindow.windows='Novedades';
