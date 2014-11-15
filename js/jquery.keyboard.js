@@ -1148,15 +1148,25 @@ $.keyboard = function(el, options){
 			base.close(true); // same as base.accept();
                         if (($("#cal_min").val()!="") ||  ($("#cal_max").val()!=""))
                         {
+//                            alert("Min: "+$("#cal_min").val()+" Max:"+$("#cal_max").val())
                             if (($("#cal_min").val()!="") && ($("#cal_max").val()!=""))
                             {
-                                if (($("#cal_min").val())> ($("#cal_max").val()))
+                                if (parseInt($("#cal_min").val())> parseInt($("#cal_max").val()))
                                 {
                                     mostrarMensajeError("El valor para calorías mínimas debe ser mayor al de calorías máximas.")
                                     return false;
                                 }
                             }
-                            filtrarCalorias($("#cal_min").val(),$("#cal_max").val())
+                            
+                            var v_min,v_max;
+                            
+                            if ($("#cal_min").val()=="") v_min=0;
+                            else v_min=parseInt($("#cal_min").val());
+                            
+                            if ($("#cal_max").val()=="") v_max=99999;
+                            else v_max=parseInt($("#cal_max").val());
+                            
+                            filtrarCalorias(v_min,v_max);
                         }
                         else
                             mostrarAvanzada();

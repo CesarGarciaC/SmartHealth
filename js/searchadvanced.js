@@ -220,9 +220,7 @@ $(".selector").live('click',function()
 function filtrarCalorias(min, max)
 {
     var dataFiltroCalorias=new Array();
-    if (max=="") max=999999999;
-    if (min=="") min=0;
-    
+//    alert("Min: "+min+" Max:"+max)
     var datosFiltro;
     if (dataFiltrada!=null) datosFiltro=dataFiltrada;
     else datosFiltro=RecipesGlobal;
@@ -231,7 +229,7 @@ function filtrarCalorias(min, max)
 //    {
         for (i=0;i<datosFiltro.length;i++)
         {
-            if ((datosFiltro[i].calories<max) && (datosFiltro[i].calories>=min))
+            if ((datosFiltro[i].calories>=min) && (datosFiltro[i].calories<=max))
                 dataFiltroCalorias.push(datosFiltro[i]);
         }
         
