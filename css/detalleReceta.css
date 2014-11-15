@@ -99,7 +99,7 @@ _buttonFav
 }
 
 #ingredientsContainer {
-  height: 400px;
+  height: 290px;
   overflow: hidden;
 }
 
@@ -489,7 +489,7 @@ _buttonFav
 #ingredientsTable {
   margin-left: 20px;
   margin-top: 20px;
-  width: 520px;
+  width: 540px;
   color:#666;
   font-size:16px;
   background:#eaebec;
