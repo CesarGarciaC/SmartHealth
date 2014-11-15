@@ -1145,9 +1145,21 @@ $.keyboard = function(el, options){
         //Smart Health FUncion Aceptar
 	$.keyboard.keyaction = {
 		accept : function(base){
-                        
 			base.close(true); // same as base.accept();
-                        mostrarAvanzada();
+                        if (($("#cal_min").val()!="") ||  ($("#cal_max").val()!=""))
+                        {
+                            if (($("#cal_min").val()!="") && ($("#cal_max").val()!=""))
+                            {
+                                if (($("#cal_min").val())> ($("#cal_max").val()))
+                                {
+                                    mostrarMensajeError("El valor para calorías mínimas debe ser mayor al de calorías máximas.")
+                                    return false;
+                                }
+                            }
+                            filtrarCalorias($("#cal_min").val(),$("#cal_max").val())
+                        }
+                        else
+                            mostrarAvanzada();
 			return false;     // return false prevents further processing
 		},
 		alt : function(base,el){
