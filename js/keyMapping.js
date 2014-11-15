@@ -712,7 +712,8 @@ function addNavigation(){
 function executeElement(){
 	cleanSelection();
 	if(activeElementType == "categories"){
-		$(activeElement).click();	
+		
+        $(activeElement).find('a').click();	
 	}
 	else if (activeElementType == "photo"){
 		$("#videoBtn").click();		
