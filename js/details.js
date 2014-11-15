@@ -155,29 +155,7 @@ $(document).ready($(function () {
     }
   });
 
-  //Slider vertical
-
-   $("#vertical_slider_bar").toggle(function() {
-      $(this).animate({right: '+=680px'});
-
-      $('#ingredientesContainer').fadeOut(500).promise().done(function(){
-        $('#instructionsContainer').fadeIn(500);
-      });
-
-      $('#vsliderbar_arrow').css('background-image','url(images/ArrowRight.png)');
-
-  }, function() {
-      $(this).animate({right: '-=680px'});
-
-      $('#instructionsContainer').fadeOut(500).promise().done(function(){
-        $('#ingredientesContainer').fadeIn(500);
-      });
-
-      $('#vsliderbar_arrow').css('background-image','url(images/ArrowLeft.png)');
-  });
-
-	
-	
+ 	
 	/*
   $('.center').slick({
     centerMode: true,
@@ -343,7 +321,7 @@ $(document).ready($(function () {
                             <tr> \
                               <th colspan="2"> \
                                 <b>Calorías</b> ' + details.calories +
-                              ' gr </th>        \
+                              ' kcal </th>        \
                             </tr> \
                             <tr class="thick-row"> \
                               <td colspan="3" class="small-info"> \

@@ -552,9 +552,11 @@ function navigateDetails(keyCode){
     	}
     	else if (activeElementType == "suggestions"){
     		if (activeElement == "slick-center"){
+                activeElementType = "suggestions";
     			activeElement = "slick-prev";
     		}
     		else if (activeElement == "slick-next"){
+                activeElementType = "suggestions";
     			activeElement = "slick-center";
     		}
     	}
@@ -634,6 +636,7 @@ function navigateDetails(keyCode){
     			activeElement = "slick-next";
     		}
     		else if (activeElement == "slick-prev"){
+                activeElementType = "suggestions";
     			activeElement = "slick-center";
     		}
     	}
@@ -689,8 +692,13 @@ function cleanNavigation(){
 		$(activeElement).removeClass('keynav');	
 	}
 	else if(activeElementType == "suggestions"){
-		$("." + activeElement).removeClass('keynav');	
-	}
+        if(activeElement == "slick-center"){
+            $("." + activeElement + " img").removeClass('keynav2');
+        }
+        else{
+            $("." + activeElement).removeClass('keynav');  
+        }
+    }
     else{
 		$("#" + activeElement).removeClass('keynav');
 	}
@@ -701,8 +709,13 @@ function addNavigation(){
 		$(activeElement).addClass('keynav');	
 	}
 	else if(activeElementType == "suggestions"){
-		$("." + activeElement).addClass('keynav');	
-	}
+        if(activeElement == "slick-center"){
+            $("." + activeElement + " img").addClass('keynav2');
+        }
+        else{
+            $("." + activeElement).addClass('keynav');  
+        }
+    }
 	else{
 		$("#" + activeElement).addClass('keynav');	
 	}
@@ -710,7 +723,7 @@ function addNavigation(){
 }
 
 function executeElement(){
-	cleanSelection();
+    cleanSelection();
 	if(activeElementType == "categories"){
 		
         $(activeElement).find('a').click();	
@@ -719,11 +732,16 @@ function executeElement(){
 		$("#videoBtn").click();		
 		activeView = "view_video";
 	}
-	else if (activeElement == "slick-center"){
+	/*else if (activeElement == "slick-center"){
 		$("." + activeElement).children('img').click();
-	}
+	}*/
 	else if(activeElementType == "suggestions"){
-		$("." + activeElement).click();	
+        if(activeElement == "slick-center"){
+            $("." + activeElement + " img").click();
+        }
+        else{
+            $("." + activeElement).click();  
+        }
 	}
 	else if (activeElement == "keyword"){
 		$("#keyboard").getkeyboard().reveal();

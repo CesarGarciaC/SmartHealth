@@ -161,13 +161,14 @@ $(document).ready($(function()
                 $('#recipe-details').addClass("invisible-block"); 
                 $('#data-container').removeClass("invisible-block");
                 activeView = "view_top10"; 
+                actualizarVolver();
             }
             else if(activeView == "view_keyboard"){
                 $("#keyboard").getkeyboard().close();
                 activeView = "view_top10"; 
             }
             initView(activeView);
-			actualizarVolver();
+			
 
         }
         
