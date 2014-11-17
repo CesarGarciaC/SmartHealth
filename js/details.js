@@ -239,17 +239,21 @@ $(document).ready($(function () {
 
   function selectRecipe(json,id_recipe){
     //alert(recipeId);
+
+
 	getRelatedRecipes(json);
+
     fillRecipeDetails(json,id_recipe);
     $('#recipe-details').removeClass("invisible-block");
     $('#data-container').addClass("invisible-block");
-
+	
     currentInstructions = json.instructions;
     currentIndex = 0;
     text = "";
     for (var i = 0; i < currentInstructions.length; i++) {
       text += currentInstructions[i];
     };
+	
     //Iniciar carrusel abierto
 	try{
 	var elements=document.getElementsByClassName('slick-next');
@@ -408,7 +412,7 @@ $(document).ready($(function () {
 
   function getDetails(id_recipe) {
     try {
-  
+		
       var data="id_recipe=" + id_recipe;
 
       //-----------------------------------------------------------------------
@@ -423,7 +427,8 @@ $(document).ready($(function () {
         success: function(response)          //on recieve of reply
         {
 
-          selectRecipe(response.data,id_recipe);        
+          selectRecipe(response.data,id_recipe);     
+		  
         } 
       });
     

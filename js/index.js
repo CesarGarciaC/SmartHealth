@@ -1,6 +1,6 @@
 //Variables Globales
-var urlConexion='http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php';
-//'http://200.16.7.111/dev/sexy_service/sexy_restful.php';//
+//var urlConexion='http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php';
+var urlConexion='http://200.16.7.111/dev/sexy_service/sexy_restful.php';//
 var numbuttons = 4;
 
 var lastWindow={
@@ -94,7 +94,7 @@ $(document).ready($(function()
 	//Tips y Eventos
 	paintEventsTips();
 	
-    var updatedData = busquedaRecetas(3, "", "");
+    //var updatedData = busquedaRecetas(3, "", "");
 
     initView(activeView);
     
@@ -221,6 +221,7 @@ $(document).ready($(function()
     });
 
     $("#menu1").click();  
+
     //$('#keyboard').getkeyboard().addNavigation();  
     $(".mCustomScrollbar").mCustomScrollbar({autoHideScrollbar: true});
     /*$(".mCustomScrollbar").mousedown(function(event){
@@ -314,8 +315,9 @@ function paintRecipes(numColumns, data2) {
     var recetaDiv = "<table>";
     for (var i = 0; i < data2.recetas.length; i++) {
         if (i % numColumns == 0)
-            recetaDiv += '<tr>'
+            recetaDiv += '<tr>';
         recetaDiv += '<td><div id="receta_' + i + '" value="receta_' + data2.recetas[i].id + '" class="detalle-receta">';
+		
         var puntuacion = '<div style="float:left; margin-bottom:20px;" class="basicNoEditable" data-average="' + parseInt(data2.recetas[i].rating/data2.recetas[i].raters) + '"data-id="' + data2.recetas[i].id + '"></div>';
         
 		var nameAlt=data2.recetas[i].name;
@@ -342,6 +344,8 @@ function paintRecipes(numColumns, data2) {
 	isTop10=false;
     recetaDiv += '</table>';
     targetdiv.html(recetaDiv);
+	
+	
 
     for (var i = 0; i < data2.recetas.length; i++) {
 
@@ -371,6 +375,7 @@ function paintRecipes(numColumns, data2) {
     }
     reloadRating();
     hackStars();
+	
 }
 
 $(document).click(function(event) {
@@ -542,25 +547,35 @@ function busquedaTop10() {
             async: false,
             success: function(data)          //on recieve of reply
             {
-
+				
                 data.data.sort(function(a, b) {
                     return new Date(b.rating/b.raters) - new Date(a.rating/a.raters)
                 });
-
+				
                 var updatedData = {
                     "recetas": data.data
                 };
 
                 var RecipesLastTop10 = new Array();
-                for (var i = 0; i < 10; i++) {
+				
+				var minVar;
+				if(data.data.length<10)	minVar=data.data.length;
+				else minVar=10;
+				
+                for (var i = 0; i < minVar; i++) {
                         RecipesLastTop10.push(updatedData.recetas[i]);
                 }
+				
                 var RecipesGet = {
                     "recetas": RecipesLastTop10
                 };
 
                 activeView = "view_top10";
+				
                 paintRecipes(3, RecipesGet);
+				
+				
+				
                 return updatedData;
             }
         });
@@ -630,6 +645,8 @@ function busquedaRecetas(column, cat, keyword)
 
 var idReceta;
  function seleccionarReceta(idRecetaSeleccionada,i){
+ 
+	
     activeView = "view_detalles";
     initView("view_detalles");
      if (User.id=="")
@@ -649,13 +666,16 @@ var idReceta;
             }
         }
         obtenerPuntuacion(idRecetaSeleccionada)
-
+		
 
         //isInDetailView = true;
         //isClicked = false;
+
         getDetails(parseInt(idRecetaSeleccionada));
+
         idReceta=parseInt(idRecetaSeleccionada);
         cancelarSeleccion(idRecetaSeleccionada);
+		
         $('#receta_'+idRecetaSeleccionada).removeClass('detalle-receta-seleccionada');
         
  }
