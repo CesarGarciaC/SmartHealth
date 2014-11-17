@@ -43,10 +43,10 @@ function InicioSesion()
             //-----------------------------------------------------------------------
             // 2) Send a http request with AJAX http://api.jquery.com/jQuery.ajax/
             //-----------------------------------------------------------------------
-            var url = 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php' + 
+            var url = 'http://200.16.7.111/dev/sexy_service/sexy_restful.php' + 
                         '?method=loginService&format=json&'; 
             $.ajax({
-                url: 'http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php?method=loginService&format=json&', //the script to call to get data          
+                url: url, //the script to call to get data          
                 data: data, //you can insert url argumnets here to pass to api.php                              //for example "id=5&parent=6"
                 dataType: 'json', //data format    
                 async: false,
