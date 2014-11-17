@@ -74,18 +74,19 @@ function getRelatedRecipes(recipe){
 		relatedRecipes= new Array();
 
 
-		var keywordsRecipe=recipe.keyword.split(",");
-				
+		var keywordsRecipe=recipe.keywords.split(",");
+			
 		for(var i=0;i<keywordsRecipe.length;i++){			
 			getRelatedRecipesKeyword(keywordsRecipe[i]);
 		}	
-
+		
 		for(var i=0;i<recipe.categories.length;i++){
 			if(relatedRecipes.length<7){
 				getRelatedRecipesCategory(recipe.categories[i].id);
 			}
 			else	break;
 		}
+
 		
 		distinctRecipes=relatedRecipes.unique();
 		

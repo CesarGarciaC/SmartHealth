@@ -94,7 +94,7 @@ function paintEventsTips(){
 			if(sep==-1)	sep=i;
 			try{
 				tipDiv+='<tr><td><div class="detalleDiv" style="background: url(images/tipBackground.png)">'+
-				'<p style="margin-bottom:10px; height:28%;color: rgb(58,58,58);font-weight: bold;font-size: 14px;">'+tips[i-sep].name+'</p></div>'+
+				'<p style="margin-bottom:10px;color: rgb(58,58,58);font-weight: bold;font-size: 14px;line-height: 1.2;">'+tips[i-sep].name+'</p></div>'+
 				'<p style="margin-left: 17px;margin-top: 2px;font-weight: bold;font-size: 16px; ">Consejo</p></td></tr>';
 			}
 			catch(ex2)
