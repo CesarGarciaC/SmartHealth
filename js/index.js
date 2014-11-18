@@ -1,6 +1,6 @@
 //Variables Globales
 //var urlConexion='http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php';
-var urlConexion='http://200.16.7.111/dev/sexy_service/sexy_restful.php';
+var urlConexion='http://200.16.7.111/dev/sexy_service/sexy_restful.php';//
 var numbuttons = 4;
 
 var lastWindow={
@@ -93,7 +93,8 @@ $(document).ready($(function()
 	
 	//Tips y Eventos
 	paintEventsTips();
-    var updatedData = busquedaRecetas(3, "", "");
+	
+    //var updatedData = busquedaRecetas(3, "", "");
 
     initView(activeView);
     
@@ -179,10 +180,11 @@ $(document).ready($(function()
     $('#usuarioLogin').click(function() {
         var userIframe;
         userIframe = '<iframe id="loginIframe" width="854" height="510" src="login.html" frameborder="0" allowfullscreen></iframe>';
-
+        document.getElementById("main-container").disabled=false;
         $("#main-container").stop(true).animate({opacity: 0.2}, 100);
+        
         $("#userlayer").fadeIn(200);
-        $('#userHtml').html(userIframe);
+       // $('#userHtml').html(userIframe);
         activeView = "view_login";
         initView(activeView);
         //alert($("#user").attr("id"));
@@ -203,22 +205,13 @@ $(document).ready($(function()
     });
 
     $('#usuarioLogout').click(function() {
-        if (confirm("¿Seguro desea cerrar la sesión? \n Recetas favoritas y las opciones de compartir y valorar recetas no estaras disponibles.")) {
-            document.getElementById('usuarioLogin').innerHTML = " Iniciar Sesión";
-            document.getElementById('usuarioLogout').innerHTML = "";
-            document.getElementById('iniSesion').innerHTML = "";
-            if(isInFavoriteView){
-                isInFavoriteView=false;
-                isTop10=true;
-                busquedaTop10();
-                selectedMenuItem = "menu1";
-                $("#menuFavoritos").removeClass("selected");
-                $("#menu1").addClass("selected");
-                      }
-            User = new UserData("", "", "");
-        }
+        mostrarMensajePregunta("¿Seguro desea cerrar la sesión? \n Recetas favoritas y las opciones de compartir y valorar recetas no estaras disponibles.","ConfirmationCloseSesion()");
+ 
     });
+
+
     $("#menu1").click();  
+
     //$('#keyboard').getkeyboard().addNavigation();  
     $(".mCustomScrollbar").mCustomScrollbar({autoHideScrollbar: true});
     /*$(".mCustomScrollbar").mousedown(function(event){
@@ -266,39 +259,27 @@ function closeIframe() {
             
 }
 
-function facebookLayer() {
-    var faceIframe;
-    faceIframe = '<iframe id="faceIframe" width="854" height="510" src="https://www.facebook.com/plugins/likebox.php?href=https://www.facebook.com/FacebookDevelopers" scrolling="no" frameborder="0"  allowfullscreen></iframe>';
-    $("#main-container").stop(true).animate({opacity: 0.2}, 100);
-    $("#facebooklayer").fadeIn(200);
-    $('#facebookHtml').html(faceIframe);
+function ConfirmationCloseSesion(){
+    document.getElementById('usuarioLogin').innerHTML = " Iniciar Sesión";
+            document.getElementById('usuarioLogout').innerHTML = "";
+            document.getElementById('iniSesion').innerHTML = "";
+            if(isInFavoriteView){
+                isInFavoriteView=false;
+                isTop10=true;
+                busquedaTop10();
+                selectedMenuItem = "menu1";
+                $("#menuFavoritos").removeClass("selected");
+                $("#menu1").addClass("selected");
+                      }
+            User = new UserData("", "", "");
 }
-
-
-/*function CloseSesion() {
-    if (confirm("¿Seguro desea cerrar la sesión? \n Recetas favoritas y las opciones de compartir y valorar recetas no estaras disponibles.")) {
-        /* var targetdiv = $('#Usuario');
-         var UserDiv = "<center id=\"usuarioLogin\"><img src=\"\"> Iniciar Sesión </center>";
-         targetdiv.html(UserDiv);
-        document.getElementById('usuarioLogin').innerHTML = "<img src=\"\"> "+isInFavoriteView;
-        //if(!isInFavoriteView)
-            alert(isInFavoriteView);
-        //User= new UserData("", "", "");
-    }
-
-}
-*/
-
+  
+/*
 function CloseSesion() {
-    if (confirm("¿Seguro desea cerrar la sesión? \n Recetas favoritas y las opciones de compartir y valorar recetas no estaras disponibles.")) {
-        var targetdiv = $('#Usuario');
-        var UserDiv = "<a href=\"login.html\">Iniciar Sesión</a>";
-        targetdiv.html(UserDiv);
-        User= new UserData("", "", "");
-    }
-
-}
-
+        mostrarMensajePregunta("¿Seguro desea cerrar la sesión? \n Recetas favoritas y las opciones de compartir y valorar recetas no estaras disponibles.","ConfirmationCloseSesion")
+ 
+   }
+*/
 function sleep(millis, callback) {
     setTimeout(function() {
         callback();
@@ -312,15 +293,10 @@ function paintRecipes(numColumns, data2) {
     var recetaDiv = "<table>";
     for (var i = 0; i < data2.recetas.length; i++) {
         if (i % numColumns == 0)
-            recetaDiv += '<tr>'
+            recetaDiv += '<tr>';
         recetaDiv += '<td><div id="receta_' + i + '" value="receta_' + data2.recetas[i].id + '" class="detalle-receta">';
-        
-        var data_average;
-        if (data2.recetas[i].raters!=0)
-            data_average=parseInt(data2.recetas[i].rating/data2.recetas[i].raters);
-        else
-            data_average=0;
-        var puntuacion = '<div style="float:left; margin-bottom:20px;" class="basicNoEditable" data-average="' +data_average + '"data-id="' + data2.recetas[i].id + '"></div>';
+		
+        var puntuacion = '<div style="float:left; margin-bottom:20px;" class="basicNoEditable" data-average="' + parseInt(data2.recetas[i].rating/data2.recetas[i].raters) + '"data-id="' + data2.recetas[i].id + '"></div>';
         
 		var nameAlt=data2.recetas[i].name;
 		if(nameAlt.length>=50){
@@ -346,6 +322,8 @@ function paintRecipes(numColumns, data2) {
 	isTop10=false;
     recetaDiv += '</table>';
     targetdiv.html(recetaDiv);
+	
+	
 
     for (var i = 0; i < data2.recetas.length; i++) {
 
@@ -375,6 +353,7 @@ function paintRecipes(numColumns, data2) {
     }
     reloadRating();
     hackStars();
+	
 }
 
 $(document).click(function(event) {
@@ -463,6 +442,11 @@ function cancelarSeleccion(idDiv) {
 
 }
 
+function urlConex(){
+    return urlConexion;
+    
+}
+
 function busquedaRecientes() {
 
 	lastWindow.windows='Novedades';
@@ -541,7 +525,7 @@ function busquedaTop10() {
             async: false,
             success: function(data)          //on recieve of reply
             {
-
+				
                 data.data.sort(function(a, b) {
                     var a1,b1=0;
                     if(b.raters!=0)
@@ -550,22 +534,32 @@ function busquedaTop10() {
                         a1=a.rating/a.raters;
                     return (b1 - a1);
                 });
-         
+				
                 var updatedData = {
                     "recetas": data.data
                 };
                 var index=0;
                 if(updatedData.recetas[i].length<10)    index=updatedData.recetas[i].length;
                 var RecipesLastTop10 = new Array();
-                for (var i = 0; i < index; i++) {
+				
+				var minVar;
+				if(data.data.length<10)	minVar=data.data.length;
+				else minVar=10;
+				
+                for (var i = 0; i < minVar; i++) {
                         RecipesLastTop10.push(updatedData.recetas[i]);
                 }
+				
                 var RecipesGet = {
                     "recetas": RecipesLastTop10
                 };
 
                 activeView = "view_top10";
+				
                 paintRecipes(3, RecipesGet);
+				
+				
+				
                 return updatedData;
             }
         });
@@ -635,6 +629,8 @@ function busquedaRecetas(column, cat, keyword)
 
 var idReceta;
  function seleccionarReceta(idRecetaSeleccionada,i){
+ 
+	
     activeView = "view_detalles";
     initView("view_detalles");
      if (User.id=="")
@@ -654,13 +650,16 @@ var idReceta;
             }
         }
         obtenerPuntuacion(idRecetaSeleccionada)
-
+		
 
         //isInDetailView = true;
         //isClicked = false;
+
         getDetails(parseInt(idRecetaSeleccionada));
+
         idReceta=parseInt(idRecetaSeleccionada);
         cancelarSeleccion(idRecetaSeleccionada);
+		
         $('#receta_'+idRecetaSeleccionada).removeClass('detalle-receta-seleccionada');
         
  }

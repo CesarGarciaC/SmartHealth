@@ -1,7 +1,6 @@
 body {
-    background: #FF8944;
-    height:320px;
-    width:800px;
+    height:320px !important;
+    width:800px !important;
 }
 #keyboard-wrapper {
     width: 1260px;
