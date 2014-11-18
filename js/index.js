@@ -1,6 +1,6 @@
 //Variables Globales
-var urlConexion='http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php';
-//'http://200.16.7.111/dev/sexy_service/sexy_restful.php';//
+//var urlConexion='http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php';
+var urlConexion='http://200.16.7.111/dev/sexy_service/sexy_restful.php';
 var numbuttons = 4;
 
 var lastWindow={
@@ -93,7 +93,6 @@ $(document).ready($(function()
 	
 	//Tips y Eventos
 	paintEventsTips();
-	
     var updatedData = busquedaRecetas(3, "", "");
 
     initView(activeView);
@@ -219,7 +218,6 @@ $(document).ready($(function()
             User = new UserData("", "", "");
         }
     });
-
     $("#menu1").click();  
     //$('#keyboard').getkeyboard().addNavigation();  
     $(".mCustomScrollbar").mCustomScrollbar({autoHideScrollbar: true});
@@ -316,7 +314,13 @@ function paintRecipes(numColumns, data2) {
         if (i % numColumns == 0)
             recetaDiv += '<tr>'
         recetaDiv += '<td><div id="receta_' + i + '" value="receta_' + data2.recetas[i].id + '" class="detalle-receta">';
-        var puntuacion = '<div style="float:left; margin-bottom:20px;" class="basicNoEditable" data-average="' + parseInt(data2.recetas[i].rating/data2.recetas[i].raters) + '"data-id="' + data2.recetas[i].id + '"></div>';
+        
+        var data_average;
+        if (data2.recetas[i].raters!=0)
+            data_average=parseInt(data2.recetas[i].rating/data2.recetas[i].raters);
+        else
+            data_average=0;
+        var puntuacion = '<div style="float:left; margin-bottom:20px;" class="basicNoEditable" data-average="' +data_average + '"data-id="' + data2.recetas[i].id + '"></div>';
         
 		var nameAlt=data2.recetas[i].name;
 		if(nameAlt.length>=50){
@@ -539,15 +543,21 @@ function busquedaTop10() {
             {
 
                 data.data.sort(function(a, b) {
-                    return new Date(b.rating/b.raters) - new Date(a.rating/a.raters)
+                    var a1,b1=0;
+                    if(b.raters!=0)
+                        b1=b.rating/b.raters;
+                    if(a.raters!=0)
+                        a1=a.rating/a.raters;
+                    return (b1 - a1);
                 });
-
+         
                 var updatedData = {
                     "recetas": data.data
                 };
-
+                var index=0;
+                if(updatedData.recetas[i].length<10)    index=updatedData.recetas[i].length;
                 var RecipesLastTop10 = new Array();
-                for (var i = 0; i < 10; i++) {
+                for (var i = 0; i < index; i++) {
                         RecipesLastTop10.push(updatedData.recetas[i]);
                 }
                 var RecipesGet = {

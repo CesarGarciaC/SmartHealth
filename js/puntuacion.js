@@ -108,7 +108,12 @@ function voteWebService(rate)
             {
 //                alert("usuario:"+data.data.rating+" Promedio:"+(data.data.recipe_rating/data.data.recipe_raters))
                 //No hay puntuacion
-                mostrarRatingDetallado(data.data.rating,(data.data.recipe_rating/data.data.recipe_raters),data.data.recipe_raters);
+                var data_average;
+                if (data.data.recipe_raters!=0)
+                    data_average=(data.data.recipe_rating/data.data.recipe_raters);
+                else
+                    data_average=0;
+                mostrarRatingDetallado(data.data.rating,data_average,data.data.recipe_raters);
 
                 if (data.data.code=="noResults")
                 {

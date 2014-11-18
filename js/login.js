@@ -1,5 +1,6 @@
 
-var urlConexion='http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php';
+//var urlConexion='http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php';
+var urlConexion='http://200.16.7.111/dev/sexy_service/sexy_restful.php';
 
 function loginUser(user) {
 
