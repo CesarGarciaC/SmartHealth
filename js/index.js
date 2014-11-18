@@ -180,10 +180,11 @@ $(document).ready($(function()
     $('#usuarioLogin').click(function() {
         var userIframe;
         userIframe = '<iframe id="loginIframe" width="854" height="510" src="login.html" frameborder="0" allowfullscreen></iframe>';
-
+        document.getElementById("main-container").disabled=false;
         $("#main-container").stop(true).animate({opacity: 0.2}, 100);
+        
         $("#userlayer").fadeIn(200);
-        $('#userHtml').html(userIframe);
+       // $('#userHtml').html(userIframe);
         activeView = "view_login";
         initView(activeView);
         //alert($("#user").attr("id"));
@@ -204,21 +205,10 @@ $(document).ready($(function()
     });
 
     $('#usuarioLogout').click(function() {
-        if (confirm("¿Seguro desea cerrar la sesión? \n Recetas favoritas y las opciones de compartir y valorar recetas no estaras disponibles.")) {
-            document.getElementById('usuarioLogin').innerHTML = " Iniciar Sesión";
-            document.getElementById('usuarioLogout').innerHTML = "";
-            document.getElementById('iniSesion').innerHTML = "";
-            if(isInFavoriteView){
-                isInFavoriteView=false;
-                isTop10=true;
-                busquedaTop10();
-                selectedMenuItem = "menu1";
-                $("#menuFavoritos").removeClass("selected");
-                $("#menu1").addClass("selected");
-                      }
-            User = new UserData("", "", "");
-        }
+        mostrarMensajePregunta("¿Seguro desea cerrar la sesión? \n Recetas favoritas y las opciones de compartir y valorar recetas no estaras disponibles.","ConfirmationCloseSesion()");
+ 
     });
+
 
     $("#menu1").click();  
 
@@ -269,39 +259,27 @@ function closeIframe() {
             
 }
 
-function facebookLayer() {
-    var faceIframe;
-    faceIframe = '<iframe id="faceIframe" width="854" height="510" src="https://www.facebook.com/plugins/likebox.php?href=https://www.facebook.com/FacebookDevelopers" scrolling="no" frameborder="0"  allowfullscreen></iframe>';
-    $("#main-container").stop(true).animate({opacity: 0.2}, 100);
-    $("#facebooklayer").fadeIn(200);
-    $('#facebookHtml').html(faceIframe);
+function ConfirmationCloseSesion(){
+    document.getElementById('usuarioLogin').innerHTML = " Iniciar Sesión";
+            document.getElementById('usuarioLogout').innerHTML = "";
+            document.getElementById('iniSesion').innerHTML = "";
+            if(isInFavoriteView){
+                isInFavoriteView=false;
+                isTop10=true;
+                busquedaTop10();
+                selectedMenuItem = "menu1";
+                $("#menuFavoritos").removeClass("selected");
+                $("#menu1").addClass("selected");
+                      }
+            User = new UserData("", "", "");
 }
-
-
-/*function CloseSesion() {
-    if (confirm("¿Seguro desea cerrar la sesión? \n Recetas favoritas y las opciones de compartir y valorar recetas no estaras disponibles.")) {
-        /* var targetdiv = $('#Usuario');
-         var UserDiv = "<center id=\"usuarioLogin\"><img src=\"\"> Iniciar Sesión </center>";
-         targetdiv.html(UserDiv);
-        document.getElementById('usuarioLogin').innerHTML = "<img src=\"\"> "+isInFavoriteView;
-        //if(!isInFavoriteView)
-            alert(isInFavoriteView);
-        //User= new UserData("", "", "");
-    }
-
-}
-*/
-
+  
+/*
 function CloseSesion() {
-    if (confirm("¿Seguro desea cerrar la sesión? \n Recetas favoritas y las opciones de compartir y valorar recetas no estaras disponibles.")) {
-        var targetdiv = $('#Usuario');
-        var UserDiv = "<a href=\"login.html\">Iniciar Sesión</a>";
-        targetdiv.html(UserDiv);
-        User= new UserData("", "", "");
-    }
-
-}
-
+        mostrarMensajePregunta("¿Seguro desea cerrar la sesión? \n Recetas favoritas y las opciones de compartir y valorar recetas no estaras disponibles.","ConfirmationCloseSesion")
+ 
+   }
+*/
 function sleep(millis, callback) {
     setTimeout(function() {
         callback();
