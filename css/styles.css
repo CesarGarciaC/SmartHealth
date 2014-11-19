@@ -9,7 +9,8 @@ body
 	font-size: 14px;
 	background-color: rgb(58,58,58);
   	/*font: 400 1em/1.38 Helvetica;  */
-  	font-family: 'Raleway', sans-serif;
+  	/*font-family: 'Raleway', sans-serif;*/
+	font-family: 'Wellfleet', cursive;
 }
 
 #main-container
@@ -52,7 +53,8 @@ body
 {
 	width:800px;
 	/* opcion 1 */
-	background-color: rgb(65,198,205);
+	/*background-color: rgb(65,198,205);*/
+	background-color:#f2f2f2;
 }
 
 #data-container

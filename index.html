@@ -2,10 +2,13 @@
 <html>
     <head>
 
+        <!-------------MEta facebook---------->
+        <meta property="og:url" content="http://developando.com" />
+        <meta property="og:title" content="Developando Web & Móvil" />
+        <meta property="og:description" content="Empresa encarga de desarrollar aplicaciones movil y web con calidad" />
+        <meta property="og:image" content="http://developando.com/images/developandoLogo.jpeg" />
 
         <link rel="stylesheet" type="text/css" href="css/styles.css"/>
-        <link rel="stylesheet" type="text/css" href="css/loginStyle.css"/>
-        
         <link rel="stylesheet" type="text/css" href="css/rating.css" />
         <link rel="stylesheet" type="text/css" href="css/menu.css" />
         <link href="http://code.jquery.com/ui/1.9.0/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
@@ -32,13 +35,14 @@
         <script type="text/javascript" src="js/favorites.js"></script>
         <script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
         <script type="text/javascript" src="slick/slick.min.js"></script>
-        <script type="text/javascript" src="slick/slick.js"></script>
+		<script type="text/javascript" src="slick/slick.js"></script>
         <script type="text/javascript" src="js/details.js" charset="utf-8"></script>
         <script type="text/javascript" src="js/categories.js"></script>
         <script type="text/javascript" src="js/puntuacion.js"></script>
         <script type="text/javascript" src="js/menu.js"></script>
         <script type="text/javascript" src="js/Fondo.js"></script>
         <script type="text/javascript" src="js/ColorReceta.js"></script>
+        <script type="text/javascript" src="js/facebook.js"></script>
         <script type="text/javascript" src="js/jquery.keyboard.js"></script>
         <script type="text/javascript" src="js/jquery.keyboard.extension-navigation.js"></script>
         <script type="text/javascript" src="js/jquery.mCustomScrollbar.concat.min.js"></script>
@@ -46,14 +50,14 @@
         <script type="text/javascript" src="js/msgBoxSmart.js"></script>
         <script type="text/javascript" src="js/jquery.blockUI.js"></script>
         <script type="text/javascript" src="js/msgLoading.js"></script>
-        <script type="text/javascript" src="js/tips.js"></script>
-        <script type="text/javascript" src="js/sugerenciasContainer.js"></script>
+		<script type="text/javascript" src="js/tips.js"></script>
+		<script type="text/javascript" src="js/sugerenciasContainer.js"></script>
         <script type="text/javascript" src="js/cbpFWTabs.js"></script>
         <script type="text/javascript" src="js/modernizr.custom.js"></script>
-        <script type="text/javascript" src="js/actualizarVolver.js"></script>
+		<script type="text/javascript" src="js/actualizarVolver.js"></script>
         <script type="text/javascript" src="js/login.js"></script>
-       
-
+		<link href='http://fonts.googleapis.com/css?family=Wellfleet' rel='stylesheet' type='text/css'>
+        
 
         <meta charset="utf-8">      
 
@@ -84,22 +88,9 @@
         </div> 
         <div id="userlayer" class="videolayer">
             <a id="user_closeBtn"></a>
-         <!--   <div class="invisible-block">-->
-            <div class="login-card">
-                <h1 style="margin-bottom: 0px;">Iniciar Sesión</h1>
-                <b style="position: relative;padding-left: 230px;padding-bottom: 20px;">PUCP</b><br>
- 
-                <form id="tabla" >
-                    <input id="user" placeholder="Nombre de usuario" type="text" value="admin">
-                    <input id="pass" placeholder="Contraseña" type="password" value="idclip1234">
-                </form>
-
-                <input type="submit" name="login" class="login login-submit" value="Acceder" onclick="InicioSesion()"/>
-
-                <a id="lostPassword" onclick="mostrarMensajeError('Para restaurar tu contraseña accede a http://200.16.7.111/wordpress/ ');">¿Has olvidado la contraseña?</a><a id="noUSer" onclick="mostrarMensajeError('Si no cuenta con un usuario PUCP, registrese en http://200.16.7.111/wordpress/');" style="padding-left:15px;">Registrarse</a>
-
+            <div id="userHtml">
+                
             </div>
-            <!--</div>-->
         </div>
         <div id="videolayer" class="videolayer">
             <a id="vl_closeBtn"></a>
@@ -152,7 +143,7 @@
                                 <center>Categorías</center>
                                 </td>
                                 </tr>
-
+                                            
                                 <!--<tr>
                                 <button id="colorIzquierdo" onclick="colorIzquierdo()">colorIzquierdo</button>
                                 </tr>-->
@@ -181,107 +172,107 @@
                             </table>
                         </div>
                         <div id="recipe-details" class="invisible-block">
-                            <!--<div id="vertical_slider_bar"><div id="vsliderbar_arrow"></div></div> -->
-                            <div id="topMargin" class="container clearfix">
+            <!--<div id="vertical_slider_bar"><div id="vsliderbar_arrow"></div></div> -->
+            <div id="topMargin" class="container clearfix">
 
+            </div>
+            <div id="recipeHeader" class="embed-wrapper">
+                <div id="recipeTitle" class="embed-wrapper"></div>
+                <div id="BtnContainer">
+                    <div id="divStarHead">
+                        <img id="pointIcon" src="images/points.png"/>
+                        <div id="puntuacionPromedio"></div>
+                        <div id="numVotos"></div>
+                    </div>
+                    <div id="txtPuntuacion">Tu puntuación:</div>
+                    
+                    <div id="divRatingVote">
+                    </div>
+                    
+                    <input type="button" id="favoritosBtn"/>
+                    
+                </div>
+                                                     
+                </div>
+                <div class="tabs tabs-style-bar">
+                    <nav>
+                        <ul>
+                            <li id="ingredientesTab"><a href="#section-flip-1"><span>Ingredientes</span></a></li>
+                            <li id="instruccionesTab"><a href="#section-flip-2"><span>Instrucciones</span></a></li>
+                        </ul>
+                    </nav>
+                    <div class="content-wrap" style="background-image: url(images/holi.png);border-radius: 10px;">
+                        <section id="section-flip-1">
+                            <div id="scrollUp1" class="scroll-btn scroll-up-btn"><img src="images/up2.png"></div>
+                            <div id="scrollDown1" class="scroll-btn scroll-down-btn"><img src="images/down2.png"></div>
+                            <div id="ingredientsContainer">
+                                <table id="ingredientsTable">
+                                    <tr>
+                                        <th>Ingrediente</th>
+                                        <th>Unidad de Medida</th>      
+                                        <th>Cantidad</th>
+                                    </tr>                                        
+                                </table>
                             </div>
-                            <div id="recipeHeader" class="embed-wrapper">
-                                <div id="recipeTitle" class="embed-wrapper"></div>
-                                <div id="BtnContainer">
-                                    <div id="divStarHead">
-                                        <img id="pointIcon" src="images/points.png"/>
-                                        <div id="puntuacionPromedio"></div>
-                                        <div id="numVotos"></div>
-                                    </div>
-                                    <div id="txtPuntuacion">Tu puntuación:</div>
-
-                                    <div id="divRatingVote">
-                                    </div>
-
-                                    <input type="button" id="favoritosBtn"/>
-
-                                </div>
-
-                            </div>
-                            <div class="tabs tabs-style-bar">
-                                <nav>
-                                    <ul>
-                                        <li id="ingredientesTab"><a href="#section-flip-1"><span>Ingredientes</span></a></li>
-                                        <li id="instruccionesTab"><a href="#section-flip-2"><span>Instrucciones</span></a></li>
-                                    </ul>
-                                </nav>
-                                <div class="content-wrap">
-                                    <section id="section-flip-1">
-                                        <div id="scrollUp1" class="scroll-btn scroll-up-btn"><img src="images/up2.png"></div>
-                                        <div id="scrollDown1" class="scroll-btn scroll-down-btn"><img src="images/down2.png"></div>
-                                        <div id="ingredientsContainer">
-                                            <table id="ingredientsTable">
-                                                <tr>
-                                                    <th>Ingrediente</th>
-                                                    <th>Unidad de Medida</th>      
-                                                    <th>Cantidad</th>
-                                                </tr>                                        
-                                            </table>
-                                        </div>
-                                    </section>
-                                    <section id="section-flip-2">
-                                        <div id="scrollUp2" class="scroll-btn scroll-up-btn"><img src="images/up2.png"></div>
-                                        <div id="scrollDown2" class="scroll-btn scroll-down-btn"><img src="images/down2.png"></div>
-                                        <div id="instructionsContainer" class="container clearfix">
-                                            <div id="preparationTitle" class="embed-wrapper"> 
-                                                <div id="voiceFwdBtn" class="_button"><img class="imgIcon" src="images/fordward.png"></div>
-                                                <div id="voiceStopBtn" class="_button"><img class="imgIcon" src="images/stop1.png"></div>
-                                                <div id="voicePlayBtn" class="_button"><img class="imgIcon" src="images/play1.png"></div>
-                                                <div id="voiceBckBtn" class="_button"><img class="imgIcon" src="images/backward.png"></div>
-                                            </div>
-                                            <div id="preparationContainer">
-                                                <div id="preparationDiv" class="embed-wrapper mCustomScrollbar"></div>                  
-                                            </div>                                
-                                        </div>
-                                    </section>
-                                </div><!-- /content -->
-                            </div><!-- /tabs -->
-                            <!--<div id="ingredientesContainer" class="clearfix">
-                                
-                                <div id="ingredientesDiv" class="embed-wrapper mCustomScrollbar">
-                                    <table id="ingredientsTable">
-                                        <tr>
-                                            <th>Ingrediente</th>
-                                            <th>Unidad de Medida</th>      
-                                            <th>Cantidad</th>
-                                        </tr>                                        
-                                    </table>
-                                </div>
-                            </div>-->
-                            <div id="photoContainer" class="clearfix">
-                                <div id="recipePhoto" class="embed-wrapper"></div>
-                                <div id="videoBtn"></div>
-                            </div>
-                            <div id="duracion" class="embed-wrapper">
-                                <a id='duracion_icon'></a><div id='duracion_text'></div> 
-                                <!--<div id="duracionIcon" class="embed-wrapper" src="images/timer.png"></div>-->
-                            </div>
-                            <div id="dificultad" class="embed-wrapper">
-                                <p id="diffTitle">Dificultad: </p>
-                                <ul id="dificultad_icons"></ul>                                    
-                            </div>
-                            <div id="infoNutricional" class="embed-wrapper">
-
-                            </div>
-                            <!--<div id="instructionsContainer" class="container clearfix">
-                                <div id="preparationTitle" class="embed-wrapper">Instrucciones de preparación: 
+                        </section>
+                        <section id="section-flip-2">
+                            <div id="scrollUp2" class="scroll-btn scroll-up-btn"><img src="images/up2.png"></div>
+                            <div id="scrollDown2" class="scroll-btn scroll-down-btn"><img src="images/down2.png"></div>
+                            <div id="instructionsContainer" class="container clearfix">
+                                <div id="preparationTitle" class="embed-wrapper"> 
                                     <div id="voiceFwdBtn" class="_button"><img class="imgIcon" src="images/fordward.png"></div>
                                     <div id="voiceStopBtn" class="_button"><img class="imgIcon" src="images/stop1.png"></div>
                                     <div id="voicePlayBtn" class="_button"><img class="imgIcon" src="images/play1.png"></div>
                                     <div id="voiceBckBtn" class="_button"><img class="imgIcon" src="images/backward.png"></div>
                                 </div>
-                                <div id="preparationDiv" class="embed-wrapper mCustomScrollbar"></div>                
-                            <!--Aca iba info nutricional-->
-                            <!--</div>-->
-                            <div id="suggestionsContainer" class="container _element">
+                                <div id="preparationContainer">
+                                    <div id="preparationDiv" class="embed-wrapper mCustomScrollbar"></div>                  
+                                </div>                                
                             </div>
-                            <!--<button id="colorReceta" onclick="colorReceta()">colorReceta</button>-->
-                        </div>
+                        </section>
+                    </div><!-- /content -->
+                </div><!-- /tabs -->
+            <!--<div id="ingredientesContainer" class="clearfix">
+                
+                <div id="ingredientesDiv" class="embed-wrapper mCustomScrollbar">
+                    <table id="ingredientsTable">
+                        <tr>
+                            <th>Ingrediente</th>
+                            <th>Unidad de Medida</th>      
+                            <th>Cantidad</th>
+                        </tr>                                        
+                    </table>
+                </div>
+            </div>-->
+            <div id="photoContainer" class="clearfix">
+                <div id="recipePhoto" class="embed-wrapper"></div>
+                <div id="videoBtn"></div>
+            </div>
+            <div id="duracion" class="embed-wrapper">
+                <a id='duracion_icon'></a><div id='duracion_text'></div> 
+                        <!--<div id="duracionIcon" class="embed-wrapper" src="images/timer.png"></div>-->
+            </div>
+            <div id="dificultad" class="embed-wrapper">
+                <p id="diffTitle">Dificultad: </p>
+                <ul id="dificultad_icons"></ul>                                    
+            </div>
+            <div id="infoNutricional" class="embed-wrapper">
+
+            </div>
+            <!--<div id="instructionsContainer" class="container clearfix">
+                <div id="preparationTitle" class="embed-wrapper">Instrucciones de preparación: 
+                    <div id="voiceFwdBtn" class="_button"><img class="imgIcon" src="images/fordward.png"></div>
+                    <div id="voiceStopBtn" class="_button"><img class="imgIcon" src="images/stop1.png"></div>
+                    <div id="voicePlayBtn" class="_button"><img class="imgIcon" src="images/play1.png"></div>
+                    <div id="voiceBckBtn" class="_button"><img class="imgIcon" src="images/backward.png"></div>
+                </div>
+                <div id="preparationDiv" class="embed-wrapper mCustomScrollbar"></div>                
+                <!--Aca iba info nutricional-->
+            <!--</div>-->
+            <div id="suggestionsContainer" class="container _element">
+            </div>
+            <!--<button id="colorReceta" onclick="colorReceta()">colorReceta</button>-->
+        </div>
                         <div id="data-container" class="bloque">
                             <div id="search">
                                 <table>
@@ -384,7 +375,7 @@
                             </div>
 
                         </div>
-                        <!-- <button id="colorCentro" onclick="colorCentro()">colorCentro</button>-->
+                       <!-- <button id="colorCentro" onclick="colorCentro()">colorCentro</button>-->
                     </td>
 
                     <td id="bloque-right">
@@ -400,12 +391,12 @@
         <script>
             (function() {
 
-                [].slice.call(document.querySelectorAll('.tabs')).forEach(function(el) {
-                    new CBPFWTabs(el);
+                [].slice.call( document.querySelectorAll( '.tabs' ) ).forEach( function( el ) {
+                    new CBPFWTabs( el );
                 });
 
             })();
         </script>
-
+                
     </body>
 </html>
