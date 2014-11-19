@@ -587,7 +587,7 @@ function busquedaRecetas(column, cat, keyword)
         if (cat != "" && cat != null)
             data = data + "id_category=" + cat;
         else if (keyword != "" && keyword != null)
-            data = data + "keyword=" + keyword;
+            data = data + "keywords=" + keyword;
 
         //-----------------------------------------------------------------------
         // 2) Send a http request with AJAX http://api.jquery.com/jQuery.ajax/
