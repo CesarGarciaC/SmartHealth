@@ -195,7 +195,7 @@ $(document).ready($(function () {
 
   }
 
-  function fillRecipeDetails(details,id_recipe){
+ function fillRecipeDetails(details,id_recipe){
     if(details.name.length > 32){
       $('#recipeTitle').css('line-height','1.1');  
       $('#recipeTitle').html(details.name);  
@@ -215,9 +215,16 @@ $(document).ready($(function () {
     $('#ingredientsTable').empty();
     $('#ingredientsTable').append(headerDisplay);
     var rowDisplay;
+    var colCantidad;
     for (var i = 0; i < ingredientes.length; i++) {
+      if(((ingredientes[i].quantity) %1)==0){
+        colCantidad = ingredientes[i].quantity;
+      }else{
+        var f = new Fraction(ingredientes[i].quantity);
+        colCantidad = f.numerator + '/' + f.denominator;
+      }
       rowDisplay = '<tr> <td class="ingredientCell">' + ingredientes[i].name + '</td> <td class="umCell">' + 
-      ingredientes[i].unit + '</td> <td class="quantityCell">' + ingredientes[i].quantity + '</td> </tr>';
+      ingredientes[i].unit + '</td> <td class="quantityCell">' + colCantidad  + '</td> </tr>';
       $('#ingredientsTable').append(rowDisplay);
     }
     
@@ -236,7 +243,11 @@ $(document).ready($(function () {
     var difficulty = parseInt(details.difficulty);
     $('#dificultad_icons').empty();
     for (var i = 0; i < difficulty; i++) {
-        $('#dificultad_icons').append('<li></li>');
+        $('#dificultad_icons').append('<li class="dificultad_icons_bg_on"></li>');
+    };
+    
+    for (var i = 0; i < (5-difficulty); i++) {
+        $('#dificultad_icons').append('<li class="dificultad_icons_bg_off"></li>');
     };
 
     // tiempo

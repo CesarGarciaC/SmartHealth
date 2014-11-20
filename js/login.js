@@ -43,7 +43,7 @@ function InicioSesion()
             //-----------------------------------------------------------------------
             // 2) Send a http request with AJAX http://api.jquery.com/jQuery.ajax/
             //-----------------------------------------------------------------------
-            var url = 'http://200.16.7.111/dev/sexy_service/sexy_restful.php' + 
+            var url = urlConexion+ 
                         '?method=loginService&format=json&'; 
             $.ajax({
                 url: url, //the script to call to get data          

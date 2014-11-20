@@ -2,13 +2,10 @@
 <html>
     <head>
 
-        <!-------------MEta facebook---------->
-        <meta property="og:url" content="http://developando.com" />
-        <meta property="og:title" content="Developando Web & Móvil" />
-        <meta property="og:description" content="Empresa encarga de desarrollar aplicaciones movil y web con calidad" />
-        <meta property="og:image" content="http://developando.com/images/developandoLogo.jpeg" />
         
+
         <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+        <link rel="stylesheet" type="text/css" href="css/loginStyle.css"/>
         <link rel="stylesheet" type="text/css" href="css/rating.css" />
         <link rel="stylesheet" type="text/css" href="css/menu.css" />
         <link href="http://code.jquery.com/ui/1.9.0/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
@@ -28,6 +25,7 @@
         <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.min.js"></script>
         <!--<script type="text/javascript" src="js/jquery-1.6.3.min.js"></script>-->
         <script type="text/javascript" src="js/jRating.jquery.js"></script>
+        <script type="text/javascript" src="js/login.js"></script>
         <script type="text/javascript" src="js/user.js"></script>
         <script type="text/javascript" src="js/keymapping.js"></script>
         <script type="text/javascript" src="js/index.js" charset="utf-8"></script>
@@ -55,7 +53,8 @@
         <script type="text/javascript" src="js/cbpFWTabs.js"></script>
         <script type="text/javascript" src="js/modernizr.custom.js"></script>
 		<script type="text/javascript" src="js/actualizarVolver.js"></script>
-        <script type="text/javascript" src="js/login.js"></script>
+        <script type="text/javascript" src="js/fraction.js"></script>
+        
 		<link href='http://fonts.googleapis.com/css?family=Wellfleet' rel='stylesheet' type='text/css'>
         
         <script type="text/javascript" src="js/jquery.keyboardlsearch.js"></script>
@@ -89,8 +88,19 @@
         </div> 
         <div id="userlayer" class="videolayer">
             <a id="user_closeBtn"></a>
-            <div id="userHtml">
-                
+            <div class="login-card">
+                <h1 style="margin-bottom: 0px;">Iniciar Sesión</h1>
+                <b style="position: relative;padding-left: 230px;padding-bottom: 20px;">PUCP</b><br>
+ 
+                <form id="tabla" >
+                    <input id="user" placeholder="Nombre de usuario" type="text" value="admin">
+                    <input id="pass" placeholder="Contraseña" type="password" value="idclip1234">
+                </form>
+
+                <input type="submit" name="login" class="login login-submit" value="Acceder" onclick="InicioSesion()"/>
+
+                <a id="lostPassword" onclick="mostrarMensajeError('Para restaurar tu contraseña accede a http://200.16.7.111/wordpress/ ');">¿Has olvidado la contraseña?</a><a id="noUSer" onclick="mostrarMensajeError('Si no cuenta con un usuario PUCP, registrese en http://200.16.7.111/wordpress/');" style="padding-left:15px;">Registrarse</a>
+
             </div>
         </div>
         <div id="videolayer" class="videolayer">
@@ -123,25 +133,25 @@
 
                                 <tr>
                                     <td id="menu1" class="menu-option" onclick="busquedaTop10()" >
-                                <center>Top 10</center>
+                                <img src="images/smooth-star.png"><a style="font-size:18px;">Top 10</a>
                                 </td>
                                 </tr>
 
                                 <tr>
                                     <td id="menuFavoritos" class="menu-option" onclick="obtenerFavoritos()">
-                                <center>Favoritos</center>
+                                <img src="images/corazonRojo.png"><a>Favoritos</a>
                                 </td>
                                 </tr>
 
                                 <tr>
                                     <td id="menuRecientes" class="menu-option" onclick="busquedaRecientes()">
-                                <center>Novedades</center>
+                                <img src="images/novedades.png"><a>Novedades</a>
                                 </td>
                                 </tr>
 
                                 <tr>
                                     <td id="menuCategorias" class="menu-option" onclick="mostrarCategories()">
-                                <center>Categorías</center>
+                                <img src="images/icono-libro-receta.png"><a>Categorías</a>
                                 </td>
                                 </tr>
                                             
@@ -152,7 +162,7 @@
                         </div>
                     </td>
 
-                    <td id="bloque-center">
+                    <td id="bloque-center" >
                         <div id="listadoPuntuacion" style="position:absolute;left:720px;top:80px;display:none;z-index:999"> 
                             <table>
                                 <tr>
@@ -172,7 +182,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="recipe-details" class="invisible-block">
+                        <div id="recipe-details" class="invisible-block" style="background-image: url(images/back_10.jpg);">
             <!--<div id="vertical_slider_bar"><div id="vsliderbar_arrow"></div></div> -->
             <div id="topMargin" class="container clearfix">
 
