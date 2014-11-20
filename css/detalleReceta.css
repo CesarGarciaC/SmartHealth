@@ -576,7 +576,14 @@ _buttonFav
   height: 26px;
   width: 26px;  
   list-style-type: none;
+}
+
+.dificultad_icons_bg_on{
   background-image: url('../images/diff.png');
+}
+
+.dificultad_icons_bg_off{
+ background-image: url('../images/diff_off.png'); 
 }
 
 /*Carrusel*/
