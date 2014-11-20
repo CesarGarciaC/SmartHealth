@@ -239,31 +239,21 @@ function filtrarCalorias(min, max)
         paintRecipes(2,dataF);
 //    }
 }
-
+ 
+   
 $(document).ready(function()
 {
     var tSearch="",tMin="",tMax="";
+    
     $("#keyboard").change(function()
     {
-//            alert("1")
+        if (smartFlag==true)
             mostrarAvanzada();
-//            tSearch=$("#keyboard").val();
     });
     
     $("#cal_min,#cal_max").change(function()
     {
-//        if (($("#cal_min").val()!="") && $("#cal_min").val()==tMin)
-//            return false;
-//        
-//        tMin=$("#cal_min");
-//        
-//        if (($("#cal_max").val()!="") && $("#cal_max").val()==tMax)
-//            return false;
-//        
-//        tMax=$("#cal_max");
-        
         dataFiltrada=null;
-    //                            alert("Min: "+$("#cal_min").val()+" Max:"+$("#cal_max").val())
         if (($("#cal_min").val()!="") && ($("#cal_max").val()!=""))
         {
             if (parseInt($("#cal_min").val())> parseInt($("#cal_max").val()))
