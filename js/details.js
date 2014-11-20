@@ -5,8 +5,13 @@ var topInstrucciones = 0;
 var step = 50;
 var maxInstrucciones;
 
+var audioElement;
+
   
 $(document).ready($(function () {
+    
+    audioElement = document.createElement('audio');
+    audioElement.addEventListener('ended', playCallback);
     
     
   /*$('.detalle-receta').mousedown(function(){
@@ -66,16 +71,16 @@ $(document).ready($(function () {
 		
   }); 
 
+  /* audio events */
+
   $('#voicePlayBtn').click(function(){
     currentIndex = 0;
-    /*if(isPlaying)
-      voiceStop();
-    else*/ 
-      voicePlay();
+    voicePlay();
+
   });
 
   $('#voiceStopBtn').click(function(){
-    window.speechSynthesis.cancel();
+    audioElement.pause();
     isPlaying = false;
     currentIndex = 0; 
   });
@@ -85,13 +90,11 @@ $(document).ready($(function () {
     currentIndex -= 2;
     console.log("despues" + currentIndex);
     isPlaying = false;
-    window.speechSynthesis.cancel();
     voicePlay();
   });
 
   $('#voiceFwdBtn').click(function(){
     isPlaying = false;
-    window.speechSynthesis.cancel();
     voicePlay();
   });
 
@@ -154,94 +157,24 @@ $(document).ready($(function () {
       });
     }
   });
-
- 	
-	/*
-  $('.center').slick({
-    centerMode: true,
-    centerPadding: '35px',
-    slidesToShow: 3,  
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          arrows: false,
-          centerMode: true,
-          centerPadding: '40px',
-          slidesToShow: 3
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          arrows: false,
-          centerMode: true,
-          centerPadding: '40px',
-          slidesToShow: 1
-        }
-      }
-    ]
-  });*/
-
-  initUtterance();
-
-  window.speechSynthesis.cancel();
 })); 
-
-  var utterance;
 
   var currentInstructions;
   var currentIndex;
   var isPlaying = false;
   var queue;
 
-  function initUtterance(){
-    utterance = new SpeechSynthesisUtterance();
-    utterance.lang = 'es-ES';
-
-    utterance.onend = function() {
-      if(isPlaying){
-        if(queue.length > 0)
-          msgPlay();
-        else
-          voicePlay();
-      }
-    };
-  }
-
   function voicePlay(){
     if (currentIndex >=0 && currentIndex < currentInstructions.length){
-      window.speechSynthesis.cancel();
-      //console.log(currentIndex);
       queue = currentInstructions[currentIndex].split('.');
       currentIndex ++;
       isPlaying = true;
-      msgPlay();      
+      GTvoicePlay();      
     }    
   }
 
-  function msgPlay(){
-    if (queue.length > 0){
-      utterance.text = queue.shift();
-      window.speechSynthesis.speak(utterance);
-    }
-    else
-      isPlaying = false;
-  }
-
-  /*function voiceStop(){
-    if (isPlaying){
-      window.speechSynthesis.stop();
-      currentIndex--;
-      isPlaying = false;
-    }
-  }*/
-
   function selectRecipe(json,id_recipe){
-    //alert(recipeId);
-
-
-	getRelatedRecipes(json);
+  	getRelatedRecipes(json);
 
     fillRecipeDetails(json,id_recipe);
     $('#recipe-details').removeClass("invisible-block");
@@ -255,10 +188,10 @@ $(document).ready($(function () {
     };
 	
     //Iniciar carrusel abierto
-	try{
-	var elements=document.getElementsByClassName('slick-next');
-	elements[0].click();
-	}catch(ex){}
+	  try{
+	    var elements=document.getElementsByClassName('slick-next');
+	    elements[0].click();
+	  }catch(ex){}
 
   }
 
@@ -437,12 +370,9 @@ $(document).ready($(function () {
     }
   } 
   
-  
-  
   function agregarFavoritos(idRec)
   {
       try {
-//            alert(User.id)
           var data="id_user="+User.id+"&id_recipe="+idReceta;
 
           $.ajax({        
@@ -471,4 +401,25 @@ $(document).ready($(function () {
       //alert(idReceta)
       agregarFavoritos(0)
       busquedaTop10();
+  }
+
+  /* voice functions Google Translate */
+
+  function GTvoicePlay(){
+    if (queue.length > 0){
+      var src = queue.shift();
+      audioElement.setAttribute('src', 'http://translate.google.com/translate_tts?ie=utf-8&tl=es&q=' + encodeURIComponent(src));
+      audioElement.play()  
+    }
+    else
+      isPlaying = false;  
+  }
+
+  function playCallback(){
+    if(isPlaying){
+        if(queue.length > 0)
+          GTvoicePlay();
+        else
+          voicePlay();
+      }
   }
