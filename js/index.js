@@ -216,9 +216,9 @@ $(document).ready($(function()
  
     });
 
-
+	
     $("#menu1").click();  
-
+	
     //$('#keyboard').getkeyboard().addNavigation();  
     $(".mCustomScrollbar").mCustomScrollbar({autoHideScrollbar: true});
     /*$(".mCustomScrollbar").mousedown(function(event){
@@ -528,19 +528,13 @@ function busquedaTop10() {
             {
 				
                 data.data.sort(function(a, b) {
-                    var a1,b1=0;
-                    if(b.raters!=0)
-                        b1=b.rating/b.raters;
-                    if(a.raters!=0)
-                        a1=a.rating/a.raters;
-                    return (b1 - a1);
+                    return new Date(b.rating/b.raters) - new Date(a.rating/a.raters)
                 });
 				
                 var updatedData = {
                     "recetas": data.data
                 };
-                var index=0;
-                if(updatedData.recetas[i].length<10)    index=updatedData.recetas[i].length;
+
                 var RecipesLastTop10 = new Array();
 				
 				var minVar;
