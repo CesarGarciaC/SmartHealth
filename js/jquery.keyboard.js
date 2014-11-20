@@ -1143,11 +1143,22 @@ $.keyboard = function(el, options){
 
 	// Action key function list
         //Smart Health FUncion Aceptar
+        
+        var keyReceta=""
+        
 	$.keyboard.keyaction = {
 		accept : function(base){
 			base.close(true); // same as base.accept();
+                        if ($('#keyboard').val()!=keyReceta)
+                        {
+                            $("#cal_min").val("")
+                            $("#cal_max").val("")
+                            keyReceta=$('#keyboard').val();
+                        }
+                        
                         if (($("#cal_min").val()!="") ||  ($("#cal_max").val()!=""))
                         {
+                            dataFiltrada=null;
 //                            alert("Min: "+$("#cal_min").val()+" Max:"+$("#cal_max").val())
                             if (($("#cal_min").val()!="") && ($("#cal_max").val()!=""))
                             {
