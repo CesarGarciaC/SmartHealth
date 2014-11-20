@@ -243,7 +243,11 @@ $(document).ready($(function () {
     var difficulty = parseInt(details.difficulty);
     $('#dificultad_icons').empty();
     for (var i = 0; i < difficulty; i++) {
-        $('#dificultad_icons').append('<li></li>');
+        $('#dificultad_icons').append('<li class="dificultad_icons_bg_on"></li>');
+    };
+    
+    for (var i = 0; i < (5-difficulty); i++) {
+        $('#dificultad_icons').append('<li class="dificultad_icons_bg_off"></li>');
     };
 
     // tiempo
