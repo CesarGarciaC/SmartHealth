@@ -86,9 +86,9 @@ $(document).ready($(function () {
   });
 
   $('#voiceBckBtn').click(function(){
-    console.log("antes" + currentIndex);
+    //console.log("antes" + currentIndex);
     currentIndex -= 2;
-    console.log("despues" + currentIndex);
+    //console.log("despues" + currentIndex);
     isPlaying = false;
     voicePlay();
   });

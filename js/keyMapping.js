@@ -55,7 +55,7 @@ function initView(view){
 	else if(view == "view_detalles"){
 		cleanNavigation();
 		activeElementType = "photo";
-		activeElement = "recipeImag";
+		activeElement = "recipePhoto";
 		addNavigation();
 	}
 	else if(view == "view_video"){
@@ -615,7 +615,7 @@ function navigateDetails(keyCode){
     		}
     		else if (activeElement == "instruccionesTab"){
     			activeElementType = "photo";
-    			activeElement = "recipeImag";
+    			activeElement = "recipePhoto";
     		}
     	}
     	else if (activeElementType == "photo"){
@@ -628,7 +628,7 @@ function navigateDetails(keyCode){
     		}
     		else{
     			activeElementType = "photo";
-    			activeElement = "recipeImag";
+    			activeElement = "recipePhoto";
     		}            
     	}
     	else if (activeElementType == "suggestions"){
@@ -642,23 +642,35 @@ function navigateDetails(keyCode){
     	}
         else if (activeElementType == "scroll"){
             activeElementType = "photo";
-            activeElement = "recipeImag";
+            activeElement = "recipePhoto";
         }
     }
     else if(keyCode == 40){ // down
     	if(activeElementType == "header"){
         	activeElementType = "photo";
-    		activeElement = "recipeImag";     
+    		activeElement = "recipePhoto";     
     	}
     	else if (activeElementType == "tabs"){
     		if (activeElement == "ingredientesTab"){
-    			activeElementType = "scroll";
-    			activeElement = "scrollUp1";
+    			if ($('#ingredientesTab').hasClass("tab-current")){
+                    activeElementType = "scroll";
+                    activeElement = "scrollUp1";    
+                }
+                else{
+                    activeElementType = "suggestions";
+                    activeElement = "slick-center";
+                }                
     		}
     		else if (activeElement == "instruccionesTab"){
-    			activeElementType = "voice";
-    			activeElementIndex = "1";
-    			activeElement = voiceBtnElements[activeElementIndex];
+                if ($('#instruccionesTab').hasClass("tab-current")){
+                    activeElementType = "voice";
+                    activeElementIndex = "1";
+                    activeElement = voiceBtnElements[activeElementIndex];
+                }
+                else{
+                    activeElementType = "suggestions";
+                    activeElement = "slick-center";
+                }    			
     		}
     	}
     	else if (activeElementType == "photo"){
