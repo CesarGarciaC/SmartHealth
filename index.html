@@ -2,13 +2,10 @@
 <html>
     <head>
 
-        <!-------------MEta facebook---------->
-        <meta property="og:url" content="http://developando.com" />
-        <meta property="og:title" content="Developando Web & Móvil" />
-        <meta property="og:description" content="Empresa encarga de desarrollar aplicaciones movil y web con calidad" />
-        <meta property="og:image" content="http://developando.com/images/developandoLogo.jpeg" />
+        
 
         <link rel="stylesheet" type="text/css" href="css/styles.css"/>
+        <link rel="stylesheet" type="text/css" href="css/loginStyle.css"/>
         <link rel="stylesheet" type="text/css" href="css/rating.css" />
         <link rel="stylesheet" type="text/css" href="css/menu.css" />
         <link href="http://code.jquery.com/ui/1.9.0/themes/ui-darkness/jquery-ui.css" rel="stylesheet">
@@ -88,8 +85,19 @@
         </div> 
         <div id="userlayer" class="videolayer">
             <a id="user_closeBtn"></a>
-            <div id="userHtml">
-                
+            <div class="login-card">
+                <h1 style="margin-bottom: 0px;">Iniciar Sesión</h1>
+                <b style="position: relative;padding-left: 230px;padding-bottom: 20px;">PUCP</b><br>
+ 
+                <form id="tabla" >
+                    <input id="user" placeholder="Nombre de usuario" type="text" value="admin">
+                    <input id="pass" placeholder="Contraseña" type="password" value="idclip1234">
+                </form>
+
+                <input type="submit" name="login" class="login login-submit" value="Acceder" onclick="InicioSesion()"/>
+
+                <a id="lostPassword" onclick="mostrarMensajeError('Para restaurar tu contraseña accede a http://200.16.7.111/wordpress/ ');">¿Has olvidado la contraseña?</a><a id="noUSer" onclick="mostrarMensajeError('Si no cuenta con un usuario PUCP, registrese en http://200.16.7.111/wordpress/');" style="padding-left:15px;">Registrarse</a>
+
             </div>
         </div>
         <div id="videolayer" class="videolayer">

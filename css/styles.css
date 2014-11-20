@@ -376,8 +376,25 @@ td .menu-option
 }
 
 #usuarioLogin
-{
-	font-size: 16px;
+{   
+    border: 1px solid black;
+    border-radius: 60px;
+    font-size: 18px;
+    background-color: yellowgreen;
+}
+
+#iniSesion{
+    font-size: 20px;
+    font-weight: bold;
+    
+    color:black;
+}
+
+#usuarioLogout{
+    
+    background-color: yellowgreen;
+    font-size: 20px;
+    border-radius: 0px 0px 10px 10px;
 }
 
 #usuarioLogout:hover
