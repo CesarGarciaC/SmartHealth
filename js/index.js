@@ -177,6 +177,23 @@ $(document).ready($(function()
         
         return false;
     });
+
+    /* manejando doble foco */
+    $('.menu-option').mouseover(function(){
+        cleanNavigation();
+    });
+
+    $('.detalle-receta').mouseover(function(){
+        cleanNavigation();
+    });
+
+    $('#keyboard').mouseover(function(){
+        cleanNavigation();
+    });
+
+    $('#listaCategoriasBusquedaAvanzada li').mouseover(function(){
+        cleanNavigation();
+    });
     
     $('#usuarioLogin').click(function() {
         var userIframe;
@@ -330,6 +347,7 @@ function paintRecipes(numColumns, data2) {
 
         //$('#star_'+i).rating('votar.php', {maxvalue: 5, curvalue:1, id:20});
         $('#receta_' + i).mouseover(function() {
+            cleanNavigation();
             if(activeElementType == "results"){
                 $("#" + activeElement).removeClass('detalle-receta-seleccionada');                    
             }
@@ -528,13 +546,19 @@ function busquedaTop10() {
             {
 				
                 data.data.sort(function(a, b) {
-                    return new Date(b.rating/b.raters) - new Date(a.rating/a.raters)
+                    var a1,b1=0;
+                    if(b.raters!=0)
+                        b1=b.rating/b.raters;
+                    if(a.raters!=0)
+                        a1=a.rating/a.raters;
+                    return (b1 - a1);
                 });
 				
                 var updatedData = {
                     "recetas": data.data
                 };
-
+                var index=0;
+                if(updatedData.recetas[i].length<10)    index=updatedData.recetas[i].length;
                 var RecipesLastTop10 = new Array();
 				
 				var minVar;
@@ -587,7 +611,7 @@ function busquedaRecetas(column, cat, keyword)
         if (cat != "" && cat != null)
             data = data + "id_category=" + cat;
         else if (keyword != "" && keyword != null)
-            data = data + "keyword=" + keyword;
+            data = data + "keywords=" + keyword;
 
         //-----------------------------------------------------------------------
         // 2) Send a http request with AJAX http://api.jquery.com/jQuery.ajax/
