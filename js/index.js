@@ -190,6 +190,10 @@ $(document).ready($(function()
     $('#keyboard').mouseover(function(){
         cleanNavigation();
     });
+
+    $('#listaCategoriasBusquedaAvanzada li').mouseover(function(){
+        cleanNavigation();
+    });
     
     $('#usuarioLogin').click(function() {
         var userIframe;
