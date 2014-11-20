@@ -532,7 +532,7 @@ function navigateDetails(keyCode){
 	if(keyCode == 37){ // left
     	if(activeElementType == "header"){
         	if (activeElement == "favoritosBtn"){
-        		activeElement = "jStar";
+        		activeElement = "ratingUsuario";
         	}            
     	}
     	else if (activeElementType == "tabs"){
@@ -605,7 +605,7 @@ function navigateDetails(keyCode){
     }
     else if(keyCode == 39){ // right
     	if(activeElementType == "header"){
-        	if (activeElement == "jStar"){
+        	if (activeElement == "ratingUsuario"){
         		activeElement = "favoritosBtn";
         	}            
     	}
@@ -711,6 +711,9 @@ function cleanNavigation(){
             $("." + activeElement).removeClass('keynav');  
         }
     }
+    /*else if(activeElement == "ratingUsuario"){
+        $("." + activeElement).removeClass('keynav');
+    }*/
     else{
 		$("#" + activeElement).removeClass('keynav');
 	}
@@ -728,6 +731,9 @@ function addNavigation(){
             $("." + activeElement).addClass('keynav');  
         }
     }
+    /*else if(activeElement == "ratingUsuario"){
+        $("." + activeElement).addClass('keynav');
+    }*/
 	else{
 		$("#" + activeElement).addClass('keynav');	
 	}

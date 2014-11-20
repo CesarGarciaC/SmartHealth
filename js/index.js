@@ -177,6 +177,19 @@ $(document).ready($(function()
         
         return false;
     });
+
+    /* manejando doble foco */
+    $('.menu-option').mouseover(function(){
+        cleanNavigation();
+    });
+
+    $('.detalle-receta').mouseover(function(){
+        cleanNavigation();
+    });
+
+    $('#keyboard').mouseover(function(){
+        cleanNavigation();
+    });
     
     $('#usuarioLogin').click(function() {
         var userIframe;
@@ -330,6 +343,7 @@ function paintRecipes(numColumns, data2) {
 
         //$('#star_'+i).rating('votar.php', {maxvalue: 5, curvalue:1, id:20});
         $('#receta_' + i).mouseover(function() {
+            cleanNavigation();
             if(activeElementType == "results"){
                 $("#" + activeElement).removeClass('detalle-receta-seleccionada');                    
             }

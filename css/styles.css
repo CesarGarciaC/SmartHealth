@@ -565,6 +565,16 @@ a
 	cursor: pointer;
 }
 
+#ratingUsuario{
+	border: 2px solid transparent;	
+	border-radius: 0px;
+}
+
+#ratingUsuario.keynav{
+	border: 2px solid rgb(253,155,22);	
+	border-radius: 0px;
+}
+
 #listaCategoriasBusquedaAvanzada li:hover{
 	border: 2px solid #F1F1F1;
 	/*-webkit-box-shadow: #F1F1F1 0px 0px 6px 3px;*/
