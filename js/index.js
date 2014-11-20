@@ -198,28 +198,17 @@ $(document).ready($(function()
     $('#usuarioLogin').click(function() {
         var userIframe;
         userIframe = '<iframe id="loginIframe" width="854" height="510" src="login.html" frameborder="0" allowfullscreen></iframe>';
-        document.getElementById("main-container").disabled=false;
         $("#main-container").stop(true).animate({opacity: 0.2}, 100);
-        
         $("#userlayer").fadeIn(200);
-       // $('#userHtml').html(userIframe);
         activeView = "view_login";
         initView(activeView);
-        //alert($("#user").attr("id"));
-        
+                
     });
 
     $('#user_closeBtn').click(function() {
         inLogin = false;
         $("#main-container").stop(true).animate({opacity: 1}, 100);
-        $('#userHtml').html('');
         $("#userlayer").fadeOut(100);
-    });
-
-    $('#fb_closeBtn').click(function() {
-        $("#main-container").stop(true).animate({opacity: 1}, 100);
-        $('#facebookHtml').html('');
-        $("#facebooklayer").fadeOut(100);
     });
 
     $('#usuarioLogout').click(function() {
@@ -272,7 +261,6 @@ function scrollToPosition(elem, pos){
 function closeIframe() {
    mostrarMensajeInformativo("Bienvenido " + User.nicename);
     $("#main-container").stop(true).animate({opacity: 1}, 100);
-    $('#userHtml').html('');
     $("#userlayer").fadeOut(100);
             
 }
@@ -292,12 +280,6 @@ function ConfirmationCloseSesion(){
             User = new UserData("", "", "");
 }
   
-/*
-function CloseSesion() {
-        mostrarMensajePregunta("¿Seguro desea cerrar la sesión? \n Recetas favoritas y las opciones de compartir y valorar recetas no estaras disponibles.","ConfirmationCloseSesion")
- 
-   }
-*/
 function sleep(millis, callback) {
     setTimeout(function() {
         callback();
