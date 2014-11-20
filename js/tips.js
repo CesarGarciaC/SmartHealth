@@ -88,19 +88,19 @@ function paintEventsTips(){
 		 '<div style="text-align:left;float:left;margin-bottom:5px;font-size: 14px;">'+
 		 '<p style="display: inline;margin-right:6px;font-weight: bold;font-size: 14px;">Lugar:</p>'+
 		 '<p style="display: inline;margin-bottom:3px;font-size: 14px;">'+lugar+' </p></div></div>'+
-		 '<p style="margin-left: 17px;margin-top: 2px;font-weight: bold;font-size: 16px; ">Evento</p></td></tr>';
+		 '<p style="margin-left: 13px;margin-top: 2px;font-weight: bold;font-size: 16px; ">Evento</p></td></tr>';
 		 }
 		 catch(ex){
 			if(sep==-1)	sep=i;
 			try{
-				tipDiv+='<tr><td><div class="detalleDiv" style="background: url(images/tipBackground.png)">'+
-				'<p style="margin-bottom:10px;color: rgb(58,58,58);font-weight: bold;font-size: 14px;line-height: 1.2;">'+tips[i-sep].name+'</p></div>'+
-				'<p style="margin-left: 17px;margin-top: 2px;font-weight: bold;font-size: 16px; ">Consejo</p></td></tr>';
+				tipDiv+='<tr><td><div class="detalleDiv" style="background: url(images/tipBackground.png);vertical-align: middle;">'+
+				'<p style="margin-bottom:10px;color: rgb(58,58,58);font-weight: bold;font-size: 14px;line-height: 1.4;display:table-row;">'+tips[i-sep].name+'</p></div>'+
+				'<p style="margin-left: 13px;margin-top: 2px;font-weight: bold;font-size: 16px; ">Consejo</p></td></tr>';
 			}
 			catch(ex2)
 			{
 				eventDiv+='<tr><td><div class="detalleDiv" style="background: url(images/tip.png)"></div>'+
-				'<p style="margin-left: 17px;margin-top: 2px;font-weight: bold;font-size: 16px; ">Consejo</p></td></tr>';
+				'<p style="margin-left: 13px;margin-top: 2px;font-weight: bold;font-size: 16px; ">Consejo</p></td></tr>';
 			}
 				
 				

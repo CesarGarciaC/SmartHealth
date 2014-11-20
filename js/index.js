@@ -1,6 +1,7 @@
 //Variables Globales
 //var urlConexion='http://200.16.7.111/wordpress/wp-content/plugins/wordpress-web-service/includes/sexy_restful.php';
 var urlConexion='http://200.16.7.111/dev/sexy_service/sexy_restful.php';//
+//var urlConexion='http://54.86.215.225/sexy_service/sexy_restful.php';
 var numbuttons = 4;
 
 var lastWindow={
@@ -176,6 +177,23 @@ $(document).ready($(function()
         
         return false;
     });
+
+    /* manejando doble foco */
+    $('.menu-option').mouseover(function(){
+        cleanNavigation();
+    });
+
+    $('.detalle-receta').mouseover(function(){
+        cleanNavigation();
+    });
+
+    $('#keyboard').mouseover(function(){
+        cleanNavigation();
+    });
+
+    $('#listaCategoriasBusquedaAvanzada li').mouseover(function(){
+        cleanNavigation();
+    });
     
     $('#usuarioLogin').click(function() {
         var userIframe;
@@ -329,6 +347,7 @@ function paintRecipes(numColumns, data2) {
 
         //$('#star_'+i).rating('votar.php', {maxvalue: 5, curvalue:1, id:20});
         $('#receta_' + i).mouseover(function() {
+            cleanNavigation();
             if(activeElementType == "results"){
                 $("#" + activeElement).removeClass('detalle-receta-seleccionada');                    
             }
@@ -592,7 +611,7 @@ function busquedaRecetas(column, cat, keyword)
         if (cat != "" && cat != null)
             data = data + "id_category=" + cat;
         else if (keyword != "" && keyword != null)
-            data = data + "keyword=" + keyword;
+            data = data + "keywords=" + keyword;
 
         //-----------------------------------------------------------------------
         // 2) Send a http request with AJAX http://api.jquery.com/jQuery.ajax/

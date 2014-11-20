@@ -28,7 +28,7 @@ function getRelatedRecipesKeyword(keyword)
     try
     {
 		
-        var data = 'keyword='+keyword;
+        var data = 'keywords='+keyword;
         $.ajax({
             url: urlConexion+'?method=smartGeneralSearchService&format=json&', //the script to call to get data          
             data: data, //you can insert url argumnets here to pass to api.php                              //for example "id=5&parent=6"

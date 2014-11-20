@@ -1,6 +1,6 @@
 #recipe-details{
   /* opcion 1*/
-  background-color: rgb(65,198,205);
+  background-color:  #f2f2f2;
   
   position: absolute;
   top: 3px;
@@ -77,11 +77,11 @@ _buttonFav
 }
 
 
-._button:hover{
+/*._button:hover{
   border-color: #666 #aaa #bbb #888;
   border-width:1px 1.2px 1.2px 1px;
   color:#000;
-}
+}*/
 
 ._element {
   clear: both;
@@ -182,7 +182,7 @@ _buttonFav
 
 #preparationTitle {
   width: 100%;
-  height: 30px;
+  height: 35px;
 }
 
 #preparationTitle ._button{
@@ -240,7 +240,7 @@ _buttonFav
   position: absolute;
   width: 290px;
   height: 360px;
-  top: 420px;
+  top: 435px;
   right: -20px;
  }
 
@@ -265,16 +265,11 @@ _buttonFav
   top: 10px;
   width: 48px;  
   background-image: url('images/AddFavorites.png');
+  background-repeat: no-repeat;
   background-size: 100%;
   -webkit-border-radius: 2px 2px;  /* Safari  */
   -moz-border-radius: 2px 2px;     /* Firefox */
   /*background-color: rgba(10,10,10,0.3);*/
-}
-
-#favoritosBtn:hover
-{
-    background-color: orange;
-    
 }
 
 #btnPuntuacion {
