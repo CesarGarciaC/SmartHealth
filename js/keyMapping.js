@@ -357,7 +357,15 @@ function navigateSearch(keyCode){
             activeElementIndex = 1;
     	}
     	else if (activeElementType == "filter"){
-    		if (activeElementIndex > 0){
+    		if (activeElement == "cal_min"){
+                activeElementType = "leftMenu";
+                activeElement = leftMenuElements[1]; 
+                activeElementIndex = 1;
+            }
+            else if (activeElement == "cal_max"){
+                activeElement = "cal_min";
+            }
+            else if (activeElementIndex > 0){
     			activeElementIndex--;
     			activeElement = filterElements[activeElementIndex]; 
     		}
@@ -383,8 +391,7 @@ function navigateSearch(keyCode){
             }
             else{
             	activeElementType = "filter";
-            	activeElementIndex = 0;
-            	activeElement = filterElements[0];
+            	activeElement = "cal_min";
             }
         }
         else if(activeElementType == "categories"){
@@ -394,8 +401,7 @@ function navigateSearch(keyCode){
             }
             else{
             	activeElementType = "filter";
-            	activeElementIndex = 0;
-            	activeElement = filterElements[0];
+            	activeElement = "cal_min";
             }
     	}
         else if(activeElementType == "leftMenu"){
@@ -407,8 +413,15 @@ function navigateSearch(keyCode){
         else if (activeElementType == "searchKeyboard"){    		
     	}
     	else if (activeElementType == "filter"){
-    		activeElement = "keyboard";            	
-            activeElementType = "searchKeyboard";
+            if (activeElement == "cal_min" || activeElement == "cal_max"){
+                activeElementIndex = 0;
+                activeElement = filterElements[activeElementIndex]; 
+            }
+            else{
+                activeElement = "keyboard";             
+                activeElementType = "searchKeyboard";    
+            }
+    		
     	}
     }
     else if(keyCode == 39){ // right
@@ -443,7 +456,13 @@ function navigateSearch(keyCode){
         else if (activeElementType == "searchKeyboard"){
     	}
     	else if (activeElementType == "filter"){
-    		if (activeElementIndex < filterElements.length - 1){
+    		if (activeElement == "cal_min"){
+                activeElement = "cal_max";
+            }
+            else if (activeElement == "cal_max"){
+                
+            }            
+            else if (activeElementIndex < filterElements.length - 1){
     			activeElementIndex ++;
     			activeElement = filterElements[activeElementIndex]; 
     		}
@@ -482,15 +501,20 @@ function navigateSearch(keyCode){
             activeElement = filterElements[0];
         }
         else if (activeElementType == "filter"){
-    		activeElementType = "results";
-            activeElementIndex = 0; 
-            activeElement = "receta_0"; 
-            var container = $("#resultadoRecetas");
-            var scrollTo = $('#' + activeElement);
+    		if (activeElement == "cal_min" || activeElement == "cal_max"){
+                activeElementType = "results";
+                activeElementIndex = 0; 
+                activeElement = "receta_0"; 
+                var container = $("#resultadoRecetas");
+                var scrollTo = $('#' + activeElement);
 
-            container.animate({
-            	scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
-            });
+                container.animate({
+            	   scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()
+                });
+            }
+            else{
+                activeElement = "cal_min";
+            }
     	}
     }
 }
@@ -773,6 +797,14 @@ function executeElement(){
     }
     else if(activeElement == "pass"){
         $("#pass").getkeyboard().reveal();
+        activeView = 'view_keyboard';
+    }
+    else if(activeElement == "cal_min"){
+        $("#cal_min").getkeyboard().reveal();
+        activeView = 'view_keyboard';
+    }
+    else if(activeElement == "cal_max"){
+        $("#cal_max").getkeyboard().reveal();
         activeView = 'view_keyboard';
     }
     else if (activeElementType == "scroll"){
