@@ -471,7 +471,7 @@ a
 }
 
 .keynav2{
-	border:5px solid rgb(253,155,22) !important;		
+	border:5px solid rgb(253,179,22) !important;		
 }
 
 /* menu lateral izquierdo */
@@ -483,7 +483,7 @@ a
 }
 
 #menu-container .menu-option.selected{
-	border:0px solid transparent;
+	border:4px solid transparent;
         background-color: white;
 	color: #fe7b2d;
 	border-radius: 0px;
@@ -491,13 +491,13 @@ a
 }
 
 #menu-container .menu-option:hover{
-	border: 4px solid rgb(253,155,22);
+	border: 4px solid rgb(253,179,22);
 	cursor:pointer;
 	border-radius: 5px;
 }
 
 #menu-container .menu-option.keynav{
-	border:4px solid rgb(253,155,22);	
+	border:4px solid rgb(253,179,22);	
 	border-radius: 5px;
 }
 
@@ -506,12 +506,12 @@ a
 }
 
 #Usuario.keynav{
-	border: 4px solid rgb(253,155,22);
+	border: 4px solid rgb(253,179,22);
 	border-radius: 5px;
 }
 
 #Usuario:hover{
-	border: 4px solid rgb(253,155,22);
+	border: 4px solid rgb(253,179,22);
 	border-radius: 5px;
 	cursor: pointer;
 }
@@ -535,12 +535,12 @@ a
 }
 
 #search #keyboard.keynav{
-	border: 4px solid rgb(253,155,22);
+	border: 4px solid rgb(253,179,22);
 	border-radius: 20px;
 }
 
 #search #keyboard:hover{
-	border: 4px solid rgb(253,155,22);
+	border: 4px solid rgb(253,179,22);
 	border-radius: 20px;
 }
 
@@ -550,7 +550,7 @@ a
 }
 
 #recipePhoto.keynav {
-	border: 4px solid rgb(253,155,22);
+	border: 4px solid rgb(253,179,22);
 	border-radius: 0px;
 }
 
@@ -560,12 +560,12 @@ a
 }
 
 #instruccionesTab.keynav, #ingredientesTab.keynav {
-	border: 4px solid rgb(253,155,22);
+	border: 4px solid rgb(253,179,22);
 	border-radius: 0px;
 }
 
 #instruccionesTab:hover, #ingredientesTab:hover {
-	border: 4px solid rgb(253,155,22);
+	border: 4px solid rgb(253,179,22);
 	border-radius: 0px;
 }
 
@@ -574,11 +574,11 @@ a
 }
 
 .scroll-btn.keynav{
-	border: 4px solid rgb(253,155,22);
+	border: 4px solid rgb(253,179,22);
 }
 
 .scroll-btn:hover{
-	border: 4px solid rgb(253,155,22);
+	border: 4px solid rgb(253,179,22);
 	cursor: pointer;
 }
 
@@ -587,16 +587,16 @@ a
 }
 
 ._button.keynav{
-	border: 4px solid rgb(253,155,22);
+	border: 4px solid rgb(253,179,22);
 }
 
 ._button:hover{
-	border: 4px solid rgb(253,155,22) !important;	
+	border: 4px solid rgb(253,179,22) !important;	
 	cursor: pointer !important;
 }
 
 .slick-next.keynav, .slick-prev.keynav{
-	border: 2px solid rgb(253,155,22) !important;
+	border: 2px solid rgb(253,179,22) !important;
 }
 
 .slick-slide:hover {
@@ -605,10 +605,11 @@ a
 
 #favoritosBtn{
 	border: 2px solid transparent;	
+	background-color: rgba(10,10,10,0);
 }
 
 #favoritosBtn.keynav{
-	border: 2px solid rgb(253,155,22);	
+	border: 2px solid rgb(253,179,22);	
 }
 
 #favoritosBtn:hover{
@@ -622,7 +623,7 @@ a
 }
 
 #ratingUsuario.keynav{
-	border: 2px solid rgb(253,155,22);	
+	border: 2px solid rgb(253,179,22);	
 	border-radius: 0px;
 }
 
@@ -677,7 +678,7 @@ a
 {
     position:absolute;
     top: 5px;
-	left: 80px;
+	left: 65px;
 	font-size: 14px;
 }
 
@@ -687,7 +688,7 @@ a
 }
 
 #data-container #search{
-	background-color: #fe7b2d;
+	background-color:rgba(254,123,45,0.9);
 	height: 80px;
 	width: 710px;
 	margin-top: 30px;
@@ -713,7 +714,7 @@ a
 
 .orderby-btn.keynav{
 	border-radius: 10px;
-	border: 4px solid rgb(253,155,22);
+	border: 4px solid rgb(253,179,22);
 }
 
 .orderby-btn:hover{
@@ -727,11 +728,11 @@ a
 }
 
 #cal_min.keynav, #cal_max.keynav{
-	border: 4px solid rgb(253,155,22);
+	border: 4px solid rgb(253,179,22);
 }
 
 #cal_min:hover, #cal_max:hover{
-	border: 4px solid rgb(253,155,22);
+	border: 4px solid rgb(253,179,22);
 }
 
 .orderby-btn:focus{

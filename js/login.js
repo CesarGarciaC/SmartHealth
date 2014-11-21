@@ -31,11 +31,13 @@ function InicioSesion()
         var password = (document.getElementById("pass")).value;
 		
         var data = "";
+		var app='smarttv';
         //Comprobar que el usuario y la contraseña no sean nulas
         if (user != "" && password != "") {
             data = {
                 username: user,
                 password: password,
+				app:app,
             }
 			
 			
