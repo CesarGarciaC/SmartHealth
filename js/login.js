@@ -15,7 +15,7 @@ function loginUser(user) {
         parent.document.getElementById('iniSesion').innerHTML = "<img src=images/user.png >" + user.user_nicename;
         parent.document.getElementById('menuFavoritos').setAttribute('onclick', 'obtenerFavoritos()');
 
-        parent.document.getElementById('usuarioLogout').innerHTML = "Cerrar Sesión";
+        parent.document.getElementById('usuarioLogout').innerHTML = "Cerrar Sesi&oacuten";
         parent.document.getElementById('usuarioLogout').css = "border: 1px solid black;";
         parent.userLogin(user.ID, user.user_nicename, user.user_email);
         parent.closeIframe();

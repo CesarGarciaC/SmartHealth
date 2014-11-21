@@ -34,7 +34,7 @@ body
 	padding:0;
 	width:220px;
 	/* opcion 1 */
-	background-color: rgb(255,248,232);
+	background-color: #fe7b2d;
 }
 
 #menu-container
@@ -57,7 +57,7 @@ body
 	/* opcion 1 */
 	/*background-color: rgb(65,198,205);*/
 	/*background-color:#f2f2f2;*/
-	background-image: url(images/fondoSombraCubiertos.png);
+	background-image: url(images/fondoSombra2.png);
         background-size: cover;
 }
 
@@ -90,7 +90,7 @@ body
 {
 	width:220px;
 	/* opcion 1 */
-	background-image: url("images/fondoDerecha.png");
+	background-image: url("images/fondoDerecha2.png");
         background-size: cover;
 }
 
@@ -157,7 +157,7 @@ body
 	border-radius: 10px;
 	padding-right: 10px;
 	/* opcion 1 */
-	border: 4px solid rgb(0,131,149);
+	border: 4px solid #d4d4d4;
 	background-color: rgb(255,248,232);
 	font-weight: 600;
 }
@@ -167,7 +167,18 @@ body
 }
 
 
-
+.userlayer{
+  display: none;
+  
+  width: 1280px;
+  height: 720px;
+  padding:10px;
+  background-color: rgba(58,58,58,0.8);
+  position: absolute;
+  left: 0px;
+  top: 5px;
+  z-index: 10000010;
+}
 
 .submenu button
 {
@@ -368,7 +379,7 @@ input[type='button']
 td .menu-option
 {
 
-    /*color:khaki;*/
+    color:white;
     font-size: 16px;
     font-weight:bold;
     
@@ -388,14 +399,21 @@ t{
     border: 1px solid black;
     border-radius: 60px;
     font-size: 16px;
-    background-color: yellowgreen;
+    background-color: #d4d4d4;
+    color:white;
+}
+#user{
+    color:black;
+}
+#pass{
+    color:black;
 }
 
 #iniSesion{
     font-size: 16px;
     font-weight: bold;
     
-    color:black;
+    color:white;
 }
 
 #iniSesion img{
@@ -405,8 +423,8 @@ t{
 
 
 #usuarioLogout{
-    
-    background-color: yellowgreen;
+    color: white;
+    background-color: #d4d4d4;
     font-size: 15px;
     border-radius: 0px 0px 10px 10px;
 }
@@ -427,7 +445,8 @@ t{
 a
 {
     /*color: aliceblue;*/
-    vertical-align: 10px;
+    
+    vertical-align: 5px;
     
 }
 
@@ -460,12 +479,14 @@ a
 #menu-container .menu-option{
 	border-radius: 5px;
 	border: 4px solid transparent;
+        padding-left: 20px;
 }
 
 #menu-container .menu-option.selected{
-	border:4px solid transparent;
-	color: rgb(140,189,1);
-	border-radius: 5px;
+	border:0px solid transparent;
+        background-color: white;
+	color: #fe7b2d;
+	border-radius: 0px;
 	//color: white;
 }
 
@@ -666,7 +687,7 @@ a
 }
 
 #data-container #search{
-	background-color: rgba(58,58,58,0.5);
+	background-color: #fe7b2d;
 	height: 80px;
 	width: 710px;
 	margin-top: 30px;
