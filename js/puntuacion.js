@@ -36,6 +36,8 @@ $(document).ready(function(){
 
 function voteWebService(rate)
          {
+		 
+			if(rate!=0){
              if (User.id=="")
              {
                  $("#ratingUsuario").remove();
@@ -45,7 +47,7 @@ function voteWebService(rate)
                  reloadRating();
                  return 0;
              }
-             
+
              $("#listadoPuntuacion").hide();
                 var id_user=User.id;
                 var id_recipe=idReceta;
@@ -64,6 +66,11 @@ function voteWebService(rate)
                         mostrarMensajeInformativo("Receta puntuada")
                     } 
                 });
+				
+			}
+			else{
+				mostrarMensajeError("Debe otorgar un valor entre 1 y 5 a la receta");
+			}
          }
          
  function mostrarRatingDetallado(ratingUsuario,ratingPromedio,numVotos)

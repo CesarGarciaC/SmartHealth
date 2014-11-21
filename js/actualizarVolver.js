@@ -15,14 +15,14 @@ function actualizarVolver(){
 			break;
 		case 'Categoria':
 
-			mostrarCategories();
-			value_s3=lastWindow.categories;
-			filtrar();
+			//mostrarCategories();
+			//value_s3=lastWindow.categories;
+			//filtrar();
 			break;
 		case 'Busqueda':
-			mostrarAvanzada();
-			value_s3=lastWindow.categories;
-			filtrar();
+			//mostrarAvanzada();
+			//value_s3=lastWindow.categories;
+			//filtrar();
 			break;
 		default:
 			busquedaTop10();
