@@ -59,7 +59,7 @@ var activeView = "view_top10";
 
 
 var leftMenuElements = ["Usuario", "menu1", "menuFavoritos", "menuRecientes", "menuCategorias"];
-var filterElements = ["filtroPuntuacion", "filtroRecientes", "filtroTiempo", "filtroDificultad", "cal_min", "cal_max"];
+var filterElements = ["filtroPuntuacion", "filtroRecientes", "filtroTiempo", "filtroDificultad"];
 var voiceBtnElements = ["voiceBckBtn", "voicePlayBtn", "voiceStopBtn", "voiceFwdBtn"];
 
 var activeElementIndex = 1;
@@ -185,6 +185,12 @@ $(document).ready($(function()
             else if (activeView == "view_keyboard" && activeElement == "keyboard") {
                 $("#keyboard").getkeyboard().close();
                 activeView = "view_top10";
+                //initView(activeView);
+            }
+            else if (activeView == "view_keyboard" && activeElementType == "filter") {
+                $("#cal_min").getkeyboard().close();
+                $("#cal_max").getkeyboard().close();
+                activeView = "view_busqueda";
                 //initView(activeView);
             }
 
