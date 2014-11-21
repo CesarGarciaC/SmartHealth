@@ -5,7 +5,7 @@
 /*****************************/
 
 .tabs-style-bar nav {
-	background: rgba(40,44,42,0.05);
+	background: #fe7b2d;
 }
 
 .tabs-style-bar nav ul {
@@ -14,8 +14,8 @@
 
 .tabs-style-bar nav ul li a {
 	margin: 0 2px;
-	background-color: rgb(255,248,232);
-	color: #74777b;
+	background-color: #fe7b2d;
+	color: white;
 	transition: background-color 0.2s, color 0.2s;
 }
 
