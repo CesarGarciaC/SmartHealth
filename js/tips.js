@@ -79,7 +79,7 @@ function paintEventsTips(){
 
 		var direccion=event[i].address;
 		var lugar=direccion.split(",")[0];
-		 eventDiv+='<tr><td><div class="detalleDiv" style="background: url(images/tipBackground.png)">'+
+		 eventDiv+='<tr><td><div class="detalleDiv" style="background: url(images/tipBackground_2.png)">'+
 		 '<p style="margin-bottom:10px; height:28%;color: rgb(58,58,58);font-weight: bold;font-size: 16px;">'+event[i].name+'</p>'+
 		 '<div style="text-align:left;float:left;margin-bottom:5px;">'+
 		 '<p style="display: inline;margin-right:5px;font-weight: bold;font-size: 14px;">Fecha:</p>'+
@@ -93,7 +93,7 @@ function paintEventsTips(){
 		 catch(ex){
 			if(sep==-1)	sep=i;
 			try{
-				tipDiv+='<tr><td><div class="detalleDiv" style="background: url(images/tipBackground.png);vertical-align: middle;">'+
+				tipDiv+='<tr><td><div class="detalleDiv" style="background: url(images/tipBackground_2.png);vertical-align: middle;">'+
 				'<p style="margin-bottom:10px;color: rgb(58,58,58);font-weight: bold;font-size: 14px;line-height: 1.4;display:table-row;">'+tips[i-sep].name+'</p></div>'+
 				'<p style="margin-left: 13px;margin-top: 2px;font-weight: bold;font-size: 16px; ">Consejo</p></td></tr>';
 			}
