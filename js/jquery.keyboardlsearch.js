@@ -27,8 +27,10 @@ Setup/Usage:
 	Please refer to https://github.com/Mottie/Keyboard/wiki
 */
 /*jshint browser:true, jquery:true, unused:false */
+
 ;(function($){
 "use strict";
+
 $.keyboard = function(el, options){
 	var base = this, o;
 
@@ -913,6 +915,8 @@ $.keyboard = function(el, options){
 	// (for the event trigger).
 	base.close = function(accepted){
 		if (base.isOpen) {
+                        if (!accepted)
+                            smartFlag=false;
 			clearTimeout(base.throttled);
 			var val = (accepted) ?  base.checkCombos() : base.originalContent;
 			// validate input if accepted
@@ -1274,8 +1278,11 @@ $.keyboard = function(el, options){
 	};
 
 	// Action key function list
+        
 	$.keyboard.keyaction = {
 		aceptar : function(base){
+                        smartFlag=true;
+                        
 			base.close(true); // same as base.accept();
 			return false;     // return false prevents further processing
 		},
@@ -1507,7 +1514,7 @@ $.keyboard = function(el, options){
 		},
 
 		// preview added above keyboard if true, original input/textarea used if false
-		usePreview   : true,
+		usePreview   : false,
 
 		// if true, the keyboard will always be visible
 		alwaysOpen   : false,

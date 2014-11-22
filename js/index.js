@@ -9,7 +9,7 @@ var lastWindow={
 	categories:'',
 	keyword:'',
 }
-
+var smartFlag=false;
 var isTop10=false;
 var categorias2 = {
     "categorias": [
@@ -589,7 +589,7 @@ function busquedaTop10() {
                 };
 
                 activeView = "view_top10";
-				
+			
                 paintRecipes(3, RecipesGet);
 				
 				
