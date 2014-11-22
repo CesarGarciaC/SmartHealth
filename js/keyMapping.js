@@ -767,6 +767,14 @@ function executeElement(){
 		$("#keyboard").getkeyboard().reveal();
         activeView = 'view_keyboard';
 	}
+    else if(activeElement == "user"){
+        $("#user").getkeyboard().reveal();
+        activeView = 'view_keyboard';
+    }
+    else if(activeElement == "pass"){
+        $("#pass").getkeyboard().reveal();
+        activeView = 'view_keyboard';
+    }
     else if (activeElementType == "scroll"){
         if($('#' + activeElement).hasClass("scroll-up-btn")){
             $('.scroll-up-btn img').click();

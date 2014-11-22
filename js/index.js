@@ -178,13 +178,15 @@ $(document).ready($(function()
                 $('#recipe-details').addClass("invisible-block"); 
                 $('#data-container').removeClass("invisible-block");
                 activeView = "view_top10"; 
+                initView(activeView);
                 actualizarVolver();
             }
-            else if(activeView == "view_keyboard"){
+            else if(activeView == "view_keyboard" && activeElement == "keyboard"){
                 $("#keyboard").getkeyboard().close();
                 activeView = "view_top10"; 
+                //initView(activeView);
             }
-            initView(activeView);
+            
 			
             addNavigation();
 
@@ -193,6 +195,14 @@ $(document).ready($(function()
         //addNavigation();
         
         return false;
+    });
+
+    $('#user').bind('beforeClose.keyboard', function(e, keyboard, el, accepted){
+        activeView = "view_login";
+    });
+
+    $('#pass').bind('beforeClose.keyboard', function(e, keyboard, el, accepted){
+        activeView = "view_login";
     });
 
     /* manejando doble foco */

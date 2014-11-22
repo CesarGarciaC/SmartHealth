@@ -6,6 +6,9 @@ function loginUser(user) {
         return user.message;
     }
     else {
+
+        activeView = "view_top10";
+        initView(activeView);
 		
         parent.document.getElementById('usuarioLogin').innerHTML = "";
 
@@ -22,10 +25,6 @@ function loginUser(user) {
 
 function InicioSesion()
 {
-
-	
-    activeView = "view_top10";
-    initView(activeView);
     try
     {
         var user = (document.getElementById("user")).value;
