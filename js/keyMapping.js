@@ -10,6 +10,7 @@ ActiveView:
 - "view_detalles"
 - "view_video"
 - "view_keyboard"
+- "view_confLogout"
 
 Active Element Type:
 - "results"
@@ -44,7 +45,8 @@ function initView(view){
 	else if(view == "view_login"){
 		cleanNavigation();
 		//cleanSelection();
-		$("#user").addClass("keynav");	
+		$("#user").addClass("keynav");
+        activeElement = "user";	
 	}
 	else if(view == "view_categorias"){
 		
@@ -761,8 +763,9 @@ function executeElement(){
             $("." + activeElement).click();  
         }
 	}
-	else if (activeElement == "keyword"){
+	else if (activeElement == "keyboard"){
 		$("#keyboard").getkeyboard().reveal();
+        activeView = 'view_keyboard';
 	}
     else if (activeElementType == "scroll"){
         if($('#' + activeElement).hasClass("scroll-up-btn")){
@@ -771,6 +774,18 @@ function executeElement(){
         else if($('#' + activeElement).hasClass("scroll-down-btn")){
             $('.scroll-down-btn img').click();
         }
+    }
+    else if (activeView != "view_confLogout" && activeElement == "Usuario"){
+        if (User.id == ""){
+            $('#usuarioLogin').click();
+        }
+        else{
+            $('#usuarioLogout').click();
+            activeView = "view_confLogout";
+        }
+    }
+    else if (activeView == "view_confLogout"){
+        $('#btnAceptToast').click();
     }
 	else{
 		$("#" + activeElement).click();	

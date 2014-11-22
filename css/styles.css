@@ -327,7 +327,7 @@ h2{
 
 #search-advanced
 {
-	border: 1px solid white;
+	border: 4px solid white;
 	top:140px;
 	position:relative;
 	margin:auto auto 50px auto;
@@ -392,11 +392,17 @@ t{
 }
 
 #iniSesion{
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
     
     color:black;
 }
+
+#iniSesion img{
+	max-height: 48px;
+	max-width: 48px;
+}
+
 
 #usuarioLogout{
     
@@ -671,3 +677,75 @@ a
 	margin-top: 25px;
 	margin-left: -280px;
 }
+
+.orderby-btn{
+	background-color: rgb(58,58,58);
+	color: white;
+	font-family: 'Wellfleet', cursive;
+	border: 4px solid transparent;
+}
+
+.orderby-btn.selected{
+	border-radius: 10px;
+	border: 4px solid white;	
+}
+
+.orderby-btn.keynav{
+	border-radius: 10px;
+	border: 4px solid rgb(253,155,22);
+}
+
+.orderby-btn:hover{
+	cursor: pointer;
+	border-radius: 10px;
+	border: 4px solid rgb(253,155,22);	
+}
+
+#cal_min, #cal_max{
+	border: 4px solid transparent;
+}
+
+#cal_min.keynav, #cal_max.keynav{
+	border: 4px solid rgb(253,155,22);
+}
+
+#cal_min:hover, #cal_max:hover{
+	border: 4px solid rgb(253,155,22);
+}
+
+.orderby-btn:focus{
+	outline: none;	
+}
+
+#loginRow{
+	height: 90px;
+}
+
+.login-card #user.keynav {
+	border: 4px solid rgb(253,155,22);
+}
+
+.login-card #pass.keynav {
+	border: 4px solid rgb(253,155,22);
+}
+
+.login-card .login-submit.keynav {
+	border: 4px solid white;
+}
+
+.login-card #lostPassword.keynav {
+	border: 2px solid rgb(253,155,22);
+}
+
+.login-card #lostPassword {
+	border: 2px solid transparent;
+}
+
+.login-card #noUser {
+	border: 2px solid transparent;
+}
+
+.login-card #noUser.keynav {
+	border: 2px solid rgb(253,155,22);
+}
+

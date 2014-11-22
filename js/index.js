@@ -59,7 +59,7 @@ var activeView = "view_top10";
 
 
 var leftMenuElements = ["Usuario","menu1","menuFavoritos","menuRecientes","menuCategorias"];
-var filterElements = ["filtroPuntuacion","filtroRecientes","filtroTiempo","filtroDificultad"];
+var filterElements = ["filtroPuntuacion","filtroRecientes","filtroTiempo","filtroDificultad","cal_min","cal_max"];
 var voiceBtnElements = ["voiceBckBtn","voicePlayBtn","voiceStopBtn","voiceFwdBtn"];
 
 var activeElementIndex = 1;
@@ -137,10 +137,16 @@ $(document).ready($(function()
                 navigateDetails(keyCode);
             }
             else return true;
+
+            addNavigation();
         }
 
         else if(keyCode == 13){ // enter
-            executeElement();   
+            if (activeView != "view-keyboard"){
+                executeElement();   
+
+                addNavigation();
+            }
         }
         
         else if(keyCode == 461 || keyCode == 72 || keyCode == 27){ // back
@@ -148,6 +154,16 @@ $(document).ready($(function()
             if (activeView == "view_video"){
                 $("#vl_closeBtn").click();
                 activeView = "view_detalles";
+                initView(activeView);
+            }
+            else if (activeView == "view_login"){
+                $("#user_closeBtn").click();
+                activeView = "view_top10";
+                initView(activeView);
+            }
+            else if (activeView == "view_confLogout"){
+                $('#btnCancelToast').click();
+                activeView = "view_top10";
                 initView(activeView);
             }
             /*if (isClicked){
@@ -170,10 +186,11 @@ $(document).ready($(function()
             }
             initView(activeView);
 			
+            addNavigation();
 
         }
         
-        addNavigation();
+        //addNavigation();
         
         return false;
     });
@@ -192,6 +209,26 @@ $(document).ready($(function()
     });
 
     $('#listaCategoriasBusquedaAvanzada li').mouseover(function(){
+        cleanNavigation();
+    });
+
+    $('.orderby-btn').mouseover(function(){
+        cleanNavigation();
+    });
+
+    $('#ingredientesTab').mouseover(function(){
+        cleanNavigation();
+    });
+
+    $('#instruccionesTab').mouseover(function(){
+        cleanNavigation();
+    });
+
+    $('#favoritosBtn').mouseover(function(){
+        cleanNavigation();
+    });
+
+    $('.scroll-btn').mouseover(function(){
         cleanNavigation();
     });
     
@@ -278,6 +315,8 @@ function ConfirmationCloseSesion(){
                 $("#menu1").addClass("selected");
                       }
             User = new UserData("", "", "");
+    activeView = "view_top10";
+    initView(activeView);
 }
   
 function sleep(millis, callback) {

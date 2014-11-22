@@ -24,7 +24,8 @@ function InicioSesion()
 {
 
 	
-    inLogin = false;
+    activeView = "view_top10";
+    initView(activeView);
     try
     {
         var user = (document.getElementById("user")).value;

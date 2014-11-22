@@ -97,9 +97,9 @@
                     <input id="pass" placeholder="Contraseña" type="password" value="idclip1234">
                 </form>
 
-                <input type="submit" name="login" class="login login-submit" value="Acceder" onclick="InicioSesion()"/>
+                <input id="submit" type="submit" name="login" class="login login-submit" value="Acceder" onclick="InicioSesion()"/>
 
-                <a id="lostPassword" onclick="mostrarMensajeError('Para restaurar tu contraseña accede a http://200.16.7.111/wordpress/ ');">¿Has olvidado la contraseña?</a><a id="noUSer" onclick="mostrarMensajeError('Si no cuenta con un usuario PUCP, registrese en http://200.16.7.111/wordpress/');" style="padding-left:15px;">Registrarse</a>
+                <a id="lostPassword" onclick="mostrarMensajeError('Para restaurar tu contraseña accede a http://200.16.7.111/wordpress/ ');">¿Has olvidado la contraseña?</a><a id="noUser" onclick="mostrarMensajeError('Si no cuenta con un usuario PUCP, registrese en http://200.16.7.111/wordpress/');" style="padding-left:15px;">Registrarse</a>
 
             </div>
         </div>
@@ -112,14 +112,14 @@
                 <tr>
                     <td id="bloque-left">
                         <div id="menu-container" class="bloque">
-                            <table cellspacing="50">
+                            <table cellspacing="40">
                                 <tr>
                                     <td>
                                 <center><img id="applogo" src="images/logo.png"></center>
                                 </td>
                                 </tr>
 
-                                <tr>
+                                <tr id="loginRow">
                                     <td class="CloseSesion">
                                 <center>
                                     <div id="Usuario">
@@ -311,16 +311,16 @@
                                             Ordenar por:
                                         </td>
                                         <td width="80">
-                                            <input id="filtroPuntuacion" data-order-option="1" class="selector s1" type="button" value="Mejor&#x00A;Valoradas"/>
+                                            <input id="filtroPuntuacion" data-order-option="1" class="orderby-btn selector s1" type="button" value="Mejor&#x00A;Valoradas"/>
                                         </td>
                                         <td width="80">
-                                            <input id="filtroRecientes" data-order-option="2" class="selector s1" type="button" value="Recientes"/>
+                                            <input id="filtroRecientes" data-order-option="2" class="orderby-btn selector s1" type="button" value="Recientes"/>
                                         </td>
                                         <td width="80">
-                                            <input id="filtroTiempo" data-order-option="3" class="selector s1" type="button" value="Tiempo de&#x00A;elaboración"/>
+                                            <input id="filtroTiempo" data-order-option="3" class="orderby-btn selector s1" type="button" value="Tiempo de&#x00A;elaboración"/>
                                         </td>
                                         <td width="80">
-                                            <input id="filtroDificultad" data-order-option="4" class="selector s1" type="button" value="Dificultad"/>
+                                            <input id="filtroDificultad" data-order-option="4" class="orderby-btn selector s1" type="button" value="Dificultad"/>
                                         </td>
                                     </tr>
                                     <tr>
