@@ -12,7 +12,6 @@ var dataFiltrada=null;
 var flagFiltroCalorias=false;
 function mostrarAvanzada()
 {
-
 	lastWindow.windows='Busqueda';
 	
 	activeView = "view_busqueda";

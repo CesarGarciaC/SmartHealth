@@ -479,7 +479,7 @@ $.keyboard = function(el, options){
 						break; // adding a break here to make jsHint happy
 
 					case 13:
-						$.keyboard.keyaction.aceptar(base);
+//						$.keyboard.keyaction.aceptar(base);
 						break;
 
 					// Show capsLock
@@ -1281,8 +1281,8 @@ $.keyboard = function(el, options){
         
 	$.keyboard.keyaction = {
 		aceptar : function(base){
-                        smartFlag=true;
                         
+                        smartFlag=true;
 			base.close(true); // same as base.accept();
 			return false;     // return false prevents further processing
 		},
