@@ -1514,7 +1514,7 @@ $.keyboard = function(el, options){
 		},
 
 		// preview added above keyboard if true, original input/textarea used if false
-		usePreview   : false,
+		usePreview   : true,
 
 		// if true, the keyboard will always be visible
 		alwaysOpen   : false,
