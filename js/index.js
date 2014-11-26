@@ -562,19 +562,19 @@ function busquedaRecientes() {
             success: function(data)          //on recieve of reply
             {
 
-                data.data.sort(function(a, b) {
-                    return new Date(b.created_at) - new Date(a.created_at)
-                });
+                //data.data.sort(function(a, b) {
+                //    return new Date(b.created_at) - new Date(a.created_at)
+                //});
 
                 var updatedData = {
                     "recetas": data.data
                 };
                 var today = new Date();
-                var lastTwoMonths = new Date(today.setMonth(today.getMonth() - 1));
+                //var lastTwoMonths = new Date(today.setMonth(today.getMonth() - 1));
 
                 var RecipesLastTwoMonths = new Array();
                 for (var i = 0; i < updatedData.recetas.length; i++) {
-                    if (new Date(updatedData.recetas[i].created_at) > lastTwoMonths)
+                    //if (new Date(updatedData.recetas[i].created_at) > lastTwoMonths)
                         RecipesLastTwoMonths.push(updatedData.recetas[i]);
 
                 }
@@ -617,8 +617,13 @@ function busquedaTop10() {
             success: function(data)          //on recieve of reply
             {
 
-                data.data.sort(function(a, b) {
-                    return new Date(b.rating / b.raters) - new Date(a.rating / a.raters)
+                data.data.sort(function(a, b) {		
+					var aPoint=5;
+					if(a.raters!=0)	aPoint=(a.rating / a.raters);
+					var bPoint=5;
+					if(b.raters!=0)	bPoint=(b.rating / b.raters);
+					
+                    return bPoint - aPoint			;	
                 });
 
                 var updatedData = {

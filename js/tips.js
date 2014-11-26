@@ -73,8 +73,9 @@ function paintEventsTips(){
 		if(event[i].date==null)	date='Sin Fecha';
 		else {
 		date=event[i].date;
-		var dateFormated=new Date(date);
-		date=dateFormated.getUTCDate()+'/'+(dateFormated.getUTCMonth()+1)+'/'+dateFormated.getUTCFullYear();
+		var dateSplit=date.split('-');
+		date=dateSplit[2].split(' ')[0]+'/'+dateSplit[1]+'/'+dateSplit[0];
+
 		}
 
 		var direccion=event[i].address;

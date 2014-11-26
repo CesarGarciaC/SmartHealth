@@ -68,7 +68,14 @@ function filtrar()
               //Mejor valoradas
               case 1:
                   {
-                      dataFiltrada.sort(function(a,b){return b.rating/b.raters - a.rating/a.raters});
+                      dataFiltrada.sort(function(a,b){
+					  	var aPoint=5;
+						if(a.raters!=0)	aPoint=(a.rating / a.raters);
+						var bPoint=5;
+						if(b.raters!=0)	bPoint=(b.rating / b.raters);
+					
+						return bPoint - aPoint			;
+					  });
                       break;
                   }
                   

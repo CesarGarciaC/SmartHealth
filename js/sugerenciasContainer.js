@@ -76,12 +76,16 @@ function getRelatedRecipes(recipe){
 
 		var keywordsRecipe=recipe.keywords.split(",");
 			
-		for(var i=0;i<keywordsRecipe.length;i++){			
+		for(var i=0;i<keywordsRecipe.length;i++){	
+			
 			getRelatedRecipesKeyword(keywordsRecipe[i]);
 		}	
 		
+
+		
 		for(var i=0;i<recipe.categories.length;i++){
 			if(relatedRecipes.length<7){
+
 				getRelatedRecipesCategory(recipe.categories[i].id);
 			}
 			else	break;
